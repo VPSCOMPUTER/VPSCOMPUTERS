@@ -107,9 +107,9 @@
   <header class="bg-white/95 backdrop-blur-md sticky top-0 z-40 shadow-sm border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center py-3.5">
-        <!-- Brand Logo (Automatically shows logo.png if uploaded, otherwise shows VPS icon) -->
+        <!-- Brand Logo (Supports logo.png, Logo.png, logo.jpg automatically) -->
         <div onclick="navigateTo('home')" class="flex items-center gap-3.5 cursor-pointer group">
-          <img src="logo.png" alt="VPS Logo" class="w-12 h-12 rounded-2xl object-contain bg-white shadow-md border border-slate-200 group-hover:scale-105 transition" onerror="this.style.display='none'; document.getElementById('header-fallback-logo').style.display='flex';" />
+          <img id="main-logo-img" src="logo.png" alt="VPS Logo" class="w-12 h-12 rounded-2xl object-contain bg-white shadow-md border border-slate-200 group-hover:scale-105 transition" onerror="handleLogoError(this)" />
           <div id="header-fallback-logo" style="display: none;" class="w-12 h-12 rounded-2xl bg-gradient-to-br from-brand-700 via-brand-600 to-amber-500 items-center justify-center text-white font-black text-xl shadow-md group-hover:scale-105 transition">
             VPS
           </div>
@@ -163,7 +163,7 @@
         </div>
       </div>
 
-      <!-- ALL PAGES PILL BAR (Visible on all screens for instant page switching without numbers) -->
+      <!-- ALL PAGES PILL BAR -->
       <div class="flex items-center gap-1.5 overflow-x-auto py-2.5 border-t border-slate-100 no-scrollbar text-xs sm:text-sm font-bold">
         <span id="ui-pages-label" class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 px-2 shrink-0">பக்கங்கள்:</span>
         <button onclick="navigateTo('home')" data-pill="home" class="page-pill shrink-0 px-3 py-1.5 rounded-lg transition">🏠 முகப்பு</button>
@@ -181,11 +181,8 @@
   <!-- DYNAMIC MULTI-PAGE CONTAINER -->
   <main class="flex-grow">
 
-    <!-- ==========================================
-         PAGE: HOME PAGE (முகப்புப் பக்கம்)
-    =========================================== -->
+    <!-- PAGE: HOME PAGE -->
     <div id="page-home" class="page-view page-fade">
-      <!-- Hero Banner -->
       <section class="hero-gradient text-white py-12 sm:py-16 relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div class="grid lg:grid-cols-12 gap-8 items-center">
@@ -248,17 +245,12 @@
           <p id="home-dir-desc" class="text-slate-600 text-sm mt-1">ஒவ்வொரு பிரிவிற்கும் தனித்தனிப் பக்கம் உருவாக்கப்பட்டுள்ளது. கீழே உள்ள அட்டைகளைக் கிளிக் செய்து அந்தந்தப் பக்கத்திற்குச் செல்லலாம்.</p>
         </div>
 
-        <div id="home-directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Populated dynamically by JS based on current language -->
-        </div>
+        <div id="home-directory-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
       </section>
     </div>
 
-    <!-- ==========================================
-         DYNAMIC CATEGORY PAGES
-    =========================================== -->
+    <!-- DYNAMIC CATEGORY PAGES -->
     <div id="page-category" class="page-view page-fade hidden">
-      <!-- Page Banner -->
       <section class="bg-slate-900 text-white py-10 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="flex flex-wrap items-center justify-between gap-4">
@@ -283,11 +275,9 @@
         </div>
       </section>
 
-      <!-- Services Cards Grid for Current Page -->
       <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div id="cat-services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
-        <!-- Bottom Page Navigation (Prev / Next Page) -->
         <div class="mt-12 pt-6 border-t border-slate-200 flex flex-wrap justify-between items-center gap-4">
           <button id="btn-prev-page" class="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 font-bold px-5 py-3 rounded-xl shadow-sm transition text-sm flex items-center gap-2">
             ← முந்தைய பக்கம்
@@ -299,9 +289,7 @@
       </section>
     </div>
 
-    <!-- ==========================================
-         PAGE: CONTACT &ONLINE APPLY PAGE (தொடர்புக்கு)
-    =========================================== -->
+    <!-- PAGE: CONTACT & ONLINE APPLY PAGE -->
     <div id="page-contact" class="page-view page-fade hidden">
       <section class="bg-slate-900 text-white py-10 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
@@ -318,7 +306,6 @@
 
       <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-12 gap-8 items-start">
-          <!-- Shop Contact Info -->
           <div class="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
             <div>
               <span id="contact-card-badge" class="text-xs font-extrabold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">முகவரி & தொடர்பு எண்</span>
@@ -353,7 +340,6 @@
             </div>
           </div>
 
-          <!-- Direct WhatsApp Application Form -->
           <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg">
             <h3 id="form-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">ஆன்லைனில் விண்ணப்பிக்க (WhatsApp Apply)</h3>
             <p id="form-subtitle" class="text-slate-500 text-sm mb-6">கீழே உள்ள விவரங்களைப் பூர்த்தி செய்தால் நேரடியாக எங்கள் வாட்ஸ்அப் எண்ணிற்கு (+91 98439 91974) தகவல் வந்துவிடும்.</p>
@@ -401,7 +387,7 @@
   <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800 text-sm mt-auto">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-3">
-        <img src="logo.png" alt="VPS Logo" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5" onerror="this.style.display='none'; document.getElementById('footer-fallback-logo').style.display='flex';" />
+        <img id="footer-logo-img" src="logo.png" alt="VPS Logo" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5" onerror="handleFooterLogoError(this)" />
         <div id="footer-fallback-logo" style="display: none;" class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 font-black items-center justify-center">VPS</div>
         <div>
           <span id="footer-shop-name" class="text-white font-bold block">வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</span>
@@ -420,9 +406,7 @@
     </div>
   </footer>
 
-  <!-- ==========================================
-       MODAL 1: REQUIRED DOCUMENTS CHECKLIST POPUP
-  =========================================== -->
+  <!-- MODAL 1: REQUIRED DOCUMENTS CHECKLIST POPUP -->
   <div id="doc-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-100 relative max-h-[90vh] flex flex-col">
       <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
@@ -458,9 +442,7 @@
     </div>
   </div>
 
-  <!-- ==========================================
-       MODAL 2: QUICK APPLY POPUP
-  =========================================== -->
+  <!-- MODAL 2: QUICK APPLY POPUP -->
   <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-slate-100">
       <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
@@ -490,11 +472,36 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: MULTI-PAGE ROUTER, BILINGUAL TRANSLATION & SERVICES DATA -->
+  <!-- JAVASCRIPT -->
   <script>
     const SHOP_PHONE = '919843991974';
     let currentLang = 'ta';
     let currentPage = 'home';
+
+    // Smart Logo Fallback (Automatically checks logo.png, Logo.png, logo.jpg, logo.jpeg)
+    const logoCandidates = ['logo.png', 'Logo.png', 'LOGO.PNG', 'logo.jpg', 'Logo.jpg', 'logo.jpeg'];
+    let headerLogoIdx = 0;
+    let footerLogoIdx = 0;
+
+    function handleLogoError(img) {
+      headerLogoIdx++;
+      if (headerLogoIdx < logoCandidates.length) {
+        img.src = logoCandidates[headerLogoIdx];
+      } else {
+        img.style.display = 'none';
+        document.getElementById('header-fallback-logo').style.display = 'flex';
+      }
+    }
+
+    function handleFooterLogoError(img) {
+      footerLogoIdx++;
+      if (footerLogoIdx < logoCandidates.length) {
+        img.src = logoCandidates[footerLogoIdx];
+      } else {
+        img.style.display = 'none';
+        document.getElementById('footer-fallback-logo').style.display = 'flex';
+      }
+    }
 
     // UI Translations Dictionary
     const uiTranslations = {
@@ -666,7 +673,6 @@
       }
     };
 
-    // Home Page Directory Cards Data (Bilingual)
     const directoryCards = [
       {
         id: 'esevai',
@@ -736,7 +742,6 @@
       }
     ];
 
-    // Page Metadata Configuration (Bilingual, No Numbers)
     const pageConfig = {
       esevai: {
         titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)',
@@ -800,9 +805,7 @@
       }
     };
 
-    // Complete 24 Services Database with Both Tamil (docsTa) and English (docsEn) Checklists
     const servicesData = [
-      // PAGE: e-Sevai Certificates
       {
         id: 'income-cert',
         page: 'esevai',
@@ -955,8 +958,6 @@
           'Age Proof / Husband Death Certificate (for Widow Pension)'
         ]
       },
-
-      // PAGE: PAN Card & ID Cards
       {
         id: 'pan-new',
         page: 'idcards',
@@ -1072,8 +1073,6 @@
           'Active Mobile Number'
         ]
       },
-
-      // PAGE: Ticket Booking (Bus, Train, Flight)
       {
         id: 'bus-ticket',
         page: 'tickets',
@@ -1164,8 +1163,6 @@
           'Preferred Darshan Date & Mobile Number'
         ]
       },
-
-      // PAGE: MSME, Passport & Govt Schemes
       {
         id: 'msme-udyam',
         page: 'msme',
@@ -1260,8 +1257,6 @@
           'Applicant Aadhaar Card & Photo'
         ]
       },
-
-      // PAGE: Patta / Chitta & Land Records
       {
         id: 'patta-chitta',
         page: 'patta',
@@ -1323,8 +1318,6 @@
           'Survey Number OR Document Number & Registration Year'
         ]
       },
-
-      // PAGE: Offset Printing & Designing
       {
         id: 'wedding-cards',
         page: 'printing',
@@ -1365,12 +1358,10 @@
       }
     ];
 
-    // Switch Language (100% Tamil or 100% English across entire site)
     function setLanguage(lang) {
       currentLang = lang;
       const t = uiTranslations[lang];
 
-      // Update Language Toggle Buttons Styling
       const btnTa = document.getElementById('btn-lang-ta');
       const btnEn = document.getElementById('btn-lang-en');
       if (lang === 'ta') {
@@ -1381,7 +1372,6 @@
         btnTa.className = 'px-2.5 py-0.5 rounded-md text-xs font-extrabold transition text-slate-300 hover:text-white';
       }
 
-      // Header & Navigation Texts
       document.getElementById('ui-live-badge').textContent = t.liveBadge;
       document.getElementById('ui-shop-title').textContent = t.shopTitle;
       document.getElementById('ui-shop-subtitle').textContent = t.shopSubtitle;
@@ -1397,7 +1387,6 @@
       document.querySelector('.nav-text-printing').textContent = t.navPrinting;
       document.querySelector('.nav-text-contact').textContent = t.navContact;
 
-      // Top Pills Bar
       document.querySelector('[data-pill="home"]').textContent = t.pillHome;
       document.querySelector('[data-pill="esevai"]').textContent = t.pillEsevai;
       document.querySelector('[data-pill="idcards"]').textContent = t.pillIdcards;
@@ -1407,7 +1396,6 @@
       document.querySelector('[data-pill="printing"]').textContent = t.pillPrinting;
       document.querySelector('[data-pill="contact"]').textContent = t.pillContact;
 
-      // Home Hero & Contact Box
       document.getElementById('home-hero-badge').textContent = t.heroBadge;
       document.getElementById('home-hero-title').innerHTML = t.heroTitle;
       document.getElementById('home-hero-desc').textContent = t.heroDesc;
@@ -1424,11 +1412,9 @@
       document.getElementById('home-dir-title').textContent = t.dirTitle;
       document.getElementById('home-dir-desc').textContent = t.dirDesc;
 
-      // Category Page Common Elements
       document.getElementById('cat-breadcrumb-home').textContent = t.breadcrumbHome;
       document.getElementById('cat-back-home').textContent = t.backHomeBtn;
 
-      // Contact Page Texts
       document.getElementById('contact-badge').textContent = t.contactBadge;
       document.getElementById('contact-title').textContent = t.contactTitle;
       document.getElementById('contact-subtitle').textContent = t.contactSubtitle;
@@ -1442,7 +1428,6 @@
       document.getElementById('contact-hours-lbl').textContent = t.contactHoursLbl;
       document.getElementById('contact-hours-val').textContent = t.contactHoursVal;
 
-      // Form Texts
       document.getElementById('form-title').textContent = t.formTitle;
       document.getElementById('form-subtitle').textContent = t.formSubtitle;
       document.getElementById('form-name-lbl').textContent = t.formNameLbl;
@@ -1454,7 +1439,6 @@
       document.getElementById('q-notes').placeholder = t.formNotesPh;
       document.getElementById('form-submit-btn').textContent = t.formSubmitBtn;
 
-      // Footer Texts
       document.getElementById('footer-shop-name').textContent = t.footerShopName;
       document.getElementById('footer-shop-loc').textContent = t.footerShopLoc;
       document.getElementById('footer-link-home').textContent = t.navHome;
@@ -1465,7 +1449,6 @@
       document.getElementById('footer-link-printing').textContent = t.navPrinting;
       document.getElementById('footer-link-contact').textContent = t.navContact;
 
-      // Modals Static Labels
       document.getElementById('modal-badge').textContent = t.modalBadge;
       document.getElementById('modal-list-heading').textContent = t.modalListHeading;
       document.getElementById('modal-time-label').textContent = t.modalTimeLabel;
@@ -1481,7 +1464,6 @@
       document.getElementById('m-notes').placeholder = t.applyModalNotesPh;
       document.getElementById('apply-modal-submit').textContent = t.applyModalSubmit;
 
-      // Re-render Dynamic Views
       renderHomeDirectory();
       populateServiceSelect();
       if (pageConfig[currentPage]) {
@@ -1492,7 +1474,6 @@
       }
     }
 
-    // Render Home Page 6 Department Cards
     function renderHomeDirectory() {
       const grid = document.getElementById('home-directory-grid');
       const t = uiTranslations[currentLang];
@@ -1528,7 +1509,6 @@
       }).join('');
     }
 
-    // Populate Select Dropdown in Contact Page
     function populateServiceSelect() {
       const select = document.getElementById('q-service');
       if (!select) return;
@@ -1559,17 +1539,14 @@
       }
     }
 
-    // Navigate Between Separate Pages
     function navigateTo(pageKey) {
       currentPage = pageKey;
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      // Hide all views
       document.getElementById('page-home').classList.add('hidden');
       document.getElementById('page-category').classList.add('hidden');
       document.getElementById('page-contact').classList.add('hidden');
 
-      // Update active states on nav links & pills
       document.querySelectorAll('.nav-link').forEach(btn => {
         if (btn.dataset.nav === pageKey) {
           btn.classList.add('bg-brand-50', 'text-brand-600');
@@ -1596,7 +1573,6 @@
       }
     }
 
-    // Render Category Page Content (Bilingual, No Numbers)
     function renderCategoryPage(pageKey) {
       const cfg = pageConfig[pageKey];
       const t = uiTranslations[currentLang];
@@ -1605,7 +1581,6 @@
       document.getElementById('cat-title').textContent = currentLang === 'ta' ? cfg.titleTa : cfg.titleEn;
       document.getElementById('cat-subtitle').textContent = currentLang === 'ta' ? cfg.subtitleTa : cfg.subtitleEn;
 
-      // Setup Prev / Next Page Buttons (No numbers)
       const prevBtn = document.getElementById('btn-prev-page');
       const nextBtn = document.getElementById('btn-next-page');
       const prevLabel = currentLang === 'ta' ? cfg.prevTa : cfg.prevEn;
@@ -1616,7 +1591,6 @@
       nextBtn.innerHTML = `${nextLabel} →`;
       nextBtn.onclick = () => navigateTo(cfg.next);
 
-      // Filter & Render Cards for this Page
       const list = servicesData.filter(s => s.page === pageKey);
       const grid = document.getElementById('cat-services-grid');
 
@@ -1642,7 +1616,6 @@
               <p class="text-xs font-semibold text-brand-600 mt-0.5">${subTitle}</p>
               <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">${desc}</p>
               
-              <!-- Preview of first 3 Required Documents -->
               <div class="mt-4 pt-3 border-t border-slate-100">
                 <p class="text-[11px] font-extrabold uppercase tracking-wider text-slate-400 mb-2">${t.reqDocsLabel}</p>
                 <ul class="space-y-1 text-xs text-slate-700">
@@ -1667,7 +1640,6 @@
       }).join('');
     }
 
-    // Modal 1: Required Documents Popup
     let activeModalService = null;
     function openDocModal(serviceId) {
       const s = servicesData.find(item => item.id === serviceId);
@@ -1727,7 +1699,6 @@
       setTimeout(() => { btn.textContent = t.copyDocBtn; }, 2000);
     }
 
-    // Modal 2: WhatsApp Application
     let selectedApplyService = '';
     function openApplyModal(serviceName) {
       selectedApplyService = serviceName;
@@ -1743,4 +1714,28 @@
       modal.classList.remove('flex');
     }
 
-    function sendModalWhats
+    function sendModalWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('m-name').value.trim();
+      const phone = document.getElementById('m-phone').value.trim();
+      const notes = document.getElementById('m-notes').value.trim();
+      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${selectedApplyService}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+      closeApplyModal();
+    }
+
+    function submitQuickForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('q-name').value.trim();
+      const phone = document.getElementById('q-phone').value.trim();
+      const service = document.getElementById('q-service').value;
+      const notes = document.getElementById('q-notes').value.trim();
+      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${service}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    setLanguage('ta');
+    navigateTo('home');
+  </script>
+</body>
+</html>
