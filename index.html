@@ -1,104 +1,1027 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="ta" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VPS Computers & Printers</title>
+  <title>வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ் | VPS Computers & Printers - Vadakaraiattur</title>
+  <link rel="icon" type="image/png" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans Tamil"', '"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#2563eb',
+              600: '#1d4ed8',
+              700: '#1e40af',
+              800: '#1e3a8a',
+              900: '#0f172a',
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Noto Sans Tamil', sans-serif; }
-    .notification-card { border-left: 4px solid #f59e0b; }
+    body {
+      font-family: 'Noto Sans Tamil', 'Plus Jakarta Sans', sans-serif;
+      background-color: #f1f5f9;
+    }
+    .hero-gradient {
+      background: radial-gradient(circle at top right, #1e40af 0%, #0f172a 65%, #020617 100%);
+    }
+    .tab-bar-gradient {
+      background: linear-gradient(90deg, #1e1b4b 0%, #1e3a8a 50%, #1e1b4b 100%);
+    }
+    .card-hover {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.14), 0 8px 10px -6px rgba(30, 58, 138, 0.08);
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-ticker {
+      display: inline-block;
+      white-space: nowrap;
+      animation: ticker 32s linear infinite;
+    }
+    .animate-ticker:hover {
+      animation-play-state: paused;
+    }
+    .page-fade {
+      animation: fadeIn 0.25s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
-<body class="bg-slate-100 text-slate-800 min-h-screen">
-  <header class="bg-slate-900 text-white px-4 py-4 shadow">
-    <div class="max-w-5xl mx-auto flex justify-between items-center">
-      <div>
-        <h1 class="text-xl font-extrabold">VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</h1>
-        <p class="text-sm text-slate-300">அரசு சேவைகள் • டிக்கெட் புக்கிங் • பிரிண்டிங்</p>
+<body class="text-slate-800 antialiased selection:bg-brand-600 selection:text-white flex flex-col min-h-screen">
+
+  <!-- TOP ANNOUNCEMENT & CONTACT BAR -->
+  <div class="bg-slate-950 text-slate-200 text-xs py-2 px-3 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-2 overflow-hidden max-w-full sm:max-w-2xl">
+        <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
+        <div class="overflow-hidden whitespace-nowrap w-full">
+          <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
+            ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ PAN Card, Bus/Train/Flight Tickets, MSME Udyam, Patta/Chitta, Income/Community Certificates, Aadhaar, Smart Card & Offset Printing Services! ★
+          </div>
+        </div>
       </div>
-      <button class="bg-amber-400 text-slate-900 font-bold px-4 py-2 rounded-xl">தமிழ்</button>
+      <div class="flex items-center gap-3 ml-auto">
+        <a href="tel:+919843991974" class="hover:text-amber-400 flex items-center gap-1 font-extrabold text-white transition">
+          <span>📞 +91 98439 91974</span>
+        </a>
+        <span class="text-slate-700">|</span>
+        <div class="inline-flex rounded-lg bg-slate-900 p-0.5 border border-slate-700">
+          <button onclick="setLanguage('ta')" id="btn-lang-ta" class="px-2.5 py-0.5 rounded text-[11px] font-extrabold transition bg-amber-500 text-slate-950">தமிழ்</button>
+          <button onclick="setLanguage('en')" id="btn-lang-en" class="px-2.5 py-0.5 rounded text-[11px] font-extrabold transition text-slate-300 hover:text-white">English</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN BRAND HEADER -->
+  <header class="bg-white sticky top-0 z-40 shadow-md">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6">
+      <div class="flex justify-between items-center py-3">
+        <!-- Brand Logo & Name -->
+        <div onclick="navigateTo('home')" class="flex items-center gap-3.5 cursor-pointer group">
+          <img id="main-logo-img" src="logo.png" alt="VPS Logo" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl object-contain bg-white shadow-md border border-slate-200 group-hover:scale-105 transition" onerror="handleLogoError(this)" />
+          <div id="header-fallback-logo" style="display: none;" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-br from-brand-700 via-brand-600 to-amber-500 items-center justify-center text-white font-black text-xl shadow-md">
+            VPS
+          </div>
+          <div>
+            <h1 id="ui-shop-title" class="text-base sm:text-xl font-extrabold text-slate-900 tracking-tight leading-none">
+              வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்
+            </h1>
+            <p id="ui-shop-subtitle" class="text-[11px] sm:text-xs font-bold text-brand-600 mt-1">
+              இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்
+            </p>
+          </div>
+        </div>
+
+        <!-- Call & WhatsApp Action Buttons -->
+        <div class="flex items-center gap-2">
+          <a href="tel:+919843991974" class="hidden md:flex bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 items-center gap-1.5 transition">
+            <span>📞</span> <span>98439 91974</span>
+          </a>
+          <a href="https://wa.me/919843991974?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%20VPS%20Computers%2C%20%E0%AE%8E%E0%AE%A9%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81%20%E0%AE%92%E0%AE%B0%E0%AF%81%20%E0%AE%9A%E0%AF%87%E0%AE%B5%E0%AF%88%20%E0%AE%A4%E0%AF%87%E0%AE%B5%E0%AF%88%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%9F%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AE%A4%E0%AF%81." target="_blank" rel="noopener noreferrer"
+             class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS (Fit to screen, no scrollbar) -->
+    <div class="tab-bar-gradient border-t border-b border-indigo-900/80 shadow-inner">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 py-2.5">
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold">
+          <button onclick="navigateTo('home')" data-pill="home" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏠 முகப்பு</button>
+          <button onclick="navigateTo('esevai')" data-pill="esevai" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📜 இ-சேவை சான்றிதழ்கள்</button>
+          <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪪 பான் & அடையாள அட்டை</button>
+          <button onclick="navigateTo('tickets')" data-pill="tickets" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">✈️ பஸ் / ரயில் / விமான டிக்கெட்</button>
+          <button onclick="navigateTo('msme')" data-pill="msme" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏢 MSME & பாஸ்போர்ட்</button>
+          <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗺️ பட்டா / சிட்டா & EC</button>
+          <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
+          <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு</button>
+        </div>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-5xl mx-auto px-4 py-8">
-    <section class="bg-white rounded-2xl shadow-lg overflow-hidden">
-      <div class="bg-gradient-to-r from-amber-400 to-yellow-300 text-slate-900 px-5 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-red-600 animate-pulse"></span>
-          <h2 class="font-black text-lg">🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்க்ஸ்</h2>
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="flex-grow">
+
+    <!-- ==========================================
+         PAGE: HOME PAGE (Only Hero, Live Notifications & Shop Highlights - No Service Directory)
+    =========================================== -->
+    <div id="page-home" class="page-view page-fade">
+      <section class="hero-gradient text-white py-8 sm:py-12 relative overflow-hidden">
+        <!-- Decorative Glow -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 relative z-10">
+          <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+            
+            <!-- Left: Welcome Banner & Quick Shop Info (5 Cols) -->
+            <div class="lg:col-span-5 flex flex-col justify-between bg-white/10 backdrop-blur-md border border-white/15 rounded-3xl p-6 shadow-2xl">
+              <div class="space-y-4">
+                <div class="inline-flex items-center gap-2 bg-amber-400/20 border border-amber-400/40 rounded-full px-3.5 py-1 text-xs font-extrabold text-amber-300">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span id="home-hero-badge">அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்</span>
+                </div>
+                <h2 id="home-hero-title" class="text-2xl sm:text-3xl font-black tracking-tight leading-snug">
+                  அனைத்து ஆன்லைன் சேவைகளும் <span class="text-amber-400 underline decoration-amber-400/40">ஒரே இடத்தில்!</span>
+                </h2>
+                <p id="home-hero-desc" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
+                  உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க, மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும்.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-white/15 space-y-2.5 text-xs sm:text-sm">
+                <div class="flex items-center justify-between bg-slate-950/60 px-4 py-3 rounded-2xl border border-white/10">
+                  <span id="home-box-call-lbl" class="text-slate-300 font-semibold">📞 செல் / வாட்ஸ்அப்:</span>
+                  <a href="tel:+919843991974" class="font-black text-amber-400 text-base hover:underline">+91 98439 91974</a>
+                </div>
+                <div class="flex items-center justify-between bg-slate-950/60 px-4 py-3 rounded-2xl border border-white/10">
+                  <span id="home-box-time-lbl" class="text-slate-300 font-semibold">🕘 வேலை நேரம்:</span>
+                  <span id="home-box-time-val" class="font-extrabold text-emerald-300">காலை 9:00 AM – மாலை 7:00 PM</span>
+                </div>
+                <button onclick="openApplyModal('General Inquiry / பொது விசாரணை')" id="home-box-apply-btn" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-sm mt-2">
+                  <span>💬 வாட்ஸ்அப் மூலம் தொடர்பு கொள்ள</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: LIVE NOTIFICATION BOX WITH LINKS (7 Cols) -->
+            <div class="lg:col-span-7 bg-white text-slate-800 rounded-3xl border-2 border-amber-400 shadow-2xl overflow-hidden flex flex-col">
+              <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 px-5 py-3.5 flex items-center justify-between border-b border-amber-500">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-3 h-3 rounded-full bg-red-600 animate-ping"></span>
+                  <h3 id="notif-box-title" class="font-black text-sm sm:text-base tracking-tight">🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்குகள் (Live Notifications)</h3>
+                </div>
+                <span class="bg-slate-950 text-amber-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">LIVE UPDATES</span>
+              </div>
+
+              <!-- Live Notifications List -->
+              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-80" id="notification-list">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+          </div>
         </div>
-        <span class="bg-slate-900 text-amber-300 text-[10px] font-black px-2 py-1 rounded-full">LIVE UPDATES</span>
-      </div>
-      <div id="notification-list" class="p-4 space-y-3 bg-slate-50"></div>
-    </section>
+      </section>
+
+      <!-- Clean Shop Highlights Strip on Home Page -->
+      <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shrink-0">⚡</div>
+            <div>
+              <h4 id="feat-1-title" class="font-extrabold text-slate-900 text-sm sm:text-base">விரைவான ஆன்லைன் சேவை</h4>
+              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl shrink-0">🖨️</div>
+            <div>
+              <h4 id="feat-2-title" class="font-extrabold text-slate-900 text-sm sm:text-base">ஆஃப்செட் & டிஜிட்டல் பிரிண்டிங்</h4>
+              <p id="feat-2-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">நவீன டிசைன்களில் திருமண அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் மற்றும் விசிட்டிங் கார்டுகள் சிறந்த முறையில் அச்சிட்டுத் தரப்படும்.</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0">📍</div>
+            <div>
+              <h4 id="feat-3-title" class="font-extrabold text-slate-900 text-sm sm:text-base">வடகரையாத்தூர், நாமக்கல்</h4>
+              <p id="feat-3-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213. செல்: 98439 91974.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==========================================
+         DYNAMIC CATEGORY VIEW (Shows ONLY when a Title Tab is clicked)
+    =========================================== -->
+    <div id="page-category" class="page-view page-fade hidden">
+      <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800 shadow">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <span id="cat-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 bg-white/10 px-2.5 py-0.5 rounded-full">சேவைப் பட்டியல்</span>
+            <h2 id="cat-title" class="text-xl sm:text-3xl font-extrabold tracking-tight mt-1">சேவைப் பிரிவு</h2>
+            <p id="cat-subtitle" class="text-slate-300 text-xs sm:text-sm mt-1"></p>
+          </div>
+          <button onclick="navigateTo('home')" id="cat-back-home" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs px-4 py-2.5 rounded-xl transition">
+            🏠 முகப்புக்குத் திரும்ப
+          </button>
+        </div>
+      </section>
+
+      <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6">
+        <!-- Wedding Invitation Picture Gallery (Shown ONLY inside Printing Tab) -->
+        <div id="wedding-gallery-section" class="hidden mb-8 bg-white rounded-3xl border border-rose-200 p-5 sm:p-6 shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <span class="bg-rose-100 text-rose-700 text-[11px] font-extrabold px-3 py-1 rounded-full">💌 WEDDING INVITATION GALLERY</span>
+              <h3 id="gallery-title" class="text-lg sm:text-2xl font-extrabold text-slate-900 mt-1.5">திருமண அழைப்பிதழ் மாடல்கள் (Wedding Card Pictures)</h3>
+              <p id="gallery-subtitle" class="text-xs sm:text-sm text-slate-500 mt-0.5">பத்திரிகை படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம் மற்றும் ஆர்டர் செய்யலாம்.</p>
+            </div>
+          </div>
+
+          <div id="wedding-cards-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Services List for the Selected Tab ONLY -->
+        <div id="cat-services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+      </section>
+    </div>
+
+    <!-- ==========================================
+         PAGE: CONTACT PAGE (No File Upload)
+    =========================================== -->
+    <div id="page-contact" class="page-view page-fade hidden">
+      <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-wrap justify-between items-center gap-4">
+          <div>
+            <span id="contact-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">தொடர்புக்கு & முகவரி</span>
+            <h2 id="contact-title" class="text-xl sm:text-3xl font-extrabold mt-1">தொடர்புக்கு & ஆன்லைன் விண்ணப்பம்</h2>
+            <p id="contact-subtitle" class="text-slate-300 text-xs sm:text-sm mt-1">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213.</p>
+          </div>
+          <button onclick="navigateTo('home')" id="contact-back-btn" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-xl border border-white/20 transition">
+            🏠 முகப்புக்குத் திரும்ப
+          </button>
+        </div>
+      </section>
+
+      <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6">
+        <div class="grid lg:grid-cols-12 gap-6 items-start">
+          <div class="lg:col-span-5 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-5">
+            <div>
+              <span id="contact-card-badge" class="text-xs font-extrabold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">முகவரி & தொடர்பு எண்</span>
+              <h3 id="contact-card-title" class="text-xl font-extrabold text-slate-900 mt-3">வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</h3>
+              <p id="contact-card-prop" class="text-slate-500 text-xs mt-1">அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்</p>
+            </div>
+
+            <div class="space-y-3.5 text-xs sm:text-sm">
+              <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0">📍</div>
+                <div>
+                  <p id="contact-addr-lbl" class="font-bold text-slate-900">அலுவலக முகவரி:</p>
+                  <p id="contact-addr-val" class="text-slate-600 mt-0.5 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213.<br><span class="text-xs text-slate-500">(3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213)</span></p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-100">
+                <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0">📞</div>
+                <div>
+                  <p id="contact-phone-lbl" class="font-bold text-slate-900">செல் & வாட்ஸ்அப் எண்:</p>
+                  <a href="tel:+919843991974" class="text-base font-extrabold text-emerald-700 hover:underline block mt-0.5">+91 98439 91974</a>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shrink-0">⏰</div>
+                <div>
+                  <p id="contact-hours-lbl" class="font-bold text-slate-900">வேலை நேரம்:</p>
+                  <p id="contact-hours-val" class="text-slate-600 mt-0.5 font-semibold">காலை 9:00 AM முதல் மாலை 7:00 PM வரை</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7 bg-white rounded-3xl p-6 border border-slate-200 shadow-lg">
+            <h3 id="form-title" class="text-lg sm:text-xl font-extrabold text-slate-900 mb-1">ஆன்லைனில் விண்ணப்பிக்க (WhatsApp Apply)</h3>
+            <p id="form-subtitle" class="text-slate-500 text-xs mb-5">கீழே உள்ள விவரங்களைப் பூர்த்தி செய்தால் நேரடியாக எங்கள் வாட்ஸ்அப் எண்ணிற்கு (+91 98439 91974) தகவல் வந்துவிடும்.</p>
+
+            <form onsubmit="submitQuickForm(event)" class="space-y-4">
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div>
+                  <label id="form-name-lbl" class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் *</label>
+                  <input type="text" id="q-name" required placeholder="உதா: முருகன்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+                </div>
+                <div>
+                  <label id="form-phone-lbl" class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் *</label>
+                  <input type="tel" id="q-phone" required placeholder="உதா: 98439 91974" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label id="form-service-lbl" class="block text-xs font-bold text-slate-700 mb-1">தேவையான சேவை *</label>
+                <select id="q-service" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:border-brand-600 focus:outline-none"></select>
+              </div>
+
+              <div>
+                <label id="form-notes-lbl" class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் விவரங்கள்</label>
+                <textarea id="q-notes" rows="3" placeholder="உங்கள் தேவை அல்லது விவரங்களைக் குறிப்பிடவும்..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" id="form-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm">
+                💬 வாட்ஸ்அப் மூலம் விண்ணப்பத்தை அனுப்பு (98439 91974)
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </main>
 
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 text-slate-400 py-6 border-t border-slate-800 text-xs mt-auto">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div class="flex items-center gap-3">
+        <img id="footer-logo-img" src="logo.png" alt="VPS Logo" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5" onerror="handleFooterLogoError(this)" />
+        <div id="footer-fallback-logo" style="display: none;" class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 font-black items-center justify-center">VPS</div>
+        <div>
+          <span id="footer-shop-name" class="text-white font-bold block text-sm">வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</span>
+          <span id="footer-shop-loc" class="text-[11px] text-slate-400">3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213 • செல்: +91 98439 91974</span>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2.5 font-semibold">
+        <button onclick="navigateTo('home')" class="hover:text-amber-400">முகப்பு</button> •
+        <button onclick="navigateTo('esevai')" class="hover:text-amber-400">இ-சேவை</button> •
+        <button onclick="navigateTo('idcards')" class="hover:text-amber-400">பான் கார்டு</button> •
+        <button onclick="navigateTo('tickets')" class="hover:text-amber-400">டிக்கெட்</button> •
+        <button onclick="navigateTo('msme')" class="hover:text-amber-400">MSME</button> •
+        <button onclick="navigateTo('printing')" class="hover:text-amber-400">திருமண அழைப்பிதழ்</button> •
+        <button onclick="navigateTo('contact')" class="hover:text-amber-400">தொடர்புக்கு</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL 1: REQUIRED DOCUMENTS CHECKLIST POPUP -->
+  <div id="doc-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-5 sm:p-6 shadow-2xl border border-slate-100 relative max-h-[90vh] flex flex-col">
+      <div class="flex items-start justify-between gap-3 border-b border-slate-100 pb-3">
+        <div class="flex items-center gap-3">
+          <div id="modal-icon" class="w-12 h-12 rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-2xl shrink-0">📄</div>
+          <div>
+            <span id="modal-badge" class="text-[10px] font-extrabold uppercase tracking-wider text-brand-600 bg-brand-50 px-2.5 py-0.5 rounded-full">தேவையான ஆவணங்கள்</span>
+            <h3 id="modal-title-ta" class="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5"></h3>
+            <p id="modal-title-en" class="text-xs font-semibold text-slate-500"></p>
+          </div>
+        </div>
+        <button onclick="closeDocModal()" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
+      </div>
+
+      <div class="py-3.5 overflow-y-auto space-y-3 flex-1">
+        <p id="modal-desc" class="text-xs sm:text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200/70"></p>
+        <h4 id="modal-list-heading" class="text-xs font-extrabold uppercase tracking-wider text-slate-500">கொண்டு வர வேண்டிய சான்றுகள் (Checklist):</h4>
+        <ul id="modal-doc-list" class="space-y-2 text-xs sm:text-sm text-slate-800 font-medium"></ul>
+        <div class="bg-amber-50 border border-amber-200/80 rounded-xl p-3 text-xs text-amber-900 flex items-center justify-between gap-2">
+          <span id="modal-time-label" class="font-bold">⏱️ கால அளவு:</span>
+          <span id="modal-time" class="font-extrabold bg-amber-200/70 px-2.5 py-0.5 rounded text-amber-950"></span>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+        <button onclick="copyDocList()" id="copy-doc-btn" class="text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 px-4 py-2.5 rounded-xl transition">
+          📋 நகலெடு (Copy)
+        </button>
+        <button id="modal-apply-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition">
+          💬 இப்போதே விண்ணப்பிக்க
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: CLEAN WHATSAPP APPLY POPUP (No Document Upload) -->
+  <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+        <div>
+          <span id="apply-modal-badge" class="text-[11px] font-extrabold text-emerald-600 uppercase bg-emerald-50 px-2.5 py-0.5 rounded-full">💬 வாட்ஸ்அப் விண்ணப்பம்</span>
+          <h3 id="apply-modal-service" class="text-base sm:text-lg font-extrabold text-slate-900 mt-1"></h3>
+        </div>
+        <button onclick="closeApplyModal()" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
+      </div>
+
+      <form onsubmit="sendModalWhatsApp(event)" class="space-y-3.5">
+        <div>
+          <label id="apply-modal-name-lbl" class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் *</label>
+          <input type="text" id="m-name" required placeholder="பெயரை உள்ளிடவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+        </div>
+        <div>
+          <label id="apply-modal-phone-lbl" class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் *</label>
+          <input type="tel" id="m-phone" required placeholder="10 இலக்க மொபைல் எண்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+        </div>
+        <div>
+          <label id="apply-modal-notes-lbl" class="block text-xs font-bold text-slate-700 mb-1">குறிப்பு / தேவைப்படும் விவரம்</label>
+          <textarea id="m-notes" rows="2" placeholder="உங்கள் தேவை பற்றிய விவரம்..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none"></textarea>
+        </div>
+        <button type="submit" id="apply-modal-submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition text-sm">
+          💬 வாட்ஸ்அப்பில் அனுப்பு (+91 98439 91974)
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: WEDDING CARD IMAGE LIGHTBOX -->
+  <div id="image-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/85 backdrop-blur-sm p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200">
+      <div class="flex justify-between items-center px-5 py-3 border-b border-slate-100">
+        <h4 id="img-modal-title" class="font-extrabold text-slate-900 text-sm">திருமண அழைப்பிதழ் மாடல்</h4>
+        <button onclick="closeImageModal()" class="text-slate-500 hover:text-slate-800 bg-slate-100 rounded-full p-1.5">✕</button>
+      </div>
+      <div class="p-4 bg-slate-900 flex items-center justify-center">
+        <img id="img-modal-preview" src="" alt="Wedding Card" class="max-h-[60vh] w-auto rounded-xl object-contain" />
+      </div>
+      <div class="p-4 flex justify-between items-center gap-3 bg-white">
+        <span id="img-modal-code" class="text-xs font-bold text-slate-600"></span>
+        <button id="img-modal-order-btn" class="bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition">
+          💬 இந்த மாடல் ஆர்டர் செய்ய
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
   <script>
+    const SHOP_PHONE = '919843991974';
+    let currentLang = 'ta';
+    let currentPage = 'home';
+
+    // =======================================================
+    // 1. LIVE NOTIFICATIONS DATA (முகப்புப் பக்க அறிவிப்புகள் & லிங்குகள்)
+    // =======================================================
     const notificationsData = [
       {
         tagTa: 'புதியது',
         tagEn: 'NEW',
-        titleTa: 'TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் available now.',
-        titleEn: 'TNPSC Group 4 (VAO) Exam – 6,574 vacancies available now.',
-        actionType: 'page',
-        actionTarget: 'tnpsc',
+        titleTa: 'TNPSC அரசுப் போட்டித் தேர்வுகள் (Group 2, Group 4) ஆன்லைன் விண்ணப்பம் மற்றும் OTR பதிவு நடைபெறுகிறது.',
+        titleEn: 'TNPSC Government Exams Online Application & OTR Registration available here.',
         linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now'
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'TNPSC Exam Online Application'
       },
       {
         tagTa: 'பான் கார்டு',
         tagEn: 'PAN CARD',
         titleTa: 'புதிய பான் கார்டு (New PAN Card), பான் திருத்தம் மற்றும் ஆதார்-பான் இணைப்பு சேவைகள்.',
         titleEn: 'New PAN Card, PAN Correction and Aadhaar-PAN Linking services.',
-        actionType: 'page',
-        actionTarget: 'idcards',
         linkTextTa: '🪪 பான் கார்டு பக்கம்',
-        linkTextEn: '🪪 Open PAN Tab'
-      },
-      {
-        tagTa: 'திருப்பதி TTD',
-        tagEn: 'TTD',
-        titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) தரிசன நேரம், டிக்கெட் புக் செய்தல் மற்றும் அங்கீகரிக்கப்பட்ட சேவைகள்.',
-        titleEn: 'Tirupati TTD darshan and ticket booking updates and assistance services.',
+        linkTextEn: '🪪 Open PAN Tab',
         actionType: 'page',
-        actionTarget: 'ttd',
-        linkTextTa: '🛕 TTD பக்கம்',
-        linkTextEn: '🛕 Open TTD Page'
+        actionTarget: 'idcards'
       },
       {
         tagTa: 'பிரிண்டிங்',
         tagEn: 'CARDS',
-        titleTa: 'திருமண அழைப்பிதழ் மாடல்கள் (Wedding Cards) மற்றும் தொழில்முறை பிரிண்டிங் சேவைகள்.',
-        titleEn: 'Wedding card invitation designs and professional printing services.',
+        titleTa: 'புதிய டிசைன்களில் திருமண அழைப்பிதழ்கள் (Wedding Cards) மாடல்கள் படங்களைப் பார்த்து ஆர்டர் செய்யலாம்!',
+        titleEn: 'Latest Wedding Invitation Card Designs available! View pictures & order online.',
+        linkTextTa: '💌 பத்திரிகை படங்கள்',
+        linkTextEn: '💌 View Pictures',
         actionType: 'page',
-        actionTarget: 'printing',
-        linkTextTa: '💌 படங்கள் பார்க்க',
-        linkTextEn: '💌 View Designs'
+        actionTarget: 'printing'
+      },
+      {
+        tagTa: 'தொழில் பதிவு',
+        tagEn: 'MSME',
+        titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ், FSSAI உணவு உரிமம் மற்றும் பாஸ்போர்ட் சேவைகள்.',
+        titleEn: 'MSME / Udyam Business Registration, FSSAI License and Passport Seva.',
+        linkTextTa: '🏢 MSME பக்கம்',
+        linkTextEn: '🏢 Open MSME Tab',
+        actionType: 'page',
+        actionTarget: 'msme'
       },
       {
         tagTa: 'டிக்கெட்',
         tagEn: 'TRAVEL',
-        titleTa: 'பஸ் / ரயில் / விமான டிக்கெட் புக்கிங் மற்றும் Tatkal உதவி.',
-        titleEn: 'Bus / train / flight ticket booking and Tatkal support.',
-        actionType: 'page',
-        actionTarget: 'tickets',
+        titleTa: 'பஸ், ரயில் (IRCTC தட்கல்) மற்றும் விமான டிக்கெட்டுகள் உடனடியாக புக் செய்து தரப்படும்.',
+        titleEn: 'Bus, Train (IRCTC Tatkal) and Flight Tickets booked instantly.',
         linkTextTa: '✈️ டிக்கெட் பக்கம்',
-        linkTextEn: '✈️ Book Tickets'
+        linkTextEn: '✈️ Book Tickets',
+        actionType: 'page',
+        actionTarget: 'tickets'
       }
     ];
 
-    const listEl = document.getElementById('notification-list');
-    listEl.innerHTML = notificationsData.map(item => `
-      <div class="notification-card bg-white rounded-xl p-4 shadow-sm border border-amber-100">
-        <div class="flex items-center justify-between gap-3 mb-2">
-          <span class="bg-amber-100 text-amber-800 text-[10px] font-extrabold px-2 py-1 rounded-full uppercase">${item.tagTa}</span>
-          <span class="bg-slate-200 text-slate-700 text-[10px] font-bold px-2 py-1 rounded-full uppercase">${item.tagEn}</span>
+    // =======================================================
+    // 2. WEDDING INVITATION PICTURES DATA (GitHub-ல் card1.jpg, card2.jpg... அப்லோட் செய்யலாம்)
+    // =======================================================
+    const weddingCardsData = [
+      {
+        id: 'WC-101',
+        img: 'card1.jpg',
+        fallback: 'https://images.unsplash.com/photo-1607344645866-009c320b63e0?auto=format&fit=crop&w=600&q=80',
+        titleTa: 'ராயல் கோல்டு திருமண அழைப்பிதழ் (Model 1)',
+        titleEn: 'Royal Gold Wedding Invitation (Model 1)',
+        priceTa: 'ஆஃப்செட் & மல்டி கலர் பிரிண்டிங்',
+        priceEn: 'Offset & Multi-Color Print'
+      },
+      {
+        id: 'WC-102',
+        img: 'card2.jpg',
+        fallback: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80',
+        titleTa: 'மங்களகரமான முகூர்த்தப் பத்திரிகை (Model 2)',
+        titleEn: 'Traditional Muhurtham Card (Model 2)',
+        priceTa: 'அனைத்து சைஸ்களிலும் கிடைக்கும்',
+        priceEn: 'Available in All Sizes'
+      },
+      {
+        id: 'WC-103',
+        img: 'card3.jpg',
+        fallback: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80',
+        titleTa: 'நவீன டிசைனர் திருமணப் பத்திரிகை (Model 3)',
+        titleEn: 'Modern Designer Wedding Card (Model 3)',
+        priceTa: 'மெட்டாலிக் & ஆர்ட் கார்டு',
+        priceEn: 'Metallic & Art Board Card'
+      },
+      {
+        id: 'WC-104',
+        img: 'card4.jpg',
+        fallback: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80',
+        titleTa: 'புதுமனை புகுவிழா & காதணி விழா பத்திரிகை (Model 4)',
+        titleEn: 'Housewarming & Ear-Piercing Card (Model 4)',
+        priceTa: 'விரைவான டெலிவரி',
+        priceEn: 'Fast Delivery'
+      }
+    ];
+
+    // Smart Logo Fallback
+    const logoCandidates = ['logo.png', 'Logo.png', 'LOGO.PNG', 'logo.jpg', 'Logo.jpg', 'logo.jpeg'];
+    let headerLogoIdx = 0;
+    let footerLogoIdx = 0;
+
+    function handleLogoError(img) {
+      headerLogoIdx++;
+      if (headerLogoIdx < logoCandidates.length) {
+        img.src = logoCandidates[headerLogoIdx];
+      } else {
+        img.style.display = 'none';
+        document.getElementById('header-fallback-logo').style.display = 'flex';
+      }
+    }
+
+    function handleFooterLogoError(img) {
+      footerLogoIdx++;
+      if (footerLogoIdx < logoCandidates.length) {
+        img.src = logoCandidates[footerLogoIdx];
+      } else {
+        img.style.display = 'none';
+        document.getElementById('footer-fallback-logo').style.display = 'flex';
+      }
+    }
+
+    const uiTranslations = {
+      ta: {
+        liveBadge: 'நேரலை',
+        shopTitle: 'வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்',
+        shopSubtitle: 'இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்',
+        pillHome: '🏠 முகப்பு',
+        pillEsevai: '📜 இ-சேவை சான்றிதழ்கள்',
+        pillIdcards: '🪪 பான் & அடையாள அட்டை',
+        pillTickets: '✈️ பஸ் / ரயில் / விமான டிக்கெட்',
+        pillMsme: '🏢 MSME & பாஸ்போர்ட்',
+        pillPatta: '🗺️ பட்டா / சிட்டா & EC',
+        pillPrinting: '💌 திருமண அழைப்பிதழ் & பிரிண்டிங்',
+        pillContact: '📍 தொடர்புக்கு',
+        heroBadge: 'அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்',
+        heroTitle: 'அனைத்து ஆன்லைன் சேவைகளும் <span class="text-amber-400 underline decoration-amber-400/40">ஒரே இடத்தில்!</span>',
+        heroDesc: 'உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க, மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும்.',
+        boxCallLbl: '📞 செல் / வாட்ஸ்அப்:',
+        boxTimeLbl: '🕘 வேலை நேரம்:',
+        boxTimeVal: 'காலை 9:00 AM – மாலை 7:00 PM',
+        boxApplyBtn: '💬 வாட்ஸ்அப் மூலம் தொடர்பு கொள்ள',
+        notifBoxTitle: '🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்குகள் (Live Notifications)',
+        backHomeBtn: '🏠 முகப்புக்குத் திரும்ப',
+        docsBtn: '📋 தேவையான ஆவணங்கள்',
+        applyBtn: 'விண்ணப்பிக்க →',
+        galleryTitle: 'திருமண அழைப்பிதழ் மாடல்கள் (Wedding Card Pictures)',
+        gallerySubtitle: 'பத்திரிகை படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம் மற்றும் ஆர்டர் செய்யலாம்.'
+      },
+      en: {
+        liveBadge: 'LIVE',
+        shopTitle: 'VPS Computers & Printers',
+        shopSubtitle: 'e-Sevai, Ticket Booking & Offset Printers • Vadakaraiattur',
+        pillHome: '🏠 Home',
+        pillEsevai: '📜 e-Sevai Certificates',
+        pillIdcards: '🪪 PAN & ID Cards',
+        pillTickets: '✈️ Bus / Train / Flight Tickets',
+        pillMsme: '🏢 MSME & Passport',
+        pillPatta: '🗺️ Patta / Chitta & EC',
+        pillPrinting: '💌 Wedding Cards & Printing',
+        pillContact: '📍 Contact Us',
+        heroBadge: 'Authorized Govt e-Sevai, Ticket Booking & Offset Printing Center',
+        heroTitle: 'All Online & Printing Services <span class="text-amber-400 underline decoration-amber-400/40">in One Place!</span>',
+        heroDesc: 'Click on any colored service tab above to view the respective services and required document checklists.',
+        boxCallLbl: '📞 Mobile / WhatsApp:',
+        boxTimeLbl: '🕘 Working Hours:',
+        boxTimeVal: '9:00 AM – 7:00 PM',
+        boxApplyBtn: '💬 Contact via WhatsApp',
+        notifBoxTitle: '🔔 Live Notifications & Online Links',
+        backHomeBtn: '🏠 Back to Home',
+        docsBtn: '📋 Required Documents',
+        applyBtn: 'Apply Now →',
+        galleryTitle: 'Wedding Invitation Card Models (Picture Gallery)',
+        gallerySubtitle: 'Click on any invitation model to view full picture and order via WhatsApp.'
+      }
+    };
+
+    const pageConfig = {
+      esevai: { titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)', titleEn: 'Government e-Sevai Certificates', subtitleTa: 'வருமானம், சாதி, இருப்பிடம், முதல் பட்டதாரி மற்றும் வாரிசு சான்றிதழ்கள்.', subtitleEn: 'Income, Community, Nativity, First Graduate & Legal Heir Certificates.' },
+      idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
+      tickets: { titleTa: 'பஸ், ரயில் & விமான டிக்கெட் புக்கிங் (Ticket Booking)', titleEn: 'Bus, Train & Flight Ticket Booking', subtitleTa: 'இந்தியா முழுவதும் பஸ், ரயில் (Tatkal) மற்றும் விமான டிக்கெட் முன்பதிவு.', subtitleEn: 'Bus, IRCTC Train (Tatkal) and Domestic/International Flight Tickets.' },
+      msme: { titleTa: 'MSME தொழில் பதிவு, பாஸ்போர்ட் & அரசு சேவைகள்', titleEn: 'MSME Udyam Registration, Passport & Govt Schemes', subtitleTa: 'சிறு/குறு தொழில் பதிவு (Udyam), உணவு பாதுகாப்பு சான்று (FSSAI), பாஸ்போர்ட் மற்றும் TNEB சேவைகள்.', subtitleEn: 'MSME Udyam Certificate, FSSAI License, Passport Seva and TNEB Online Services.' },
+      patta: { titleTa: 'பட்டா / சிட்டா, FMB வரைபடம் & வில்லங்க சான்று (Land Records)', titleEn: 'Patta / Chitta, FMB Sketch & Encumbrance Certificate (EC)', subtitleTa: 'நிலம் தொடர்பான பட்டா மாறுதல், சிட்டா மற்றும் வில்லங்க சான்று (EC).', subtitleEn: 'Online Patta Transfer, Chitta Extract, FMB Sketch and EC services.' },
+      printing: { titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங் (Wedding Cards Gallery)', titleEn: 'Wedding Invitations Gallery & Offset Printing', subtitleTa: 'திருமணப் பத்திரிகை மாடல்கள், பில் புக், நோட்டீஸ், விசிட்டிங் கார்டு மற்றும் கலர் பிரிண்ட்.', subtitleEn: 'Browse Wedding Invitation pictures, Bill Books, Notices & Visiting Cards.' }
+    };
+
+    const servicesData = [
+      // e-Sevai Page Only
+      { id: 'income-cert', page: 'esevai', icon: '📄', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று', 'மொபைல் எண்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip', 'Mobile Number'] },
+      { id: 'community-cert', page: 'esevai', icon: '📜', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'] },
+      { id: 'nativity-cert', page: 'esevai', icon: '🏠', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill'] },
+      { id: 'first-grad', page: 'esevai', icon: '🎓', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC'] },
+      { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card'] },
+      { id: 'oap-widow', page: 'esevai', icon: '👵', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof'] },
+
+      // PAN & ID Cards Page Only
+      { id: 'pan-new', page: 'idcards', icon: '💳', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ - 2', 'ஆதார் அட்டை', 'தந்தையின் பெயர் விவரம்', 'மொபைல் எண்'], docsEn: ['2 Passport Size Photos', 'Aadhaar Card', 'Father Name Details', 'Mobile Number'] },
+      { id: 'pan-correction', page: 'idcards', icon: '✏️', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ - 2', 'பெயர்/பிறந்த தேதி சான்று'], docsEn: ['Old PAN Copy', 'Aadhaar Card', '2 Photos', 'Supporting Proof'] },
+      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் எண்', 'ஆதாருடன் இணைக்கப்பட்ட மொபைல் எண்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Number', 'Linked Mobile Number', 'Address Proof (Ration Card / EB Bill)'] },
+      { id: 'smart-ration', page: 'idcards', icon: '🍚', titleTa: 'ஸ்மார்ட் ரேஷன் கார்டு (TNPDS)', titleEn: 'Smart Ration Card Services', descTa: 'புதிய ஸ்மார்ட் கார்டு, பெயர் சேர்த்தல், நீக்குதல், முகவரி மாற்றம் & நகல் கார்டு.', descEn: 'New Smart Card, Member Add/Delete, Address Change & Duplicate Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்ப உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது', 'பிறப்பு அல்லது திருமண சான்று', 'மொபைல் எண்'], docsEn: ['Family Members Aadhaar', 'Tax / EB Bill', 'Birth or Marriage Cert', 'Mobile Number'] },
+      { id: 'voter-id', page: 'idcards', icon: '🗳️', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'] },
+
+      // Tickets Page Only
+      { id: 'bus-ticket', page: 'tickets', icon: '🚌', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் பெயர் & வயது', 'புறப்படும் & செல்லும் ஊர்', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Passenger Name & Age', 'From & To City', 'Travel Date & Mobile'] },
+      { id: 'train-ticket', page: 'tickets', icon: '🚆', titleTa: 'ரயில் & தட்கல் டிக்கெட் (IRCTC)', titleEn: 'Train & Tatkal Ticket', descTa: 'இந்தியா முழுவதும் ரயில் டிக்கெட் மற்றும் அவசர தட்கல் (Tatkal) முன்பதிவு.', descEn: 'IRCTC Reserved Train Tickets & Urgent Tatkal Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் பெயர், வயது, பாலினம்', 'புறப்படும் & செல்லும் ரயில் நிலையம்', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Name, Age, Gender', 'From & To Station', 'Travel Date & Mobile'] },
+      { id: 'flight-ticket', page: 'tickets', icon: '✈️', titleTa: 'விமான டிக்கெட் புக்கிங் (Flight)', titleEn: 'Flight Ticket Booking', descTa: 'உள்நாட்டு மற்றும் வெளிநாட்டு விமான டிக்கெட்டுகள் குறைந்த கட்டணத்தில்.', descEn: 'Lowest fare Domestic & International Flight Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['உள்நாடு: ஆதார் அட்டை', 'வெளிநாடு: அசல் பாஸ்போர்ட் & விசா', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Domestic: Aadhaar Card', 'International: Passport & Visa', 'Travel Date & Mobile'] },
+      { id: 'tirupati-darshan', page: 'tickets', icon: '🛕', titleTa: 'திருப்பதி தரிசன டிக்கெட் (TTD)', titleEn: 'Tirupati Darshan Ticket', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ', 'தரிசனத் தேதி & மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Photo', 'Darshan Date & Mobile'] },
+
+      // MSME & Passport Page Only
+      { id: 'msme-udyam', page: 'msme', icon: '🏭', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக்', 'கடை பெயர் & முகவரி', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook', 'Shop Name & Address', 'Mobile & Email'] },
+      { id: 'fssai-license', page: 'msme', icon: '🍽️', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof', 'Mobile & Email'] },
+      { id: 'passport-seva', page: 'msme', icon: '🛂', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'] },
+      { id: 'tneb-service', page: 'msme', icon: '⚡', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது', 'ஆதார் & போட்டோ'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt', 'Aadhaar & Photo'] },
+
+      // Patta / Chitta Page Only
+      { id: 'patta-chitta', page: 'patta', icon: '🗺️', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம் & கிராமத்தின் பெயர்', 'பட்டா எண் அல்லது சர்வே எண்'], docsEn: ['District, Taluk & Village Name', 'Patta No or Survey No'] },
+      { id: 'patta-transfer', page: 'patta', icon: '📝', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா நகல்', 'வில்லங்க சான்று (EC)', 'ஆதார், போட்டோ & மொபைல் எண்'], docsEn: ['Registered Sale Deed', 'Old Patta Copy', 'EC Copy', 'Aadhaar, Photo & Mobile'] },
+      { id: 'ec-cert', page: 'patta', icon: '📑', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['சார்பதிவாளர் அலுவலகம் & கிராமத்தின் பெயர்', 'சர்வே எண் அல்லது பத்திர எண் & வருடம்'], docsEn: ['SRO & Village Name', 'Survey No or Document No & Year'] },
+
+      // Printing Page Only
+      { id: 'wedding-cards', page: 'printing', icon: '💌', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['விழா விவரங்கள் (தேதி, நேரம், மண்டபம், பெயர்கள்)', 'தேவைப்படும் எண்ணிக்கை (Quantity)'], docsEn: ['Event Details (Date, Time, Venue, Names)', 'Required Quantity & Card Model'] },
+      { id: 'xerox-printout', page: 'printing', icon: '🖨️', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய கோப்புகளை +91 98439 91974 என்ற வாட்ஸ்அப் எண்ணிற்கு அனுப்பலாம்'], docsEn: ['Send your PDF/Documents to WhatsApp +91 98439 91974 for instant printing'] }
+    ];
+
+    // Render Live Notifications Box on Home Page
+    function renderNotifications() {
+      const container = document.getElementById('notification-list');
+      container.innerHTML = notificationsData.map(n => {
+        const tag = currentLang === 'ta' ? n.tagTa : n.tagEn;
+        const title = currentLang === 'ta' ? n.titleTa : n.titleEn;
+        const btnText = currentLang === 'ta' ? n.linkTextTa : n.linkTextEn;
+        let clickHandler = '';
+        if (n.actionType === 'page') {
+          clickHandler = `navigateTo('${n.actionTarget}')`;
+        } else if (n.actionType === 'url') {
+          clickHandler = `window.open('${n.actionTarget}', '_blank')`;
+        } else {
+          clickHandler = `openApplyModal('${n.actionTarget}')`;
+        }
+
+        return `
+          <div class="bg-white p-3 rounded-2xl border border-slate-200/90 hover:border-brand-500 shadow-sm flex items-center justify-between gap-3 transition">
+            <div class="flex items-start gap-2.5 min-w-0">
+              <span class="bg-red-100 text-red-700 text-[10px] font-extrabold px-2 py-0.5 rounded-md shrink-0 mt-0.5">${tag}</span>
+              <p class="text-xs sm:text-sm font-bold text-slate-800 leading-snug">${title}</p>
+            </div>
+            <button onclick="${clickHandler}" class="shrink-0 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-[11px] px-3 py-2 rounded-xl shadow-sm transition">
+              ${btnText}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Render Wedding Invitation Picture Gallery
+    function renderWeddingGallery() {
+      const grid = document.getElementById('wedding-cards-grid');
+      if (!grid) return;
+      grid.innerHTML = weddingCardsData.map((card, idx) => {
+        const title = currentLang === 'ta' ? card.titleTa : card.titleEn;
+        const sub = currentLang === 'ta' ? card.priceTa : card.priceEn;
+        const orderBtn = currentLang === 'ta' ? '💬 ஆர்டர் செய்ய' : '💬 Order Card';
+        return `
+          <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+            <div onclick="openImageModal(${idx})" class="relative h-44 sm:h-52 bg-slate-200 overflow-hidden cursor-pointer">
+              <img src="${card.img}" onerror="this.onerror=null; this.src='${card.fallback}';" alt="${title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <span class="absolute top-2.5 left-2.5 bg-slate-950/80 text-amber-400 text-[10px] font-extrabold px-2.5 py-0.5 rounded-md">${card.id}</span>
+              <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-slate-900 text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow">🔍 பெரிதாகப் பார்க்க</span>
+            </div>
+            <div class="p-3.5">
+              <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug">${title}</h4>
+              <p class="text-[11px] text-rose-600 font-semibold mt-0.5">${sub}</p>
+              <button onclick="openApplyModal('திருமண அழைப்பிதழ் ஆர்டர் (${card.id})')" class="mt-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2 rounded-xl transition shadow-sm">
+                ${orderBtn}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openImageModal(idx) {
+      const card = weddingCardsData[idx];
+      if (!card) return;
+      const title = currentLang === 'ta' ? card.titleTa : card.titleEn;
+      const imgEl = document.getElementById('img-modal-preview');
+      imgEl.src = card.img;
+      imgEl.onerror = function() { this.onerror = null; this.src = card.fallback; };
+      document.getElementById('img-modal-title').textContent = title;
+      document.getElementById('img-modal-code').textContent = `Model Code: ${card.id}`;
+      document.getElementById('img-modal-order-btn').onclick = () => {
+        closeImageModal();
+        openApplyModal(`${title} (${card.id})`);
+      };
+      const modal = document.getElementById('image-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeImageModal() {
+      const modal = document.getElementById('image-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Create Service Card HTML (Clean, No File Upload)
+    function createServiceCardHTML(s) {
+      const t = uiTranslations[currentLang];
+      const mainTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
+      const subTitle = currentLang === 'ta' ? s.titleEn : s.titleTa;
+      const desc = currentLang === 'ta' ? s.descTa : s.descEn;
+      const time = currentLang === 'ta' ? s.timeTa : s.timeEn;
+      const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+
+      return `
+        <div class="card-hover bg-white rounded-2xl border border-slate-200/90 p-5 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-2xl shrink-0">
+                ${s.icon}
+              </div>
+              <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                ⏱️ ${time}
+              </span>
+            </div>
+            <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">${mainTitle}</h3>
+            <p class="text-xs font-semibold text-brand-600 mt-0.5">${subTitle}</p>
+            <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">${desc}</p>
+
+            <div class="mt-3.5 pt-3 border-t border-slate-100">
+              <ul class="space-y-1 text-xs text-slate-700">
+                ${docs.slice(0, 3).map(d => `<li class="flex items-center gap-1.5 truncate"><span class="text-emerald-600 font-bold">✓</span> ${d}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+            <button onclick="openDocModal('${s.id}')" class="bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-800 font-bold text-xs py-2.5 px-3 rounded-xl transition text-center border border-slate-200/80">
+              ${t.docsBtn}
+            </button>
+            <button onclick="openApplyModal('${mainTitle.replace(/'/g, "\\'")}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm transition text-center">
+              ${t.applyBtn}
+            </button>
+          </div>
         </div>
-        <p class="text-sm text-slate-700 leading-relaxed">${item.titleTa}</p>
-        <button class="mt-3 inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-3 py-2 rounded-lg">${item.linkTextTa}</button>
-      </div>
-    `).join('');
+      `;
+    }
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      const t = uiTranslations[lang];
+
+      document.getElementById('btn-lang-ta').className = lang === 'ta'
+        ? 'px-2.5 py-0.5 rounded text-[11px] font-extrabold transition bg-amber-500 text-slate-950'
+        : 'px-2.5 py-0.5 rounded text-[11px] font-extrabold transition text-slate-300 hover:text-white';
+      document.getElementById('btn-lang-en').className = lang === 'en'
+        ? 'px-2.5 py-0.5 rounded text-[11px] font-extrabold transition bg-amber-500 text-slate-950'
+        : 'px-2.5 py-0.5 rounded text-[11px] font-extrabold transition text-slate-300 hover:text-white';
+
+      document.getElementById('ui-live-badge').textContent = t.liveBadge;
+      document.getElementById('ui-shop-title').textContent = t.shopTitle;
+      document.getElementById('ui-shop-subtitle').textContent = t.shopSubtitle;
+
+      document.querySelector('[data-pill="home"]').textContent = t.pillHome;
+      document.querySelector('[data-pill="esevai"]').textContent = t.pillEsevai;
+      document.querySelector('[data-pill="idcards"]').textContent = t.pillIdcards;
+      document.querySelector('[data-pill="tickets"]').textContent = t.pillTickets;
+      document.querySelector('[data-pill="msme"]').textContent = t.pillMsme;
+      document.querySelector('[data-pill="patta"]').textContent = t.pillPatta;
+      document.querySelector('[data-pill="printing"]').textContent = t.pillPrinting;
+      document.querySelector('[data-pill="contact"]').textContent = t.pillContact;
+
+      document.getElementById('home-hero-badge').textContent = t.heroBadge;
+      document.getElementById('home-hero-title').innerHTML = t.heroTitle;
+      document.getElementById('home-hero-desc').textContent = t.heroDesc;
+      document.getElementById('home-box-call-lbl').textContent = t.boxCallLbl;
+      document.getElementById('home-box-time-lbl').textContent = t.boxTimeLbl;
+      document.getElementById('home-box-time-val').textContent = t.boxTimeVal;
+      document.getElementById('home-box-apply-btn').textContent = t.boxApplyBtn;
+      document.getElementById('notif-box-title').textContent = t.notifBoxTitle;
+      document.getElementById('cat-back-home').textContent = t.backHomeBtn;
+      document.getElementById('gallery-title').textContent = t.galleryTitle;
+      document.getElementById('gallery-subtitle').textContent = t.gallerySubtitle;
+
+      renderNotifications();
+      renderWeddingGallery();
+      populateServiceSelect();
+      if (pageConfig[currentPage]) {
+        renderCategoryPage(currentPage);
+      }
+    }
+
+    function populateServiceSelect() {
+      const select = document.getElementById('q-service');
+      if (!select) return;
+      select.innerHTML = servicesData.map(s => {
+        const title = currentLang === 'ta' ? s.titleTa : s.titleEn;
+        return `<option value="${title}">${title}</option>`;
+      }).join('');
+    }
+
+    // Tab Navigation (Shows ONLY the clicked tab's content)
+    function navigateTo(pageKey) {
+      currentPage = pageKey;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      document.getElementById('page-home').classList.add('hidden');
+      document.getElementById('page-category').classList.add('hidden');
+      document.getElementById('page-contact').classList.add('hidden');
+
+      document.querySelectorAll('.page-pill').forEach(pill => {
+        if (pill.dataset.pill === pageKey) {
+          pill.className = 'page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5 bg-amber-400 text-slate-950 shadow-lg scale-[1.02]';
+        } else {
+          pill.className = 'page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/15';
+        }
+      });
+
+      if (pageKey === 'home') {
+        document.getElementById('page-home').classList.remove('hidden');
+      } else if (pageKey === 'contact') {
+        document.getElementById('page-contact').classList.remove('hidden');
+      } else if (pageConfig[pageKey]) {
+        renderCategoryPage(pageKey);
+        document.getElementById('page-category').classList.remove('hidden');
+      }
+    }
+
+    function renderCategoryPage(pageKey) {
+      const cfg = pageConfig[pageKey];
+      document.getElementById('cat-title').textContent = currentLang === 'ta' ? cfg.titleTa : cfg.titleEn;
+      document.getElementById('cat-subtitle').textContent = currentLang === 'ta' ? cfg.subtitleTa : cfg.subtitleEn;
+
+      const galleryEl = document.getElementById('wedding-gallery-section');
+      if (pageKey === 'printing') {
+        galleryEl.classList.remove('hidden');
+        renderWeddingGallery();
+      } else {
+        galleryEl.classList.add('hidden');
+      }
+
+      const list = servicesData.filter(s => s.page === pageKey);
+      document.getElementById('cat-services-grid').innerHTML = list.map(s => createServiceCardHTML(s)).join('');
+    }
+
+    // Modal 1: Required Documents
+    let activeModalService = null;
+    function openDocModal(serviceId) {
+      const s = servicesData.find(item => item.id === serviceId);
+      if (!s) return;
+      activeModalService = s;
+
+      const mainTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
+      const subTitle = currentLang === 'ta' ? s.titleEn : s.titleTa;
+      const desc = currentLang === 'ta' ? s.descTa : s.descEn;
+      const time = currentLang === 'ta' ? s.timeTa : s.timeEn;
+      const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+
+      document.getElementById('modal-icon').textContent = s.icon;
+      document.getElementById('modal-title-ta').textContent = mainTitle;
+      document.getElementById('modal-title-en').textContent = subTitle;
+      document.getElementById('modal-desc').textContent = desc;
+      document.getElementById('modal-time').textContent = time;
+
+      document.getElementById('modal-doc-list').innerHTML = docs.map(doc => `
+        <li class="flex items-start gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200/60">
+          <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-extrabold shrink-0 mt-0.5">✓</span>
+          <span>${doc}</span>
+        </li>
+      `).join('');
+
+      document.getElementById('modal-apply-btn').onclick = () => {
+        closeDocModal();
+        openApplyModal(mainTitle);
+      };
+
+      const modal = document.getElementById('doc-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeDocModal() {
+      const modal = document.getElementById('doc-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      activeModalService = null;
+    }
+
+    function copyDocList() {
+      if (!activeModalService) return;
+      const title = currentLang === 'ta' ? activeModalService.titleTa : activeModalService.titleEn;
+      const docs = currentLang === 'ta' ? activeModalService.docsTa : activeModalService.docsEn;
+      const text = `*${title}*\n${docs.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n— VPS Computers & Printers, Vadakaraiattur (Cell: 98439 91974)`;
+      navigator.clipboard.writeText(text);
+      const btn = document.getElementById('copy-doc-btn');
+      btn.textContent = '✅ Copied!';
+      setTimeout(() => { btn.textContent = '📋 நகலெடு (Copy)'; }, 2000);
+    }
+
+    // Modal 2: Clean WhatsApp Apply
+    let selectedApplyService = '';
+    function openApplyModal(serviceName) {
+      selectedApplyService = serviceName;
+      document.getElementById('apply-modal-service').textContent = serviceName;
+      const modal = document.getElementById('apply-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeApplyModal() {
+      const modal = document.getElementById('apply-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function sendModalWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById('m-name').value.trim();
+      const phone = document.getElementById('m-phone').value.trim();
+      const notes = document.getElementById('m-notes').value.trim();
+      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${selectedApplyService}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+      closeApplyModal();
+    }
+
+    function submitQuickForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('q-name').value.trim();
+      const phone = document.getElementById('q-phone').value.trim();
+      const service = document.getElementById('q-service').value;
+      const notes = document.getElementById('q-notes').value.trim();
+      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${service}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    setLanguage('ta');
+    navigateTo('home');
   </script>
 </body>
 </html>
