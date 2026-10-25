@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ் | VPS Computers & Printers - Vadakaraiattur</title>
+  <title>VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ் | VPS Computers & Printers - Vadakaraiattur</title>
   <link rel="icon" type="image/png" href="logo.png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +49,7 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 25px -5px rgba(30, 58, 138, 0.14), 0 8px 10px -6px rgba(30, 58, 138, 0.08);
     }
+    /* Horizontal Top Ticker */
     @keyframes ticker {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-50%); }
@@ -59,6 +60,17 @@
       animation: ticker 32s linear infinite;
     }
     .animate-ticker:hover {
+      animation-play-state: paused;
+    }
+    /* Vertical Notification Scroll (Bottom to Top) */
+    @keyframes scrollUp {
+      0% { transform: translateY(0%); }
+      100% { transform: translateY(-50%); }
+    }
+    .animate-scroll-up {
+      animation: scrollUp 18s linear infinite;
+    }
+    .animate-scroll-up:hover {
       animation-play-state: paused;
     }
     .page-fade {
@@ -109,7 +121,7 @@
           </div>
           <div>
             <h1 id="ui-shop-title" class="text-base sm:text-xl font-extrabold text-slate-900 tracking-tight leading-none">
-              வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்
+              VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்
             </h1>
             <p id="ui-shop-subtitle" class="text-[11px] sm:text-xs font-bold text-brand-600 mt-1">
               இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்
@@ -131,7 +143,7 @@
       </div>
     </div>
 
-    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS (Fit to screen, no scrollbar) -->
+    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS -->
     <div class="tab-bar-gradient border-t border-b border-indigo-900/80 shadow-inner">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 py-2.5">
         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold">
@@ -152,11 +164,10 @@
   <main class="flex-grow">
 
     <!-- ==========================================
-         PAGE: HOME PAGE (Only Hero, Live Notifications & Shop Highlights - No Service Directory)
+         PAGE: HOME PAGE (Hero + Auto-Scrolling Notification Box)
     =========================================== -->
     <div id="page-home" class="page-view page-fade">
       <section class="hero-gradient text-white py-8 sm:py-12 relative overflow-hidden">
-        <!-- Decorative Glow -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -193,19 +204,21 @@
               </div>
             </div>
 
-            <!-- Right: LIVE NOTIFICATION BOX WITH LINKS (7 Cols) -->
+            <!-- Right: LIVE NOTIFICATION BOX (Bottom to Top Auto-Scroll) -->
             <div class="lg:col-span-7 bg-white text-slate-800 rounded-3xl border-2 border-amber-400 shadow-2xl overflow-hidden flex flex-col">
-              <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 px-5 py-3.5 flex items-center justify-between border-b border-amber-500">
+              <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 px-5 py-3.5 flex items-center justify-between border-b border-amber-500 z-10">
                 <div class="flex items-center gap-2.5">
                   <span class="w-3 h-3 rounded-full bg-red-600 animate-ping"></span>
                   <h3 id="notif-box-title" class="font-black text-sm sm:text-base tracking-tight">🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்குகள் (Live Notifications)</h3>
                 </div>
-                <span class="bg-slate-950 text-amber-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">LIVE UPDATES</span>
+                <span class="bg-slate-950 text-amber-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">LIVE SCROLL</span>
               </div>
 
-              <!-- Live Notifications List -->
-              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-80" id="notification-list">
-                <!-- Populated by JS -->
+              <!-- Auto-Scrolling Viewport (Bottom to Top) -->
+              <div class="relative h-72 sm:h-80 overflow-hidden bg-slate-50 p-4">
+                <div id="notification-list" class="animate-scroll-up space-y-3">
+                  <!-- Populated & Duplicated by JS for seamless bottom-to-top scroll -->
+                </div>
               </div>
             </div>
 
@@ -219,22 +232,22 @@
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shrink-0">⚡</div>
             <div>
-              <h4 id="feat-1-title" class="font-extrabold text-slate-900 text-sm sm:text-base">விரைவான ஆன்லைன் சேவை</h4>
-              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
+              <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">விரைவான ஆன்லைன் சேவை</h4>
+              <p class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
             </div>
           </div>
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center text-2xl shrink-0">🖨️</div>
             <div>
-              <h4 id="feat-2-title" class="font-extrabold text-slate-900 text-sm sm:text-base">ஆஃப்செட் & டிஜிட்டல் பிரிண்டிங்</h4>
-              <p id="feat-2-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">நவீன டிசைன்களில் திருமண அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் மற்றும் விசிட்டிங் கார்டுகள் சிறந்த முறையில் அச்சிட்டுத் தரப்படும்.</p>
+              <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">ஆஃப்செட் & டிஜிட்டல் பிரிண்டிங்</h4>
+              <p class="text-xs text-slate-600 mt-1 leading-relaxed">நவீன டிசைன்களில் திருமண அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் மற்றும் விசிட்டிங் கார்டுகள் சிறந்த முறையில் அச்சிட்டுத் தரப்படும்.</p>
             </div>
           </div>
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0">📍</div>
             <div>
-              <h4 id="feat-3-title" class="font-extrabold text-slate-900 text-sm sm:text-base">வடகரையாத்தூர், நாமக்கல்</h4>
-              <p id="feat-3-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213. செல்: 98439 91974.</p>
+              <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">வடகரையாத்தூர், நாமக்கல்</h4>
+              <p class="text-xs text-slate-600 mt-1 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213. செல்: 98439 91974.</p>
             </div>
           </div>
         </div>
@@ -280,7 +293,7 @@
     </div>
 
     <!-- ==========================================
-         PAGE: CONTACT PAGE (No File Upload)
+         PAGE: CONTACT PAGE
     =========================================== -->
     <div id="page-contact" class="page-view page-fade hidden">
       <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800">
@@ -301,7 +314,7 @@
           <div class="lg:col-span-5 bg-white rounded-3xl p-6 border border-slate-200 shadow-sm space-y-5">
             <div>
               <span id="contact-card-badge" class="text-xs font-extrabold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">முகவரி & தொடர்பு எண்</span>
-              <h3 id="contact-card-title" class="text-xl font-extrabold text-slate-900 mt-3">வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</h3>
+              <h3 id="contact-card-title" class="text-xl font-extrabold text-slate-900 mt-3">VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</h3>
               <p id="contact-card-prop" class="text-slate-500 text-xs mt-1">அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்</p>
             </div>
 
@@ -376,7 +389,7 @@
         <img id="footer-logo-img" src="logo.png" alt="VPS Logo" class="w-9 h-9 rounded-xl object-contain bg-white p-0.5" onerror="handleFooterLogoError(this)" />
         <div id="footer-fallback-logo" style="display: none;" class="w-9 h-9 rounded-xl bg-amber-500 text-slate-950 font-black items-center justify-center">VPS</div>
         <div>
-          <span id="footer-shop-name" class="text-white font-bold block text-sm">வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</span>
+          <span id="footer-shop-name" class="text-white font-bold block text-sm">VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்</span>
           <span id="footer-shop-loc" class="text-[11px] text-slate-400">3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213 • செல்: +91 98439 91974</span>
         </div>
       </div>
@@ -428,7 +441,7 @@
     </div>
   </div>
 
-  <!-- MODAL 2: CLEAN WHATSAPP APPLY POPUP (No Document Upload) -->
+  <!-- MODAL 2: CLEAN WHATSAPP APPLY POPUP -->
   <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
       <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
@@ -485,7 +498,7 @@
     let currentPage = 'home';
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA (முகப்புப் பக்க அறிவிப்புகள் & லிங்குகள்)
+    // 1. LIVE NOTIFICATIONS DATA (கீழிருந்து மேலாக நகரும் அறிவிப்புகள்)
     // =======================================================
     const notificationsData = [
       {
@@ -541,7 +554,7 @@
     ];
 
     // =======================================================
-    // 2. WEDDING INVITATION PICTURES DATA (GitHub-ல் card1.jpg, card2.jpg... அப்லோட் செய்யலாம்)
+    // 2. WEDDING INVITATION PICTURES DATA
     // =======================================================
     const weddingCardsData = [
       {
@@ -610,7 +623,7 @@
     const uiTranslations = {
       ta: {
         liveBadge: 'நேரலை',
-        shopTitle: 'வி.பி.எஸ் கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்',
+        shopTitle: 'VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்',
         shopSubtitle: 'இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்',
         pillHome: '🏠 முகப்பு',
         pillEsevai: '📜 இ-சேவை சான்றிதழ்கள்',
@@ -632,7 +645,8 @@
         docsBtn: '📋 தேவையான ஆவணங்கள்',
         applyBtn: 'விண்ணப்பிக்க →',
         galleryTitle: 'திருமண அழைப்பிதழ் மாடல்கள் (Wedding Card Pictures)',
-        gallerySubtitle: 'பத்திரிகை படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம் மற்றும் ஆர்டர் செய்யலாம்.'
+        gallerySubtitle: 'பத்திரிகை படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம் மற்றும் ஆர்டர் செய்யலாம்.',
+        contactTitle: 'VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்'
       },
       en: {
         liveBadge: 'LIVE',
@@ -658,7 +672,8 @@
         docsBtn: '📋 Required Documents',
         applyBtn: 'Apply Now →',
         galleryTitle: 'Wedding Invitation Card Models (Picture Gallery)',
-        gallerySubtitle: 'Click on any invitation model to view full picture and order via WhatsApp.'
+        gallerySubtitle: 'Click on any invitation model to view full picture and order via WhatsApp.',
+        contactTitle: 'VPS Computers & Printers'
       }
     };
 
@@ -709,10 +724,13 @@
       { id: 'xerox-printout', page: 'printing', icon: '🖨️', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய கோப்புகளை +91 98439 91974 என்ற வாட்ஸ்அப் எண்ணிற்கு அனுப்பலாம்'], docsEn: ['Send your PDF/Documents to WhatsApp +91 98439 91974 for instant printing'] }
     ];
 
-    // Render Live Notifications Box on Home Page
+    // Render Live Notifications Box with Seamless Bottom-to-Top Auto-Scroll
     function renderNotifications() {
       const container = document.getElementById('notification-list');
-      container.innerHTML = notificationsData.map(n => {
+      // Duplicate array so vertical scroll loops seamlessly from bottom to top
+      const scrollingItems = [...notificationsData, ...notificationsData];
+
+      container.innerHTML = scrollingItems.map(n => {
         const tag = currentLang === 'ta' ? n.tagTa : n.tagEn;
         const title = currentLang === 'ta' ? n.titleTa : n.titleEn;
         const btnText = currentLang === 'ta' ? n.linkTextTa : n.linkTextEn;
@@ -790,7 +808,7 @@
       modal.classList.remove('flex');
     }
 
-    // Create Service Card HTML (Clean, No File Upload)
+    // Create Service Card HTML
     function createServiceCardHTML(s) {
       const t = uiTranslations[currentLang];
       const mainTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
@@ -847,6 +865,8 @@
       document.getElementById('ui-live-badge').textContent = t.liveBadge;
       document.getElementById('ui-shop-title').textContent = t.shopTitle;
       document.getElementById('ui-shop-subtitle').textContent = t.shopSubtitle;
+      document.getElementById('contact-card-title').textContent = t.contactTitle;
+      document.getElementById('footer-shop-name').textContent = t.shopTitle;
 
       document.querySelector('[data-pill="home"]').textContent = t.pillHome;
       document.querySelector('[data-pill="esevai"]').textContent = t.pillEsevai;
@@ -977,7 +997,7 @@
       if (!activeModalService) return;
       const title = currentLang === 'ta' ? activeModalService.titleTa : activeModalService.titleEn;
       const docs = currentLang === 'ta' ? activeModalService.docsTa : activeModalService.docsEn;
-      const text = `*${title}*\n${docs.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n— VPS Computers & Printers, Vadakaraiattur (Cell: 98439 91974)`;
+      const text = `*${title}*\n${docs.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n— VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ், வடகரையாத்தூர் (செல்: 98439 91974)`;
       navigator.clipboard.writeText(text);
       const btn = document.getElementById('copy-doc-btn');
       btn.textContent = '✅ Copied!';
@@ -1005,7 +1025,7 @@
       const name = document.getElementById('m-name').value.trim();
       const phone = document.getElementById('m-phone').value.trim();
       const notes = document.getElementById('m-notes').value.trim();
-      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${selectedApplyService}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      const msg = `வணக்கம் *VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்*,\n\n*சேவை:* ${selectedApplyService}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
       closeApplyModal();
     }
@@ -1016,7 +1036,7 @@
       const phone = document.getElementById('q-phone').value.trim();
       const service = document.getElementById('q-service').value;
       const notes = document.getElementById('q-notes').value.trim();
-      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${service}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      const msg = `வணக்கம் *VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்*,\n\n*சேவை:* ${service}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
 
