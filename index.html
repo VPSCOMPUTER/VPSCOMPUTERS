@@ -56,7 +56,7 @@
     .animate-ticker {
       display: inline-block;
       white-space: nowrap;
-      animation: ticker 32s linear infinite;
+      animation: ticker 35s linear infinite;
     }
     .animate-ticker:hover {
       animation-play-state: paused;
@@ -79,8 +79,9 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
+            ★ திருப்பதி டிசம்பர் 2026 வைகுண்ட ஏகாதசி (Vaikunta Ekadasi) முன்பதிவு 28.10.2026 காலை 11:00 மணிக்கும், ஸ்ரீவாரி சேவா மதியம் 12:00 மணிக்கும் தொடங்குகிறது! (தேதிகள்: டிச 16–22, 17–23, 22–28, 23–29 & 24–30 | வயது: 18–50) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ PAN Card, Bus/Train/Flight Tickets, MSME Udyam, Patta/Chitta, Income/Community Certificates, Aadhaar, Smart Card & Offset Printing Services! ★
+            ★ TTD December 2026 Vaikunta Ekadasi Slots Release on 28.10.2026 at 11 AM & Srivari Seva at 12 Noon! ★
           </div>
         </div>
       </div>
@@ -492,6 +493,16 @@
     // =======================================================
     const notificationsData = [
       {
+        tagTa: 'TTD வைகுண்ட ஏகாதசி',
+        tagEn: 'TTD EKADASI 2026',
+        titleTa: '<span class="text-slate-900">திருப்பதி டிசம்பர் 2026 வைகுண்ட ஏகாதசி (Vaikunta Ekadasi) முன்பதிவு விவரங்கள்</span><br>📅 முன்பதிவு தொடங்கும் நாள்: <span class="text-red-600">28-10-2026 காலை 11:00 மணி</span><br>🗓️ 5 பிரிவுகள் (தலா 7 நாட்கள்): <span class="text-emerald-700">டிசம்பர் 16–22, 17–23, 22–28, 23–29 & 24–30</span><br>👤 வயது வரம்பு: <span class="text-blue-700">18 முதல் 50 வயது வரை மட்டுமே</span><br>🙏 சாதாரண ஸ்ரீவாரி சேவா, நவநீத சேவா & பரகாமணி சேவா (டிசம்பர் 2026): <span class="text-purple-700">28-10-2026 மதியம் 12:00 மணி</span> (சேவா நாளன்றே நேரில் ஆஜராக வேண்டும்)',
+        titleEn: '<span class="text-slate-900">Tirupati December 2026 Vaikunta Ekadasi Slots Booking Details</span><br>📅 Booking Release Date: <span class="text-red-600">28-10-2026 at 11:00 AM</span><br>🗓️ 5 Spells (7 Days Each): <span class="text-emerald-700">Dec 16–22, Dec 17–23, Dec 22–28, Dec 23–29 & Dec 24–30</span><br>👤 Age Limit: <span class="text-blue-700">18 years to 50 years only</span><br>🙏 General Srivari Seva, Navaneeta & Parakamani Seva (Dec 2026): <span class="text-purple-700">28-10-2026 at 12:00 Noon</span> (Report on the same day of booking)',
+        linkTextTa: '🛕 TTD புக்கிங்',
+        linkTextEn: '🛕 Book TTD',
+        actionType: 'page',
+        actionTarget: 'ttd'
+      },
+      {
         tagTa: 'புதியது',
         tagEn: 'NEW',
         titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span><br>⏳ விண்ணப்பிக்கக் கடைசி நாள்: <span class="text-red-600">05-11-2026 (இரவு 11:59 வரை)</span><br>✏️ விண்ணப்பத் திருத்தம் (Correction): <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
@@ -685,7 +696,7 @@
       esevai: { titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)', titleEn: 'Government e-Sevai Certificates', subtitleTa: 'வருமானம், சாதி, OBC, இருப்பிடம், முதல் பட்டதாரி, வாரிசு, சிறு விவசாயி, திருமணமாகாதவர் மற்றும் ஆண் வாரிசு இல்லா சான்றிதழ்கள்.', subtitleEn: 'Income, Community, OBC, Nativity, First Graduate, Legal Heir, Small Farmer, Unmarried & No Male Issue Certificates.' },
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
       tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பம்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம் & தேவையான ஆவணங்கள்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
-      ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'தரிசன டிக்கெட், தங்கும் அறை, ஆர்ஜித சேவை மற்றும் நன்கொடை முன்பதிவு.', subtitleEn: 'Darshan Tickets, Accommodation, Arjitha Seva and Donation bookings.' },
+      ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி (28.10.2026 காலை 11 AM), ஸ்ரீவாரி சேவா (மதியம் 12 PM), ₹300 தரிசனம் & தங்கும் அறை முன்பதிவு.', subtitleEn: 'Dec 2026 Vaikunta Ekadasi (28.10.2026 at 11 AM), Srivari Seva (12 Noon), ₹300 Darshan & Accommodation bookings.' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
       tickets: { titleTa: 'பஸ், ரயில் & விமான டிக்கெட் புக்கிங் (Ticket Booking)', titleEn: 'Bus, Train & Flight Ticket Booking', subtitleTa: 'இந்தியா முழுவதும் பஸ், ரயில் (Tatkal) மற்றும் விமான டிக்கெட் முன்பதிவு.', subtitleEn: 'Bus, IRCTC Train (Tatkal) and Domestic/International Flight Tickets.' },
       msme: { titleTa: 'MSME தொழில் பதிவு, பாஸ்போர்ட் & அரசு சேவைகள்', titleEn: 'MSME Udyam Registration, Passport & Govt Schemes', subtitleTa: 'சிறு/குறு தொழில் பதிவு (Udyam), உணவு பாதுகாப்பு சான்று (FSSAI), பாஸ்போர்ட் மற்றும் TNEB சேவைகள்.', subtitleEn: 'MSME Udyam Certificate, FSSAI License, Passport Seva and TNEB Online Services.' },
@@ -721,6 +732,7 @@
       { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'விண்ணப்ப எண் (Application No)', 'பிறந்த தேதி', 'மொபைல் எண்'], docsEn: ['OTR ID & Password', 'Application Number', 'Date of Birth', 'Mobile Number'] },
 
       // TTD Page Only
+      { id: 'ttd-ekadasi', page: 'ttd', icon: '🌟', titleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி & ஸ்ரீவாரி சேவா', titleEn: 'Dec 2026 Vaikunta Ekadasi & Srivari Seva Slots', descTa: '28.10.2026 காலை 11 AM வைகுண்ட ஏகாதசி (5 பிரிவுகள்: டிச 16–22, 17–23, 22–28, 23–29 & 24–30 | வயது: 18–50) மற்றும் மதியம் 12 PM சாதாரண ஸ்ரீவாரி சேவா, நவநீத & பரகாமணி சேவா முன்பதிவு.', descEn: 'Released on 28.10.2026 at 11 AM (5 spells of 7 days: Dec 16–22, 17–23, 22–28, 23–29 & 24–30 | Age: 18–50 yrs) & General Srivari Seva at 12 Noon.', timeTa: '28.10.2026 (11 AM & 12 PM)', timeEn: '28.10.2026 (11 AM & 12 PM)', docsTa: ['ஆதார் அட்டை (வயது: 18 முதல் 50 வயது வரை)', 'பாஸ்போர்ட் சைஸ் போட்டோ', 'தேர்ந்தெடுக்கும் 7 நாட்கள் பிரிவு (Spell Date)', 'மொபைல் எண்'], docsEn: ['Aadhaar Card (Age Limit: 18 to 50 years only)', 'Passport Size Photo', 'Preferred 7-Day Spell Dates', 'Active Mobile Number'] },
       { id: 'ttd-300', page: 'ttd', icon: '🛕', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ', 'தரிசனத் தேதி & மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Photo', 'Darshan Date & Mobile'] },
       { id: 'ttd-room', page: 'ttd', icon: '🏨', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'தங்கும் தேதி & அறை வகை', 'மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Stay Dates & Room Type', 'Mobile Number'] },
       { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள் (லக்கி டிப் / நேரடி முன்பதிவு).', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets (Lucky Dip / Direct).', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'சேவை பெயர் & தேதி', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Devotees Aadhaar Card', 'Seva Name & Date', 'Mobile Number & Email'] },
