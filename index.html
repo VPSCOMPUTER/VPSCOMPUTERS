@@ -79,9 +79,9 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
-            ★ திருப்பதி டிசம்பர் 2026 வைகுண்ட ஏகாதசி (Vaikunta Ekadasi) முன்பதிவு 28.10.2026 காலை 11:00 மணிக்கும், ஸ்ரீவாரி சேவா மதியம் 12:00 மணிக்கும் தொடங்குகிறது! (தேதிகள்: டிச 16–22, 17–23, 22–28, 23–29 & 24–30 | வயது: 18–50) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ TTD December 2026 Vaikunta Ekadasi Slots Release on 28.10.2026 at 11 AM & Srivari Seva at 12 Noon! ★
+            ★ சபரிமலை தரிசன டிக்கெட் (Sabarimala Q Ticket) முன்பதிவு நவம்பர் 29 முதல் தொடங்குகிறது! (ஆவணங்கள்: 1. Aadhaar Card, 2. Photo, 3. Mobile Number) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ திருப்பதி டிசம்பர் 2026 வைகுண்ட ஏகாதசி (Vaikunta Ekadasi) முன்பதிவு 28.10.2026 காலை 11:00 மணிக்கும், ஸ்ரீவாரி சேவா மதியம் 12:00 மணிக்கும் தொடங்குகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
           </div>
         </div>
       </div>
@@ -141,6 +141,7 @@
           <button onclick="navigateTo('tnpds')" data-pill="tnpds" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🍚 TNPDS ரேஷன் கார்டு</button>
           <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC</button>
           <button onclick="navigateTo('ttd')" data-pill="ttd" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🛕 திருப்பதி TTD</button>
+          <button onclick="navigateTo('sabarimala')" data-pill="sabarimala" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🙏 சபரிமலை Q</button>
           <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪪 பான் & அடையாள அட்டை</button>
           <button onclick="navigateTo('tickets')" data-pill="tickets" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">✈️ பஸ் / ரயில் / விமான டிக்கெட்</button>
           <button onclick="navigateTo('msme')" data-pill="msme" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏢 MSME & பாஸ்போர்ட்</button>
@@ -387,6 +388,8 @@
       <div class="flex flex-wrap gap-2.5 font-semibold">
         <button onclick="navigateTo('home')" class="hover:text-amber-400">முகப்பு</button> •
         <button onclick="navigateTo('esevai')" class="hover:text-amber-400">இ-சேவை</button> •
+        <button onclick="navigateTo('sabarimala')" class="hover:text-amber-400">சபரிமலை Q</button> •
+        <button onclick="navigateTo('ttd')" class="hover:text-amber-400">திருப்பதி TTD</button> •
         <button onclick="navigateTo('idcards')" class="hover:text-amber-400">பான் கார்டு</button> •
         <button onclick="navigateTo('tickets')" class="hover:text-amber-400">டிக்கெட்</button> •
         <button onclick="navigateTo('msme')" class="hover:text-amber-400">MSME</button> •
@@ -492,6 +495,16 @@
     // 1. LIVE NOTIFICATIONS DATA (முகப்புப் பக்க அறிவிப்புகள் & லிங்குகள்)
     // =======================================================
     const notificationsData = [
+      {
+        tagTa: 'சபரிமலை Q',
+        tagEn: 'SABARIMALA Q',
+        titleTa: '<span class="text-slate-900">சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29)</span><br>📅 டிக்கெட் முன்பதிவு தொடக்கம்: <span class="text-red-600">நவம்பர் 29 (November 29)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Document Requirement):</span><br>1. ஆதார் அட்டை (Aadhaar Card)<br>2. போட்டோ (Photo)<br>3. மொபைல் எண் (Mobile Number)',
+        titleEn: '<span class="text-slate-900">Sabarimala Q Ticket Opening: November 29</span><br>📅 Ticket Booking Opens: <span class="text-red-600">November 29</span><br>📋 <span class="text-emerald-700">Document Requirement:</span><br>1. Aadhaar Card<br>2. Photo<br>3. Mobile Number',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'page',
+        actionTarget: 'sabarimala'
+      },
       {
         tagTa: 'TTD வைகுண்ட ஏகாதசி',
         tagEn: 'TTD EKADASI 2026',
@@ -641,6 +654,7 @@
         pillTnpds: '🍚 TNPDS ரேஷன் கார்டு',
         pillTnpsc: '🏛️ TNPSC',
         pillTtd: '🛕 திருப்பதி TTD',
+        pillSabarimala: '🙏 சபரிமலை Q',
         pillIdcards: '🪪 பான் & அடையாள அட்டை',
         pillTickets: '✈️ பஸ் / ரயில் / விமான டிக்கெட்',
         pillMsme: '🏢 MSME & பாஸ்போர்ட்',
@@ -670,6 +684,7 @@
         pillTnpds: '🍚 TNPDS Ration Card',
         pillTnpsc: '🏛️ TNPSC',
         pillTtd: '🛕 Tirupati TTD',
+        pillSabarimala: '🙏 Sabarimala Q',
         pillIdcards: '🪪 PAN & ID Cards',
         pillTickets: '✈️ Bus / Train / Flight Tickets',
         pillMsme: '🏢 MSME & Passport',
@@ -697,6 +712,7 @@
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
       tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பம்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம் & தேவையான ஆவணங்கள்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
       ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி (28.10.2026 காலை 11 AM), ஸ்ரீவாரி சேவா (மதியம் 12 PM), ₹300 தரிசனம் & தங்கும் அறை முன்பதிவு.', subtitleEn: 'Dec 2026 Vaikunta Ekadasi (28.10.2026 at 11 AM), Srivari Seva (12 Noon), ₹300 Darshan & Accommodation bookings.' },
+      sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் (Sabarimala Q Ticket Opening: November 29) ஆன்லைன் முன்பதிவு.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking (Opening: November 29).' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
       tickets: { titleTa: 'பஸ், ரயில் & விமான டிக்கெட் புக்கிங் (Ticket Booking)', titleEn: 'Bus, Train & Flight Ticket Booking', subtitleTa: 'இந்தியா முழுவதும் பஸ், ரயில் (Tatkal) மற்றும் விமான டிக்கெட் முன்பதிவு.', subtitleEn: 'Bus, IRCTC Train (Tatkal) and Domestic/International Flight Tickets.' },
       msme: { titleTa: 'MSME தொழில் பதிவு, பாஸ்போர்ட் & அரசு சேவைகள்', titleEn: 'MSME Udyam Registration, Passport & Govt Schemes', subtitleTa: 'சிறு/குறு தொழில் பதிவு (Udyam), உணவு பாதுகாப்பு சான்று (FSSAI), பாஸ்போர்ட் மற்றும் TNEB சேவைகள்.', subtitleEn: 'MSME Udyam Certificate, FSSAI License, Passport Seva and TNEB Online Services.' },
@@ -705,6 +721,9 @@
     };
 
     const servicesData = [
+      // Sabarimala Q Page Only
+      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['1. ஆதார் அட்டை (Aadhaar Card)', '2. போட்டோ (Photo)', '3. மொபைல் எண் (Mobile Number)'], docsEn: ['1. Aadhaar Card', '2. Photo', '3. Mobile Number'] },
+
       // e-Sevai Page Only
       { id: 'income-cert', page: 'esevai', icon: '📄', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று', 'மொபைல் எண்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip', 'Mobile Number'] },
       { id: 'community-cert', page: 'esevai', icon: '📜', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'] },
@@ -911,6 +930,7 @@
       document.querySelector('[data-pill="tnpds"]').textContent = t.pillTnpds;
       document.querySelector('[data-pill="tnpsc"]').textContent = t.pillTnpsc;
       document.querySelector('[data-pill="ttd"]').textContent = t.pillTtd;
+      document.querySelector('[data-pill="sabarimala"]').textContent = t.pillSabarimala;
       document.querySelector('[data-pill="idcards"]').textContent = t.pillIdcards;
       document.querySelector('[data-pill="tickets"]').textContent = t.pillTickets;
       document.querySelector('[data-pill="msme"]').textContent = t.pillMsme;
