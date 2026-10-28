@@ -351,7 +351,7 @@
               </div>
 
               <button type="button" onclick="openApplyModal(document.getElementById('q-service').value)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
-                <span>📤 தேவையான ஆவணங்களைப் பார்த்து Upload செய்ய / WhatsApp அனுப்ப க்ளிக் செய்யவும்</span>
+                <span>📤 தேவையான ஆவணங்கள் & கட்டண விவரம் பார்த்து விண்ணப்பிக்க க்ளிக் செய்யவும்</span>
               </button>
             </div>
           </div>
@@ -405,9 +405,15 @@
         <p id="modal-desc" class="text-xs sm:text-sm text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-200/70"></p>
         <h4 id="modal-list-heading" class="text-xs font-extrabold uppercase tracking-wider text-slate-500">கொண்டு வர வேண்டிய சான்றுகள் (Checklist):</h4>
         <ul id="modal-doc-list" class="space-y-2 text-xs sm:text-sm text-slate-800 font-medium"></ul>
-        <div class="bg-amber-50 border border-amber-200/80 rounded-xl p-3 text-xs text-amber-900 flex items-center justify-between gap-2">
-          <span id="modal-time-label" class="font-bold">⏱️ கால அளவு:</span>
-          <span id="modal-time" class="font-extrabold bg-amber-200/70 px-2.5 py-0.5 rounded text-amber-950"></span>
+        <div class="grid grid-cols-2 gap-2.5">
+          <div class="bg-amber-50 border border-amber-200/80 rounded-xl p-2.5 text-xs text-amber-900 flex items-center justify-between">
+            <span class="font-bold">⏱️ கால அளவு:</span>
+            <span id="modal-time" class="font-extrabold bg-amber-200/70 px-2 py-0.5 rounded text-amber-950"></span>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200/80 rounded-xl p-2.5 text-xs text-emerald-900 flex items-center justify-between">
+            <span class="font-bold">💳 கட்டணம்:</span>
+            <span id="modal-fee" class="font-extrabold bg-emerald-200/70 px-2 py-0.5 rounded text-emerald-950"></span>
+          </div>
         </div>
       </div>
 
@@ -423,14 +429,17 @@
   </div>
 
   <!-- =========================================================================
-       MODAL 2: SMART APPLY MODAL (OPTION 1: WEB UPLOAD + OPTION 3: WHATSAPP)
+       MODAL 2: SMART APPLY MODAL (OPTION 1: WEB UPLOAD + QR + OPTION 3: WHATSAPP)
   ========================================================================== -->
   <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4">
-    <div class="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[92vh] flex flex-col">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[94vh] flex flex-col">
       <!-- Modal Header -->
       <div class="flex justify-between items-start border-b border-slate-100 pb-3 mb-3 shrink-0">
         <div>
-          <span id="apply-modal-badge" class="text-[10px] font-extrabold text-brand-600 uppercase bg-brand-50 px-2.5 py-0.5 rounded-full">📤 ஆன்லைன் விண்ணப்ப மையம்</span>
+          <div class="flex items-center gap-2">
+            <span id="apply-modal-badge" class="text-[10px] font-extrabold text-brand-600 uppercase bg-brand-50 px-2.5 py-0.5 rounded-full">📤 ஆன்லைன் விண்ணப்ப மையம்</span>
+            <span id="apply-modal-fee-badge" class="text-xs font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full"></span>
+          </div>
           <h3 id="apply-modal-service" class="text-base sm:text-lg font-extrabold text-slate-900 mt-1"></h3>
         </div>
         <button onclick="closeApplyModal()" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
@@ -444,22 +453,28 @@
           <select id="m-service-select" onchange="handleModalServiceChange(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold bg-slate-50 focus:border-brand-600 focus:outline-none"></select>
         </div>
 
-        <!-- Customer Name & Phone -->
+        <!-- Customer Name & Mobile Number (Typed Only - Never Upload) -->
         <div class="grid sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் (Name) *</label>
-            <input type="text" id="m-name" required placeholder="பெயரை உள்ளிடவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+            <input type="text" id="m-name" required placeholder="பெயரை டைப் செய்யவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
           </div>
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் (WhatsApp No) *</label>
-            <input type="tel" id="m-phone" required maxlength="10" placeholder="10 இலக்க மொபைல் எண்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+            <label class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் (Mobile Number) *</label>
+            <input type="tel" id="m-phone" required maxlength="10" placeholder="10 இலக்க மொபைல் எண்ணை டைப் செய்யவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
           </div>
+        </div>
+
+        <!-- Extra Typed Details (If service requires typed info like Father Name / OTR ID / Dates) -->
+        <div id="m-extra-text-wrap" class="hidden">
+          <label id="m-extra-text-lbl" class="block text-xs font-bold text-brand-700 mb-1"></label>
+          <input type="text" id="m-extra-text" class="w-full px-3.5 py-2.5 rounded-xl border border-brand-300 bg-brand-50/30 text-sm focus:border-brand-600 focus:outline-none" />
         </div>
 
         <!-- Dynamic Required Documents Checklist Box (Option 3) -->
         <div class="bg-emerald-50/90 border border-emerald-200 border-l-4 border-l-emerald-600 rounded-xl p-3.5">
           <h4 class="text-xs font-extrabold text-emerald-900 mb-1.5 flex items-center gap-1.5">
-            <span>📌</span> <span>இந்த சேவைக்குத் தேவையான ஆவணங்கள் (Checklist):</span>
+            <span>📌</span> <span>தேவையான சான்றுகள் & விவரங்கள் (Checklist):</span>
           </h4>
           <ul id="m-checklist-items" class="list-disc list-inside text-xs text-emerald-800 space-y-1 font-semibold"></ul>
         </div>
@@ -474,27 +489,49 @@
           </button>
         </div>
 
-        <!-- SECTION A: WEBSITE DIRECT UPLOAD TO GOOGLE DRIVE & SHEET (Option 1) -->
-        <div id="section-web-upload" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+        <!-- SECTION A: WEBSITE DIRECT UPLOAD + SIDE-BY-SIDE PAYMENT QR CODE (Option 1) -->
+        <div id="section-web-upload" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-4">
           <div class="flex items-center justify-between">
-            <h5 class="text-xs font-extrabold text-brand-800">📂 ஆவணங்களைத் தேர்ந்தெடுக்கவும் (Photo / PDF):</h5>
+            <h5 class="text-xs font-extrabold text-brand-800">📂 ஆவணங்களை மட்டும் இங்கே Upload செய்யவும் (Photo / PDF):</h5>
             <span class="text-[10px] font-bold text-slate-500">தெளிவான படமாக இணைக்கவும்</span>
           </div>
 
-          <div id="m-dynamic-files" class="space-y-2.5"></div>
+          <!-- Only actual document files appear here -->
+          <div id="m-dynamic-files" class="grid sm:grid-cols-2 gap-2.5"></div>
 
-          <div class="grid sm:grid-cols-2 gap-3 pt-1">
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">UPI / UTR எண் (பணம் செலுத்தியிருந்தால்)</label>
-              <input type="text" id="m-utr" placeholder="உதா: 412345678901" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-white" />
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் குறிப்பு (Notes)</label>
-              <input type="text" id="m-notes-web" placeholder="ஏதேனும் குறிப்பு இருப்பின்..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-white" />
+          <!-- PAYMENT FEE & SIDE-BY-SIDE QR CODE BOX -->
+          <div class="bg-white rounded-2xl border-2 border-amber-300 p-4 shadow-sm">
+            <div class="grid sm:grid-cols-12 gap-4 items-center">
+              <!-- Left: Fee Details & UTR Input (7 Cols) -->
+              <div class="sm:col-span-7 space-y-2.5">
+                <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-900 text-[11px] font-extrabold px-2.5 py-1 rounded-lg">
+                  <span>💳</span> <span>சேவைக் கட்டணம் (Service Fee):</span>
+                  <span id="m-pay-fee-amount" class="text-sm font-black text-red-600 ml-1"></span>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  அருகில் உள்ள <strong>UPI QR Code</strong>-ஐ GPay / PhonePe மூலம் ஸ்கேன் செய்து கட்டணம் செலுத்தலாம்.
+                </p>
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1">UPI Payment Reference / UTR எண்:</label>
+                  <input type="text" id="m-utr" placeholder="உதா: 412345678901 (அல்லது கடையில் செலுத்தலாம்)" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-slate-50" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-800 mb-1">கூடுதல் குறிப்பு (Notes):</label>
+                  <input type="text" id="m-notes-web" placeholder="ஏதேனும் குறிப்பு இருப்பின்..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-slate-50" />
+                </div>
+              </div>
+
+              <!-- Right: Payment QR Code Image (5 Cols) -->
+              <div class="sm:col-span-5 flex flex-col items-center justify-center bg-slate-50 p-3 rounded-xl border border-slate-200 text-center">
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-slate-700 mb-1.5">📱 SCAN & PAY (GPay / PhonePe)</span>
+                <img id="m-qr-img" src="qr.png" alt="Payment QR Code" class="w-32 h-32 object-contain rounded-lg border border-slate-300 bg-white p-1 shadow-sm" onerror="handleQrFallback(this)" />
+                <span class="text-[11px] font-extrabold text-slate-900 mt-1.5">VPS COMPUTERS</span>
+                <span class="text-[10px] text-emerald-700 font-bold">GPay / PhonePe: 98439 91974</span>
+              </div>
             </div>
           </div>
 
-          <button type="button" id="btn-submit-drive" onclick="submitToGoogleDrive()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-4 rounded-xl shadow-md transition text-xs sm:text-sm">
+          <button type="button" id="btn-submit-drive" onclick="submitToGoogleDrive()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3.5 px-4 rounded-xl shadow-md transition text-xs sm:text-sm">
             🚀 ஆவணங்களை Upload செய்து விண்ணப்பத்தை சமர்ப்பி
           </button>
 
@@ -504,7 +541,7 @@
         <!-- SECTION B: WHATSAPP GUIDED SEND (Option 3) -->
         <div id="section-wa-send" class="hidden bg-emerald-50/60 p-4 rounded-2xl border border-emerald-200 space-y-3">
           <p class="text-xs text-slate-700 leading-relaxed">
-            கீழே உள்ள பட்டனை அழுத்தினால், நீங்கள் தேர்ந்தெடுத்த சேவை மற்றும் அதன் ஆவணப் பட்டியலுடன் நேரடியாக எங்கள் <strong>VPS COMPUTERS (+91 98439 91974)</strong> வாட்ஸ்அப் எண்ணிற்குச் செல்லும். அங்கு உங்கள் ஆவணங்களின் போட்டோக்களை அனுப்பலாம்.
+            கீழே உள்ள பட்டனை அழுத்தினால், நீங்கள் தேர்ந்தெடுத்த சேவை, கட்டண விவரம் மற்றும் ஆவணப் பட்டியலுடன் நேரடியாக எங்கள் <strong>VPS COMPUTERS (+91 98439 91974)</strong> வாட்ஸ்அப் எண்ணிற்குச் செல்லும். அங்கு உங்கள் ஆவணங்களின் போட்டோக்களை அனுப்பலாம்.
           </p>
           <div>
             <label class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் விவரம் (Notes)</label>
@@ -540,11 +577,19 @@
   <!-- JAVASCRIPT -->
   <script>
     const SHOP_PHONE = '919843991974';
-    // 👇 உங்கள் Google Apps Script Web App URL-ஐ இங்கே பேஸ்ட் செய்யவும் 👇
+    // 👇 1. உங்கள் Google Apps Script Web App URL-ஐ இங்கே பேஸ்ட் செய்யவும் 👇
     const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcj9iHfQ_dxH8IkX6V6ylkPsGktMuFT5P7cIDmqOgtuhuLCsVlP3VLhww9Xg5OUkQcZw/exec';
+    // 👇 2. உங்கள் UPI ID-ஐ இங்கே கொடுக்கலாம் (qr.png படம் இல்லையென்றால் இது தானாக QR உருவாக்கும்) 👇
+    const SHOP_UPI_ID = 'vpscomputers@ybl';
 
     let currentLang = 'ta';
     let currentPage = 'home';
+
+    function handleQrFallback(img) {
+      const upiUrl = `upi://pay?pa=${SHOP_UPI_ID}&pn=VPS%20COMPUTERS`;
+      img.onerror = null;
+      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUrl)}`;
+    }
 
     // =======================================================
     // 1. LIVE NOTIFICATIONS DATA
@@ -609,26 +654,6 @@
         linkTextEn: '💌 View Pictures',
         actionType: 'page',
         actionTarget: 'printing'
-      },
-      {
-        tagTa: 'தொழில் பதிவு',
-        tagEn: 'MSME',
-        titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ், FSSAI உணவு உரிமம் மற்றும் பாஸ்போர்ட் சேவைகள்.',
-        titleEn: 'MSME / Udyam Business Registration, FSSAI License and Passport Seva.',
-        linkTextTa: '🏢 MSME பக்கம்',
-        linkTextEn: '🏢 Open MSME Tab',
-        actionType: 'page',
-        actionTarget: 'msme'
-      },
-      {
-        tagTa: 'டிக்கெட்',
-        tagEn: 'TRAVEL',
-        titleTa: 'பஸ், ரயில் (IRCTC தட்கல்) மற்றும் விமான டிக்கெட்டுகள் உடனடியாக புக் செய்து தரப்படும்.',
-        titleEn: 'Bus, Train (IRCTC Tatkal) and Flight Tickets booked instantly.',
-        linkTextTa: '✈️ டிக்கெட் பக்கம்',
-        linkTextEn: '✈️ Book Tickets',
-        actionType: 'page',
-        actionTarget: 'tickets'
       }
     ];
 
@@ -774,70 +799,73 @@
       printing: { titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங் (Wedding Cards Gallery)', titleEn: 'Wedding Invitations Gallery & Offset Printing', subtitleTa: 'திருமணப் பத்திரிகை மாடல்கள், பில் புக், நோட்டீஸ், விசிட்டிங் கார்டு மற்றும் கலர் பிரிண்ட்.', subtitleEn: 'Browse Wedding Invitation pictures, Bill Books, Notices & Visiting Cards.' }
     };
 
+    // =======================================================
+    // 3. SERVICES DATA (With `fee`, `uploadDocs` for files ONLY, and `extraInput` for text)
+    // =======================================================
     const servicesData = [
-      // Sabarimala Q Page Only
-      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (Mobile Number)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number'] },
+      // Sabarimala Q
+      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', fee: '₹100', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (மேலே டைப் செய்யவும்)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number (Type above)'], uploadDocs: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி (Preferred Date)' },
 
-      // e-Sevai Page Only
-      { id: 'income-cert', page: 'esevai', icon: '📄', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip'] },
-      { id: 'community-cert', page: 'esevai', icon: '📜', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'] },
-      { id: 'obc-cert', page: 'esevai', icon: '🧾', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof'] },
-      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy'] },
-      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert'] },
-      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)'] },
-      { id: 'nativity-cert', page: 'esevai', icon: '🏠', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill'] },
-      { id: 'first-grad', page: 'esevai', icon: '🎓', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC'] },
-      { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card'] },
-      { id: 'oap-widow', page: 'esevai', icon: '👵', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof'] },
+      // e-Sevai Certificates
+      { id: 'income-cert', page: 'esevai', icon: '📄', fee: '₹60', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'பான் கார்டு / சம்பள சான்று'] },
+      { id: 'community-cert', page: 'esevai', icon: '📜', fee: '₹60', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'] },
+      { id: 'obc-cert', page: 'esevai', icon: '🧾', fee: '₹60', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community Cert)', 'வருமானச் சான்றிதழ் (Income Cert)'] },
+      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', fee: '₹60', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'] },
+      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', fee: '₹60', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'] },
+      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', fee: '₹60', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்றிதழ்கள்'] },
+      { id: 'nativity-cert', page: 'esevai', icon: '🏠', fee: '₹60', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்று / TC'] },
+      { id: 'first-grad', page: 'esevai', icon: '🎓', fee: '₹60', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC'], uploadDocs: ['மாணவர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'] },
+      { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', fee: '₹60', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card'], uploadDocs: ['இறப்பு சான்றிதழ் (Death Cert)', 'இறந்தவர் ஆதார்', 'வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'] },
+      { id: 'oap-widow', page: 'esevai', icon: '👵', fee: '₹60', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof'], uploadDocs: ['போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக் (Bank Passbook)', 'வயது சான்று / இறப்பு சான்று'] },
 
-      // TNPDS Page Only
-      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் & உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது / வாடகை ஒப்பந்தம்', 'திருமண சான்று / பிறப்பு சான்று'], docsEn: ['Aadhaar of Head & Members', 'Tax / EB Bill / Rental Agreement', 'Marriage / Birth Certificate'] },
-      { id: 'tnpds-address', page: 'tnpds', icon: '📍', titleTa: 'முகவரி மாற்றம் (Address Change)', titleEn: 'Address Change', descTa: 'ரேஷன் கார்டில் முகவரியை மாற்றம் செய்ய ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to change the address on your Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரிக்கான சான்று (EB பில் / வீட்டு வரி)'], docsEn: ['Ration Card Copy', 'Head of Family Aadhaar', 'New Address Proof (EB Bill / Tax)'] },
-      { id: 'tnpds-head', page: 'tnpds', icon: '👤', titleTa: 'குடும்பத் தலைவர் மாற்றம் (Family Head Change)', titleEn: 'Family Head Change', descTa: 'ரேஷன் கார்டில் குடும்பத் தலைவரை மாற்றுவதற்கான விண்ணப்பம்.', descEn: 'Application to change the Head of Family on the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'தற்போதைய தலைவர் & புதிய தலைவர் ஆதார்', 'இறப்பு சான்றிதழ் (தலைவர் இறந்திருந்தால்)'], docsEn: ['Ration Card Copy', 'Aadhaar of Current & New Head', 'Death Certificate (if head is deceased)'] },
-      { id: 'tnpds-remove', page: 'tnpds', icon: '➖', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death / Marriage Certificate'] },
-      { id: 'tnpds-add', page: 'tnpds', icon: '➕', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Birth / Marriage Certificate'] },
+      // TNPDS Ration Card
+      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', fee: '₹150', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் போட்டோ & ஆதார்', 'உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'], docsEn: ['Family Head Photo & Aadhaar', 'Members Aadhaar', 'Tax / EB Bill', 'Marriage / Birth Certificate'], uploadDocs: ['குடும்பத் தலைவர் போட்டோ', 'உறுப்பினர்கள் ஆதார் கார்டுகள்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'] },
+      { id: 'tnpds-address', page: 'tnpds', icon: '📍', fee: '₹100', titleTa: 'முகவரி மாற்றம் (Address Change)', titleEn: 'Address Change', descTa: 'ரேஷன் கார்டில் முகவரியை மாற்றம் செய்ய ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to change the address on your Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரிக்கான சான்று (EB பில் / வீட்டு வரி)'], docsEn: ['Ration Card Copy', 'Head of Family Aadhaar', 'New Address Proof (EB Bill / Tax)'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரி சான்று (EB பில் / வீட்டு வரி)'] },
+      { id: 'tnpds-head', page: 'tnpds', icon: '👤', fee: '₹100', titleTa: 'குடும்பத் தலைவர் மாற்றம் (Family Head Change)', titleEn: 'Family Head Change', descTa: 'ரேஷன் கார்டில் குடும்பத் தலைவரை மாற்றுவதற்கான விண்ணப்பம்.', descEn: 'Application to change the Head of Family on the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'புதிய தலைவர் போட்டோ & ஆதார்', 'இறப்பு சான்றிதழ் (தலைவர் இறந்திருந்தால்)'], docsEn: ['Ration Card Copy', 'New Head Photo & Aadhaar', 'Death Certificate (if head is deceased)'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'புதிய தலைவர் போட்டோ & ஆதார்', 'இறப்பு சான்றிதழ்'] },
+      { id: 'tnpds-remove', page: 'tnpds', icon: '➖', fee: '₹100', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'இறப்பு சான்றிதழ் / திருமண சான்று'] },
+      { id: 'tnpds-add', page: 'tnpds', icon: '➕', fee: '₹100', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Birth / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'] },
 
-      // TNPSC Page Only
-      { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'போட்டோ (JPG) & கையொப்பம்', '10th & 12th மார்க்ஷீட்', 'சாதி சான்றிதழ்'], docsEn: ['Aadhaar Card', 'Photo (JPG) & Signature', '10th & 12th Marksheet', 'Community Certificate'] },
-      { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', '10th மார்க்ஷீட் & சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்'], docsEn: ['OTR ID & Password', 'Aadhaar Card', '10th Marksheet & Community Cert', 'Photo & Signature'] },
-      { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate / Marksheet', 'Community Certificate & Photo'] },
-      { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate', 'Community Certificate & Photo'] },
-      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['OTR ஐடி / விண்ணப்ப எண் (Application No)'], docsEn: ['OTR ID / Application Number'] },
+      // TNPSC
+      { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', fee: '₹250', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'போட்டோ & கையொப்பம்', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'], docsEn: ['Aadhaar Card', 'Photo & Signature', '10th Marksheet', 'Community Certificate'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'] },
+      { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', fee: '₹200', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு (டைப் செய்யவும்)', 'ஆதார் அட்டை', '10th / 12th / Degree மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்'], docsEn: ['OTR ID & Password (Type)', 'Aadhaar Card', '10th / 12th / Degree Marksheet', 'Community Cert', 'Photo & Signature'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th / கல்விச் சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password (இருந்தால்)' },
+      { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', fee: '₹200', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate / Marksheet', 'Community Certificate & Photo'], uploadDocs: ['பாஸ்போர்ட் போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
+      { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', fee: '₹200', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate', 'Community Certificate & Photo'], uploadDocs: ['போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
+      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', fee: '₹30', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['விண்ணப்ப எண் & பிறந்த தேதி (டைப் செய்தால் போதும்)'], docsEn: ['Application Number & DOB'], uploadDocs: ['பழைய விண்ணப்ப நகல் (இருந்தால் மட்டும்)'], extraInput: 'Application Number & பிறந்த தேதி (DOB)' },
 
-      // TTD Page Only
-      { id: 'ttd-ekadasi', page: 'ttd', icon: '🌟', titleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி & ஸ்ரீவாரி சேவா', titleEn: 'Dec 2026 Vaikunta Ekadasi & Srivari Seva Slots', descTa: '28.10.2026 காலை 11 AM வைகுண்ட ஏகாதசி மற்றும் மதியம் 12 PM சாதாரண ஸ்ரீவாரி சேவா முன்பதிவு.', descEn: 'Released on 28.10.2026 at 11 AM & General Srivari Seva at 12 Noon.', timeTa: '28.10.2026', timeEn: '28.10.2026', docsTa: ['ஆதார் அட்டை (வயது: 18 முதல் 50 வயது வரை)', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Aadhaar Card (Age Limit: 18 to 50 years only)', 'Passport Size Photo'] },
-      { id: 'ttd-300', page: 'ttd', icon: '🛕', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'] },
-      { id: 'ttd-room', page: 'ttd', icon: '🏨', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை'], docsEn: ['Devotees Aadhaar Card'] },
-      { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள்.', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'] },
-      { id: 'ttd-srivani', page: 'ttd', icon: '🙏', titleTa: 'ஸ்ரீவாணி டிரஸ்ட் தரிசனம்', titleEn: 'SRIVANI Trust Darshan', descTa: 'ஸ்ரீவாணி டிரஸ்ட் நன்கொடை மூலம் பிரேக் தரிசன டிக்கெட் முன்பதிவு.', descEn: 'Break Darshan ticket booking through SRIVANI Trust donation.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Photo'] },
-      { id: 'ttd-senior', page: 'ttd', icon: '👴', titleTa: 'மூத்த குடிமக்கள் & மாற்றுத்திறனாளி தரிசனம்', titleEn: 'Senior Citizen & Differently-abled Darshan', descTa: 'மூத்த குடிமக்கள் மற்றும் மாற்றுத்திறனாளிகளுக்கான சிறப்பு தரிசன ஸ்லாட் முன்பதிவு.', descEn: 'Special darshan slot booking for senior citizens and differently-abled devotees.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['வயது சான்று (ஆதார்) / மாற்றுத்திறனாளி சான்று', 'போட்டோ ஐடி'], docsEn: ['Age Proof (Aadhaar) / Disability Certificate', 'Photo ID'] },
-      { id: 'ttd-donation', page: 'ttd', icon: '🎁', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை.', descEn: 'Online donations to TTD trusts.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் / பான் கார்டு'], docsEn: ['Aadhaar / PAN Card'] },
+      // TTD
+      { id: 'ttd-ekadasi', page: 'ttd', icon: '🌟', fee: '₹100 + Ticket', titleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி & ஸ்ரீவாரி சேவா', titleEn: 'Dec 2026 Vaikunta Ekadasi & Srivari Seva Slots', descTa: '28.10.2026 காலை 11 AM வைகுண்ட ஏகாதசி மற்றும் மதியம் 12 PM சாதாரண ஸ்ரீவாரி சேவா முன்பதிவு.', descEn: 'Released on 28.10.2026 at 11 AM & General Srivari Seva at 12 Noon.', timeTa: '28.10.2026', timeEn: '28.10.2026', docsTa: ['ஆதார் அட்டை (வயது: 18 முதல் 50 வயது வரை)', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Aadhaar Card (Age Limit: 18 to 50 years only)', 'Passport Size Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தேர்ந்தெடுக்கும் தரிசனத் தேதி (Preferred Date)' },
+      { id: 'ttd-300', page: 'ttd', icon: '🛕', fee: '₹100 + ₹300', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'], uploadDocs: ['பக்தர்கள் ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி & நபர்கள் எண்ணிக்கை' },
+      { id: 'ttd-room', page: 'ttd', icon: '🏨', fee: '₹100 + Room Rent', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'தரிசன டிக்கெட் நகல்'], docsEn: ['Devotees Aadhaar Card', 'Darshan Ticket Copy'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'தரிசன டிக்கெட் நகல்'], extraInput: 'தங்கும் தேதி (Check-in Date)' },
+      { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', fee: '₹100', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள்.', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'சேவை பெயர் & தேதி' },
+      { id: 'ttd-srivani', page: 'ttd', icon: '🙏', fee: '₹100', titleTa: 'ஸ்ரீவாணி டிரஸ்ட் தரிசனம்', titleEn: 'SRIVANI Trust Darshan', descTa: 'ஸ்ரீவாணி டிரஸ்ட் நன்கொடை மூலம் பிரேக் தரிசன டிக்கெட் முன்பதிவு.', descEn: 'Break Darshan ticket booking through SRIVANI Trust donation.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'போட்டோ (Photo)'] },
+      { id: 'ttd-senior', page: 'ttd', icon: '👴', fee: '₹100', titleTa: 'மூத்த குடிமக்கள் & மாற்றுத்திறனாளி தரிசனம்', titleEn: 'Senior Citizen & Differently-abled Darshan', descTa: 'மூத்த குடிமக்கள் மற்றும் மாற்றுத்திறனாளிகளுக்கான சிறப்பு தரிசன ஸ்லாட் முன்பதிவு.', descEn: 'Special darshan slot booking for senior citizens and differently-abled devotees.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['வயது சான்று (ஆதார்) / மாற்றுத்திறனாளி சான்று', 'போட்டோ'], docsEn: ['Age Proof (Aadhaar) / Disability Certificate', 'Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'மாற்றுத்திறனாளி சான்று (இருந்தால்)', 'போட்டோ (Photo)'] },
+      { id: 'ttd-donation', page: 'ttd', icon: '🎁', fee: '₹50', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை.', descEn: 'Online donations to TTD trusts.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் / பான் கார்டு'], docsEn: ['Aadhaar / PAN Card'], uploadDocs: ['ஆதார் / பான் கார்டு நகல்'] },
 
-      // PAN & ID Cards Page Only
-      { id: 'pan-new', page: 'idcards', icon: '💳', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'கையொப்பம் (வெள்ளை பேப்பரில்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Signature on White Paper'] },
-      { id: 'pan-correction', page: 'idcards', icon: '✏️', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Photo & Signature'] },
-      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'] },
-      { id: 'voter-id', page: 'idcards', icon: '🗳️', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'] },
+      // PAN & ID Cards
+      { id: 'pan-new', page: 'idcards', icon: '💳', fee: '₹250', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'கையொப்பம் (வெள்ளை பேப்பரில்)', 'தந்தை பெயர் (டைப் செய்யவும்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Signature on White Paper', 'Father Name'], uploadDocs: ['பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'கையொப்பம் (Signature on White Paper)'], extraInput: 'தந்தையின் பெயர் (Father Name)' },
+      { id: 'pan-correction', page: 'idcards', icon: '✏️', fee: '₹250', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Photo & Signature'], uploadDocs: ['பழைய பான் கார்டு நகல் (Old PAN)', 'ஆதார் அட்டை (Aadhaar)', 'போட்டோ (Photo)', 'கையொப்பம் (Signature)'] },
+      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', fee: '₹100', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'], uploadDocs: ['ஆதார் அட்டை நகல்', 'முகவரிச் சான்று (Ration Card / Voter ID)'] },
+      { id: 'voter-id', page: 'idcards', icon: '🗳️', fee: '₹100', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வயது சான்று (TC / Birth Cert)'] },
 
-      // Tickets Page Only
-      { id: 'bus-ticket', page: 'tickets', icon: '🚌', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் ஆதார் / ஐடி (தேவைப்பட்டால்)'], docsEn: ['Passenger ID Proof (if needed)'] },
-      { id: 'train-ticket', page: 'tickets', icon: '🚆', titleTa: 'ரயில் & தட்கல் டிக்கெட் (IRCTC)', titleEn: 'Train & Tatkal Ticket', descTa: 'இந்தியா முழுவதும் ரயில் டிக்கெட் மற்றும் அவசர தட்கல் (Tatkal) முன்பதிவு.', descEn: 'IRCTC Reserved Train Tickets & Urgent Tatkal Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் ஆதார் / விவரம்'], docsEn: ['Passenger Aadhaar / Details'] },
-      { id: 'flight-ticket', page: 'tickets', icon: '✈️', titleTa: 'விமான டிக்கெட் புக்கிங் (Flight)', titleEn: 'Flight Ticket Booking', descTa: 'உள்நாட்டு மற்றும் வெளிநாட்டு விமான டிக்கெட்டுகள் குறைந்த கட்டணத்தில்.', descEn: 'Lowest fare Domestic & International Flight Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை (உள்நாடு) / பாஸ்போர்ட் & விசா (வெளிநாடு)'], docsEn: ['Aadhaar (Domestic) / Passport & Visa (International)'] },
+      // Tickets
+      { id: 'bus-ticket', page: 'tickets', icon: '🚌', fee: 'Ticket + ₹50', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['புறப்படும் ஊர், செல்லும் ஊர் & பயணத் தேதி (டைப் செய்தால் போதும்)'], docsEn: ['From, To & Travel Date'], uploadDocs: ['பயணிகள் ஆதார் நகல் (விருப்பப்பட்டால்)'], extraInput: 'புறப்படும் ஊர் - செல்லும் ஊர் & பயணத் தேதி' },
+      { id: 'train-ticket', page: 'tickets', icon: '🚆', fee: 'Ticket + Service', titleTa: 'ரயில் & தட்கல் டிக்கெட் (IRCTC)', titleEn: 'Train & Tatkal Ticket', descTa: 'இந்தியா முழுவதும் ரயில் டிக்கெட் மற்றும் அவசர தட்கல் (Tatkal) முன்பதிவு.', descEn: 'IRCTC Reserved Train Tickets & Urgent Tatkal Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['புறப்படும் & செல்லும் ரயில் நிலையம், தேதி, வயது'], docsEn: ['From & To Station, Date, Age'], uploadDocs: ['பயணிகள் ஆதார் நகல் (விருப்பப்பட்டால்)'], extraInput: 'புறப்படும் ஊர் - செல்லும் ஊர், தேதி & வயது' },
+      { id: 'flight-ticket', page: 'tickets', icon: '✈️', fee: 'Ticket + Service', titleTa: 'விமான டிக்கெட் புக்கிங் (Flight)', titleEn: 'Flight Ticket Booking', descTa: 'உள்நாட்டு மற்றும் வெளிநாட்டு விமான டிக்கெட்டுகள் குறைந்த கட்டணத்தில்.', descEn: 'Lowest fare Domestic & International Flight Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை (உள்நாடு) / பாஸ்போர்ட் & விசா (வெளிநாடு)'], docsEn: ['Aadhaar (Domestic) / Passport & Visa (International)'], uploadDocs: ['ஆதார் அட்டை / பாஸ்போர்ட் நகல்'], extraInput: 'புறப்படும் இடம் - செல்லும் இடம் & பயணத் தேதி' },
 
-      // MSME & Passport Page Only
-      { id: 'msme-udyam', page: 'msme', icon: '🏭', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக் முதல் பக்கம்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook Front Page'] },
-      { id: 'fssai-license', page: 'msme', icon: '🍽️', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof'] },
-      { id: 'passport-seva', page: 'msme', icon: '🛂', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'] },
-      { id: 'tneb-service', page: 'msme', icon: '⚡', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது & ஆதார்'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt & Aadhaar'] },
+      // MSME & Passport
+      { id: 'msme-udyam', page: 'msme', icon: '🏭', fee: '₹300', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக் முதல் பக்கம்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook Front Page'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பான் கார்டு (PAN Card)', 'வங்கி பாஸ்புக் (Bank Passbook)'], extraInput: 'கடை / நிறுவனத்தின் பெயர் & முகவரி' },
+      { id: 'fssai-license', page: 'msme', icon: '🍽️', fee: '₹500', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof'], uploadDocs: ['உரிமையாளர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], extraInput: 'கடையின் பெயர் (Shop Name)' },
+      { id: 'passport-seva', page: 'msme', icon: '🛂', fee: '₹1,700', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பான் கார்டு (PAN Card)', '10th மார்க்ஷீட் / TC', 'ரேஷன் கார்டு'] },
+      { id: 'tneb-service', page: 'msme', icon: '⚡', fee: '₹100', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது & ஆதார்'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt & Aadhaar'], uploadDocs: ['EB ரசீது / அட்டை', 'ஆதார் அட்டை', 'பத்திரம் & வீட்டு வரி ரசீது (பெயர் மாற்றத்திற்கு)'], extraInput: 'மின் இணைப்பு எண் (EB Consumer Number)' },
 
-      // Patta / Chitta Page Only
-      { id: 'patta-chitta', page: 'patta', icon: '🗺️', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], docsEn: ['Old Patta / Deed Copy (if any)'] },
-      { id: 'patta-transfer', page: 'patta', icon: '📝', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'] },
-      { id: 'ec-cert', page: 'patta', icon: '📑', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'] },
+      // Patta / Chitta
+      { id: 'patta-chitta', page: 'patta', icon: '🗺️', fee: '₹50', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம், கிராமம் & சர்வே எண் / பட்டா எண்'], docsEn: ['District, Taluk, Village & Survey/Patta No'], uploadDocs: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], extraInput: 'கிராமத்தின் பெயர் & பட்டா எண் / சர்வே எண்' },
+      { id: 'patta-transfer', page: 'patta', icon: '📝', fee: '₹400', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'], uploadDocs: ['கிரையப் பத்திரம் (Sale Deed PDF)', 'பழைய பட்டா & EC', 'ஆதார் அட்டை & போட்டோ'] },
+      { id: 'ec-cert', page: 'patta', icon: '📑', fee: '₹100', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'], uploadDocs: ['பழைய பத்திர நகல் (இருந்தால்)'], extraInput: 'சார்பதிவாளர் அலுவலகம், கிராமம் & சர்வே/பத்திர எண்' },
 
-      // Printing Page Only
-      { id: 'wedding-cards', page: 'printing', icon: '💌', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['அச்சடிக்க வேண்டிய விவரங்கள் (Matter / Text)', 'புகைப்படங்கள் / லோகோ (தேவைப்பட்டால்)'], docsEn: ['Event Matter / Text File', 'Photos / Logo (if required)'] },
-      { id: 'xerox-printout', page: 'printing', icon: '🖨️', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய PDF / Image ஃபைல்'], docsEn: ['PDF / Image File to Print'] }
+      // Printing
+      { id: 'wedding-cards', page: 'printing', icon: '💌', fee: 'மாடலுக்கு ஏற்ப', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['அச்சடிக்க வேண்டிய விவரங்கள் (Matter / Text)', 'புகைப்படங்கள் / லோகோ (தேவைப்பட்டால்)'], docsEn: ['Event Matter / Text File', 'Photos / Logo (if required)'], uploadDocs: ['பத்திரிகை விவரம் (Matter Photo / File)', 'போட்டோ (தேவைப்பட்டால்)'], extraInput: 'தேவைப்படும் எண்ணிக்கை & கார்டு மாடல்' },
+      { id: 'xerox-printout', page: 'printing', icon: '🖨️', fee: 'பக்கத்திற்கு ஏற்ப', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய PDF / Image ஃபைல்'], docsEn: ['PDF / Image File to Print'], uploadDocs: ['பிரிண்ட் எடுக்க வேண்டிய ஃபைல் 1', 'பிரிண்ட் எடுக்க வேண்டிய ஃபைல் 2 (இருந்தால்)'] }
     ];
 
     // Render Live Notifications Box on Home Page
@@ -921,7 +949,7 @@
       modal.classList.remove('flex');
     }
 
-    // Create Service Card HTML
+    // Create Service Card HTML (Includes Fee Badge)
     function createServiceCardHTML(s) {
       const t = uiTranslations[currentLang];
       const mainTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
@@ -929,6 +957,7 @@
       const desc = currentLang === 'ta' ? s.descTa : s.descEn;
       const time = currentLang === 'ta' ? s.timeTa : s.timeEn;
       const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+      const feeText = s.fee || '₹60';
 
       return `
         <div class="card-hover bg-white rounded-2xl border border-slate-200/90 p-5 flex flex-col justify-between shadow-sm">
@@ -937,9 +966,14 @@
               <div class="w-12 h-12 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-2xl shrink-0">
                 ${s.icon}
               </div>
-              <span class="text-[11px] font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
-                ⏱️ ${time}
-              </span>
+              <div class="flex flex-col items-end gap-1">
+                <span class="text-xs font-black text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full">
+                  💳 கட்டணம்: ${feeText}
+                </span>
+                <span class="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full">
+                  ⏱️ ${time}
+                </span>
+              </div>
             </div>
             <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">${mainTitle}</h3>
             <p class="text-xs font-semibold text-brand-600 mt-0.5">${subTitle}</p>
@@ -1017,7 +1051,7 @@
       const modalSelect = document.getElementById('m-service-select');
       const optionsHtml = servicesData.map(s => {
         const title = currentLang === 'ta' ? s.titleTa : s.titleEn;
-        return `<option value="${s.id}">${title}</option>`;
+        return `<option value="${s.id}">${title} — (கட்டணம்: ${s.fee || '₹60'})</option>`;
       }).join('');
       if (select) select.innerHTML = optionsHtml;
       if (modalSelect) modalSelect.innerHTML = optionsHtml;
@@ -1084,6 +1118,7 @@
       document.getElementById('modal-title-en').textContent = subTitle;
       document.getElementById('modal-desc').textContent = desc;
       document.getElementById('modal-time').textContent = time;
+      document.getElementById('modal-fee').textContent = s.fee || '₹60';
 
       document.getElementById('modal-doc-list').innerHTML = docs.map(doc => `
         <li class="flex items-start gap-2.5 bg-slate-50 p-2.5 rounded-xl border border-slate-200/60">
@@ -1113,7 +1148,7 @@
       if (!activeModalService) return;
       const title = currentLang === 'ta' ? activeModalService.titleTa : activeModalService.titleEn;
       const docs = currentLang === 'ta' ? activeModalService.docsTa : activeModalService.docsEn;
-      const text = `*${title}*\n${docs.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n— VPS Computers & Printers, Vadakaraiattur (Cell: 98439 91974)`;
+      const text = `*${title} (கட்டணம்: ${activeModalService.fee || '₹60'})*\n${docs.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\n— VPS Computers & Printers, Vadakaraiattur (Cell: 98439 91974)`;
       navigator.clipboard.writeText(text);
       const btn = document.getElementById('copy-doc-btn');
       btn.textContent = '✅ Copied!';
@@ -1121,7 +1156,7 @@
     }
 
     // =========================================================================
-    // MODAL 2: SMART APPLY LOGIC (OPTION 1: WEB UPLOAD + OPTION 3: WHATSAPP)
+    // MODAL 2: SMART APPLY LOGIC (WEB UPLOAD + QR + WHATSAPP)
     // =========================================================================
     let currentApplyServiceObj = null;
 
@@ -1150,19 +1185,37 @@
 
       const title = currentLang === 'ta' ? s.titleTa : s.titleEn;
       const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+      const uploadFiles = s.uploadDocs || [];
+      const feeText = s.fee || '₹60';
 
       document.getElementById('apply-modal-service').textContent = title;
+      document.getElementById('apply-modal-fee-badge').textContent = `💳 கட்டணம்: ${feeText}`;
+      document.getElementById('m-pay-fee-amount').textContent = feeText;
 
-      // Render Checklist (Option 3)
+      // Extra text input (if needed for typed info like Father Name / OTR ID / Date)
+      const extraWrap = document.getElementById('m-extra-text-wrap');
+      const extraLbl = document.getElementById('m-extra-text-lbl');
+      const extraInput = document.getElementById('m-extra-text');
+      if (s.extraInput) {
+        extraLbl.textContent = `✍️ ${s.extraInput} (இங்கே டைப் செய்யவும்):`;
+        extraInput.placeholder = s.extraInput;
+        extraInput.value = '';
+        extraWrap.classList.remove('hidden');
+      } else {
+        extraWrap.classList.add('hidden');
+        extraInput.value = '';
+      }
+
+      // Render Checklist
       const checklistEl = document.getElementById('m-checklist-items');
       checklistEl.innerHTML = docs.map(d => `<li>${d}</li>`).join('');
 
-      // Render Dynamic File Inputs (Option 1)
+      // Render Dynamic File Inputs ONLY for actual physical documents (Never for Mobile Number)
       const filesContainer = document.getElementById('m-dynamic-files');
-      filesContainer.innerHTML = docs.map((doc, idx) => `
+      filesContainer.innerHTML = uploadFiles.map((doc, idx) => `
         <div class="bg-white p-2.5 rounded-xl border border-dashed border-slate-300">
           <label class="block text-xs font-bold text-slate-800 mb-1">${idx + 1}. ${doc}</label>
-          <input type="file" class="vps-modal-file w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" data-docname="${doc}" accept="image/*,.pdf" />
+          <input type="file" class="vps-modal-file w-full text-xs text-slate-600 file:mr-2 file:py-1.5 file:px-2.5 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" data-docname="${doc}" accept="image/*,.pdf" />
         </div>
       `).join('');
     }
@@ -1196,10 +1249,11 @@
     function sendGuidedWhatsApp() {
       const name = document.getElementById('m-name').value.trim();
       const phone = document.getElementById('m-phone').value.trim();
+      const extraText = document.getElementById('m-extra-text').value.trim();
       const notes = document.getElementById('m-notes-wa').value.trim();
 
       if (!name || !phone) {
-        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை உள்ளிடவும்!');
+        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை டைப் செய்யவும்!');
         return;
       }
 
@@ -1208,7 +1262,7 @@
       const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
       const docListText = docs.map((d, i) => `${i + 1}. ${d}`).join('\n');
 
-      const msg = `*வணக்கம் VPS COMPUTERS AND PRINTERS,*\n\nஎனக்கு கீழ்க்கண்ட சேவைக்கு விண்ணப்பிக்க வேண்டும்:\n\n👤 *பெயர்:* ${name}\n📞 *மொபைல்:* ${phone}\n📄 *சேவை:* ${serviceTitle}${notes ? `\n📝 *குறிப்பு:* ${notes}` : ''}\n\n*தேவையான ஆவணங்கள்:*\n${docListText}\n\n(இதோ எனது ஆவணங்களின் புகைப்படங்களை கீழே அனுப்புகிறேன்)`;
+      const msg = `*வணக்கம் VPS COMPUTERS AND PRINTERS,*\n\nஎனக்கு கீழ்க்கண்ட சேவைக்கு விண்ணப்பிக்க வேண்டும்:\n\n👤 *பெயர்:* ${name}\n📞 *மொபைல்:* ${phone}\n📄 *சேவை:* ${serviceTitle}\n💳 *கட்டணம்:* ${s.fee || '₹60'}${extraText ? `\n✍️ *விவரம்:* ${extraText}` : ''}${notes ? `\n📝 *குறிப்பு:* ${notes}` : ''}\n\n*தேவையான ஆவணங்கள்:*\n${docListText}\n\n(இதோ எனது ஆவணங்களின் புகைப்படங்களை கீழே அனுப்புகிறேன்)`;
 
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
@@ -1217,6 +1271,7 @@
     async function submitToGoogleDrive() {
       const name = document.getElementById('m-name').value.trim();
       const phone = document.getElementById('m-phone').value.trim();
+      const extraText = document.getElementById('m-extra-text').value.trim();
       const utr = document.getElementById('m-utr').value.trim();
       const notes = document.getElementById('m-notes-web').value.trim();
       const fileInputs = document.querySelectorAll('.vps-modal-file');
@@ -1224,12 +1279,12 @@
       const submitBtn = document.getElementById('btn-submit-drive');
 
       if (!name || !phone) {
-        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை உள்ளிடவும்!');
+        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை டைப் செய்யவும்!');
         return;
       }
 
       const s = currentApplyServiceObj || servicesData[0];
-      const serviceTitle = s.titleTa;
+      const serviceTitle = `${s.titleTa} (${s.fee || '₹60'})`;
 
       let filesArray = [];
       for (let input of fileInputs) {
@@ -1244,14 +1299,18 @@
         }
       }
 
-      if (filesArray.length === 0) {
-        alert('தயவுசெய்து குறைந்தபட்சம் ஒரு ஆவணத்தையாவது தேர்ந்தெடுக்கவும் (அல்லது அருகில் உள்ள WhatsApp முறையைப் பயன்படுத்தவும்).');
+      if (filesArray.length === 0 && !extraText) {
+        alert('தயவுசெய்து குறைந்தபட்சம் ஒரு ஆவணத்தையாவது Upload செய்யவும் (அல்லது அருகில் உள்ள WhatsApp முறையைப் பயன்படுத்தவும்).');
         return;
       }
 
       submitBtn.disabled = true;
       submitBtn.textContent = '⏳ ஆவணங்கள் பதிவேற்றப்படுகின்றன... காத்திருக்கவும்';
       statusEl.classList.add('hidden');
+
+      let combinedUtrAndNotes = `UTR: ${utr || 'Not Paid'}`;
+      if (extraText) combinedUtrAndNotes += ` | Details: ${extraText}`;
+      if (notes) combinedUtrAndNotes += ` | Note: ${notes}`;
 
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -1260,7 +1319,7 @@
             name: name,
             phone: phone,
             service: serviceTitle,
-            utr: (utr ? utr : 'Not Provided') + (notes ? ' | Note: ' + notes : ''),
+            utr: combinedUtrAndNotes,
             files: filesArray
           })
         });
