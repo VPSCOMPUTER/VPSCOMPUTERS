@@ -113,7 +113,7 @@
               VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்
             </h1>
             <p id="ui-shop-subtitle" class="text-[11px] sm:text-xs font-bold text-brand-600 mt-1">
-              இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்
+              இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரை ஆத்தூர்
             </p>
           </div>
         </div>
@@ -123,6 +123,9 @@
           <a href="tel:+919843991974" class="hidden md:flex bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 items-center gap-1.5 transition">
             <span>📞</span> <span>98439 91974</span>
           </a>
+          <button onclick="openApplyModal('income-cert')" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition">
+            <span>📤</span> <span class="hidden sm:inline">ஆன்லைன் விண்ணப்பம்</span><span class="sm:hidden">Apply</span>
+          </button>
           <a href="https://wa.me/919843991974?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%20VPS%20Computers%2C%20%E0%AE%8E%E0%AE%A9%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81%20%E0%AE%92%E0%AE%B0%E0%AF%81%20%E0%AE%9A%E0%AF%87%E0%AE%B5%E0%AF%88%20%E0%AE%A4%E0%AF%87%E0%AE%B5%E0%AF%88%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%9F%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AE%A4%E0%AF%81." target="_blank" rel="noopener noreferrer"
              class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
@@ -132,7 +135,7 @@
       </div>
     </div>
 
-    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS (Fit to screen, no scrollbar) -->
+    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS -->
     <div class="tab-bar-gradient border-t border-b border-indigo-900/80 shadow-inner">
       <div class="max-w-7xl mx-auto px-2 sm:px-6 py-2.5">
         <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold">
@@ -147,7 +150,7 @@
           <button onclick="navigateTo('msme')" data-pill="msme" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏢 MSME & பாஸ்போர்ட்</button>
           <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗺️ பட்டா / சிட்டா & EC</button>
           <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
-          <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு</button>
+          <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு & Upload</button>
         </div>
       </div>
     </div>
@@ -157,11 +160,10 @@
   <main class="flex-grow">
 
     <!-- ==========================================
-         PAGE: HOME PAGE (Only Hero, Live Notifications & Shop Highlights - No Service Directory)
+         PAGE: HOME PAGE
     =========================================== -->
     <div id="page-home" class="page-view page-fade">
       <section class="hero-gradient text-white py-8 sm:py-12 relative overflow-hidden">
-        <!-- Decorative Glow -->
         <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -179,7 +181,7 @@
                   அனைத்து ஆன்லைன் சேவைகளும் <span class="text-amber-400 underline decoration-amber-400/40">ஒரே இடத்தில்!</span>
                 </h2>
                 <p id="home-hero-desc" class="text-slate-200 text-xs sm:text-sm leading-relaxed">
-                  உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க, மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும்.
+                  உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும். வீட்டில் இருந்தபடியே ஆவணங்களை Upload செய்தோ அல்லது WhatsApp மூலமாகவோ விண்ணப்பிக்கலாம்!
                 </p>
               </div>
 
@@ -192,8 +194,8 @@
                   <span id="home-box-time-lbl" class="text-slate-300 font-semibold">🕘 வேலை நேரம்:</span>
                   <span id="home-box-time-val" class="font-extrabold text-emerald-300">காலை 9:00 AM – மாலை 7:00 PM</span>
                 </div>
-                <button onclick="openApplyModal('General Inquiry / பொது விசாரணை')" id="home-box-apply-btn" class="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-extrabold py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-sm mt-2">
-                  <span>💬 வாட்ஸ்அப் மூலம் தொடர்பு கொள்ள</span>
+                <button onclick="openApplyModal('income-cert')" id="home-box-apply-btn" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-sm mt-2">
+                  <span>📤 ஆவணங்களை Upload செய்து விண்ணப்பிக்க</span>
                 </button>
               </div>
             </div>
@@ -238,8 +240,8 @@
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
             <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-2xl shrink-0">📍</div>
             <div>
-              <h4 id="feat-3-title" class="font-extrabold text-slate-900 text-sm sm:text-base">வடகரையாத்தூர், நாமக்கல்</h4>
-              <p id="feat-3-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213. செல்: 98439 91974.</p>
+              <h4 id="feat-3-title" class="font-extrabold text-slate-900 text-sm sm:text-base">வடகரை ஆத்தூர், நாமக்கல்</h4>
+              <p id="feat-3-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213. செல்: 98439 91974.</p>
             </div>
           </div>
         </div>
@@ -247,7 +249,7 @@
     </div>
 
     <!-- ==========================================
-         DYNAMIC CATEGORY VIEW (Shows ONLY when a Title Tab is clicked)
+         DYNAMIC CATEGORY VIEW
     =========================================== -->
     <div id="page-category" class="page-view page-fade hidden">
       <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800 shadow">
@@ -264,7 +266,7 @@
       </section>
 
       <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6">
-        <!-- Wedding Invitation Picture Gallery (Shown ONLY inside Printing Tab) -->
+        <!-- Wedding Invitation Picture Gallery -->
         <div id="wedding-gallery-section" class="hidden mb-8 bg-white rounded-3xl border border-rose-200 p-5 sm:p-6 shadow-md">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-100">
             <div>
@@ -285,15 +287,15 @@
     </div>
 
     <!-- ==========================================
-         PAGE: CONTACT PAGE (No File Upload)
+         PAGE: CONTACT & SMART PORTAL PAGE
     =========================================== -->
     <div id="page-contact" class="page-view page-fade hidden">
       <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-wrap justify-between items-center gap-4">
           <div>
-            <span id="contact-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">தொடர்புக்கு & முகவரி</span>
-            <h2 id="contact-title" class="text-xl sm:text-3xl font-extrabold mt-1">தொடர்புக்கு & ஆன்லைன் விண்ணப்பம்</h2>
-            <p id="contact-subtitle" class="text-slate-300 text-xs sm:text-sm mt-1">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213.</p>
+            <span id="contact-badge" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">தொடர்புக்கு & ஆன்லைன் விண்ணப்பம்</span>
+            <h2 id="contact-title" class="text-xl sm:text-3xl font-extrabold mt-1">தொடர்புக்கு & ஆவணங்கள் Upload மையம்</h2>
+            <p id="contact-subtitle" class="text-slate-300 text-xs sm:text-sm mt-1">3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213.</p>
           </div>
           <button onclick="navigateTo('home')" id="contact-back-btn" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-xl border border-white/20 transition">
             🏠 முகப்புக்குத் திரும்ப
@@ -315,7 +317,7 @@
                 <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center shrink-0">📍</div>
                 <div>
                   <p id="contact-addr-lbl" class="font-bold text-slate-900">அலுவலக முகவரி:</p>
-                  <p id="contact-addr-val" class="text-slate-600 mt-0.5 leading-relaxed">3/131, இந்திரா நகர், வடகரையாத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213.<br><span class="text-xs text-slate-500">(3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213)</span></p>
+                  <p id="contact-addr-val" class="text-slate-600 mt-0.5 leading-relaxed">3/131, இந்திரா நகர், வடகரை ஆத்தூர் அஞ்சல், பரமத்திவேலூர் வட்டம், நாமக்கல் - 637213.<br><span class="text-xs text-slate-500">(3/131, Indra Nagar, Vadakaraiattur Po, Paramathivelur Tk, Namakkal - 637213)</span></p>
                 </div>
               </div>
 
@@ -338,35 +340,20 @@
           </div>
 
           <div class="lg:col-span-7 bg-white rounded-3xl p-6 border border-slate-200 shadow-lg">
-            <h3 id="form-title" class="text-lg sm:text-xl font-extrabold text-slate-900 mb-1">ஆன்லைனில் விண்ணப்பிக்க (WhatsApp Apply)</h3>
-            <p id="form-subtitle" class="text-slate-500 text-xs mb-5">கீழே உள்ள விவரங்களைப் பூர்த்தி செய்தால் நேரடியாக எங்கள் வாட்ஸ்அப் எண்ணிற்கு (+91 98439 91974) தகவல் வந்துவிடும்.</p>
+            <span class="bg-blue-50 text-brand-600 text-[11px] font-extrabold px-3 py-1 rounded-full">📤 SMART ONLINE APPLICATION PORTAL</span>
+            <h3 id="form-title" class="text-lg sm:text-xl font-extrabold text-slate-900 mt-2 mb-1">ஆன்லைனில் விண்ணப்பிக்க (Website Upload / WhatsApp)</h3>
+            <p id="form-subtitle" class="text-slate-500 text-xs mb-5">கீழே உங்களுக்குத் தேவையான சேவையைத் தேர்ந்தெடுத்து, வெப்சைட்டிலேயே ஆவணங்களை Upload செய்யலாம் அல்லது நேரடியாக WhatsApp-ல் அனுப்பலாம்.</p>
 
-            <form onsubmit="submitQuickForm(event)" class="space-y-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label id="form-name-lbl" class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் *</label>
-                  <input type="text" id="q-name" required placeholder="உதா: முருகன்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
-                </div>
-                <div>
-                  <label id="form-phone-lbl" class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் *</label>
-                  <input type="tel" id="q-phone" required placeholder="உதா: 98439 91974" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
-                </div>
-              </div>
-
+            <div class="space-y-4">
               <div>
-                <label id="form-service-lbl" class="block text-xs font-bold text-slate-700 mb-1">தேவையான சேவை *</label>
-                <select id="q-service" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm bg-white focus:border-brand-600 focus:outline-none"></select>
+                <label id="form-service-lbl" class="block text-xs font-bold text-slate-700 mb-1.5">தேவையான சேவையைத் தேர்ந்தெடுக்கவும் *</label>
+                <select id="q-service" onchange="openApplyModal(this.value)" class="w-full px-3.5 py-3 rounded-xl border-2 border-brand-200 text-sm font-bold text-slate-800 bg-brand-50/40 focus:border-brand-600 focus:outline-none"></select>
               </div>
 
-              <div>
-                <label id="form-notes-lbl" class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் விவரங்கள்</label>
-                <textarea id="q-notes" rows="3" placeholder="உங்கள் தேவை அல்லது விவரங்களைக் குறிப்பிடவும்..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none"></textarea>
-              </div>
-
-              <button type="submit" id="form-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm">
-                💬 வாட்ஸ்அப் மூலம் விண்ணப்பத்தை அனுப்பு (98439 91974)
+              <button type="button" onclick="openApplyModal(document.getElementById('q-service').value)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+                <span>📤 தேவையான ஆவணங்களைப் பார்த்து Upload செய்ய / WhatsApp அனுப்ப க்ளிக் செய்யவும்</span>
               </button>
-            </form>
+            </div>
           </div>
         </div>
       </section>
@@ -429,40 +416,105 @@
           📋 நகலெடு (Copy)
         </button>
         <button id="modal-apply-btn" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow-md transition">
-          💬 இப்போதே விண்ணப்பிக்க
+          📤 இப்போதே விண்ணப்பிக்க (Upload / WhatsApp)
         </button>
       </div>
     </div>
   </div>
 
-  <!-- MODAL 2: CLEAN WHATSAPP APPLY POPUP (No Document Upload) -->
-  <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/75 backdrop-blur-sm p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-100">
-      <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+  <!-- =========================================================================
+       MODAL 2: SMART APPLY MODAL (OPTION 1: WEB UPLOAD + OPTION 3: WHATSAPP)
+  ========================================================================== -->
+  <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[92vh] flex flex-col">
+      <!-- Modal Header -->
+      <div class="flex justify-between items-start border-b border-slate-100 pb-3 mb-3 shrink-0">
         <div>
-          <span id="apply-modal-badge" class="text-[11px] font-extrabold text-emerald-600 uppercase bg-emerald-50 px-2.5 py-0.5 rounded-full">💬 வாட்ஸ்அப் விண்ணப்பம்</span>
+          <span id="apply-modal-badge" class="text-[10px] font-extrabold text-brand-600 uppercase bg-brand-50 px-2.5 py-0.5 rounded-full">📤 ஆன்லைன் விண்ணப்ப மையம்</span>
           <h3 id="apply-modal-service" class="text-base sm:text-lg font-extrabold text-slate-900 mt-1"></h3>
         </div>
         <button onclick="closeApplyModal()" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
       </div>
 
-      <form onsubmit="sendModalWhatsApp(event)" class="space-y-3.5">
+      <!-- Scrollable Body -->
+      <div class="overflow-y-auto pr-1 space-y-4 flex-1">
+        <!-- Service Selector inside Modal -->
         <div>
-          <label id="apply-modal-name-lbl" class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் *</label>
-          <input type="text" id="m-name" required placeholder="பெயரை உள்ளிடவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+          <label class="block text-xs font-bold text-slate-700 mb-1">தேவையான சேவை (Service) *</label>
+          <select id="m-service-select" onchange="handleModalServiceChange(this.value)" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold bg-slate-50 focus:border-brand-600 focus:outline-none"></select>
         </div>
-        <div>
-          <label id="apply-modal-phone-lbl" class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் *</label>
-          <input type="tel" id="m-phone" required placeholder="10 இலக்க மொபைல் எண்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+
+        <!-- Customer Name & Phone -->
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் (Name) *</label>
+            <input type="text" id="m-name" required placeholder="பெயரை உள்ளிடவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">மொபைல் எண் (WhatsApp No) *</label>
+            <input type="tel" id="m-phone" required maxlength="10" placeholder="10 இலக்க மொபைல் எண்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+          </div>
         </div>
-        <div>
-          <label id="apply-modal-notes-lbl" class="block text-xs font-bold text-slate-700 mb-1">குறிப்பு / தேவைப்படும் விவரம்</label>
-          <textarea id="m-notes" rows="2" placeholder="உங்கள் தேவை பற்றிய விவரம்..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none"></textarea>
+
+        <!-- Dynamic Required Documents Checklist Box (Option 3) -->
+        <div class="bg-emerald-50/90 border border-emerald-200 border-l-4 border-l-emerald-600 rounded-xl p-3.5">
+          <h4 class="text-xs font-extrabold text-emerald-900 mb-1.5 flex items-center gap-1.5">
+            <span>📌</span> <span>இந்த சேவைக்குத் தேவையான ஆவணங்கள் (Checklist):</span>
+          </h4>
+          <ul id="m-checklist-items" class="list-disc list-inside text-xs text-emerald-800 space-y-1 font-semibold"></ul>
         </div>
-        <button type="submit" id="apply-modal-submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow-lg transition text-sm">
-          💬 வாட்ஸ்அப்பில் அனுப்பு (+91 98439 91974)
-        </button>
-      </form>
+
+        <!-- Mode Switcher Tabs: Option 1 vs Option 3 -->
+        <div class="grid grid-cols-2 gap-2 pt-1">
+          <button type="button" id="tab-btn-web" onclick="switchApplyMode('web')" class="py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-brand-600 bg-brand-50 text-brand-700 transition flex items-center justify-center gap-1.5 shadow-sm">
+            <span>🌐</span> <span>1. இங்கே Upload செய்ய</span>
+          </button>
+          <button type="button" id="tab-btn-wa" onclick="switchApplyMode('wa')" class="py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-1.5">
+            <span>💬</span> <span>2. WhatsApp-ல் அனுப்ப</span>
+          </button>
+        </div>
+
+        <!-- SECTION A: WEBSITE DIRECT UPLOAD TO GOOGLE DRIVE & SHEET (Option 1) -->
+        <div id="section-web-upload" class="bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
+          <div class="flex items-center justify-between">
+            <h5 class="text-xs font-extrabold text-brand-800">📂 ஆவணங்களைத் தேர்ந்தெடுக்கவும் (Photo / PDF):</h5>
+            <span class="text-[10px] font-bold text-slate-500">தெளிவான படமாக இணைக்கவும்</span>
+          </div>
+
+          <div id="m-dynamic-files" class="space-y-2.5"></div>
+
+          <div class="grid sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">UPI / UTR எண் (பணம் செலுத்தியிருந்தால்)</label>
+              <input type="text" id="m-utr" placeholder="உதா: 412345678901" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-white" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் குறிப்பு (Notes)</label>
+              <input type="text" id="m-notes-web" placeholder="ஏதேனும் குறிப்பு இருப்பின்..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none bg-white" />
+            </div>
+          </div>
+
+          <button type="button" id="btn-submit-drive" onclick="submitToGoogleDrive()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-4 rounded-xl shadow-md transition text-xs sm:text-sm">
+            🚀 ஆவணங்களை Upload செய்து விண்ணப்பத்தை சமர்ப்பி
+          </button>
+
+          <div id="m-upload-status" class="hidden p-3 rounded-xl text-xs font-bold text-center"></div>
+        </div>
+
+        <!-- SECTION B: WHATSAPP GUIDED SEND (Option 3) -->
+        <div id="section-wa-send" class="hidden bg-emerald-50/60 p-4 rounded-2xl border border-emerald-200 space-y-3">
+          <p class="text-xs text-slate-700 leading-relaxed">
+            கீழே உள்ள பட்டனை அழுத்தினால், நீங்கள் தேர்ந்தெடுத்த சேவை மற்றும் அதன் ஆவணப் பட்டியலுடன் நேரடியாக எங்கள் <strong>VPS COMPUTERS (+91 98439 91974)</strong> வாட்ஸ்அப் எண்ணிற்குச் செல்லும். அங்கு உங்கள் ஆவணங்களின் போட்டோக்களை அனுப்பலாம்.
+          </p>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">கூடுதல் விவரம் (Notes)</label>
+            <textarea id="m-notes-wa" rows="2" placeholder="உங்கள் தேவை பற்றிய விவரம்..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs bg-white focus:border-emerald-600 focus:outline-none"></textarea>
+          </div>
+          <button type="button" onclick="sendGuidedWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 px-4 rounded-xl shadow-lg transition text-xs sm:text-sm flex items-center justify-center gap-2">
+            <span>📲 WhatsApp-ல் விவரம் & ஆவணங்களை அனுப்ப க்ளிக் செய்யவும்</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -488,11 +540,14 @@
   <!-- JAVASCRIPT -->
   <script>
     const SHOP_PHONE = '919843991974';
+    // 👇 உங்கள் Google Apps Script Web App URL-ஐ இங்கே பேஸ்ட் செய்யவும் 👇
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcj9iHfQ_dxH8IkX6V6ylkPsGktMuFT5P7cIDmqOgtuhuLCsVlP3VLhww9Xg5OUkQcZw/exec';
+
     let currentLang = 'ta';
     let currentPage = 'home';
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA (முகப்புப் பக்க அறிவிப்புகள் & லிங்குகள்)
+    // 1. LIVE NOTIFICATIONS DATA
     // =======================================================
     const notificationsData = [
       {
@@ -578,7 +633,7 @@
     ];
 
     // =======================================================
-    // 2. WEDDING INVITATION PICTURES DATA (GitHub-ல் card1.jpg, card2.jpg... அப்லோட் செய்யலாம்)
+    // 2. WEDDING INVITATION PICTURES DATA
     // =======================================================
     const weddingCardsData = [
       {
@@ -619,7 +674,6 @@
       }
     ];
 
-    // Smart Logo Fallback
     const logoCandidates = ['logo.png', 'Logo.png', 'LOGO.PNG', 'logo.jpg', 'Logo.jpg', 'logo.jpeg'];
     let headerLogoIdx = 0;
     let footerLogoIdx = 0;
@@ -648,7 +702,7 @@
       ta: {
         liveBadge: 'நேரலை',
         shopTitle: 'VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்',
-        shopSubtitle: 'இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரையாத்தூர்',
+        shopSubtitle: 'இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரை ஆத்தூர்',
         pillHome: '🏠 முகப்பு',
         pillEsevai: '📜 இ-சேவை சான்றிதழ்கள்',
         pillTnpds: '🍚 TNPDS ரேஷன் கார்டு',
@@ -660,14 +714,14 @@
         pillMsme: '🏢 MSME & பாஸ்போர்ட்',
         pillPatta: '🗺️ பட்டா / சிட்டா & EC',
         pillPrinting: '💌 திருமண அழைப்பிதழ் & பிரிண்டிங்',
-        pillContact: '📍 தொடர்புக்கு',
+        pillContact: '📍 தொடர்புக்கு & Upload',
         heroBadge: 'அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்',
         heroTitle: 'அனைத்து ஆன்லைன் சேவைகளும் <span class="text-amber-400 underline decoration-amber-400/40">ஒரே இடத்தில்!</span>',
-        heroDesc: 'உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க, மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும்.',
+        heroDesc: 'உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும். வீட்டில் இருந்தபடியே ஆவணங்களை Upload செய்தோ அல்லது WhatsApp மூலமாகவோ விண்ணப்பிக்கலாம்!',
         boxCallLbl: '📞 செல் / வாட்ஸ்அப்:',
         boxTimeLbl: '🕘 வேலை நேரம்:',
         boxTimeVal: 'காலை 9:00 AM – மாலை 7:00 PM',
-        boxApplyBtn: '💬 வாட்ஸ்அப் மூலம் தொடர்பு கொள்ள',
+        boxApplyBtn: '📤 ஆவணங்களை Upload செய்து விண்ணப்பிக்க',
         notifBoxTitle: '🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்குகள் (Live Notifications)',
         backHomeBtn: '🏠 முகப்புக்குத் திரும்ப',
         docsBtn: '📋 தேவையான ஆவணங்கள்',
@@ -690,14 +744,14 @@
         pillMsme: '🏢 MSME & Passport',
         pillPatta: '🗺️ Patta / Chitta & EC',
         pillPrinting: '💌 Wedding Cards & Printing',
-        pillContact: '📍 Contact Us',
+        pillContact: '📍 Contact & Upload',
         heroBadge: 'Authorized Govt e-Sevai, Ticket Booking & Offset Printing Center',
         heroTitle: 'All Online & Printing Services <span class="text-amber-400 underline decoration-amber-400/40">in One Place!</span>',
-        heroDesc: 'Click on any colored service tab above to view the respective services and required document checklists.',
+        heroDesc: 'Click on any colored service tab above to view the services, upload required documents directly, or send via WhatsApp.',
         boxCallLbl: '📞 Mobile / WhatsApp:',
         boxTimeLbl: '🕘 Working Hours:',
         boxTimeVal: '9:00 AM – 7:00 PM',
-        boxApplyBtn: '💬 Contact via WhatsApp',
+        boxApplyBtn: '📤 Upload Documents & Apply Online',
         notifBoxTitle: '🔔 Live Notifications & Online Links',
         backHomeBtn: '🏠 Back to Home',
         docsBtn: '📋 Required Documents',
@@ -710,7 +764,7 @@
     const pageConfig = {
       esevai: { titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)', titleEn: 'Government e-Sevai Certificates', subtitleTa: 'வருமானம், சாதி, OBC, இருப்பிடம், முதல் பட்டதாரி, வாரிசு, சிறு விவசாயி, திருமணமாகாதவர் மற்றும் ஆண் வாரிசு இல்லா சான்றிதழ்கள்.', subtitleEn: 'Income, Community, OBC, Nativity, First Graduate, Legal Heir, Small Farmer, Unmarried & No Male Issue Certificates.' },
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
-      tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பம்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம் & தேவையான ஆவணங்கள்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
+      tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
       ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி (28.10.2026 காலை 11 AM), ஸ்ரீவாரி சேவா (மதியம் 12 PM), ₹300 தரிசனம் & தங்கும் அறை முன்பதிவு.', subtitleEn: 'Dec 2026 Vaikunta Ekadasi (28.10.2026 at 11 AM), Srivari Seva (12 Noon), ₹300 Darshan & Accommodation bookings.' },
       sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் (Sabarimala Q Ticket Opening: November 29) ஆன்லைன் முன்பதிவு.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking (Opening: November 29).' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
@@ -722,68 +776,68 @@
 
     const servicesData = [
       // Sabarimala Q Page Only
-      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['1. ஆதார் அட்டை (Aadhaar Card)', '2. போட்டோ (Photo)', '3. மொபைல் எண் (Mobile Number)'], docsEn: ['1. Aadhaar Card', '2. Photo', '3. Mobile Number'] },
+      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (Mobile Number)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number'] },
 
       // e-Sevai Page Only
-      { id: 'income-cert', page: 'esevai', icon: '📄', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று', 'மொபைல் எண்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip', 'Mobile Number'] },
+      { id: 'income-cert', page: 'esevai', icon: '📄', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip'] },
       { id: 'community-cert', page: 'esevai', icon: '📜', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'] },
-      { id: 'obc-cert', page: 'esevai', icon: '🧾', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று / சம்பள சான்று', 'TC அல்லது பிறப்பு சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof / Salary Slip', 'TC or Birth Cert'] },
-      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்', 'அடங்கல் / FMB (தேவைப்பட்டால்)', 'மொபைல் எண்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy', 'Adangal / FMB (if required)', 'Mobile Number'] },
-      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'சுய உறுதிமொழி / VAO விசாரணை'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Self Declaration / VAO Enquiry'] },
-      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)', 'VAO விசாரணை அறிக்கை'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)', 'VAO Enquiry Report'] },
+      { id: 'obc-cert', page: 'esevai', icon: '🧾', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof'] },
+      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy'] },
+      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert'] },
+      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)'] },
       { id: 'nativity-cert', page: 'esevai', icon: '🏠', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill'] },
       { id: 'first-grad', page: 'esevai', icon: '🎓', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC'] },
       { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card'] },
       { id: 'oap-widow', page: 'esevai', icon: '👵', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof'] },
 
       // TNPDS Page Only
-      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் & உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது / வாடகை ஒப்பந்தம்', 'எரிவாயு இணைப்பு விவரம் (இருந்தால்)', 'திருமண சான்று / பிறப்பு சான்று', 'பழைய ஊரின் கார்டு நீக்கச் சான்று (இடம் மாறியவர்களுக்கு)', 'மொபைல் எண்'], docsEn: ['Aadhaar of Head & Members', 'Tax / EB Bill / Rental Agreement', 'Gas Connection Details (if any)', 'Marriage / Birth Certificate', 'Card Deletion Proof from old place (if migrated)', 'Mobile Number'] },
-      { id: 'tnpds-address', page: 'tnpds', icon: '📍', titleTa: 'முகவரி மாற்றம் (Address Change)', titleEn: 'Address Change', descTa: 'ரேஷன் கார்டில் முகவரியை மாற்றம் செய்ய ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to change the address on your Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரிக்கான சான்று (EB பில் / வீட்டு வரி / வாடகை ஒப்பந்தம்)', 'மொபைல் எண்'], docsEn: ['Ration Card Copy', 'Head of Family Aadhaar', 'New Address Proof (EB Bill / Tax / Rental Agreement)', 'Mobile Number'] },
-      { id: 'tnpds-head', page: 'tnpds', icon: '👤', titleTa: 'குடும்பத் தலைவர் மாற்றம் (Family Head Change)', titleEn: 'Family Head Change', descTa: 'ரேஷன் கார்டில் குடும்பத் தலைவரை மாற்றுவதற்கான விண்ணப்பம்.', descEn: 'Application to change the Head of Family on the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'தற்போதைய தலைவர் & புதிய தலைவர் ஆதார்', 'இறப்பு சான்றிதழ் (தலைவர் இறந்திருந்தால்)', 'மொபைல் எண்'], docsEn: ['Ration Card Copy', 'Aadhaar of Current & New Head', 'Death Certificate (if head is deceased)', 'Mobile Number'] },
-      { id: 'tnpds-remove', page: 'tnpds', icon: '➖', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் (இறந்திருந்தால்)', 'திருமணமாகி சென்றிருந்தால் திருமண சான்று / புதிய கார்டு விவரம்', 'மொபைல் எண்'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death Certificate (if deceased)', 'Marriage Cert / New Card Details (if married out)', 'Mobile Number'] },
-      { id: 'tnpds-add', page: 'tnpds', icon: '➕', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'குழந்தைக்கு: பிறப்புச் சான்றிதழ்', 'திருமணமானவருக்கு: திருமண சான்று & பழைய கார்டில் நீக்கச் சான்று', 'மொபைல் எண்'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Child: Birth Certificate', 'Married Member: Marriage Cert & Deletion Proof from old card', 'Mobile Number'] },
+      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் & உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது / வாடகை ஒப்பந்தம்', 'திருமண சான்று / பிறப்பு சான்று'], docsEn: ['Aadhaar of Head & Members', 'Tax / EB Bill / Rental Agreement', 'Marriage / Birth Certificate'] },
+      { id: 'tnpds-address', page: 'tnpds', icon: '📍', titleTa: 'முகவரி மாற்றம் (Address Change)', titleEn: 'Address Change', descTa: 'ரேஷன் கார்டில் முகவரியை மாற்றம் செய்ய ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to change the address on your Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரிக்கான சான்று (EB பில் / வீட்டு வரி)'], docsEn: ['Ration Card Copy', 'Head of Family Aadhaar', 'New Address Proof (EB Bill / Tax)'] },
+      { id: 'tnpds-head', page: 'tnpds', icon: '👤', titleTa: 'குடும்பத் தலைவர் மாற்றம் (Family Head Change)', titleEn: 'Family Head Change', descTa: 'ரேஷன் கார்டில் குடும்பத் தலைவரை மாற்றுவதற்கான விண்ணப்பம்.', descEn: 'Application to change the Head of Family on the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'தற்போதைய தலைவர் & புதிய தலைவர் ஆதார்', 'இறப்பு சான்றிதழ் (தலைவர் இறந்திருந்தால்)'], docsEn: ['Ration Card Copy', 'Aadhaar of Current & New Head', 'Death Certificate (if head is deceased)'] },
+      { id: 'tnpds-remove', page: 'tnpds', icon: '➖', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death / Marriage Certificate'] },
+      { id: 'tnpds-add', page: 'tnpds', icon: '➕', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Birth / Marriage Certificate'] },
 
       // TNPSC Page Only
-      { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'மொபைல் எண் & ஈமெயில் ஐடி', 'போட்டோ (JPG) & கையொப்பம்', '10th & 12th மார்க்ஷீட்', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'தமிழ் வழிக் கல்வி சான்று (இருந்தால்)'], docsEn: ['Aadhaar Card', 'Mobile Number & Email ID', 'Photo (JPG) & Signature', '10th & 12th Marksheet', 'Degree Certificate / Marksheet', 'Community Certificate', 'PSTM Certificate (if applicable)'] },
-      { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்', 'தேர்வுக் கட்டணம் செலுத்த வசதி', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['OTR ID & Password', 'Aadhaar Card', '10th Marksheet', 'Community Certificate', 'Photo & Signature', 'Exam Fee Payment Facility', 'Mobile Number & Email'] },
-      { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்', 'தமிழ் வழிக் கல்வி (PSTM) சான்று (இருந்தால்)', 'முன்னாள் படைவீரர் / மாற்றுத்திறனாளி சான்று (இருந்தால்)'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate / Marksheet', 'Community Certificate', 'Photo & Signature', 'PSTM Certificate (if applicable)', 'Ex-Servicemen / Differently-abled Cert (if applicable)'] },
-      { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்', 'தேவைப்படும் பிற சான்றுகள் (அறிவிப்பின்படி)'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate / Marksheet', 'Community Certificate', 'Photo & Signature', 'Other Certificates (as per Notification)'] },
-      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'விண்ணப்ப எண் (Application No)', 'பிறந்த தேதி', 'மொபைல் எண்'], docsEn: ['OTR ID & Password', 'Application Number', 'Date of Birth', 'Mobile Number'] },
+      { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'போட்டோ (JPG) & கையொப்பம்', '10th & 12th மார்க்ஷீட்', 'சாதி சான்றிதழ்'], docsEn: ['Aadhaar Card', 'Photo (JPG) & Signature', '10th & 12th Marksheet', 'Community Certificate'] },
+      { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', '10th மார்க்ஷீட் & சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்'], docsEn: ['OTR ID & Password', 'Aadhaar Card', '10th Marksheet & Community Cert', 'Photo & Signature'] },
+      { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate / Marksheet', 'Community Certificate & Photo'] },
+      { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'ஆதார் அட்டை', 'பட்டப்படிப்பு சான்றிதழ்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Aadhaar Card', 'Degree Certificate', 'Community Certificate & Photo'] },
+      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['OTR ஐடி / விண்ணப்ப எண் (Application No)'], docsEn: ['OTR ID / Application Number'] },
 
       // TTD Page Only
-      { id: 'ttd-ekadasi', page: 'ttd', icon: '🌟', titleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி & ஸ்ரீவாரி சேவா', titleEn: 'Dec 2026 Vaikunta Ekadasi & Srivari Seva Slots', descTa: '28.10.2026 காலை 11 AM வைகுண்ட ஏகாதசி (5 பிரிவுகள்: டிச 16–22, 17–23, 22–28, 23–29 & 24–30 | வயது: 18–50) மற்றும் மதியம் 12 PM சாதாரண ஸ்ரீவாரி சேவா, நவநீத & பரகாமணி சேவா முன்பதிவு.', descEn: 'Released on 28.10.2026 at 11 AM (5 spells of 7 days: Dec 16–22, 17–23, 22–28, 23–29 & 24–30 | Age: 18–50 yrs) & General Srivari Seva at 12 Noon.', timeTa: '28.10.2026 (11 AM & 12 PM)', timeEn: '28.10.2026 (11 AM & 12 PM)', docsTa: ['ஆதார் அட்டை (வயது: 18 முதல் 50 வயது வரை)', 'பாஸ்போர்ட் சைஸ் போட்டோ', 'தேர்ந்தெடுக்கும் 7 நாட்கள் பிரிவு (Spell Date)', 'மொபைல் எண்'], docsEn: ['Aadhaar Card (Age Limit: 18 to 50 years only)', 'Passport Size Photo', 'Preferred 7-Day Spell Dates', 'Active Mobile Number'] },
-      { id: 'ttd-300', page: 'ttd', icon: '🛕', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ', 'தரிசனத் தேதி & மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Photo', 'Darshan Date & Mobile'] },
-      { id: 'ttd-room', page: 'ttd', icon: '🏨', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'தங்கும் தேதி & அறை வகை', 'மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Stay Dates & Room Type', 'Mobile Number'] },
-      { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள் (லக்கி டிப் / நேரடி முன்பதிவு).', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets (Lucky Dip / Direct).', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'சேவை பெயர் & தேதி', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Devotees Aadhaar Card', 'Seva Name & Date', 'Mobile Number & Email'] },
-      { id: 'ttd-srivani', page: 'ttd', icon: '🙏', titleTa: 'ஸ்ரீவாணி டிரஸ்ட் தரிசனம்', titleEn: 'SRIVANI Trust Darshan', descTa: 'ஸ்ரீவாணி டிரஸ்ட் நன்கொடை மூலம் பிரேக் தரிசன டிக்கெட் முன்பதிவு.', descEn: 'Break Darshan ticket booking through SRIVANI Trust donation.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ', 'தரிசனத் தேதி & மொபைல் எண்'], docsEn: ['Devotees Aadhaar Card', 'Photo', 'Darshan Date & Mobile'] },
-      { id: 'ttd-senior', page: 'ttd', icon: '👴', titleTa: 'மூத்த குடிமக்கள் & மாற்றுத்திறனாளி தரிசனம்', titleEn: 'Senior Citizen & Differently-abled Darshan', descTa: 'மூத்த குடிமக்கள் மற்றும் மாற்றுத்திறனாளிகளுக்கான சிறப்பு தரிசன ஸ்லாட் முன்பதிவு.', descEn: 'Special darshan slot booking for senior citizens and differently-abled devotees.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['வயது சான்று (ஆதார்) / மாற்றுத்திறனாளி சான்று', 'போட்டோ ஐடி', 'தரிசனத் தேதி & மொபைல் எண்'], docsEn: ['Age Proof (Aadhaar) / Disability Certificate', 'Photo ID', 'Darshan Date & Mobile'] },
-      { id: 'ttd-donation', page: 'ttd', icon: '🎁', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை (அன்னதானம் உள்ளிட்டவை).', descEn: 'Online donations to TTD trusts (including Annadanam).', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['நன்கொடையாளர் பெயர் & முகவரி', 'ஆதார் / பான் கார்டு', 'நன்கொடைத் தொகை & அறக்கட்டளை'], docsEn: ['Donor Name & Address', 'Aadhaar / PAN Card', 'Donation Amount & Trust'] },
+      { id: 'ttd-ekadasi', page: 'ttd', icon: '🌟', titleTa: 'டிசம்பர் 2026 வைகுண்ட ஏகாதசி & ஸ்ரீவாரி சேவா', titleEn: 'Dec 2026 Vaikunta Ekadasi & Srivari Seva Slots', descTa: '28.10.2026 காலை 11 AM வைகுண்ட ஏகாதசி மற்றும் மதியம் 12 PM சாதாரண ஸ்ரீவாரி சேவா முன்பதிவு.', descEn: 'Released on 28.10.2026 at 11 AM & General Srivari Seva at 12 Noon.', timeTa: '28.10.2026', timeEn: '28.10.2026', docsTa: ['ஆதார் அட்டை (வயது: 18 முதல் 50 வயது வரை)', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Aadhaar Card (Age Limit: 18 to 50 years only)', 'Passport Size Photo'] },
+      { id: 'ttd-300', page: 'ttd', icon: '🛕', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'] },
+      { id: 'ttd-room', page: 'ttd', icon: '🏨', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை'], docsEn: ['Devotees Aadhaar Card'] },
+      { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள்.', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'] },
+      { id: 'ttd-srivani', page: 'ttd', icon: '🙏', titleTa: 'ஸ்ரீவாணி டிரஸ்ட் தரிசனம்', titleEn: 'SRIVANI Trust Darshan', descTa: 'ஸ்ரீவாணி டிரஸ்ட் நன்கொடை மூலம் பிரேக் தரிசன டிக்கெட் முன்பதிவு.', descEn: 'Break Darshan ticket booking through SRIVANI Trust donation.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Photo'] },
+      { id: 'ttd-senior', page: 'ttd', icon: '👴', titleTa: 'மூத்த குடிமக்கள் & மாற்றுத்திறனாளி தரிசனம்', titleEn: 'Senior Citizen & Differently-abled Darshan', descTa: 'மூத்த குடிமக்கள் மற்றும் மாற்றுத்திறனாளிகளுக்கான சிறப்பு தரிசன ஸ்லாட் முன்பதிவு.', descEn: 'Special darshan slot booking for senior citizens and differently-abled devotees.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['வயது சான்று (ஆதார்) / மாற்றுத்திறனாளி சான்று', 'போட்டோ ஐடி'], docsEn: ['Age Proof (Aadhaar) / Disability Certificate', 'Photo ID'] },
+      { id: 'ttd-donation', page: 'ttd', icon: '🎁', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை.', descEn: 'Online donations to TTD trusts.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் / பான் கார்டு'], docsEn: ['Aadhaar / PAN Card'] },
 
       // PAN & ID Cards Page Only
-      { id: 'pan-new', page: 'idcards', icon: '💳', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ - 2', 'ஆதார் அட்டை', 'தந்தையின் பெயர் விவரம்', 'மொபைல் எண்'], docsEn: ['2 Passport Size Photos', 'Aadhaar Card', 'Father Name Details', 'Mobile Number'] },
-      { id: 'pan-correction', page: 'idcards', icon: '✏️', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ - 2', 'பெயர்/பிறந்த தேதி சான்று'], docsEn: ['Old PAN Copy', 'Aadhaar Card', '2 Photos', 'Supporting Proof'] },
-      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் எண்', 'ஆதாருடன் இணைக்கப்பட்ட மொபைல் எண்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Number', 'Linked Mobile Number', 'Address Proof (Ration Card / EB Bill)'] },
+      { id: 'pan-new', page: 'idcards', icon: '💳', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'கையொப்பம் (வெள்ளை பேப்பரில்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Signature on White Paper'] },
+      { id: 'pan-correction', page: 'idcards', icon: '✏️', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Photo & Signature'] },
+      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'] },
       { id: 'voter-id', page: 'idcards', icon: '🗳️', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'] },
 
       // Tickets Page Only
-      { id: 'bus-ticket', page: 'tickets', icon: '🚌', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் பெயர் & வயது', 'புறப்படும் & செல்லும் ஊர்', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Passenger Name & Age', 'From & To City', 'Travel Date & Mobile'] },
-      { id: 'train-ticket', page: 'tickets', icon: '🚆', titleTa: 'ரயில் & தட்கல் டிக்கெட் (IRCTC)', titleEn: 'Train & Tatkal Ticket', descTa: 'இந்தியா முழுவதும் ரயில் டிக்கெட் மற்றும் அவசர தட்கல் (Tatkal) முன்பதிவு.', descEn: 'IRCTC Reserved Train Tickets & Urgent Tatkal Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் பெயர், வயது, பாலினம்', 'புறப்படும் & செல்லும் ரயில் நிலையம்', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Name, Age, Gender', 'From & To Station', 'Travel Date & Mobile'] },
-      { id: 'flight-ticket', page: 'tickets', icon: '✈️', titleTa: 'விமான டிக்கெட் புக்கிங் (Flight)', titleEn: 'Flight Ticket Booking', descTa: 'உள்நாட்டு மற்றும் வெளிநாட்டு விமான டிக்கெட்டுகள் குறைந்த கட்டணத்தில்.', descEn: 'Lowest fare Domestic & International Flight Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['உள்நாடு: ஆதார் அட்டை', 'வெளிநாடு: அசல் பாஸ்போர்ட் & விசா', 'பயணத் தேதி & மொபைல் எண்'], docsEn: ['Domestic: Aadhaar Card', 'International: Passport & Visa', 'Travel Date & Mobile'] },
+      { id: 'bus-ticket', page: 'tickets', icon: '🚌', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் ஆதார் / ஐடி (தேவைப்பட்டால்)'], docsEn: ['Passenger ID Proof (if needed)'] },
+      { id: 'train-ticket', page: 'tickets', icon: '🚆', titleTa: 'ரயில் & தட்கல் டிக்கெட் (IRCTC)', titleEn: 'Train & Tatkal Ticket', descTa: 'இந்தியா முழுவதும் ரயில் டிக்கெட் மற்றும் அவசர தட்கல் (Tatkal) முன்பதிவு.', descEn: 'IRCTC Reserved Train Tickets & Urgent Tatkal Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பயணிகள் ஆதார் / விவரம்'], docsEn: ['Passenger Aadhaar / Details'] },
+      { id: 'flight-ticket', page: 'tickets', icon: '✈️', titleTa: 'விமான டிக்கெட் புக்கிங் (Flight)', titleEn: 'Flight Ticket Booking', descTa: 'உள்நாட்டு மற்றும் வெளிநாட்டு விமான டிக்கெட்டுகள் குறைந்த கட்டணத்தில்.', descEn: 'Lowest fare Domestic & International Flight Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை (உள்நாடு) / பாஸ்போர்ட் & விசா (வெளிநாடு)'], docsEn: ['Aadhaar (Domestic) / Passport & Visa (International)'] },
 
       // MSME & Passport Page Only
-      { id: 'msme-udyam', page: 'msme', icon: '🏭', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக்', 'கடை பெயர் & முகவரி', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook', 'Shop Name & Address', 'Mobile & Email'] },
-      { id: 'fssai-license', page: 'msme', icon: '🍽️', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்', 'மொபைல் எண் & ஈமெயில்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof', 'Mobile & Email'] },
+      { id: 'msme-udyam', page: 'msme', icon: '🏭', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக் முதல் பக்கம்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook Front Page'] },
+      { id: 'fssai-license', page: 'msme', icon: '🍽️', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof'] },
       { id: 'passport-seva', page: 'msme', icon: '🛂', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'] },
-      { id: 'tneb-service', page: 'msme', icon: '⚡', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது', 'ஆதார் & போட்டோ'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt', 'Aadhaar & Photo'] },
+      { id: 'tneb-service', page: 'msme', icon: '⚡', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது & ஆதார்'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt & Aadhaar'] },
 
       // Patta / Chitta Page Only
-      { id: 'patta-chitta', page: 'patta', icon: '🗺️', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம் & கிராமத்தின் பெயர்', 'பட்டா எண் அல்லது சர்வே எண்'], docsEn: ['District, Taluk & Village Name', 'Patta No or Survey No'] },
-      { id: 'patta-transfer', page: 'patta', icon: '📝', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா நகல்', 'வில்லங்க சான்று (EC)', 'ஆதார், போட்டோ & மொபைல் எண்'], docsEn: ['Registered Sale Deed', 'Old Patta Copy', 'EC Copy', 'Aadhaar, Photo & Mobile'] },
-      { id: 'ec-cert', page: 'patta', icon: '📑', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['சார்பதிவாளர் அலுவலகம் & கிராமத்தின் பெயர்', 'சர்வே எண் அல்லது பத்திர எண் & வருடம்'], docsEn: ['SRO & Village Name', 'Survey No or Document No & Year'] },
+      { id: 'patta-chitta', page: 'patta', icon: '🗺️', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], docsEn: ['Old Patta / Deed Copy (if any)'] },
+      { id: 'patta-transfer', page: 'patta', icon: '📝', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'] },
+      { id: 'ec-cert', page: 'patta', icon: '📑', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'] },
 
       // Printing Page Only
-      { id: 'wedding-cards', page: 'printing', icon: '💌', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['விழா விவரங்கள் (தேதி, நேரம், மண்டபம், பெயர்கள்)', 'தேவைப்படும் எண்ணிக்கை (Quantity)'], docsEn: ['Event Details (Date, Time, Venue, Names)', 'Required Quantity & Card Model'] },
-      { id: 'xerox-printout', page: 'printing', icon: '🖨️', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய கோப்புகளை +91 98439 91974 என்ற வாட்ஸ்அப் எண்ணிற்கு அனுப்பலாம்'], docsEn: ['Send your PDF/Documents to WhatsApp +91 98439 91974 for instant printing'] }
+      { id: 'wedding-cards', page: 'printing', icon: '💌', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['அச்சடிக்க வேண்டிய விவரங்கள் (Matter / Text)', 'புகைப்படங்கள் / லோகோ (தேவைப்பட்டால்)'], docsEn: ['Event Matter / Text File', 'Photos / Logo (if required)'] },
+      { id: 'xerox-printout', page: 'printing', icon: '🖨️', titleTa: 'கலர் பிரிண்ட், ஜெராக்ஸ், லேமினேஷன் & டைப்பிங்', titleEn: 'Color Print, Xerox, Lamination & Typing', descTa: 'வாட்ஸ்அப்/ஈமெயில் PDF பிரிண்ட் அவுட், தமிழ்/ஆங்கிலம் டைப்பிங், பைண்டிங் & லேமினேஷன்.', descEn: 'Laser Printout from WhatsApp/Email, Tamil & English Typing, Spiral Binding & Lamination.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['பிரிண்ட் எடுக்க வேண்டிய PDF / Image ஃபைல்'], docsEn: ['PDF / Image File to Print'] }
     ];
 
     // Render Live Notifications Box on Home Page
@@ -834,7 +888,7 @@
             <div class="p-3.5">
               <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug">${title}</h4>
               <p class="text-[11px] text-rose-600 font-semibold mt-0.5">${sub}</p>
-              <button onclick="openApplyModal('திருமண அழைப்பிதழ் ஆர்டர் (${card.id})')" class="mt-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2 rounded-xl transition shadow-sm">
+              <button onclick="openApplyModal('wedding-cards')" class="mt-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2 rounded-xl transition shadow-sm">
                 ${orderBtn}
               </button>
             </div>
@@ -854,7 +908,7 @@
       document.getElementById('img-modal-code').textContent = `Model Code: ${card.id}`;
       document.getElementById('img-modal-order-btn').onclick = () => {
         closeImageModal();
-        openApplyModal(`${title} (${card.id})`);
+        openApplyModal('wedding-cards');
       };
       const modal = document.getElementById('image-modal');
       modal.classList.remove('hidden');
@@ -867,7 +921,7 @@
       modal.classList.remove('flex');
     }
 
-    // Create Service Card HTML (Clean, No File Upload)
+    // Create Service Card HTML
     function createServiceCardHTML(s) {
       const t = uiTranslations[currentLang];
       const mainTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
@@ -902,7 +956,7 @@
             <button onclick="openDocModal('${s.id}')" class="bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-800 font-bold text-xs py-2.5 px-3 rounded-xl transition text-center border border-slate-200/80">
               ${t.docsBtn}
             </button>
-            <button onclick="openApplyModal('${mainTitle.replace(/'/g, "\\'")}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm transition text-center">
+            <button onclick="openApplyModal('${s.id}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm transition text-center">
               ${t.applyBtn}
             </button>
           </div>
@@ -960,14 +1014,15 @@
 
     function populateServiceSelect() {
       const select = document.getElementById('q-service');
-      if (!select) return;
-      select.innerHTML = servicesData.map(s => {
+      const modalSelect = document.getElementById('m-service-select');
+      const optionsHtml = servicesData.map(s => {
         const title = currentLang === 'ta' ? s.titleTa : s.titleEn;
-        return `<option value="${title}">${title}</option>`;
+        return `<option value="${s.id}">${title}</option>`;
       }).join('');
+      if (select) select.innerHTML = optionsHtml;
+      if (modalSelect) modalSelect.innerHTML = optionsHtml;
     }
 
-    // Tab Navigation (Shows ONLY the clicked tab's content)
     function navigateTo(pageKey) {
       currentPage = pageKey;
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1039,7 +1094,7 @@
 
       document.getElementById('modal-apply-btn').onclick = () => {
         closeDocModal();
-        openApplyModal(mainTitle);
+        openApplyModal(s.id);
       };
 
       const modal = document.getElementById('doc-modal');
@@ -1065,14 +1120,70 @@
       setTimeout(() => { btn.textContent = '📋 நகலெடு (Copy)'; }, 2000);
     }
 
-    // Modal 2: Clean WhatsApp Apply
-    let selectedApplyService = '';
-    function openApplyModal(serviceName) {
-      selectedApplyService = serviceName;
-      document.getElementById('apply-modal-service').textContent = serviceName;
+    // =========================================================================
+    // MODAL 2: SMART APPLY LOGIC (OPTION 1: WEB UPLOAD + OPTION 3: WHATSAPP)
+    // =========================================================================
+    let currentApplyServiceObj = null;
+
+    function openApplyModal(serviceIdOrTitle) {
+      let s = servicesData.find(item => item.id === serviceIdOrTitle || item.titleTa === serviceIdOrTitle || item.titleEn === serviceIdOrTitle);
+      if (!s) s = servicesData[0];
+
+      populateServiceSelect();
+      document.getElementById('m-service-select').value = s.id;
+      handleModalServiceChange(s.id);
+
+      const statusEl = document.getElementById('m-upload-status');
+      statusEl.classList.add('hidden');
+      const submitBtn = document.getElementById('btn-submit-drive');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '🚀 ஆவணங்களை Upload செய்து விண்ணப்பத்தை சமர்ப்பி';
+
       const modal = document.getElementById('apply-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
+    }
+
+    function handleModalServiceChange(serviceId) {
+      const s = servicesData.find(item => item.id === serviceId) || servicesData[0];
+      currentApplyServiceObj = s;
+
+      const title = currentLang === 'ta' ? s.titleTa : s.titleEn;
+      const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+
+      document.getElementById('apply-modal-service').textContent = title;
+
+      // Render Checklist (Option 3)
+      const checklistEl = document.getElementById('m-checklist-items');
+      checklistEl.innerHTML = docs.map(d => `<li>${d}</li>`).join('');
+
+      // Render Dynamic File Inputs (Option 1)
+      const filesContainer = document.getElementById('m-dynamic-files');
+      filesContainer.innerHTML = docs.map((doc, idx) => `
+        <div class="bg-white p-2.5 rounded-xl border border-dashed border-slate-300">
+          <label class="block text-xs font-bold text-slate-800 mb-1">${idx + 1}. ${doc}</label>
+          <input type="file" class="vps-modal-file w-full text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-brand-50 file:text-brand-700 hover:file:bg-brand-100" data-docname="${doc}" accept="image/*,.pdf" />
+        </div>
+      `).join('');
+    }
+
+    function switchApplyMode(mode) {
+      const btnWeb = document.getElementById('tab-btn-web');
+      const btnWa = document.getElementById('tab-btn-wa');
+      const secWeb = document.getElementById('section-web-upload');
+      const secWa = document.getElementById('section-wa-send');
+
+      if (mode === 'web') {
+        btnWeb.className = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-brand-600 bg-brand-50 text-brand-700 transition flex items-center justify-center gap-1.5 shadow-sm';
+        btnWa.className = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-1.5';
+        secWeb.classList.remove('hidden');
+        secWa.classList.add('hidden');
+      } else {
+        btnWa.className = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-emerald-600 bg-emerald-50 text-emerald-700 transition flex items-center justify-center gap-1.5 shadow-sm';
+        btnWeb.className = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100 transition flex items-center justify-center gap-1.5';
+        secWa.classList.remove('hidden');
+        secWeb.classList.add('hidden');
+      }
     }
 
     function closeApplyModal() {
@@ -1081,24 +1192,102 @@
       modal.classList.remove('flex');
     }
 
-    function sendModalWhatsApp(e) {
-      e.preventDefault();
+    // Option 3: Guided WhatsApp Send with Document Checklist
+    function sendGuidedWhatsApp() {
       const name = document.getElementById('m-name').value.trim();
       const phone = document.getElementById('m-phone').value.trim();
-      const notes = document.getElementById('m-notes').value.trim();
-      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${selectedApplyService}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
+      const notes = document.getElementById('m-notes-wa').value.trim();
+
+      if (!name || !phone) {
+        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை உள்ளிடவும்!');
+        return;
+      }
+
+      const s = currentApplyServiceObj || servicesData[0];
+      const serviceTitle = currentLang === 'ta' ? s.titleTa : s.titleEn;
+      const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
+      const docListText = docs.map((d, i) => `${i + 1}. ${d}`).join('\n');
+
+      const msg = `*வணக்கம் VPS COMPUTERS AND PRINTERS,*\n\nஎனக்கு கீழ்க்கண்ட சேவைக்கு விண்ணப்பிக்க வேண்டும்:\n\n👤 *பெயர்:* ${name}\n📞 *மொபைல்:* ${phone}\n📄 *சேவை:* ${serviceTitle}${notes ? `\n📝 *குறிப்பு:* ${notes}` : ''}\n\n*தேவையான ஆவணங்கள்:*\n${docListText}\n\n(இதோ எனது ஆவணங்களின் புகைப்படங்களை கீழே அனுப்புகிறேன்)`;
+
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
-      closeApplyModal();
     }
 
-    function submitQuickForm(e) {
-      e.preventDefault();
-      const name = document.getElementById('q-name').value.trim();
-      const phone = document.getElementById('q-phone').value.trim();
-      const service = document.getElementById('q-service').value;
-      const notes = document.getElementById('q-notes').value.trim();
-      const msg = `வணக்கம் *VPS Computers & Printers*,\n\n*சேவை:* ${service}\n*பெயர்:* ${name}\n*மொபைல்:* ${phone}${notes ? `\n*விவரம்:* ${notes}` : ''}`;
-      window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+    // Option 1: Direct Website Upload to Google Drive & Sheet Dashboard
+    async function submitToGoogleDrive() {
+      const name = document.getElementById('m-name').value.trim();
+      const phone = document.getElementById('m-phone').value.trim();
+      const utr = document.getElementById('m-utr').value.trim();
+      const notes = document.getElementById('m-notes-web').value.trim();
+      const fileInputs = document.querySelectorAll('.vps-modal-file');
+      const statusEl = document.getElementById('m-upload-status');
+      const submitBtn = document.getElementById('btn-submit-drive');
+
+      if (!name || !phone) {
+        alert('தயவுசெய்து உங்கள் பெயர் மற்றும் மொபைல் எண்ணை உள்ளிடவும்!');
+        return;
+      }
+
+      const s = currentApplyServiceObj || servicesData[0];
+      const serviceTitle = s.titleTa;
+
+      let filesArray = [];
+      for (let input of fileInputs) {
+        if (input.files.length > 0) {
+          const file = input.files[0];
+          const docLabel = input.getAttribute('data-docname');
+          const base64 = await fileToBase64(file);
+          filesArray.push({
+            name: docLabel + '_' + file.name,
+            data: base64
+          });
+        }
+      }
+
+      if (filesArray.length === 0) {
+        alert('தயவுசெய்து குறைந்தபட்சம் ஒரு ஆவணத்தையாவது தேர்ந்தெடுக்கவும் (அல்லது அருகில் உள்ள WhatsApp முறையைப் பயன்படுத்தவும்).');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ ஆவணங்கள் பதிவேற்றப்படுகின்றன... காத்திருக்கவும்';
+      statusEl.classList.add('hidden');
+
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          body: JSON.stringify({
+            name: name,
+            phone: phone,
+            service: serviceTitle,
+            utr: (utr ? utr : 'Not Provided') + (notes ? ' | Note: ' + notes : ''),
+            files: filesArray
+          })
+        });
+
+        const result = await response.json();
+        if (result.status === 'success') {
+          statusEl.className = 'p-3.5 rounded-xl text-xs font-extrabold text-center bg-emerald-100 text-emerald-900 border border-emerald-300 block';
+          statusEl.innerHTML = `✅ உங்கள் விண்ணப்பமும் ஆவணங்களும் வெற்றிகரமாகப் பெறப்பட்டன!<br>உங்கள் விண்ணப்ப எண் (Request ID): <span class="text-base text-brand-700">${result.reqId}</span>`;
+          submitBtn.textContent = '✔ வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது';
+        } else {
+          throw new Error(result.message || 'Upload Error');
+        }
+      } catch (err) {
+        statusEl.className = 'p-3.5 rounded-xl text-xs font-bold text-center bg-red-100 text-red-800 border border-red-300 block';
+        statusEl.innerHTML = `❌ பதிவேற்றுவதில் சிக்கல் ஏற்பட்டது. தயவுசெய்து மேலே உள்ள <strong>"2. WhatsApp-ல் அனுப்ப"</strong> பட்டனை க்ளிக் செய்து அனுப்பவும்.`;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'மீண்டும் முயற்சிக்கவும்';
+      }
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = err => reject(err);
+      });
     }
 
     setLanguage('ta');
