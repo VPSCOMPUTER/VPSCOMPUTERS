@@ -56,7 +56,7 @@
     .animate-ticker {
       display: inline-block;
       white-space: nowrap;
-      animation: ticker 35s linear infinite;
+      animation: ticker 45s linear infinite;
     }
     .animate-ticker:hover {
       animation-play-state: paused;
@@ -79,9 +79,11 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
+            ★ TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers) ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ இரயில்வே துறை (RRB NTPC & RRB Group-D / ALP) 2 புதிய வேலைவாய்ப்பு அறிவிப்புகளுக்கு ஆன்லைனில் விண்ணப்பிக்கலாம்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ JEE Main 2027 பொறியியல் நுழைவுத் தேர்வு ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             ★ சபரிமலை தரிசன டிக்கெட் (Sabarimala Q Ticket) முன்பதிவு நவம்பர் 29 முதல் தொடங்குகிறது! (ஆவணங்கள்: 1. Aadhaar Card, 2. Photo, 3. Mobile Number) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ திருப்பதி ₹300 சிறப்பு தரிசனம், தங்கும் அறைகள் மற்றும் சேவா டிக்கெட்டுகள் முன்பதிவு செய்து தரப்படும்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
+            ★ திருப்பதி ₹300 சிறப்பு தரிசனம், பான் கார்டு (PAN Card), பஸ் / ரயில் / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, இ-சேவை சான்றிதழ்கள் மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
           </div>
         </div>
       </div>
@@ -142,7 +144,7 @@
           <button onclick="navigateTo('home')" data-pill="home" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏠 முகப்பு</button>
           <button onclick="navigateTo('esevai')" data-pill="esevai" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📜 இ-சேவை சான்றிதழ்கள்</button>
           <button onclick="navigateTo('tnpds')" data-pill="tnpds" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🍚 TNPDS ரேஷன் கார்டு</button>
-          <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC</button>
+          <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC / TRB / RRB / JEE</button>
           <button onclick="navigateTo('ttd')" data-pill="ttd" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🛕 திருப்பதி TTD</button>
           <button onclick="navigateTo('sabarimala')" data-pill="sabarimala" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🙏 சபரிமலை Q</button>
           <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪪 பான் & அடையாள அட்டை</button>
@@ -211,7 +213,7 @@
               </div>
 
               <!-- Live Notifications List -->
-              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-80" id="notification-list">
+              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-96" id="notification-list">
                 <!-- Populated by JS -->
               </div>
             </div>
@@ -227,7 +229,7 @@
             <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shrink-0">⚡</div>
             <div>
               <h4 id="feat-1-title" class="font-extrabold text-slate-900 text-sm sm:text-base">விரைவான ஆன்லைன் சேவை</h4>
-              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
+              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா, TNPSC, TRB, RRB, JEE விண்ணப்பங்களும் மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
             </div>
           </div>
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
@@ -375,6 +377,7 @@
       <div class="flex flex-wrap gap-2.5 font-semibold">
         <button onclick="navigateTo('home')" class="hover:text-amber-400">முகப்பு</button> •
         <button onclick="navigateTo('esevai')" class="hover:text-amber-400">இ-சேவை</button> •
+        <button onclick="navigateTo('tnpsc')" class="hover:text-amber-400">TNPSC/TRB/RRB/JEE</button> •
         <button onclick="navigateTo('sabarimala')" class="hover:text-amber-400">சபரிமலை Q</button> •
         <button onclick="navigateTo('ttd')" class="hover:text-amber-400">திருப்பதி TTD</button> •
         <button onclick="navigateTo('idcards')" class="hover:text-amber-400">பான் கார்டு</button> •
@@ -592,9 +595,49 @@
     }
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA
+    // 1. LIVE NOTIFICATIONS DATA (TRB, RRB 2 Notifications, JEE Main 2027 Added)
     // =======================================================
     const notificationsData = [
+      {
+        tagTa: 'TRB ஆசிரியர்',
+        tagEn: 'TRB TEACHER',
+        titleTa: '<span class="text-slate-900">TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers Recruitment / Special TET)</span><br>🏫 தகுதி: <span class="text-blue-700">அரசு மற்றும் அரசு உதவி பெறும் பள்ளிகளில் பணியாற்றும் ஆசிரியர்கள் (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பணி நியமன ஆணை (Appointment Order) & பணிச் சான்றிதழ் (Bonafide / Service Certificate - HM கையொப்பத்துடன்)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed கல்விச் சான்றிதழ்கள்<br>3. ஆதார் அட்டை, சாதி சான்றிதழ், போட்டோ & கையொப்பம்',
+        titleEn: '<span class="text-slate-900">TRB In-Service Working Teachers Recruitment / Special TET Notification</span><br>🏫 Eligibility: <span class="text-blue-700">Working Teachers in Govt & Govt Aided Schools (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Appointment Order & Service / Bonafide Certificate (Signed by HM/CEO)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed Certificates<br>3. Aadhaar Card, Community Certificate, Photo & Signature',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'trb-working-teacher'
+      },
+      {
+        tagTa: 'RRB அறிவிப்பு 1',
+        tagEn: 'RRB NOTIF 1',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 1) – NTPC (Graduate & 12th Level) பணியிடங்கள்</span><br>🚆 பதவிகள்: <span class="text-purple-700">Station Master, Goods Train Manager, Junior Clerk, Typist & Commercial Cum Ticket Clerk</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th, 12th மார்க்ஷீட் மற்றும் பட்டப்படிப்பு சான்றிதழ் (Degree Certificate)<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST / EWS) & வங்கி பாஸ்புக் முதல் பக்கம் (கட்டணம் திரும்பப் பெற)',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 1) – NTPC (Graduate & Undergraduate Posts)</span><br>🚆 Posts: <span class="text-purple-700">Station Master, Goods Train Manager, Clerk, Typist & Ticket Clerk</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th, 12th Marksheet & Degree Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST/EWS) & Bank Passbook (for Fee Refund)',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'rrb-notif-1'
+      },
+      {
+        tagTa: 'RRB அறிவிப்பு 2',
+        tagEn: 'RRB NOTIF 2',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 2) – Group D (Level-1) & ALP / Technician பணியிடங்கள்</span><br>🛠️ கல்வித் தகுதி: <span class="text-red-600">10-ம் வகுப்பு தேர்ச்சி (SSLC) / ITI / Diploma முடித்தவர்கள் விண்ணப்பிக்கலாம்</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th மார்க்ஷீட் மற்றும் ITI / NAC / Diploma சான்றிதழ்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST) & வங்கி பாஸ்புக் முதல் பக்கம் (Refund Account)',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 2) – Group D (Level-1) & ALP / Technician Posts</span><br>🛠️ Qualification: <span class="text-red-600">10th Pass (SSLC) / ITI / Diploma Holders</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & ITI / NAC / Diploma Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST) & Bank Passbook Front Page',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'rrb-notif-2'
+      },
+      {
+        tagTa: 'JEE MAIN 2027',
+        tagEn: 'JEE MAIN 2027',
+        titleTa: '<span class="text-slate-900">JEE Main 2027 (Joint Entrance Examination – Session 1 & 2) பொறியியல் நுழைவுத் தேர்வு அறிவிப்பு</span><br>🎓 தகுதி: <span class="text-blue-700">+2 பயிலும் மற்றும் முடித்த மாணவர்கள் (NIT, IIIT, IIT & மத்திய அரசு பொறியியல் கல்லூரிகளில் சேர)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு விவரம்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி, 80% முகம் தெரியும்படி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)',
+        titleEn: '<span class="text-slate-900">JEE Main 2027 (Session 1 & 2) Engineering Entrance Exam Notification</span><br>🎓 Eligibility: <span class="text-blue-700">12th Studying / Passed Students (For NITs, IIITs, IITs & CFTIs Admission)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & 12th Roll/School Details<br>2. Aadhaar Card, Passport Photo (White background) & Signature<br>3. Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Certificate (if applicable)',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'jee-main-2027'
+      },
       {
         tagTa: 'சபரிமலை Q',
         tagEn: 'SABARIMALA Q',
@@ -606,10 +649,10 @@
         actionTarget: 'sabarimala'
       },
       {
-        tagTa: 'புதியது',
-        tagEn: 'NEW',
-        titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span><br>⏳ விண்ணப்பிக்கக் கடைசி நாள்: <span class="text-red-600">05-11-2026 (இரவு 11:59 வரை)</span><br>✏️ விண்ணப்பத் திருத்தம் (Correction): <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
-        titleEn: '<span class="text-slate-900">TNPSC Group 4 (VAO) Exam – 6,574 Vacancies (Notification No. 11/2026)</span><br>📅 Application Start: <span class="text-emerald-700">06-10-2026</span><br>⏳ Last Date to Apply: <span class="text-red-600">05-11-2026 (up to 11:59 PM)</span><br>✏️ Application Correction Window: <span class="text-blue-700">09-11-2026 to 11-11-2026</span><br>📝 Exam Date: <span class="text-purple-700">10-01-2027 (9:30 AM – 12:30 PM)</span>',
+        tagTa: 'TNPSC குரூப் 4',
+        tagEn: 'TNPSC GROUP 4',
+        titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span> | ⏳ கடைசி நாள்: <span class="text-red-600">05-11-2026</span><br>✏️ விண்ணப்பத் திருத்தம்: <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
+        titleEn: '<span class="text-slate-900">TNPSC Group 4 (VAO) Exam – 6,574 Vacancies (Notification No. 11/2026)</span><br>📅 Start: <span class="text-emerald-700">06-10-2026</span> | ⏳ Last Date: <span class="text-red-600">05-11-2026</span><br>✏️ Correction Window: <span class="text-blue-700">09-11-2026 to 11-11-2026</span><br>📝 Exam Date: <span class="text-purple-700">10-01-2027 (9:30 AM – 12:30 PM)</span>',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'page',
@@ -711,7 +754,7 @@
         pillHome: '🏠 முகப்பு',
         pillEsevai: '📜 இ-சேவை சான்றிதழ்கள்',
         pillTnpds: '🍚 TNPDS ரேஷன் கார்டு',
-        pillTnpsc: '🏛️ TNPSC',
+        pillTnpsc: '🏛️ TNPSC / TRB / RRB / JEE',
         pillTtd: '🛕 திருப்பதி TTD',
         pillSabarimala: '🙏 சபரிமலை Q',
         pillIdcards: '🪪 பான் & அடையாள அட்டை',
@@ -741,7 +784,7 @@
         pillHome: '🏠 Home',
         pillEsevai: '📜 e-Sevai Certificates',
         pillTnpds: '🍚 TNPDS Ration Card',
-        pillTnpsc: '🏛️ TNPSC',
+        pillTnpsc: '🏛️ TNPSC / TRB / RRB / JEE',
         pillTtd: '🛕 Tirupati TTD',
         pillSabarimala: '🙏 Sabarimala Q',
         pillIdcards: '🪪 PAN & ID Cards',
@@ -769,7 +812,7 @@
     const pageConfig = {
       esevai: { titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)', titleEn: 'Government e-Sevai Certificates', subtitleTa: 'வருமானம், சாதி, OBC, இருப்பிடம், முதல் பட்டதாரி, வாரிசு, சிறு விவசாயி, திருமணமாகாதவர் மற்றும் ஆண் வாரிசு இல்லா சான்றிதழ்கள்.', subtitleEn: 'Income, Community, OBC, Nativity, First Graduate, Legal Heir, Small Farmer, Unmarried & No Male Issue Certificates.' },
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
-      tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
+      tnpsc: { titleTa: 'TNPSC, TRB, RRB இரயில்வே & JEE Main 2027 தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC, TRB, RRB Railway & JEE Main 2027 Exam Applications', subtitleTa: 'TRB பணியில் உள்ள ஆசிரியர் தேர்வு, RRB இரயில்வே 2 அறிவிப்புகள், JEE Main 2027, TNPSC OTR மற்றும் குரூப் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'TRB Working Teacher Recruitment, RRB Railway 2 Notifications, JEE Main 2027, TNPSC OTR & Group Exam online applications with required documents.' },
       ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'திருப்பதி ₹300 சிறப்பு தரிசனம், தங்கும் அறைகள், ஆர்ஜித சேவா மற்றும் ஸ்ரீவாணி தரிசன முன்பதிவு.', subtitleEn: 'Tirupati ₹300 Special Entry Darshan, Accommodation, Arjitha Seva & SRIVANI Darshan bookings.' },
       sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் (Sabarimala Q Ticket Opening: November 29) ஆன்லைன் முன்பதிவு.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking (Opening: November 29).' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
@@ -780,13 +823,13 @@
     };
 
     // =========================================================================
-    // 💰 3. SERVICES & FEES DATA (இ-சேவைக்கு Signature & பான் கார்டுக்கு DOB Proof சேர்க்கப்பட்டுள்ளது)
+    // 💰 3. SERVICES & FEES DATA (TRB, RRB 2 Notifications, JEE Main 2027 Added)
     // =========================================================================
     const servicesData = [
       // Sabarimala Q
       { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', fee: '₹50', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (மேலே டைப் செய்யவும்)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number (Type above)'], uploadDocs: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி (Preferred Date)' },
 
-      // e-Sevai Certificates (அனைத்து இ-சேவை சான்றிதழ்களுக்கும் கையொப்பம் Upload சேர்க்கப்பட்டுள்ளது)
+      // e-Sevai Certificates
       { id: 'income-cert', page: 'esevai', icon: '📄', fee: '₹60', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'பான் கார்டு / சம்பள சான்று', 'கையொப்பம் (Signature)'] },
       { id: 'community-cert', page: 'esevai', icon: '📜', fee: '₹60', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று', 'கையொப்பம் (Signature)'] },
       { id: 'obc-cert', page: 'esevai', icon: '🧾', fee: '₹60', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community Cert)', 'வருமானச் சான்றிதழ் (Income Cert)', 'கையொப்பம் (Signature)'] },
@@ -805,12 +848,16 @@
       { id: 'tnpds-remove', page: 'tnpds', icon: '➖', fee: '₹100', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'இறப்பு சான்றிதழ் / திருமண சான்று'] },
       { id: 'tnpds-add', page: 'tnpds', icon: '➕', fee: '₹100', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Birth / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'] },
 
-      // TNPSC
+      // TNPSC, TRB, RRB & JEE Main 2027
+      { id: 'trb-working-teacher', page: 'tnpsc', icon: '👩‍🏫', fee: '₹200 + Exam Fee', titleTa: 'TRB பணியில் உள்ள ஆசிரியர் தேர்வு (Working Teacher Recruitment)', titleEn: 'TRB In-Service Working Teachers Exam', descTa: 'பணியில் உள்ள ஆசிரியர்களுக்கான TRB சிறப்புத் தகுதித் தேர்வு (Paper I & Paper II) ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for TRB In-Service Working Teachers Special TET (Paper I & Paper II).', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['பணி நியமன ஆணை (Appointment Order)', 'பணிச் சான்றிதழ் (Service / Bonafide Certificate - HM / CEO கையொப்பத்துடன்)', '10th, 12th, Degree & D.El.Ed / B.Ed சான்றிதழ்கள்', 'ஆதார் அட்டை & சாதி சான்றிதழ்', 'பாஸ்போர்ட் சைஸ் போட்டோ & கையொப்பம்'], docsEn: ['Appointment Order', 'Service / Bonafide Certificate (Signed by HM/CEO)', '10th, 12th, Degree & D.El.Ed / B.Ed Certificates', 'Aadhaar Card & Community Certificate', 'Passport Size Photo & Signature'], uploadDocs: ['பணி நியமன ஆணை (Appointment Order)', 'பணிச் சான்றிதழ் (Service Cert)', 'கல்வி & B.Ed / D.El.Ed சான்றிதழ்கள்', 'சாதி சான்றிதழ் & ஆதார்', 'போட்டோ & கையொப்பம்'], extraInput: 'Paper I / Paper II & பள்ளி விவரம்' },
+      { id: 'rrb-notif-1', page: 'tnpsc', icon: '🚆', fee: '₹200 + Exam Fee', titleTa: 'RRB Notification 1: NTPC (Graduate & 12th Level)', titleEn: 'RRB Notification 1: NTPC Recruitment', descTa: 'இரயில்வே துறையில் Station Master, Goods Train Manager, Clerk, Typist உள்ளிட்ட NTPC பணியிடங்களுக்கான விண்ணப்பம்.', descEn: 'Railway RRB NTPC Graduate & Undergraduate level posts online application.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10th, 12th மார்க்ஷீட் & Degree சான்றிதழ்', 'ஆதார் அட்டை', 'சாதி சான்றிதழ் (OBC / SC / ST / EWS)', 'வங்கி பாஸ்புக் முதல் பக்கம் (கட்டணம் திரும்பப் பெற)', 'பாஸ்போர்ட் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்'], docsEn: ['10th, 12th Marksheet & Degree Certificate', 'Aadhaar Card', 'Community Certificate (OBC/SC/ST/EWS)', 'Bank Passbook Front Page (for Fee Refund)', 'White Background Photo & Signature'], uploadDocs: ['10th / 12th / Degree சான்றிதழ்', 'ஆதார் & சாதி சான்றிதழ்', 'வங்கி பாஸ்புக் முதல் பக்கம்', 'போட்டோ & கையொப்பம்'], extraInput: 'கல்வித் தகுதி (12th / Degree)' },
+      { id: 'rrb-notif-2', page: 'tnpsc', icon: '🛠️', fee: '₹200 + Exam Fee', titleTa: 'RRB Notification 2: Group D (Level-1) & ALP / Technician', titleEn: 'RRB Notification 2: Group D & ALP / Tech', descTa: 'இரயில்வே துறையில் 10th / ITI / Diploma முடித்தவர்களுக்கான Group D மற்றும் ALP / Technician பணியிடங்கள்.', descEn: 'Railway RRB Group D (Level-1) and ALP / Technician recruitment online application.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10th மார்க்ஷீட் மற்றும் ITI / Diploma சான்றிதழ்', 'ஆதார் அட்டை', 'சாதி சான்றிதழ் (OBC / SC / ST / EWS)', 'வங்கி பாஸ்புக் முதல் பக்கம் (Refund Account)', 'பாஸ்போர்ட் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்'], docsEn: ['10th Marksheet & ITI / Diploma Certificate', 'Aadhaar Card', 'Community Certificate (OBC/SC/ST/EWS)', 'Bank Passbook Front Page (Refund Account)', 'White Background Photo & Signature'], uploadDocs: ['10th & ITI / Diploma சான்றிதழ்', 'ஆதார் & சாதி சான்றிதழ்', 'வங்கி பாஸ்புக் முதல் பக்கம்', 'போட்டோ & கையொப்பம்'], extraInput: 'விண்ணப்பிக்கும் பதவி (Group D / ALP / Tech)' },
+      { id: 'jee-main-2027', page: 'tnpsc', icon: '🎓', fee: '₹250 + Exam Fee', titleTa: 'JEE Main 2027 நுழைவுத் தேர்வு விண்ணப்பம்', titleEn: 'JEE Main 2027 Entrance Exam Application', descTa: 'NIT, IIIT, IIT மற்றும் மத்திய அரசு பொறியியல் கல்லூரிகளில் சேர JEE Main 2027 (Session 1 & 2) ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for JEE Main 2027 (Session 1 & 2) Engineering Entrance Examination.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு பள்ளி விவரம்', 'ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி, 80% முகம் தெரியும்படி)', 'மாணவர் கையொப்பம் (Signature)', 'சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)'], docsEn: ['10th Marksheet & 12th School Details', 'Aadhaar Card', 'Passport Photo (White Background, 80% Face Visible)', 'Candidate Signature', 'Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Cert (if any)'], uploadDocs: ['10th மார்க்ஷீட் (10th Marksheet)', 'ஆதார் அட்டை (Aadhaar)', 'சாதி சான்றிதழ் (Category Cert)', 'போட்டோ & கையொப்பம் (Photo & Sign)'], extraInput: 'பள்ளியின் பெயர் & தேர்வு மையம் (Preferred Exam City)' },
       { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', fee: '₹250', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'போட்டோ & கையொப்பம்', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'], docsEn: ['Aadhaar Card', 'Photo & Signature', '10th Marksheet', 'Community Certificate'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'] },
       { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', fee: '₹200', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு (டைப் செய்யவும்)', 'ஆதார் அட்டை', '10th / 12th / Degree மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்'], docsEn: ['OTR ID & Password (Type)', 'Aadhaar Card', '10th / 12th / Degree Marksheet', 'Community Cert', 'Photo & Signature'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th / கல்விச் சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password (இருந்தால்)' },
       { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', fee: '₹200', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate / Marksheet', 'Community Certificate & Photo'], uploadDocs: ['பாஸ்போர்ட் போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
       { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', fee: '₹200', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate', 'Community Certificate & Photo'], uploadDocs: ['போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
-      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', fee: '₹30', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['விண்ணப்ப எண் & பிறந்த தேதி (டைப் செய்தால் போதும்)'], docsEn: ['Application Number & DOB'], uploadDocs: ['பழைய விண்ணப்ப நகல் (இருந்தால் மட்டும்)'], extraInput: 'Application Number & பிறந்த தேதி (DOB)' },
+      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', fee: '₹30', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC, TRB, RRB, JEE ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC, TRB, RRB, JEE Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['விண்ணப்ப எண் & பிறந்த தேதி (டைப் செய்தால் போதும்)'], docsEn: ['Application Number & DOB'], uploadDocs: ['பழைய விண்ணப்ப நகல் (இருந்தால் மட்டும்)'], extraInput: 'Application Number & பிறந்த தேதி (DOB)' },
 
       // TTD
       { id: 'ttd-300', page: 'ttd', icon: '🛕', fee: '₹100 + ₹300', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'], uploadDocs: ['பக்தர்கள் ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி & நபர்கள் எண்ணிக்கை' },
@@ -820,7 +867,7 @@
       { id: 'ttd-senior', page: 'ttd', icon: '👴', fee: '₹100', titleTa: 'மூத்த குடிமக்கள் & மாற்றுத்திறனாளி தரிசனம்', titleEn: 'Senior Citizen & Differently-abled Darshan', descTa: 'மூத்த குடிமக்கள் மற்றும் மாற்றுத்திறனாளிகளுக்கான சிறப்பு தரிசன ஸ்லாட் முன்பதிவு.', descEn: 'Special darshan slot booking for senior citizens and differently-abled devotees.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['வயது சான்று (ஆதார்) / மாற்றுத்திறனாளி சான்று', 'போட்டோ'], docsEn: ['Age Proof (Aadhaar) / Disability Certificate', 'Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'மாற்றுத்திறனாளி சான்று (இருந்தால்)', 'போட்டோ (Photo)'] },
       { id: 'ttd-donation', page: 'ttd', icon: '🎁', fee: '₹50', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை.', descEn: 'Online donations to TTD trusts.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் / பான் கார்டு'], docsEn: ['Aadhaar / PAN Card'], uploadDocs: ['ஆதார் / பான் கார்டு நகல்'] },
 
-      // PAN & ID Cards (பான் கார்டுக்கு Date of Birth Proof: Birth Certificate / Marksheet சேர்க்கப்பட்டுள்ளது)
+      // PAN & ID Cards
       { id: 'pan-new', page: 'idcards', icon: '💳', fee: '₹300', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'கையொப்பம் (வெள்ளை பேப்பரில்)', 'தந்தை பெயர் (டைப் செய்யவும்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Date of Birth Proof (Birth Certificate / Marksheet)', 'Signature on White Paper', 'Father Name'], uploadDocs: ['பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'கையொப்பம் (Signature on White Paper)'], extraInput: 'தந்தையின் பெயர் (Father Name)' },
       { id: 'pan-correction', page: 'idcards', icon: '✏️', fee: '₹300', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Date of Birth Proof (Birth Certificate / Marksheet)', 'Photo & Signature'], uploadDocs: ['பழைய பான் கார்டு நகல் (Old PAN)', 'ஆதார் அட்டை (Aadhaar)', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'போட்டோ (Photo)', 'கையொப்பம் (Signature)'] },
       { id: 'aadhaar-service', page: 'idcards', icon: '🆔', fee: '₹200', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'], uploadDocs: ['ஆதார் அட்டை நகல்', 'முகவரிச் சான்று (Ration Card / Voter ID)'] },
@@ -839,8 +886,8 @@
 
       // Patta / Chitta
       { id: 'patta-chitta', page: 'patta', icon: '🗺️', fee: '₹30', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம், கிராமம் & சர்வே எண் / பட்டா எண்'], docsEn: ['District, Taluk, Village & Survey/Patta No'], uploadDocs: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], extraInput: 'கிராமத்தின் பெயர் & பட்டா எண் / சர்வே எண்' },
-      { id: 'patta-transfer', page: 'patta', icon: '📝', fee: '₹200', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'], uploadDocs: ['கிரையப் பத்திரம் (Sale Deed PDF)', 'பழைய பட்டா & EC', 'ஆதார் அட்டை & போட்டோ'] },
-      { id: 'ec-cert', page: 'patta', icon: '📑', fee: '₹100', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'], uploadDocs: ['பழைய பத்திர நகல் (இருந்தால்)'], extraInput: 'சார்பதிவாளர் அலுவலகம், கிராமம் & சர்வே/பத்திர எண்' },
+      { id: 'patta-transfer', page: 'patta', icon: '📝', fee: '₹60+E.Doc Charge', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'], uploadDocs: ['கிரையப் பத்திரம் (Sale Deed PDF)', 'பழைய பட்டா & EC', 'ஆதார் அட்டை & போட்டோ'] },
+      { id: 'ec-cert', page: 'patta', icon: '📑', fee: '₹100+P.Fee', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'], uploadDocs: ['பழைய பத்திர நகல் (இருந்தால்)'], extraInput: 'சார்பதிவாளர் அலுவலகம், கிராமம் & சர்வே/பத்திர எண்' },
 
       // Printing
       { id: 'wedding-cards', page: 'printing', icon: '💌', fee: 'மாடலுக்கு ஏற்ப', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['அச்சடிக்க வேண்டிய விவரங்கள் (Matter / Text)', 'புகைப்படங்கள் / லோகோ (தேவைப்பட்டால்)'], docsEn: ['Event Matter / Text File', 'Photos / Logo (if required)'], uploadDocs: ['பத்திரிகை விவரம் (Matter Photo / File)', 'போட்டோ (தேவைப்பட்டால்)'], extraInput: 'தேவைப்படும் எண்ணிக்கை & கார்டு மாடல்' },
