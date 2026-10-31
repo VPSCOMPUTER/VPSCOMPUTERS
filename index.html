@@ -134,7 +134,7 @@
           <a href="tel:+919843991974" class="hidden md:flex bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 items-center gap-1.5 transition">
             <span>📞</span> <span>98439 91974</span>
           </a>
-          <button onclick="openApplyModal('income-cert')" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition">
+          <button id="header-apply-btn" onclick="openApplyModal('income-cert')" class="hidden bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl shadow-md items-center gap-1.5 transition">
             <span>📤</span> <span class="hidden sm:inline">ஆன்லைன் விண்ணப்பம்</span><span class="sm:hidden">Apply</span>
           </button>
           <a href="https://wa.me/919843991974?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%20VPS%20Computers%2C%20%E0%AE%8E%E0%AE%A9%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AF%81%20%E0%AE%92%E0%AE%B0%E0%AF%81%20%E0%AE%9A%E0%AF%87%E0%AE%B5%E0%AF%88%20%E0%AE%A4%E0%AF%87%E0%AE%B5%E0%AF%88%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%9F%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AE%A4%E0%AF%81." target="_blank" rel="noopener noreferrer"
@@ -162,6 +162,7 @@
           <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗺️ பட்டா / சிட்டா & EC</button>
           <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
           <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு & Upload</button>
+          <button id="tab-pill-apps" onclick="navigateTo('apps')" data-pill="apps" class="page-pill hidden px-3 py-2 rounded-xl transition items-center gap-1.5">📂 எனது விண்ணப்பங்கள்</button>
         </div>
       </div>
     </div>
@@ -205,7 +206,7 @@
                   <span id="home-box-time-lbl" class="text-slate-300 font-semibold">🕘 வேலை நேரம்:</span>
                   <span id="home-box-time-val" class="font-extrabold text-emerald-300">காலை 9:00 AM – மாலை 7:00 PM</span>
                 </div>
-                <button onclick="openApplyModal('income-cert')" id="home-box-apply-btn" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3.5 px-4 rounded-2xl shadow-lg transition flex items-center justify-center gap-2 text-sm mt-2">
+                <button onclick="openApplyModal('income-cert')" id="home-box-apply-btn" class="hidden w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black py-3.5 px-4 rounded-2xl shadow-lg transition items-center justify-center gap-2 text-sm mt-2">
                   <span>📤 ஆவணங்களை Upload செய்து விண்ணப்பிக்க</span>
                 </button>
               </div>
@@ -358,11 +359,11 @@
             <div class="space-y-4">
               <div>
                 <label id="form-service-lbl" class="block text-xs font-bold text-slate-700 mb-1.5">தேவையான சேவையைத் தேர்ந்தெடுக்கவும் *</label>
-                <select id="q-service" onchange="openApplyModal(this.value)" class="w-full px-3.5 py-3 rounded-xl border-2 border-brand-200 text-sm font-bold text-slate-800 bg-brand-50/40 focus:border-brand-600 focus:outline-none"></select>
+                <select id="q-service" onchange="window.isCustomerLoggedIn ? openApplyModal(this.value) : openDocModal(this.value)" class="w-full px-3.5 py-3 rounded-xl border-2 border-brand-200 text-sm font-bold text-slate-800 bg-brand-50/40 focus:border-brand-600 focus:outline-none"></select>
               </div>
 
-              <button type="button" onclick="openApplyModal(document.getElementById('q-service').value)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
-                <span>📤 தேவையான ஆவணங்கள் & கட்டண விவரம் பார்த்து விண்ணப்பிக்க க்ளிக் செய்யவும்</span>
+              <button type="button" id="contact-portal-btn" onclick="window.isCustomerLoggedIn ? openApplyModal(document.getElementById('q-service').value) : openDocModal(document.getElementById('q-service').value)" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3.5 px-5 rounded-xl shadow-md transition text-sm flex items-center justify-center gap-2">
+                <span id="contact-portal-btn-txt">📋 தேவையான ஆவணங்கள் பட்டியல் பார்க்க க்ளிக் செய்யவும்</span>
               </button>
             </div>
           </div>
@@ -874,11 +875,22 @@
           const sid = String(a.serviceId || '').replace(/[^A-Za-z0-9_-]/g, '');
           const statusTxt = a.status === 'submitted' ? (ta ? 'சமர்ப்பிக்கப்பட்டது' : 'Submitted') : esc(a.status);
           const waMsg = (ta ? 'வணக்கம் VPS Computers, என் விண்ணப்ப நிலை: ' : 'Hello VPS Computers, status of my application: ') + (a.serviceTa || a.serviceEn || '') + (a.reqId ? ' (' + a.reqId + ')' : '') + ' - ' + (a.name || '');
+          const docsHtml = (a.docs && a.docs.length)
+            ? '<div class="mt-2 pt-2 border-t border-slate-100 text-[11px] text-slate-700"><span class="font-bold text-slate-500">' + (ta ? '📂 இணைக்கப்பட்ட ஆவணங்கள்: ' : '📂 Attached Documents: ') + '</span>' + a.docs.map(docItem => esc(docItem)).join(', ') + '</div>'
+            : '';
           return '<div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">' +
             '<div><div class="flex items-center justify-between gap-2 mb-2"><span class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full">' + statusTxt + '</span><span class="text-[10px] font-bold text-slate-500">' + esc(when) + '</span></div>' +
-            '<h3 class="text-sm font-extrabold text-slate-900 leading-snug">' + esc(title) + '</h3>' +
-            '<p class="text-xs text-slate-600 mt-1">💳 ' + esc(a.fee) + ' • ' + (a.method === 'web' ? '🌐 Website' : '💬 WhatsApp') + '</p>' +
-            (a.reqId ? '<p class="text-xs font-bold text-brand-700 mt-1">Request ID: ' + esc(a.reqId) + '</p>' : '') + '</div>' +
+            '<h3 class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">' + esc(title) + '</h3>' +
+            '<div class="mt-2.5 space-y-1 text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100">' +
+            (a.name ? '<p><span class="font-bold text-slate-500">' + (ta ? '👤 விண்ணப்பதாரர் பெயர்: ' : '👤 Applicant Name: ') + '</span><span class="font-bold text-slate-900">' + esc(a.name) + '</span></p>' : '') +
+            (a.phone ? '<p><span class="font-bold text-slate-500">' + (ta ? '📞 மொபைல் எண்: ' : '📞 Mobile: ') + '</span><span class="font-bold text-slate-900">' + esc(a.phone) + '</span></p>' : '') +
+            '<p><span class="font-bold text-slate-500">' + (ta ? '💳 கட்டணம் & முறை: ' : '💳 Fee & Mode: ') + '</span><span class="font-bold text-emerald-700">' + esc(a.fee) + '</span> • ' + (a.method === 'web' ? '🌐 Website Upload' : '💬 WhatsApp') + '</p>' +
+            (a.reqId ? '<p><span class="font-bold text-slate-500">' + (ta ? '🆔 விண்ணப்ப எண் (Request ID): ' : '🆔 Request ID: ') + '</span><span class="font-extrabold text-brand-700">' + esc(a.reqId) + '</span></p>' : '') +
+            (a.utr ? '<p><span class="font-bold text-slate-500">🏦 UTR / Payment Ref: </span><span class="font-semibold text-slate-800">' + esc(a.utr) + '</span></p>' : '') +
+            (a.details ? '<p><span class="font-bold text-slate-500">' + (ta ? '✍️ கூடுதல் விவரம்: ' : '✍️ Details: ') + '</span><span class="font-semibold text-slate-800">' + esc(a.details) + '</span></p>' : '') +
+            (a.notes ? '<p><span class="font-bold text-slate-500">' + (ta ? '📝 குறிப்பு: ' : '📝 Notes: ') + '</span><span class="font-semibold text-slate-800">' + esc(a.notes) + '</span></p>' : '') +
+            docsHtml +
+            '</div></div>' +
             '<div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">' +
             (sid ? '<button onclick="openApplyModal(\'' + sid + '\')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-[11px] py-2 rounded-xl">' + (ta ? 'மீண்டும் விண்ணப்பிக்க' : 'Apply Again') + '</button>' : '<span></span>') +
             '<a href="https://wa.me/' + SHOP_PHONE + '?text=' + encodeURIComponent(waMsg) + '" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] py-2 rounded-xl text-center">' + (ta ? 'நிலை அறிய' : 'Ask Status') + '</a>' +
@@ -891,20 +903,40 @@
     };
 
     // ---- React to login / logout ----
+    window.isCustomerLoggedIn = false;
     if (auth) {
       getRedirectResult(auth).then(r => { if (r && r.user) saveProfile(r.user); }).catch(() => {});
       onAuthStateChanged(auth, (user) => {
         currentUser = user;
+        window.isCustomerLoggedIn = !!user;
         const guest = $('auth-guest'), usr = $('auth-user');
+        const headerApplyBtn = $('header-apply-btn');
+        const homeApplyBtn = $('home-box-apply-btn');
+        const tabPillApps = $('tab-pill-apps');
+        const contactBtnTxt = $('contact-portal-btn-txt');
+
         if (user) {
           guest.classList.add('hidden');
           usr.classList.remove('hidden'); usr.classList.add('flex');
           $('auth-user-name').textContent = '👤 ' + (user.displayName || user.email || 'My Account');
+          if (headerApplyBtn) { headerApplyBtn.classList.remove('hidden'); headerApplyBtn.classList.add('flex'); }
+          if (homeApplyBtn) { homeApplyBtn.classList.remove('hidden'); homeApplyBtn.classList.add('flex'); }
+          if (tabPillApps) { tabPillApps.classList.remove('hidden'); tabPillApps.classList.add('flex'); }
+          if (contactBtnTxt) { contactBtnTxt.textContent = L() === 'ta' ? '📤 தேவையான ஆவணங்கள் & கட்டண விவரம் பார்த்து விண்ணப்பிக்க க்ளிக் செய்யவும்' : '📤 View Required Documents & Fee to Apply Online'; }
           const n = $('m-name');
           if (n && !n.value && user.displayName) n.value = user.displayName;
         } else {
           guest.classList.remove('hidden');
           usr.classList.add('hidden'); usr.classList.remove('flex');
+          if (headerApplyBtn) { headerApplyBtn.classList.add('hidden'); headerApplyBtn.classList.remove('flex'); }
+          if (homeApplyBtn) { homeApplyBtn.classList.add('hidden'); homeApplyBtn.classList.remove('flex'); }
+          if (tabPillApps) { tabPillApps.classList.add('hidden'); tabPillApps.classList.remove('flex'); }
+          if (contactBtnTxt) { contactBtnTxt.textContent = L() === 'ta' ? '📋 தேவையான ஆவணங்கள் பட்டியல் பார்க்க க்ளிக் செய்யவும்' : '📋 Click to View Required Documents List'; }
+        }
+        if (typeof renderNotifications === 'function') renderNotifications();
+        if (typeof renderWeddingGallery === 'function') renderWeddingGallery();
+        if (typeof currentPage !== 'undefined' && typeof pageConfig !== 'undefined' && pageConfig[currentPage]) {
+          renderCategoryPage(currentPage);
         }
         if (!$('page-apps').classList.contains('hidden')) window.renderMyApplications();
       });
@@ -1231,17 +1263,23 @@
     // Render Live Notifications Box on Home Page
     function renderNotifications() {
       const container = document.getElementById('notification-list');
+      const loggedIn = !!window.isCustomerLoggedIn;
       container.innerHTML = notificationsData.map(n => {
         const tag = currentLang === 'ta' ? n.tagTa : n.tagEn;
         const title = currentLang === 'ta' ? n.titleTa : n.titleEn;
-        const btnText = currentLang === 'ta' ? n.linkTextTa : n.linkTextEn;
+        let btnText = currentLang === 'ta' ? n.linkTextTa : n.linkTextEn;
         let clickHandler = '';
         if (n.actionType === 'page') {
           clickHandler = `navigateTo('${n.actionTarget}')`;
         } else if (n.actionType === 'url') {
           clickHandler = `window.open('${n.actionTarget}', '_blank')`;
         } else {
-          clickHandler = `openApplyModal('${n.actionTarget}')`;
+          if (loggedIn) {
+            clickHandler = `openApplyModal('${n.actionTarget}')`;
+          } else {
+            clickHandler = `openDocModal('${n.actionTarget}')`;
+            btnText = currentLang === 'ta' ? '📋 தேவையான ஆவணங்கள்' : '📋 Required Docs';
+          }
         }
 
         return `
@@ -1262,10 +1300,14 @@
     function renderWeddingGallery() {
       const grid = document.getElementById('wedding-cards-grid');
       if (!grid) return;
+      const loggedIn = !!window.isCustomerLoggedIn;
       grid.innerHTML = weddingCardsData.map((card, idx) => {
         const title = currentLang === 'ta' ? card.titleTa : card.titleEn;
         const sub = currentLang === 'ta' ? card.priceTa : card.priceEn;
-        const orderBtn = currentLang === 'ta' ? '💬 ஆர்டர் செய்ய' : '💬 Order Card';
+        const orderBtn = loggedIn
+          ? (currentLang === 'ta' ? '💬 ஆர்டர் செய்ய' : '💬 Order Card')
+          : (currentLang === 'ta' ? '📋 தேவையான விவரங்கள்' : '📋 Required Details');
+        const btnAction = loggedIn ? `openApplyModal('wedding-cards')` : `openDocModal('wedding-cards')`;
         return `
           <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group">
             <div onclick="openImageModal(${idx})" class="relative h-44 sm:h-52 bg-slate-200 overflow-hidden cursor-pointer">
@@ -1276,7 +1318,7 @@
             <div class="p-3.5">
               <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug">${title}</h4>
               <p class="text-[11px] text-rose-600 font-semibold mt-0.5">${sub}</p>
-              <button onclick="openApplyModal('wedding-cards')" class="mt-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2 rounded-xl transition shadow-sm">
+              <button onclick="${btnAction}" class="mt-3 w-full bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs py-2 rounded-xl transition shadow-sm">
                 ${orderBtn}
               </button>
             </div>
@@ -1294,10 +1336,16 @@
       imgEl.onerror = function() { this.onerror = null; this.src = card.fallback; };
       document.getElementById('img-modal-title').textContent = title;
       document.getElementById('img-modal-code').textContent = `Model Code: ${card.id}`;
-      document.getElementById('img-modal-order-btn').onclick = () => {
-        closeImageModal();
-        openApplyModal('wedding-cards');
-      };
+      const orderBtn = document.getElementById('img-modal-order-btn');
+      if (window.isCustomerLoggedIn) {
+        orderBtn.classList.remove('hidden');
+        orderBtn.onclick = () => {
+          closeImageModal();
+          openApplyModal('wedding-cards');
+        };
+      } else {
+        orderBtn.classList.add('hidden');
+      }
       const modal = document.getElementById('image-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1318,6 +1366,22 @@
       const time = currentLang === 'ta' ? s.timeTa : s.timeEn;
       const docs = currentLang === 'ta' ? s.docsTa : s.docsEn;
       const feeText = s.fee || '₹60';
+      const loggedIn = !!window.isCustomerLoggedIn;
+
+      const actionsHtml = loggedIn
+        ? `<div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+            <button onclick="openDocModal('${s.id}')" class="bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-800 font-bold text-xs py-2.5 px-3 rounded-xl transition text-center border border-slate-200/80">
+              ${t.docsBtn}
+            </button>
+            <button onclick="openApplyModal('${s.id}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm transition text-center">
+              ${t.applyBtn}
+            </button>
+          </div>`
+        : `<div class="pt-4 mt-4 border-t border-slate-100">
+            <button onclick="openDocModal('${s.id}')" class="w-full bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-800 font-bold text-xs py-2.5 px-3 rounded-xl transition text-center border border-slate-200/80">
+              ${t.docsBtn}
+            </button>
+          </div>`;
 
       return `
         <div class="card-hover bg-white rounded-2xl border border-slate-200/90 p-5 flex flex-col justify-between shadow-sm">
@@ -1346,14 +1410,7 @@
             </div>
           </div>
 
-          <div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">
-            <button onclick="openDocModal('${s.id}')" class="bg-slate-100 hover:bg-brand-50 hover:text-brand-700 text-slate-800 font-bold text-xs py-2.5 px-3 rounded-xl transition text-center border border-slate-200/80">
-              ${t.docsBtn}
-            </button>
-            <button onclick="openApplyModal('${s.id}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs py-2.5 px-3 rounded-xl shadow-sm transition text-center">
-              ${t.applyBtn}
-            </button>
-          </div>
+          ${actionsHtml}
         </div>
       `;
     }
@@ -1385,6 +1442,8 @@
       document.querySelector('[data-pill="patta"]').textContent = t.pillPatta;
       document.querySelector('[data-pill="printing"]').textContent = t.pillPrinting;
       document.querySelector('[data-pill="contact"]').textContent = t.pillContact;
+      const pillApps = document.querySelector('[data-pill="apps"]');
+      if (pillApps) pillApps.textContent = lang === 'ta' ? '📂 எனது விண்ணப்பங்கள்' : '📂 My Applications';
 
       document.getElementById('home-hero-badge').textContent = t.heroBadge;
       document.getElementById('home-hero-title').innerHTML = t.heroTitle;
@@ -1491,10 +1550,16 @@
         </li>
       `).join('');
 
-      document.getElementById('modal-apply-btn').onclick = () => {
-        closeDocModal();
-        openApplyModal(s.id);
-      };
+      const modalApplyBtn = document.getElementById('modal-apply-btn');
+      if (window.isCustomerLoggedIn) {
+        modalApplyBtn.classList.remove('hidden');
+        modalApplyBtn.onclick = () => {
+          closeDocModal();
+          openApplyModal(s.id);
+        };
+      } else {
+        modalApplyBtn.classList.add('hidden');
+      }
 
       const modal = document.getElementById('doc-modal');
       modal.classList.remove('hidden');
@@ -1527,6 +1592,10 @@
     function openApplyModal(serviceIdOrTitle) {
       let s = servicesData.find(item => item.id === serviceIdOrTitle || item.titleTa === serviceIdOrTitle || item.titleEn === serviceIdOrTitle);
       if (!s) s = servicesData[0];
+      if (!window.isCustomerLoggedIn) {
+        openDocModal(s.id);
+        return;
+      }
 
       populateServiceSelect();
       document.getElementById('m-service-select').value = s.id;
