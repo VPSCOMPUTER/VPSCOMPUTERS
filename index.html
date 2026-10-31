@@ -396,27 +396,32 @@
           </div>
           <div class="flex flex-wrap items-center gap-2">
             <button onclick="window.loadAdminApplications && window.loadAdminApplications()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition">🔄 Refresh</button>
-            <button id="admin-lock-btn" onclick="window.vpsAdminLock && window.vpsAdminLock()" class="hidden bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-400/30 font-bold text-xs px-3.5 py-2.5 rounded-xl transition">🔒 Lock Admin</button>
+
             <button onclick="navigateTo('home')" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-xl border border-white/20 transition">🏠 முகப்புக்குத் திரும்ப</button>
           </div>
         </div>
       </section>
 
       <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6 space-y-6">
-        <!-- Admin Access Gate (PIN / Login verification) -->
+        <!-- Strict Admin Access Gate (Only for Owner Admin Email Login) -->
         <div id="admin-gate-box" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 max-w-md mx-auto shadow-lg text-center space-y-4">
-          <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mx-auto">🛡️</div>
-          <h3 class="text-lg font-extrabold text-slate-900">Admin Panel பாதுகாப்பு நுழைவு</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">வாடிக்கையாளர் விண்ணப்பங்களை நிர்வகிக்க மற்றும் Status மாற்ற Admin PIN எண்ணை உள்ளிடவும்.</p>
-          <div>
-            <input type="password" id="admin-pin-input" placeholder="Admin PIN / Password உள்ளிடவும்" onkeydown="if(event.key==='Enter') window.vpsVerifyAdminPin()" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 text-center font-extrabold text-sm tracking-widest focus:border-brand-600 focus:outline-none" />
-          </div>
-          <div id="admin-pin-error" class="hidden p-2.5 rounded-xl bg-red-100 text-red-700 text-xs font-bold">❌ தவறான Admin PIN! மீண்டும் முயற்சிக்கவும்.</div>
-          <button onclick="window.vpsVerifyAdminPin()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-sm">🔓 Admin Panel திறக்கவும்</button>
+          <div class="w-14 h-14 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center text-3xl mx-auto">🔒</div>
+          <h3 class="text-lg font-extrabold text-slate-900">Admin Access Only (உரிமையாளருக்கு மட்டும்)</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">இந்தப் பக்கம் VPS Computers உரிமையாளர் (Admin) கணக்கிற்கு மட்டுமே உரியது. வாடிக்கையாளர்களுக்கு அனுமதி இல்லை.</p>
+          <button onclick="navigateTo('home')" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-sm">🏠 முகப்புக்குத் திரும்ப</button>
         </div>
 
-        <!-- Admin Main Content (Shown after Admin unlock) -->
+        <!-- Admin Main Content (Shown ONLY when Owner Admin Email is logged in) -->
         <div id="admin-dashboard-content" class="hidden space-y-6">
+          <!-- Google Sheet Live Sync Status Bar -->
+          <div class="bg-white p-4 rounded-2xl border border-emerald-200 shadow-sm flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></span>
+              <span id="adm-sheet-sync-status" class="text-xs sm:text-sm font-extrabold text-slate-800">📊 Google Sheet & Database Live Sync Active</span>
+            </div>
+            <span id="adm-logged-email" class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200"></span>
+          </div>
+
           <!-- Summary Counters -->
           <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
             <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
@@ -486,8 +491,7 @@
         <button onclick="navigateTo('tickets')" class="hover:text-amber-400">டிக்கெட்</button> •
         <button onclick="navigateTo('msme')" class="hover:text-amber-400">MSME</button> •
         <button onclick="navigateTo('printing')" class="hover:text-amber-400">திருமண அழைப்பிதழ்</button> •
-        <button onclick="navigateTo('contact')" class="hover:text-amber-400">தொடர்புக்கு</button> •
-        <button onclick="navigateTo('admin')" class="hover:text-amber-400 text-amber-400/90">🛡️ Admin</button>
+        <button onclick="navigateTo('contact')" class="hover:text-amber-400">தொடர்புக்கு</button>
       </div>
     </div>
   </footer>
@@ -919,32 +923,46 @@
       navigateTo('home');
     };
 
-    // 👇 ADMIN ACCESS SETTINGS (Admin PIN & Admin Emails) 👇
-    const ADMIN_PIN = '9843'; // Admin PIN (இதை நீங்கள் மாற்றிக்கொள்ளலாம்)
-    const ADMIN_EMAILS = ['vpscomputers@gmail.com', 'vasudevan@vpscomputers.com'];
-    let isAdminUnlocked = sessionStorage.getItem('vps_admin_unlocked') === '1';
+    // 👇 STRICT OWNER ADMIN EMAILS ONLY (வாடிக்கையாளர்களுக்கு Admin Panel தெரியாது) 👇
+    const ADMIN_EMAILS = [
+      'vpsccvat@gmail.com',
+      'admin@vpscomputers.com',
+      'vpscomputers@gmail.com',
+      'vasudevan@vpscomputers.com'
+    ];
     let allAdminAppsCache = [];
 
     function isUserAdminEmail(user) {
       if (!user || !user.email) return false;
-      return ADMIN_EMAILS.includes(user.email.toLowerCase());
+      return ADMIN_EMAILS.includes(String(user.email).trim().toLowerCase());
+    }
+    window.isCurrentUserAdmin = function () {
+      return isUserAdminEmail(currentUser);
+    };
+
+    function normalizeStatusKey(rawStatus) {
+      const s = String(rawStatus || 'submitted').trim().toLowerCase();
+      if (s.includes('progress') || s.includes('process') || s.includes('செயலில்')) return 'processing';
+      if (s.includes('complete') || s.includes('approve') || s.includes('ready') || s.includes('முடி')) return 'completed';
+      if (s.includes('reject') || s.includes('cancel') || s.includes('hold') || s.includes('நிராகரி')) return 'rejected';
+      return 'submitted';
     }
 
     function getStatusBadgeInfo(status, ta) {
-      const s = String(status || 'submitted').toLowerCase();
-      if (s === 'processing' || s === 'in-progress' || s === 'in_progress') {
+      const s = normalizeStatusKey(status);
+      if (s === 'processing') {
         return {
           label: ta ? '⏳ செயலில் உள்ளது (In Progress)' : '⏳ In Progress',
           cls: 'bg-amber-100 text-amber-900 border-amber-300'
         };
       }
-      if (s === 'completed' || s === 'approved' || s === 'ready') {
+      if (s === 'completed') {
         return {
           label: ta ? '✅ முடிக்கப்பட்டது (Completed)' : '✅ Completed',
           cls: 'bg-emerald-100 text-emerald-800 border-emerald-300'
         };
       }
-      if (s === 'rejected' || s === 'cancelled' || s === 'hold') {
+      if (s === 'rejected') {
         return {
           label: ta ? '❌ நிராகரிக்கப்பட்டது / Hold' : '❌ Rejected / Hold',
           cls: 'bg-red-100 text-red-800 border-red-300'
@@ -983,10 +1001,9 @@
         if (a.reqId) rec.reqId = String(a.reqId).slice(0, 50);
         if (a.docs && a.docs.length) rec.docs = a.docs.slice(0, 20).map(d => String(d).slice(0, 100));
         const userDocRef = await addDoc(collection(db, 'users', currentUser.uid, 'applications'), rec);
-        // Also save mirror copy to all_applications for central Admin Panel if rules allow
         try {
           await setDoc(doc(db, 'all_applications', userDocRef.id), { ...rec, userAppId: userDocRef.id });
-        } catch (eMirror) { /* fallback relies on users/{uid}/applications */ }
+        } catch (eMirror) { /* optional central mirror */ }
       } catch (e) { console.warn('application save skipped', e); }
     };
 
@@ -1046,13 +1063,13 @@
     };
 
     // =========================================================================
-    // 🛡️ ADMIN PANEL: APPLICATION MANAGEMENT & STATUS UPDATE
+    // 🛡️ ADMIN PANEL: STRICT OWNER-ONLY ACCESS + GOOGLE SHEET DATA SYNC
     // =========================================================================
     function updateAdminVisibility() {
-      const showAdmin = isAdminUnlocked || isUserAdminEmail(currentUser);
+      const showAdmin = isUserAdminEmail(currentUser);
       const headerAdminBtn = $('header-admin-btn');
       const tabPillAdmin = $('tab-pill-admin');
-      const lockBtn = $('admin-lock-btn');
+      const emailBadge = $('adm-logged-email');
       if (headerAdminBtn) {
         headerAdminBtn.classList.toggle('hidden', !showAdmin);
         headerAdminBtn.classList.toggle('flex', showAdmin);
@@ -1061,40 +1078,21 @@
         tabPillAdmin.classList.toggle('hidden', !showAdmin);
         tabPillAdmin.classList.toggle('flex', showAdmin);
       }
-      if (lockBtn) {
-        lockBtn.classList.toggle('hidden', !showAdmin);
+      if (emailBadge && currentUser) {
+        emailBadge.textContent = '🛡️ Admin: ' + (currentUser.email || '');
+      }
+      // If a non-admin is currently on the admin page, redirect to home immediately
+      if (!showAdmin && typeof currentPage !== 'undefined' && currentPage === 'admin') {
+        navigateTo('home');
       }
     }
-
-    window.vpsVerifyAdminPin = function () {
-      const pinInput = $('admin-pin-input');
-      const errEl = $('admin-pin-error');
-      const entered = (pinInput ? pinInput.value : '').trim();
-      if (entered === ADMIN_PIN) {
-        isAdminUnlocked = true;
-        sessionStorage.setItem('vps_admin_unlocked', '1');
-        if (errEl) errEl.classList.add('hidden');
-        if (pinInput) pinInput.value = '';
-        updateAdminVisibility();
-        window.renderAdminPanel();
-      } else {
-        if (errEl) errEl.classList.remove('hidden');
-      }
-    };
-
-    window.vpsAdminLock = function () {
-      isAdminUnlocked = false;
-      sessionStorage.removeItem('vps_admin_unlocked');
-      updateAdminVisibility();
-      window.renderAdminPanel();
-    };
 
     window.renderAdminPanel = function () {
       const gateBox = $('admin-gate-box');
       const dashContent = $('admin-dashboard-content');
-      const unlocked = isAdminUnlocked || isUserAdminEmail(currentUser);
+      const isOwner = isUserAdminEmail(currentUser);
       updateAdminVisibility();
-      if (!unlocked) {
+      if (!isOwner) {
         if (gateBox) gateBox.classList.remove('hidden');
         if (dashContent) dashContent.classList.add('hidden');
         return;
@@ -1104,53 +1102,162 @@
       window.loadAdminApplications();
     };
 
+    // Parse a row returned from Google Sheet (Apps Script doGet) into a standard application object
+    function parseSheetRowToApp(row, idx) {
+      if (!row || typeof row !== 'object') return null;
+      // Support both object keys and array rows from Google Sheets
+      const getVal = (keys, arrIdx) => {
+        if (Array.isArray(row)) return row[arrIdx] != null ? String(row[arrIdx]).trim() : '';
+        for (const k of keys) {
+          for (const rk of Object.keys(row)) {
+            if (rk.toLowerCase().replace(/[^a-z0-9]/g, '') === k.toLowerCase().replace(/[^a-z0-9]/g, '')) {
+              return row[rk] != null ? String(row[rk]).trim() : '';
+            }
+          }
+        }
+        return '';
+      };
+
+      const timestampStr = getVal(['timestamp', 'date', 'createdat', 'time', 'தேதி'], 0);
+      const reqId = getVal(['reqid', 'requestid', 'applicationid', 'id', 'விண்ணப்பஎண்'], 1) || ('SHEET-ROW-' + (idx + 1));
+      const name = getVal(['name', 'customername', 'applicantname', 'பெயர்'], 2);
+      const phone = getVal(['phone', 'mobile', 'mobilenumber', 'மொபைல்'], 3);
+      const serviceRaw = getVal(['service', 'servicename', 'servicetitle', 'சேவை'], 4);
+      const utrRaw = getVal(['utr', 'payment', 'details', 'utrandnotes', 'விவரம்'], 5);
+      const driveLink = getVal(['folderurl', 'driveurl', 'files', 'fileurl', 'link', 'ஆவணங்கள்'], 6);
+      const statusRaw = getVal(['status', 'நிலை'], 7) || 'submitted';
+      const adminNote = getVal(['adminnote', 'remark', 'remarks', 'குறிப்பு'], 8) || '';
+
+      if (!name && !phone && !serviceRaw) return null;
+
+      let parsedDate = timestampStr ? new Date(timestampStr) : null;
+      let sec = (parsedDate && !isNaN(parsedDate.getTime())) ? Math.floor(parsedDate.getTime() / 1000) : (Date.now() / 1000 - idx);
+
+      return {
+        id: reqId.replace(/[^A-Za-z0-9_-]/g, '_'),
+        reqId: reqId,
+        uid: getVal(['uid', 'userid'], 9) || '',
+        source: 'sheet',
+        serviceTa: serviceRaw || 'ஆன்லைன் விண்ணப்பம்',
+        serviceEn: serviceRaw || 'Online Application',
+        fee: '',
+        name: name,
+        phone: phone,
+        method: 'web',
+        utr: utrRaw,
+        details: '',
+        notes: '',
+        driveUrl: driveLink,
+        status: normalizeStatusKey(statusRaw),
+        adminNote: adminNote,
+        createdAt: {
+          seconds: sec,
+          toDate: () => (parsedDate && !isNaN(parsedDate.getTime())) ? parsedDate : new Date()
+        },
+        rawDateStr: timestampStr
+      };
+    }
+
     window.loadAdminApplications = async function () {
       const listEl = $('admin-apps-list');
+      const syncStatusEl = $('adm-sheet-sync-status');
       if (!listEl) return;
-      if (!db) {
-        listEl.innerHTML = '<div class="col-span-full bg-red-50 p-5 rounded-2xl border border-red-200 text-sm font-bold text-red-700">Firebase Firestore இணைக்கப்படவில்லை.</div>';
+      if (!isUserAdminEmail(currentUser)) {
+        navigateTo('home');
         return;
       }
-      listEl.innerHTML = '<div class="col-span-full bg-white p-6 rounded-2xl border border-slate-200 text-center text-sm font-bold text-slate-600">⏳ அனைத்து வாடிக்கையாளர்களின் விண்ணப்பங்களும் ஏற்றப்படுகின்றன...</div>';
+
+      listEl.innerHTML = '<div class="col-span-full bg-white p-6 rounded-2xl border border-slate-200 text-center text-sm font-bold text-slate-600">⏳ Google Sheet மற்றும் Database-ல் இருந்து விண்ணப்பங்கள் ஏற்றப்படுகின்றன...</div>';
+      if (syncStatusEl) syncStatusEl.textContent = '⏳ Google Sheet-ல் இருந்து விண்ணப்பங்கள் பெறப்படுகின்றன...';
 
       const appsMap = new Map();
+      let sheetCount = 0;
 
-      // Method 1: Try collectionGroup('applications') to fetch all customer applications across users/{uid}/applications
-      try {
-        const cgSnap = await getDocs(collectionGroup(db, 'applications'));
-        cgSnap.forEach(docSnap => {
-          const data = docSnap.data();
-          const parentUserDoc = docSnap.ref.parent && docSnap.ref.parent.parent ? docSnap.ref.parent.parent.id : (data.uid || '');
-          appsMap.set(docSnap.id, {
-            id: docSnap.id,
-            uid: parentUserDoc,
-            refPath: docSnap.ref.path,
-            ...data
-          });
-        });
-      } catch (eCg) {
-        console.warn('collectionGroup query fallback:', eCg);
+      // 1. PRIMARY: Fetch application rows from Google Sheet via GOOGLE_SCRIPT_URL
+      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
+        try {
+          const url = GOOGLE_SCRIPT_URL + (GOOGLE_SCRIPT_URL.includes('?') ? '&' : '?') + 'action=getApplications&t=' + Date.now();
+          const res = await fetch(url, { method: 'GET' });
+          const json = await res.json();
+          const rows = Array.isArray(json) ? json : (json.data || json.applications || json.rows || []);
+          if (Array.isArray(rows)) {
+            rows.forEach((r, idx) => {
+              const parsed = parseSheetRowToApp(r, idx);
+              if (parsed) {
+                appsMap.set(parsed.reqId || parsed.id, parsed);
+                sheetCount++;
+              }
+            });
+          }
+        } catch (eSheetGet) {
+          console.warn('Google Sheet GET fallback (trying POST action=getApplications):', eSheetGet);
+          try {
+            const resPost = await fetch(GOOGLE_SCRIPT_URL, {
+              method: 'POST',
+              body: JSON.stringify({ action: 'getApplications' })
+            });
+            const jsonPost = await resPost.json();
+            const rowsPost = Array.isArray(jsonPost) ? jsonPost : (jsonPost.data || jsonPost.applications || jsonPost.rows || []);
+            if (Array.isArray(rowsPost)) {
+              rowsPost.forEach((r, idx) => {
+                const parsed = parseSheetRowToApp(r, idx);
+                if (parsed) {
+                  appsMap.set(parsed.reqId || parsed.id, parsed);
+                  sheetCount++;
+                }
+              });
+            }
+          } catch (eSheetPost) {
+            console.warn('Google Sheet POST fetch notice:', eSheetPost);
+          }
+        }
       }
 
-      // Method 2: Try top-level all_applications collection
-      if (appsMap.size === 0) {
+      // 2. SECONDARY / MERGE: Fetch Firestore records (for status overrides, UIDs, and WhatsApp applications)
+      if (db) {
+        const mergeFirestoreApp = (docId, data, parentUid) => {
+          const key = data.reqId || docId;
+          const existing = appsMap.get(key) || appsMap.get(docId);
+          if (existing) {
+            existing.firestoreId = docId;
+            existing.uid = parentUid || data.uid || existing.uid;
+            if (data.status) existing.status = normalizeStatusKey(data.status);
+            if (data.adminNote) existing.adminNote = data.adminNote;
+            if (data.docs && data.docs.length) existing.docs = data.docs;
+            if (data.userEmail) existing.userEmail = data.userEmail;
+          } else {
+            appsMap.set(key, {
+              id: docId,
+              firestoreId: docId,
+              uid: parentUid || data.uid || '',
+              source: 'firestore',
+              ...data,
+              status: normalizeStatusKey(data.status)
+            });
+          }
+        };
+
+        try {
+          const cgSnap = await getDocs(collectionGroup(db, 'applications'));
+          cgSnap.forEach(docSnap => {
+            const data = docSnap.data();
+            const parentUid = docSnap.ref.parent && docSnap.ref.parent.parent ? docSnap.ref.parent.parent.id : (data.uid || '');
+            mergeFirestoreApp(docSnap.id, data, parentUid);
+          });
+        } catch (eCg) {
+          console.warn('collectionGroup fallback:', eCg);
+        }
+
         try {
           const allSnap = await getDocs(query(collection(db, 'all_applications'), orderBy('createdAt', 'desc'), limit(200)));
           allSnap.forEach(docSnap => {
             const data = docSnap.data();
-            appsMap.set(docSnap.id, {
-              id: docSnap.id,
-              uid: data.uid || '',
-              ...data
-            });
+            mergeFirestoreApp(docSnap.id, data, data.uid || '');
           });
         } catch (eAll) {
-          console.warn('all_applications query fallback:', eAll);
+          console.warn('all_applications fallback:', eAll);
         }
-      }
 
-      // Method 3: Iterate through users collection and load each user's applications subcollection
-      if (appsMap.size === 0) {
         try {
           const usersSnap = await getDocs(collection(db, 'users'));
           for (const uDoc of usersSnap.docs) {
@@ -1158,34 +1265,11 @@
             const appSnap = await getDocs(collection(db, 'users', uDoc.id, 'applications'));
             appSnap.forEach(aDoc => {
               const data = aDoc.data();
-              appsMap.set(aDoc.id, {
-                id: aDoc.id,
-                uid: uDoc.id,
-                userEmail: data.userEmail || uData.email || '',
-                ...data
-              });
+              mergeFirestoreApp(aDoc.id, { ...data, userEmail: data.userEmail || uData.email || '' }, uDoc.id);
             });
           }
         } catch (eUsers) {
           console.warn('users iteration fallback:', eUsers);
-        }
-      }
-
-      // Method 4: Fallback to currentUser's applications if logged in and rules restrict other users
-      if (appsMap.size === 0 && currentUser) {
-        try {
-          const mySnap = await getDocs(collection(db, 'users', currentUser.uid, 'applications'));
-          mySnap.forEach(aDoc => {
-            const data = aDoc.data();
-            appsMap.set(aDoc.id, {
-              id: aDoc.id,
-              uid: currentUser.uid,
-              userEmail: currentUser.email || '',
-              ...data
-            });
-          });
-        } catch (eMy) {
-          console.warn('currentUser apps fallback:', eMy);
         }
       }
 
@@ -1195,6 +1279,12 @@
         return tbSec - taSec;
       });
 
+      if (syncStatusEl) {
+        syncStatusEl.textContent = sheetCount > 0
+          ? `✅ Google Sheet-ல் இருந்து ${sheetCount} விண்ணப்பங்கள் நேரடியாகப் பெறப்பட்டன (மொத்தம்: ${allAdminAppsCache.length})`
+          : `📊 மொத்த விண்ணப்பங்கள்: ${allAdminAppsCache.length} (Google Sheet-ல் இருந்து பழைய தரவுகளையும் பெற Apps Script doGet இணைக்கலாம்)`;
+      }
+
       updateAdminStats(allAdminAppsCache);
       window.filterAdminApps();
     };
@@ -1202,10 +1292,10 @@
     function updateAdminStats(list) {
       let total = list.length, submitted = 0, processing = 0, completed = 0, rejected = 0;
       list.forEach(item => {
-        const s = String(item.status || 'submitted').toLowerCase();
-        if (s === 'processing' || s === 'in-progress' || s === 'in_progress') processing++;
-        else if (s === 'completed' || s === 'approved' || s === 'ready') completed++;
-        else if (s === 'rejected' || s === 'cancelled' || s === 'hold') rejected++;
+        const s = normalizeStatusKey(item.status);
+        if (s === 'processing') processing++;
+        else if (s === 'completed') completed++;
+        else if (s === 'rejected') rejected++;
         else submitted++;
       });
       if ($('adm-stat-total')) $('adm-stat-total').textContent = total;
@@ -1223,7 +1313,7 @@
       const ta = L() === 'ta';
 
       const filtered = allAdminAppsCache.filter(item => {
-        const st = String(item.status || 'submitted').toLowerCase();
+        const st = normalizeStatusKey(item.status);
         if (statusFilter !== 'all' && st !== statusFilter) return false;
         if (!qText) return true;
         const hay = [
@@ -1240,11 +1330,14 @@
 
       listEl.innerHTML = filtered.map(app => {
         const title = ta ? (app.serviceTa || app.serviceEn) : (app.serviceEn || app.serviceTa);
-        const when = app.createdAt && app.createdAt.toDate ? app.createdAt.toDate().toLocaleString('en-IN') : '';
+        const when = app.rawDateStr || (app.createdAt && app.createdAt.toDate ? app.createdAt.toDate().toLocaleString('en-IN') : '');
         const badge = getStatusBadgeInfo(app.status, ta);
-        const curStatus = String(app.status || 'submitted').toLowerCase();
+        const curStatus = normalizeStatusKey(app.status);
         const docsHtml = (app.docs && app.docs.length)
           ? '<p><span class="font-bold text-slate-500">📂 ஆவணங்கள்: </span><span class="font-semibold text-slate-800">' + app.docs.map(d => esc(d)).join(', ') + '</span></p>'
+          : '';
+        const driveLinkHtml = app.driveUrl
+          ? `<p><span class="font-bold text-slate-500">📁 Google Drive Files: </span><a href="${esc(app.driveUrl)}" target="_blank" rel="noopener noreferrer" class="font-extrabold text-brand-600 underline">ஆவணங்களைப் பார்க்க (Open Drive) ↗</a></p>`
           : '';
         const custPhoneClean = String(app.phone || '').replace(/[^0-9]/g, '');
         const waCustPhone = custPhoneClean.length === 10 ? '91' + custPhoneClean : custPhoneClean;
@@ -1259,10 +1352,15 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
 
 நன்றி!`;
 
+        const safeId = esc(app.id);
+        const safeFirestoreId = esc(app.firestoreId || app.id);
+        const safeReqId = esc(app.reqId || '');
+        const safeUid = esc(app.uid || '');
+
         return `<div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
           <div>
             <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
-              <span id="adm-badge-${esc(app.id)}" class="text-[11px] font-extrabold border px-3 py-0.5 rounded-full ${badge.cls}">${badge.label}</span>
+              <span id="adm-badge-${safeId}" class="text-[11px] font-extrabold border px-3 py-0.5 rounded-full ${badge.cls}">${badge.label}</span>
               <span class="text-[11px] font-bold text-slate-500">🕒 ${esc(when)}</span>
             </div>
             <h3 class="text-base font-extrabold text-slate-900 leading-snug">${esc(title)}</h3>
@@ -1270,12 +1368,13 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
             <div class="mt-3 space-y-1.5 text-xs text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
               <p><span class="font-bold text-slate-500">👤 வாடிக்கையாளர் பெயர்: </span><span class="font-extrabold text-slate-900 text-sm">${esc(app.name || '-')}</span></p>
               <p><span class="font-bold text-slate-500">📞 மொபைல் எண்: </span><a href="tel:${esc(app.phone || '')}" class="font-extrabold text-brand-700 hover:underline">${esc(app.phone || '-')}</a> ${app.userEmail ? `<span class="text-slate-400">(${esc(app.userEmail)})</span>` : ''}</p>
-              <p><span class="font-bold text-slate-500">💳 கட்டணம் & முறை: </span><span class="font-bold text-emerald-700">${esc(app.fee || '-')}</span> • ${app.method === 'web' ? '🌐 Website Upload' : '💬 WhatsApp'}</p>
+              <p><span class="font-bold text-slate-500">💳 கட்டணம் & முறை: </span><span class="font-bold text-emerald-700">${esc(app.fee || '-')}</span> • ${app.method === 'web' ? '🌐 Website / Sheet' : '💬 WhatsApp'}</p>
               ${app.reqId ? `<p><span class="font-bold text-slate-500">🆔 Request ID: </span><span class="font-black text-brand-700">${esc(app.reqId)}</span></p>` : ''}
-              ${app.utr ? `<p><span class="font-bold text-slate-500">🏦 UTR / Payment Ref: </span><span class="font-bold text-slate-900">${esc(app.utr)}</span></p>` : ''}
+              ${app.utr ? `<p><span class="font-bold text-slate-500">🏦 UTR / Details: </span><span class="font-bold text-slate-900">${esc(app.utr)}</span></p>` : ''}
               ${app.details ? `<p><span class="font-bold text-slate-500">✍️ விவரம் (Details): </span><span class="font-semibold text-slate-900">${esc(app.details)}</span></p>` : ''}
               ${app.notes ? `<p><span class="font-bold text-slate-500">📝 குறிப்பு (Notes): </span><span class="font-semibold text-slate-900">${esc(app.notes)}</span></p>` : ''}
               ${docsHtml}
+              ${driveLinkHtml}
             </div>
           </div>
 
@@ -1284,7 +1383,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
             <div class="grid sm:grid-cols-2 gap-2.5">
               <div>
                 <label class="block text-[11px] font-extrabold text-slate-700 mb-1">📌 விண்ணப்ப நிலை (Update Status):</label>
-                <select id="adm-st-${esc(app.id)}" class="w-full px-3 py-2 rounded-xl border-2 border-slate-300 text-xs font-extrabold bg-white focus:border-brand-600 focus:outline-none">
+                <select id="adm-st-${safeId}" class="w-full px-3 py-2 rounded-xl border-2 border-slate-300 text-xs font-extrabold bg-white focus:border-brand-600 focus:outline-none">
                   <option value="submitted" ${curStatus === 'submitted' ? 'selected' : ''}>📩 Submitted (புதியது)</option>
                   <option value="processing" ${curStatus === 'processing' ? 'selected' : ''}>⏳ In Progress (செயலில் உள்ளது)</option>
                   <option value="completed" ${curStatus === 'completed' ? 'selected' : ''}>✅ Completed (முடிக்கப்பட்டது)</option>
@@ -1293,24 +1392,24 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
               </div>
               <div>
                 <label class="block text-[11px] font-extrabold text-slate-700 mb-1">📢 வாடிக்கையாளர் குறிப்பு (Admin Remark):</label>
-                <input type="text" id="adm-note-${esc(app.id)}" value="${esc(app.adminNote || '')}" placeholder="உதா: சான்றிதழ் தயாராக உள்ளது / ஆவணம் தேவை" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none" />
+                <input type="text" id="adm-note-${safeId}" value="${esc(app.adminNote || '')}" placeholder="உதா: சான்றிதழ் தயாராக உள்ளது / ஆவணம் தேவை" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none" />
               </div>
             </div>
 
             <div class="flex flex-wrap items-center gap-2 pt-1">
-              <button type="button" id="adm-save-btn-${esc(app.id)}" onclick="window.vpsUpdateAppStatus('${esc(app.id)}', '${esc(app.uid || '')}')" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-sm transition">
+              <button type="button" id="adm-save-btn-${safeId}" onclick="window.vpsUpdateAppStatus('${safeId}', '${safeUid}', '${safeReqId}', '${safeFirestoreId}')" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-sm transition">
                 💾 Status சேமிக்கவும் (Update Status)
               </button>
               ${waCustPhone ? `<a href="https://wa.me/${waCustPhone}?text=${encodeURIComponent(waToCustomerMsg)}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-3.5 rounded-xl shadow-sm transition flex items-center gap-1">💬 WhatsApp வாடிக்கையாளர்</a>` : ''}
             </div>
-            <div id="adm-msg-${esc(app.id)}" class="hidden text-[11px] font-extrabold text-center py-1.5 rounded-lg"></div>
+            <div id="adm-msg-${safeId}" class="hidden text-[11px] font-extrabold text-center py-1.5 rounded-lg"></div>
           </div>
         </div>`;
       }).join('');
     };
 
-    window.vpsUpdateAppStatus = async function (appId, uid) {
-      if (!db || !appId) return;
+    window.vpsUpdateAppStatus = async function (appId, uid, reqId, firestoreId) {
+      if (!isUserAdminEmail(currentUser)) return;
       const stEl = $('adm-st-' + appId);
       const noteEl = $('adm-note-' + appId);
       const btnEl = $('adm-save-btn-' + appId);
@@ -1331,22 +1430,46 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         updatedAt: serverTimestamp()
       };
 
-      // Update in users/{uid}/applications/{appId}
-      if (uid) {
+      // 1. Update in Google Sheet via GOOGLE_SCRIPT_URL
+      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http') && reqId) {
         try {
-          await updateDoc(doc(db, 'users', uid, 'applications', appId), updatePayload);
-          updated = true;
-        } catch (eUserDoc) {
-          console.warn('Update users/{uid}/applications failed:', eUserDoc);
+          const sheetRes = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            body: JSON.stringify({
+              action: 'updateStatus',
+              reqId: reqId,
+              status: newStatus,
+              adminNote: newNote
+            })
+          });
+          if (sheetRes.ok) updated = true;
+        } catch (eSheetUpd) {
+          console.warn('Google Sheet status update notice:', eSheetUpd);
         }
       }
 
-      // Also update in top-level all_applications/{appId} if present
-      try {
-        await setDoc(doc(db, 'all_applications', appId), updatePayload, { merge: true });
-        updated = true;
-      } catch (eAllDoc) {
-        console.warn('Update all_applications failed:', eAllDoc);
+      // 2. Update in Firestore users/{uid}/applications/{firestoreId}
+      const targetDocId = firestoreId || appId;
+      if (db && uid) {
+        try {
+          await updateDoc(doc(db, 'users', uid, 'applications', targetDocId), updatePayload);
+          updated = true;
+        } catch (eUserDoc) {
+          console.warn('Update users/{uid}/applications notice:', eUserDoc);
+        }
+      }
+
+      // 3. Also update in top-level all_applications/{targetDocId}
+      if (db) {
+        try {
+          await setDoc(doc(db, 'all_applications', reqId || targetDocId), {
+            ...updatePayload,
+            reqId: reqId || targetDocId
+          }, { merge: true });
+          updated = true;
+        } catch (eAllDoc) {
+          console.warn('Update all_applications notice:', eAllDoc);
+        }
       }
 
       // Update local cache and UI
@@ -1376,7 +1499,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
           msgEl.textContent = '✅ விண்ணப்ப நிலை (Status) வெற்றிகரமாக மாற்றப்பட்டது!';
         } else {
           msgEl.className = 'text-[11px] font-extrabold text-center py-1.5 rounded-lg bg-red-100 text-red-800 border border-red-300 block';
-          msgEl.textContent = '❌ மாற்ற முடியவில்லை. Firestore Rules அனுமதியைச் சரிபார்க்கவும்.';
+          msgEl.textContent = '❌ மாற்ற முடியவில்லை. Google Apps Script / Firestore அனுமதியைச் சரிபார்க்கவும்.';
         }
         setTimeout(() => { msgEl.classList.add('hidden'); }, 3500);
       }
@@ -1986,6 +2109,11 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         document.getElementById('page-apps').classList.remove('hidden');
         if (window.renderMyApplications) window.renderMyApplications();
       } else if (pageKey === 'admin') {
+        if (!window.isCurrentUserAdmin || !window.isCurrentUserAdmin()) {
+          document.getElementById('page-home').classList.remove('hidden');
+          currentPage = 'home';
+          return;
+        }
         if (adminPageEl) adminPageEl.classList.remove('hidden');
         if (window.renderAdminPanel) window.renderAdminPanel();
       } else if (pageKey === 'contact') {
