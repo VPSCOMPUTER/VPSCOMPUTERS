@@ -125,6 +125,7 @@
           </div>
           <div id="auth-user" class="hidden items-center gap-1.5">
             <button onclick="navigateTo('apps')" id="auth-user-name" class="bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-brand-200 transition max-w-[140px] truncate">👤</button>
+            <button onclick="navigateTo('admin')" id="header-admin-btn" class="hidden bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-3 py-2.5 rounded-xl shadow-sm transition items-center gap-1">🛡️ <span>Admin</span></button>
             <button onclick="vpsLogout()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-slate-200 transition">Logout</button>
           </div>
 
@@ -157,6 +158,7 @@
           <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
           <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு & Upload</button>
           <button id="tab-pill-apps" onclick="navigateTo('apps')" data-pill="apps" class="page-pill hidden px-3 py-2 rounded-xl transition items-center gap-1.5">📂 எனது விண்ணப்பங்கள்</button>
+          <button id="tab-pill-admin" onclick="navigateTo('admin')" data-pill="admin" class="page-pill hidden px-3 py-2 rounded-xl transition items-center gap-1.5">🛡️ Admin Panel</button>
         </div>
       </div>
     </div>
@@ -381,6 +383,86 @@
       </section>
     </div>
 
+    <!-- ==========================================
+         PAGE: ADMIN PANEL (APPLICATION MANAGEMENT & STATUS UPDATE)
+    =========================================== -->
+    <div id="page-admin" class="page-view page-fade hidden">
+      <section class="bg-gradient-to-r from-slate-950 via-indigo-950 to-slate-950 text-white py-6 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-wrap justify-between items-center gap-4">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 bg-white/10 px-2.5 py-0.5 rounded-full">🛡️ ADMIN DASHBOARD</span>
+            <h2 class="text-xl sm:text-3xl font-extrabold mt-1">வாடிக்கையாளர் விண்ணப்ப மேலாண்மை (Admin Panel)</h2>
+            <p class="text-slate-300 text-xs sm:text-sm mt-1">அனைத்து வாடிக்கையாளர்களின் விண்ணப்பங்களையும் பார்வையிட மற்றும் நிலை (Status) மாற்ற.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="window.loadAdminApplications && window.loadAdminApplications()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition">🔄 Refresh</button>
+            <button id="admin-lock-btn" onclick="window.vpsAdminLock && window.vpsAdminLock()" class="hidden bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-400/30 font-bold text-xs px-3.5 py-2.5 rounded-xl transition">🔒 Lock Admin</button>
+            <button onclick="navigateTo('home')" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-xl border border-white/20 transition">🏠 முகப்புக்குத் திரும்ப</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6 space-y-6">
+        <!-- Admin Access Gate (PIN / Login verification) -->
+        <div id="admin-gate-box" class="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 max-w-md mx-auto shadow-lg text-center space-y-4">
+          <div class="w-14 h-14 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-3xl mx-auto">🛡️</div>
+          <h3 class="text-lg font-extrabold text-slate-900">Admin Panel பாதுகாப்பு நுழைவு</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">வாடிக்கையாளர் விண்ணப்பங்களை நிர்வகிக்க மற்றும் Status மாற்ற Admin PIN எண்ணை உள்ளிடவும்.</p>
+          <div>
+            <input type="password" id="admin-pin-input" placeholder="Admin PIN / Password உள்ளிடவும்" onkeydown="if(event.key==='Enter') window.vpsVerifyAdminPin()" class="w-full px-4 py-3 rounded-xl border-2 border-slate-300 text-center font-extrabold text-sm tracking-widest focus:border-brand-600 focus:outline-none" />
+          </div>
+          <div id="admin-pin-error" class="hidden p-2.5 rounded-xl bg-red-100 text-red-700 text-xs font-bold">❌ தவறான Admin PIN! மீண்டும் முயற்சிக்கவும்.</div>
+          <button onclick="window.vpsVerifyAdminPin()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-5 rounded-xl shadow-md transition text-sm">🔓 Admin Panel திறக்கவும்</button>
+        </div>
+
+        <!-- Admin Main Content (Shown after Admin unlock) -->
+        <div id="admin-dashboard-content" class="hidden space-y-6">
+          <!-- Summary Counters -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+              <span class="text-[11px] font-bold text-slate-500 block">மொத்த விண்ணப்பங்கள்</span>
+              <span id="adm-stat-total" class="text-2xl font-black text-slate-900 mt-1 block">0</span>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200 shadow-sm">
+              <span class="text-[11px] font-bold text-blue-700 block">புதியவை (Submitted)</span>
+              <span id="adm-stat-submitted" class="text-2xl font-black text-blue-900 mt-1 block">0</span>
+            </div>
+            <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 shadow-sm">
+              <span class="text-[11px] font-bold text-amber-800 block">செயலில் (In Progress)</span>
+              <span id="adm-stat-processing" class="text-2xl font-black text-amber-900 mt-1 block">0</span>
+            </div>
+            <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 shadow-sm">
+              <span class="text-[11px] font-bold text-emerald-700 block">முடிந்தவை (Completed)</span>
+              <span id="adm-stat-completed" class="text-2xl font-black text-emerald-900 mt-1 block">0</span>
+            </div>
+            <div class="bg-red-50 p-4 rounded-2xl border border-red-200 shadow-sm col-span-2 sm:col-span-1">
+              <span class="text-[11px] font-bold text-red-700 block">நிராகரிக்கப்பட்டவை</span>
+              <span id="adm-stat-rejected" class="text-2xl font-black text-red-900 mt-1 block">0</span>
+            </div>
+          </div>
+
+          <!-- Search & Filter Bar -->
+          <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+            <div class="flex-1">
+              <input type="text" id="adm-search-input" oninput="window.filterAdminApps && window.filterAdminApps()" placeholder="🔍 பெயர், மொபைல் எண், Request ID அல்லது சேவை பெயர் தேடவும்..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:border-brand-600 focus:outline-none" />
+            </div>
+            <div class="flex items-center gap-2">
+              <select id="adm-status-filter" onchange="window.filterAdminApps && window.filterAdminApps()" class="px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm font-bold bg-slate-50 focus:border-brand-600 focus:outline-none">
+                <option value="all">அனைத்து நிலைகளும் (All Status)</option>
+                <option value="submitted">📩 Submitted (புதியது)</option>
+                <option value="processing">⏳ In Progress (செயலில் உள்ளது)</option>
+                <option value="completed">✅ Completed (முடிக்கப்பட்டது)</option>
+                <option value="rejected">❌ Rejected / Hold (நிராகரிக்கப்பட்டது)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Applications List -->
+          <div id="admin-apps-list" class="grid grid-cols-1 lg:grid-cols-2 gap-5"></div>
+        </div>
+      </section>
+    </div>
+
   </main>
 
   <!-- FOOTER -->
@@ -404,7 +486,8 @@
         <button onclick="navigateTo('tickets')" class="hover:text-amber-400">டிக்கெட்</button> •
         <button onclick="navigateTo('msme')" class="hover:text-amber-400">MSME</button> •
         <button onclick="navigateTo('printing')" class="hover:text-amber-400">திருமண அழைப்பிதழ்</button> •
-        <button onclick="navigateTo('contact')" class="hover:text-amber-400">தொடர்புக்கு</button>
+        <button onclick="navigateTo('contact')" class="hover:text-amber-400">தொடர்புக்கு</button> •
+        <button onclick="navigateTo('admin')" class="hover:text-amber-400 text-amber-400/90">🛡️ Admin</button>
       </div>
     </div>
   </footer>
@@ -679,7 +762,7 @@
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
     import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-    import { getFirestore, doc, setDoc, addDoc, collection, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getFirestore, doc, setDoc, addDoc, updateDoc, collection, collectionGroup, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
     // 👇 Firebase console → Project settings → Your apps → Config. apiKey / messagingSenderId / appId இங்கே paste செய்யவும் 👇
     const firebaseConfig = {
@@ -836,12 +919,51 @@
       navigateTo('home');
     };
 
-    // ---- Save an application (only when customer is logged in; login stays optional) ----
+    // 👇 ADMIN ACCESS SETTINGS (Admin PIN & Admin Emails) 👇
+    const ADMIN_PIN = '9843'; // Admin PIN (இதை நீங்கள் மாற்றிக்கொள்ளலாம்)
+    const ADMIN_EMAILS = ['vpscomputers@gmail.com', 'vasudevan@vpscomputers.com'];
+    let isAdminUnlocked = sessionStorage.getItem('vps_admin_unlocked') === '1';
+    let allAdminAppsCache = [];
+
+    function isUserAdminEmail(user) {
+      if (!user || !user.email) return false;
+      return ADMIN_EMAILS.includes(user.email.toLowerCase());
+    }
+
+    function getStatusBadgeInfo(status, ta) {
+      const s = String(status || 'submitted').toLowerCase();
+      if (s === 'processing' || s === 'in-progress' || s === 'in_progress') {
+        return {
+          label: ta ? '⏳ செயலில் உள்ளது (In Progress)' : '⏳ In Progress',
+          cls: 'bg-amber-100 text-amber-900 border-amber-300'
+        };
+      }
+      if (s === 'completed' || s === 'approved' || s === 'ready') {
+        return {
+          label: ta ? '✅ முடிக்கப்பட்டது (Completed)' : '✅ Completed',
+          cls: 'bg-emerald-100 text-emerald-800 border-emerald-300'
+        };
+      }
+      if (s === 'rejected' || s === 'cancelled' || s === 'hold') {
+        return {
+          label: ta ? '❌ நிராகரிக்கப்பட்டது / Hold' : '❌ Rejected / Hold',
+          cls: 'bg-red-100 text-red-800 border-red-300'
+        };
+      }
+      return {
+        label: ta ? '📩 சமர்ப்பிக்கப்பட்டது (Submitted)' : '📩 Submitted',
+        cls: 'bg-blue-100 text-blue-800 border-blue-300'
+      };
+    }
+
+    // ---- Save an application (only when customer is logged in) ----
     window.vpsSaveApplication = async function (a) {
       if (!db || !currentUser) return;
       try {
         const s = a.service || {};
         const rec = {
+          uid: currentUser.uid,
+          userEmail: String(currentUser.email || '').slice(0, 200),
           serviceId: String(s.id || '').slice(0, 100),
           serviceTa: String(s.titleTa || '').slice(0, 200),
           serviceEn: String(s.titleEn || '').slice(0, 200),
@@ -850,19 +972,25 @@
           phone: String(a.phone || '').slice(0, 20),
           method: a.method === 'web' ? 'web' : 'whatsapp',
           status: 'submitted',
+          adminNote: '',
           lang: L(),
-          createdAt: serverTimestamp()
+          createdAt: serverTimestamp(),
+          updatedAt: serverTimestamp()
         };
         if (a.details) rec.details = String(a.details).slice(0, 500);
         if (a.notes) rec.notes = String(a.notes).slice(0, 1000);
         if (a.utr) rec.utr = String(a.utr).slice(0, 50);
         if (a.reqId) rec.reqId = String(a.reqId).slice(0, 50);
         if (a.docs && a.docs.length) rec.docs = a.docs.slice(0, 20).map(d => String(d).slice(0, 100));
-        await addDoc(collection(db, 'users', currentUser.uid, 'applications'), rec);
+        const userDocRef = await addDoc(collection(db, 'users', currentUser.uid, 'applications'), rec);
+        // Also save mirror copy to all_applications for central Admin Panel if rules allow
+        try {
+          await setDoc(doc(db, 'all_applications', userDocRef.id), { ...rec, userAppId: userDocRef.id });
+        } catch (eMirror) { /* fallback relies on users/{uid}/applications */ }
       } catch (e) { console.warn('application save skipped', e); }
     };
 
-    // ---- My Applications page ----
+    // ---- My Applications page (Customer View) ----
     window.renderMyApplications = async function () {
       const box = $('apps-list');
       const ta = L() === 'ta';
@@ -883,13 +1011,16 @@
           const title = ta ? (a.serviceTa || a.serviceEn) : (a.serviceEn || a.serviceTa);
           const when = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().toLocaleString('en-IN') : '';
           const sid = String(a.serviceId || '').replace(/[^A-Za-z0-9_-]/g, '');
-          const statusTxt = a.status === 'submitted' ? (ta ? 'சமர்ப்பிக்கப்பட்டது' : 'Submitted') : esc(a.status);
+          const badge = getStatusBadgeInfo(a.status, ta);
           const waMsg = (ta ? 'வணக்கம் VPS Computers, என் விண்ணப்ப நிலை: ' : 'Hello VPS Computers, status of my application: ') + (a.serviceTa || a.serviceEn || '') + (a.reqId ? ' (' + a.reqId + ')' : '') + ' - ' + (a.name || '');
           const docsHtml = (a.docs && a.docs.length)
             ? '<div class="mt-2 pt-2 border-t border-slate-100 text-[11px] text-slate-700"><span class="font-bold text-slate-500">' + (ta ? '📂 இணைக்கப்பட்ட ஆவணங்கள்: ' : '📂 Attached Documents: ') + '</span>' + a.docs.map(docItem => esc(docItem)).join(', ') + '</div>'
             : '';
+          const adminNoteHtml = a.adminNote
+            ? '<div class="mt-2 p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-950"><span class="font-extrabold">' + (ta ? '📢 அலுவலகக் குறிப்பு (Admin Update): ' : '📢 Admin Remark: ') + '</span>' + esc(a.adminNote) + '</div>'
+            : '';
           return '<div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">' +
-            '<div><div class="flex items-center justify-between gap-2 mb-2"><span class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full">' + statusTxt + '</span><span class="text-[10px] font-bold text-slate-500">' + esc(when) + '</span></div>' +
+            '<div><div class="flex items-center justify-between gap-2 mb-2"><span class="text-[10px] font-extrabold border px-2.5 py-0.5 rounded-full ' + badge.cls + '">' + badge.label + '</span><span class="text-[10px] font-bold text-slate-500">' + esc(when) + '</span></div>' +
             '<h3 class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">' + esc(title) + '</h3>' +
             '<div class="mt-2.5 space-y-1 text-xs text-slate-700 bg-slate-50 p-3 rounded-xl border border-slate-100">' +
             (a.name ? '<p><span class="font-bold text-slate-500">' + (ta ? '👤 விண்ணப்பதாரர் பெயர்: ' : '👤 Applicant Name: ') + '</span><span class="font-bold text-slate-900">' + esc(a.name) + '</span></p>' : '') +
@@ -900,7 +1031,9 @@
             (a.details ? '<p><span class="font-bold text-slate-500">' + (ta ? '✍️ கூடுதல் விவரம்: ' : '✍️ Details: ') + '</span><span class="font-semibold text-slate-800">' + esc(a.details) + '</span></p>' : '') +
             (a.notes ? '<p><span class="font-bold text-slate-500">' + (ta ? '📝 குறிப்பு: ' : '📝 Notes: ') + '</span><span class="font-semibold text-slate-800">' + esc(a.notes) + '</span></p>' : '') +
             docsHtml +
-            '</div></div>' +
+            '</div>' +
+            adminNoteHtml +
+            '</div>' +
             '<div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">' +
             (sid ? '<button onclick="openApplyModal(\'' + sid + '\')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-[11px] py-2 rounded-xl">' + (ta ? 'மீண்டும் விண்ணப்பிக்க' : 'Apply Again') + '</button>' : '<span></span>') +
             '<a href="https://wa.me/' + SHOP_PHONE + '?text=' + encodeURIComponent(waMsg) + '" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] py-2 rounded-xl text-center">' + (ta ? 'நிலை அறிய' : 'Ask Status') + '</a>' +
@@ -909,6 +1042,343 @@
       } catch (e) {
         console.warn(e);
         box.innerHTML = '<div class="col-span-full bg-red-50 p-5 rounded-2xl border border-red-200 text-sm font-bold text-red-700">' + (ta ? 'விண்ணப்பங்களை ஏற்ற முடியவில்லை. Firestore rules / index-ஐ சரிபார்க்கவும்.' : 'Could not load applications. Check Firestore rules.') + '</div>';
+      }
+    };
+
+    // =========================================================================
+    // 🛡️ ADMIN PANEL: APPLICATION MANAGEMENT & STATUS UPDATE
+    // =========================================================================
+    function updateAdminVisibility() {
+      const showAdmin = isAdminUnlocked || isUserAdminEmail(currentUser);
+      const headerAdminBtn = $('header-admin-btn');
+      const tabPillAdmin = $('tab-pill-admin');
+      const lockBtn = $('admin-lock-btn');
+      if (headerAdminBtn) {
+        headerAdminBtn.classList.toggle('hidden', !showAdmin);
+        headerAdminBtn.classList.toggle('flex', showAdmin);
+      }
+      if (tabPillAdmin) {
+        tabPillAdmin.classList.toggle('hidden', !showAdmin);
+        tabPillAdmin.classList.toggle('flex', showAdmin);
+      }
+      if (lockBtn) {
+        lockBtn.classList.toggle('hidden', !showAdmin);
+      }
+    }
+
+    window.vpsVerifyAdminPin = function () {
+      const pinInput = $('admin-pin-input');
+      const errEl = $('admin-pin-error');
+      const entered = (pinInput ? pinInput.value : '').trim();
+      if (entered === ADMIN_PIN) {
+        isAdminUnlocked = true;
+        sessionStorage.setItem('vps_admin_unlocked', '1');
+        if (errEl) errEl.classList.add('hidden');
+        if (pinInput) pinInput.value = '';
+        updateAdminVisibility();
+        window.renderAdminPanel();
+      } else {
+        if (errEl) errEl.classList.remove('hidden');
+      }
+    };
+
+    window.vpsAdminLock = function () {
+      isAdminUnlocked = false;
+      sessionStorage.removeItem('vps_admin_unlocked');
+      updateAdminVisibility();
+      window.renderAdminPanel();
+    };
+
+    window.renderAdminPanel = function () {
+      const gateBox = $('admin-gate-box');
+      const dashContent = $('admin-dashboard-content');
+      const unlocked = isAdminUnlocked || isUserAdminEmail(currentUser);
+      updateAdminVisibility();
+      if (!unlocked) {
+        if (gateBox) gateBox.classList.remove('hidden');
+        if (dashContent) dashContent.classList.add('hidden');
+        return;
+      }
+      if (gateBox) gateBox.classList.add('hidden');
+      if (dashContent) dashContent.classList.remove('hidden');
+      window.loadAdminApplications();
+    };
+
+    window.loadAdminApplications = async function () {
+      const listEl = $('admin-apps-list');
+      if (!listEl) return;
+      if (!db) {
+        listEl.innerHTML = '<div class="col-span-full bg-red-50 p-5 rounded-2xl border border-red-200 text-sm font-bold text-red-700">Firebase Firestore இணைக்கப்படவில்லை.</div>';
+        return;
+      }
+      listEl.innerHTML = '<div class="col-span-full bg-white p-6 rounded-2xl border border-slate-200 text-center text-sm font-bold text-slate-600">⏳ அனைத்து வாடிக்கையாளர்களின் விண்ணப்பங்களும் ஏற்றப்படுகின்றன...</div>';
+
+      const appsMap = new Map();
+
+      // Method 1: Try collectionGroup('applications') to fetch all customer applications across users/{uid}/applications
+      try {
+        const cgSnap = await getDocs(collectionGroup(db, 'applications'));
+        cgSnap.forEach(docSnap => {
+          const data = docSnap.data();
+          const parentUserDoc = docSnap.ref.parent && docSnap.ref.parent.parent ? docSnap.ref.parent.parent.id : (data.uid || '');
+          appsMap.set(docSnap.id, {
+            id: docSnap.id,
+            uid: parentUserDoc,
+            refPath: docSnap.ref.path,
+            ...data
+          });
+        });
+      } catch (eCg) {
+        console.warn('collectionGroup query fallback:', eCg);
+      }
+
+      // Method 2: Try top-level all_applications collection
+      if (appsMap.size === 0) {
+        try {
+          const allSnap = await getDocs(query(collection(db, 'all_applications'), orderBy('createdAt', 'desc'), limit(200)));
+          allSnap.forEach(docSnap => {
+            const data = docSnap.data();
+            appsMap.set(docSnap.id, {
+              id: docSnap.id,
+              uid: data.uid || '',
+              ...data
+            });
+          });
+        } catch (eAll) {
+          console.warn('all_applications query fallback:', eAll);
+        }
+      }
+
+      // Method 3: Iterate through users collection and load each user's applications subcollection
+      if (appsMap.size === 0) {
+        try {
+          const usersSnap = await getDocs(collection(db, 'users'));
+          for (const uDoc of usersSnap.docs) {
+            const uData = uDoc.data() || {};
+            const appSnap = await getDocs(collection(db, 'users', uDoc.id, 'applications'));
+            appSnap.forEach(aDoc => {
+              const data = aDoc.data();
+              appsMap.set(aDoc.id, {
+                id: aDoc.id,
+                uid: uDoc.id,
+                userEmail: data.userEmail || uData.email || '',
+                ...data
+              });
+            });
+          }
+        } catch (eUsers) {
+          console.warn('users iteration fallback:', eUsers);
+        }
+      }
+
+      // Method 4: Fallback to currentUser's applications if logged in and rules restrict other users
+      if (appsMap.size === 0 && currentUser) {
+        try {
+          const mySnap = await getDocs(collection(db, 'users', currentUser.uid, 'applications'));
+          mySnap.forEach(aDoc => {
+            const data = aDoc.data();
+            appsMap.set(aDoc.id, {
+              id: aDoc.id,
+              uid: currentUser.uid,
+              userEmail: currentUser.email || '',
+              ...data
+            });
+          });
+        } catch (eMy) {
+          console.warn('currentUser apps fallback:', eMy);
+        }
+      }
+
+      allAdminAppsCache = Array.from(appsMap.values()).sort((a, b) => {
+        const taSec = a.createdAt && a.createdAt.seconds ? a.createdAt.seconds : 0;
+        const tbSec = b.createdAt && b.createdAt.seconds ? b.createdAt.seconds : 0;
+        return tbSec - taSec;
+      });
+
+      updateAdminStats(allAdminAppsCache);
+      window.filterAdminApps();
+    };
+
+    function updateAdminStats(list) {
+      let total = list.length, submitted = 0, processing = 0, completed = 0, rejected = 0;
+      list.forEach(item => {
+        const s = String(item.status || 'submitted').toLowerCase();
+        if (s === 'processing' || s === 'in-progress' || s === 'in_progress') processing++;
+        else if (s === 'completed' || s === 'approved' || s === 'ready') completed++;
+        else if (s === 'rejected' || s === 'cancelled' || s === 'hold') rejected++;
+        else submitted++;
+      });
+      if ($('adm-stat-total')) $('adm-stat-total').textContent = total;
+      if ($('adm-stat-submitted')) $('adm-stat-submitted').textContent = submitted;
+      if ($('adm-stat-processing')) $('adm-stat-processing').textContent = processing;
+      if ($('adm-stat-completed')) $('adm-stat-completed').textContent = completed;
+      if ($('adm-stat-rejected')) $('adm-stat-rejected').textContent = rejected;
+    }
+
+    window.filterAdminApps = function () {
+      const listEl = $('admin-apps-list');
+      if (!listEl) return;
+      const qText = ($('adm-search-input') ? $('adm-search-input').value : '').trim().toLowerCase();
+      const statusFilter = $('adm-status-filter') ? $('adm-status-filter').value : 'all';
+      const ta = L() === 'ta';
+
+      const filtered = allAdminAppsCache.filter(item => {
+        const st = String(item.status || 'submitted').toLowerCase();
+        if (statusFilter !== 'all' && st !== statusFilter) return false;
+        if (!qText) return true;
+        const hay = [
+          item.name, item.phone, item.reqId, item.utr,
+          item.serviceTa, item.serviceEn, item.details, item.notes, item.userEmail
+        ].map(x => String(x || '').toLowerCase()).join(' ');
+        return hay.includes(qText);
+      });
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = '<div class="col-span-full bg-white p-8 rounded-2xl border border-slate-200 text-center text-sm font-bold text-slate-500">விண்ணப்பங்கள் எதுவும் கிடைக்கவில்லை. (No matching applications found)</div>';
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(app => {
+        const title = ta ? (app.serviceTa || app.serviceEn) : (app.serviceEn || app.serviceTa);
+        const when = app.createdAt && app.createdAt.toDate ? app.createdAt.toDate().toLocaleString('en-IN') : '';
+        const badge = getStatusBadgeInfo(app.status, ta);
+        const curStatus = String(app.status || 'submitted').toLowerCase();
+        const docsHtml = (app.docs && app.docs.length)
+          ? '<p><span class="font-bold text-slate-500">📂 ஆவணங்கள்: </span><span class="font-semibold text-slate-800">' + app.docs.map(d => esc(d)).join(', ') + '</span></p>'
+          : '';
+        const custPhoneClean = String(app.phone || '').replace(/[^0-9]/g, '');
+        const waCustPhone = custPhoneClean.length === 10 ? '91' + custPhoneClean : custPhoneClean;
+        const statusTextForWa = badge.label;
+        const waToCustomerMsg = `வணக்கம் ${app.name || ''},
+VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நிலை (Application Status):
+
+📄 சேவை: ${app.serviceTa || app.serviceEn || ''}${app.reqId ? `
+🆔 Request ID: ${app.reqId}` : ''}
+📌 தற்போதைய நிலை: *${statusTextForWa}*${app.adminNote ? `
+📢 குறிப்பு: ${app.adminNote}` : ''}
+
+நன்றி!`;
+
+        return `<div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+              <span id="adm-badge-${esc(app.id)}" class="text-[11px] font-extrabold border px-3 py-0.5 rounded-full ${badge.cls}">${badge.label}</span>
+              <span class="text-[11px] font-bold text-slate-500">🕒 ${esc(when)}</span>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-900 leading-snug">${esc(title)}</h3>
+
+            <div class="mt-3 space-y-1.5 text-xs text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200/80">
+              <p><span class="font-bold text-slate-500">👤 வாடிக்கையாளர் பெயர்: </span><span class="font-extrabold text-slate-900 text-sm">${esc(app.name || '-')}</span></p>
+              <p><span class="font-bold text-slate-500">📞 மொபைல் எண்: </span><a href="tel:${esc(app.phone || '')}" class="font-extrabold text-brand-700 hover:underline">${esc(app.phone || '-')}</a> ${app.userEmail ? `<span class="text-slate-400">(${esc(app.userEmail)})</span>` : ''}</p>
+              <p><span class="font-bold text-slate-500">💳 கட்டணம் & முறை: </span><span class="font-bold text-emerald-700">${esc(app.fee || '-')}</span> • ${app.method === 'web' ? '🌐 Website Upload' : '💬 WhatsApp'}</p>
+              ${app.reqId ? `<p><span class="font-bold text-slate-500">🆔 Request ID: </span><span class="font-black text-brand-700">${esc(app.reqId)}</span></p>` : ''}
+              ${app.utr ? `<p><span class="font-bold text-slate-500">🏦 UTR / Payment Ref: </span><span class="font-bold text-slate-900">${esc(app.utr)}</span></p>` : ''}
+              ${app.details ? `<p><span class="font-bold text-slate-500">✍️ விவரம் (Details): </span><span class="font-semibold text-slate-900">${esc(app.details)}</span></p>` : ''}
+              ${app.notes ? `<p><span class="font-bold text-slate-500">📝 குறிப்பு (Notes): </span><span class="font-semibold text-slate-900">${esc(app.notes)}</span></p>` : ''}
+              ${docsHtml}
+            </div>
+          </div>
+
+          <!-- Admin Status Update Controls -->
+          <div class="pt-3 border-t border-slate-200 space-y-2.5">
+            <div class="grid sm:grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] font-extrabold text-slate-700 mb-1">📌 விண்ணப்ப நிலை (Update Status):</label>
+                <select id="adm-st-${esc(app.id)}" class="w-full px-3 py-2 rounded-xl border-2 border-slate-300 text-xs font-extrabold bg-white focus:border-brand-600 focus:outline-none">
+                  <option value="submitted" ${curStatus === 'submitted' ? 'selected' : ''}>📩 Submitted (புதியது)</option>
+                  <option value="processing" ${curStatus === 'processing' ? 'selected' : ''}>⏳ In Progress (செயலில் உள்ளது)</option>
+                  <option value="completed" ${curStatus === 'completed' ? 'selected' : ''}>✅ Completed (முடிக்கப்பட்டது)</option>
+                  <option value="rejected" ${curStatus === 'rejected' ? 'selected' : ''}>❌ Rejected / Hold (நிராகரிக்கப்பட்டது)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-extrabold text-slate-700 mb-1">📢 வாடிக்கையாளர் குறிப்பு (Admin Remark):</label>
+                <input type="text" id="adm-note-${esc(app.id)}" value="${esc(app.adminNote || '')}" placeholder="உதா: சான்றிதழ் தயாராக உள்ளது / ஆவணம் தேவை" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-1">
+              <button type="button" id="adm-save-btn-${esc(app.id)}" onclick="window.vpsUpdateAppStatus('${esc(app.id)}', '${esc(app.uid || '')}')" class="flex-1 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs py-2.5 px-4 rounded-xl shadow-sm transition">
+                💾 Status சேமிக்கவும் (Update Status)
+              </button>
+              ${waCustPhone ? `<a href="https://wa.me/${waCustPhone}?text=${encodeURIComponent(waToCustomerMsg)}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs py-2.5 px-3.5 rounded-xl shadow-sm transition flex items-center gap-1">💬 WhatsApp வாடிக்கையாளர்</a>` : ''}
+            </div>
+            <div id="adm-msg-${esc(app.id)}" class="hidden text-[11px] font-extrabold text-center py-1.5 rounded-lg"></div>
+          </div>
+        </div>`;
+      }).join('');
+    };
+
+    window.vpsUpdateAppStatus = async function (appId, uid) {
+      if (!db || !appId) return;
+      const stEl = $('adm-st-' + appId);
+      const noteEl = $('adm-note-' + appId);
+      const btnEl = $('adm-save-btn-' + appId);
+      const msgEl = $('adm-msg-' + appId);
+
+      const newStatus = stEl ? stEl.value : 'submitted';
+      const newNote = noteEl ? noteEl.value.trim() : '';
+
+      if (btnEl) {
+        btnEl.disabled = true;
+        btnEl.textContent = '⏳ சேமிக்கப்படுகிறது...';
+      }
+
+      let updated = false;
+      const updatePayload = {
+        status: newStatus,
+        adminNote: newNote,
+        updatedAt: serverTimestamp()
+      };
+
+      // Update in users/{uid}/applications/{appId}
+      if (uid) {
+        try {
+          await updateDoc(doc(db, 'users', uid, 'applications', appId), updatePayload);
+          updated = true;
+        } catch (eUserDoc) {
+          console.warn('Update users/{uid}/applications failed:', eUserDoc);
+        }
+      }
+
+      // Also update in top-level all_applications/{appId} if present
+      try {
+        await setDoc(doc(db, 'all_applications', appId), updatePayload, { merge: true });
+        updated = true;
+      } catch (eAllDoc) {
+        console.warn('Update all_applications failed:', eAllDoc);
+      }
+
+      // Update local cache and UI
+      const cached = allAdminAppsCache.find(x => x.id === appId);
+      if (cached) {
+        cached.status = newStatus;
+        cached.adminNote = newNote;
+      }
+      updateAdminStats(allAdminAppsCache);
+
+      const badgeEl = $('adm-badge-' + appId);
+      if (badgeEl) {
+        const badge = getStatusBadgeInfo(newStatus, L() === 'ta');
+        badgeEl.className = 'text-[11px] font-extrabold border px-3 py-0.5 rounded-full ' + badge.cls;
+        badgeEl.textContent = badge.label;
+      }
+
+      if (btnEl) {
+        btnEl.disabled = false;
+        btnEl.textContent = '💾 Status சேமிக்கவும் (Update Status)';
+      }
+
+      if (msgEl) {
+        msgEl.classList.remove('hidden');
+        if (updated) {
+          msgEl.className = 'text-[11px] font-extrabold text-center py-1.5 rounded-lg bg-emerald-100 text-emerald-800 border border-emerald-300 block';
+          msgEl.textContent = '✅ விண்ணப்ப நிலை (Status) வெற்றிகரமாக மாற்றப்பட்டது!';
+        } else {
+          msgEl.className = 'text-[11px] font-extrabold text-center py-1.5 rounded-lg bg-red-100 text-red-800 border border-red-300 block';
+          msgEl.textContent = '❌ மாற்ற முடியவில்லை. Firestore Rules அனுமதியைச் சரிபார்க்கவும்.';
+        }
+        setTimeout(() => { msgEl.classList.add('hidden'); }, 3500);
       }
     };
 
@@ -943,12 +1413,14 @@
           if (tabPillApps) { tabPillApps.classList.add('hidden'); tabPillApps.classList.remove('flex'); }
           if (contactBtnTxt) { contactBtnTxt.textContent = L() === 'ta' ? '📋 தேவையான ஆவணங்கள் பட்டியல் பார்க்க க்ளிக் செய்யவும்' : '📋 Click to View Required Documents List'; }
         }
+        updateAdminVisibility();
         if (typeof renderNotifications === 'function') renderNotifications();
         if (typeof renderWeddingGallery === 'function') renderWeddingGallery();
         if (typeof currentPage !== 'undefined' && typeof pageConfig !== 'undefined' && pageConfig[currentPage]) {
           renderCategoryPage(currentPage);
         }
         if (!$('page-apps').classList.contains('hidden')) window.renderMyApplications();
+        if ($('page-admin') && !$('page-admin').classList.contains('hidden')) window.renderAdminPanel();
       });
     }
   </script>
@@ -1495,12 +1967,16 @@
       document.getElementById('page-category').classList.add('hidden');
       document.getElementById('page-contact').classList.add('hidden');
       document.getElementById('page-apps').classList.add('hidden');
+      const adminPageEl = document.getElementById('page-admin');
+      if (adminPageEl) adminPageEl.classList.add('hidden');
 
       document.querySelectorAll('.page-pill').forEach(pill => {
+        const isHidden = pill.classList.contains('hidden');
+        const visClass = isHidden ? 'hidden' : 'flex';
         if (pill.dataset.pill === pageKey) {
-          pill.className = 'page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5 bg-amber-400 text-slate-950 shadow-lg scale-[1.02]';
+          pill.className = `page-pill ${visClass} px-3 py-2 rounded-xl transition items-center gap-1.5 bg-amber-400 text-slate-950 shadow-lg scale-[1.02]`;
         } else {
-          pill.className = 'page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/15';
+          pill.className = `page-pill ${visClass} px-3 py-2 rounded-xl transition items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/15`;
         }
       });
 
@@ -1509,6 +1985,9 @@
       } else if (pageKey === 'apps') {
         document.getElementById('page-apps').classList.remove('hidden');
         if (window.renderMyApplications) window.renderMyApplications();
+      } else if (pageKey === 'admin') {
+        if (adminPageEl) adminPageEl.classList.remove('hidden');
+        if (window.renderAdminPanel) window.renderAdminPanel();
       } else if (pageKey === 'contact') {
         document.getElementById('page-contact').classList.remove('hidden');
       } else if (pageConfig[pageKey]) {
