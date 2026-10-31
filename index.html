@@ -56,7 +56,7 @@
     .animate-ticker {
       display: inline-block;
       white-space: nowrap;
-      animation: ticker 35s linear infinite;
+      animation: ticker 45s linear infinite;
     }
     .animate-ticker:hover {
       animation-play-state: paused;
@@ -79,9 +79,11 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
-            ★ சபரிமலை தரிசன டிக்கெட் (Sabarimala Q Ticket) முன்பதிவு நவம்பர் 29 முதல் தொடங்குகிறது! (ஆவணங்கள்: 1. Aadhaar Card, 2. Photo, 3. Mobile Number) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ திருப்பதி ₹300 சிறப்பு தரிசனம், தங்கும் அறைகள் மற்றும் சேவா டிக்கெட்டுகள் முன்பதிவு செய்து தரப்படும்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ பான் கார்டு (PAN Card), பஸ் / ரயில் (Tatkal) / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, வருமானம்/சாதி சான்றிதழ், ஆதார், ஸ்மார்ட் கார்டு மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
+            ★ TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers) ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ இரயில்வே துறை (RRB NTPC & RRB Group-D / ALP) 2 புதிய வேலைவாய்ப்பு அறிவிப்புகளுக்கு ஆன்லைனில் விண்ணப்பிக்கலாம்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ JEE Main 2027 பொறியியல் நுழைவுத் தேர்வு ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ சபரிமலை தரிசன டிக்கெட் (Sabarimala Q Ticket) முன்பதிவு நடைபெறுது! (ஆவணங்கள்: 1. Aadhaar Card, 2. Photo, 3. Mobile Number) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ திருப்பதி ₹300 சிறப்பு தரிசனம், பான் கார்டு (PAN Card), பஸ் / ரயில் / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, இ-சேவை சான்றிதழ்கள் மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
           </div>
         </div>
       </div>
@@ -101,7 +103,7 @@
   <!-- MAIN BRAND HEADER -->
   <header class="bg-white sticky top-0 z-40 shadow-md">
     <div class="max-w-7xl mx-auto px-3 sm:px-6">
-      <div class="flex flex-wrap justify-between items-center gap-2 py-3">
+      <div class="flex justify-between items-center py-3">
         <!-- Brand Logo & Name -->
         <div onclick="navigateTo('home')" class="flex items-center gap-3.5 cursor-pointer group">
           <img id="main-logo-img" src="logo.png" alt="VPS Logo" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl object-contain bg-white shadow-md border border-slate-200 group-hover:scale-105 transition" onerror="handleLogoError(this)" />
@@ -113,29 +115,21 @@
               VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ்
             </h1>
             <p id="ui-shop-subtitle" class="text-[11px] sm:text-xs font-bold text-brand-600 mt-1">
-              இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • வடகரை ஆத்தூர்
+              இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டர்ஸ் • 
             </p>
           </div>
         </div>
 
         <!-- Call & WhatsApp Action Buttons -->
-        <div class="flex flex-wrap items-center justify-end gap-2 ml-auto">
-          <!-- Customer Login / Sign Up (Firebase Authentication) -->
-          <div id="auth-logged-out" class="flex items-center gap-1.5">
-            <button type="button" onclick="openAuthModal('login')" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-slate-200 flex items-center gap-1.5 transition">
-              <span aria-hidden="true">🔑</span> <span data-auth-i18n="loginBtn">உள்நுழைய</span>
-            </button>
-            <button type="button" onclick="openAuthModal('signup')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-3 py-2.5 rounded-xl shadow-md flex items-center gap-1.5 transition">
-              <span aria-hidden="true">👤</span> <span data-auth-i18n="signupBtn">பதிவு செய்ய</span>
-            </button>
+        <div class="flex items-center gap-2">
+          <!-- CUSTOMER LOGIN AREA -->
+          <div id="auth-guest" class="flex items-center gap-1.5">
+            <button onclick="openAuthModal('login')" class="bg-white hover:bg-slate-100 text-brand-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border-2 border-brand-600 transition">🔐 <span>Login / உள்நுழை</span></button>
+            <button onclick="openAuthModal('signup')" class="hidden sm:flex bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-3 py-2.5 rounded-xl shadow-sm transition">📝 <span class="ml-1">Sign Up / பதிவு</span></button>
           </div>
-          <div id="auth-logged-in" class="hidden items-center gap-1.5">
-            <button type="button" onclick="navigateTo('myapps')" class="bg-brand-50 hover:bg-brand-100 text-brand-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-brand-100 flex items-center gap-1.5 transition">
-              <span aria-hidden="true">👤</span> <span id="auth-user-name" class="max-w-[90px] sm:max-w-[140px] truncate"></span>
-            </button>
-            <button type="button" onclick="logoutCustomer()" class="bg-slate-100 hover:bg-red-50 hover:text-red-700 text-slate-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-slate-200 flex items-center gap-1.5 transition">
-              <span aria-hidden="true">🚪</span> <span data-auth-i18n="logoutBtn">வெளியேற</span>
-            </button>
+          <div id="auth-user" class="hidden items-center gap-1.5">
+            <button onclick="navigateTo('apps')" id="auth-user-name" class="bg-brand-50 hover:bg-brand-100 text-brand-800 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-brand-200 transition max-w-[140px] truncate">👤</button>
+            <button onclick="vpsLogout()" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs px-3 py-2.5 rounded-xl border border-slate-200 transition">Logout</button>
           </div>
           <a href="tel:+919843991974" class="hidden md:flex bg-slate-100 hover:bg-slate-200 text-slate-800 font-extrabold text-xs px-3.5 py-2.5 rounded-xl border border-slate-200 items-center gap-1.5 transition">
             <span>📞</span> <span>98439 91974</span>
@@ -159,7 +153,7 @@
           <button onclick="navigateTo('home')" data-pill="home" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏠 முகப்பு</button>
           <button onclick="navigateTo('esevai')" data-pill="esevai" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📜 இ-சேவை சான்றிதழ்கள்</button>
           <button onclick="navigateTo('tnpds')" data-pill="tnpds" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🍚 TNPDS ரேஷன் கார்டு</button>
-          <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC</button>
+          <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC / TRB / RRB / JEE</button>
           <button onclick="navigateTo('ttd')" data-pill="ttd" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🛕 திருப்பதி TTD</button>
           <button onclick="navigateTo('sabarimala')" data-pill="sabarimala" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🙏 சபரிமலை Q</button>
           <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪪 பான் & அடையாள அட்டை</button>
@@ -168,7 +162,6 @@
           <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗺️ பட்டா / சிட்டா & EC</button>
           <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
           <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு & Upload</button>
-          <button onclick="navigateTo('myapps')" data-pill="myapps" class="page-pill px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗂️ எனது விண்ணப்பங்கள்</button>
         </div>
       </div>
     </div>
@@ -229,7 +222,7 @@
               </div>
 
               <!-- Live Notifications List -->
-              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-80" id="notification-list">
+              <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-96" id="notification-list">
                 <!-- Populated by JS -->
               </div>
             </div>
@@ -245,7 +238,7 @@
             <div class="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center text-2xl shrink-0">⚡</div>
             <div>
               <h4 id="feat-1-title" class="font-extrabold text-slate-900 text-sm sm:text-base">விரைவான ஆன்லைன் சேவை</h4>
-              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
+              <p id="feat-1-desc" class="text-xs text-slate-600 mt-1 leading-relaxed">அரசு இ-சேவை சான்றிதழ்கள், பட்டா/சிட்டா, TNPSC, TRB, RRB, JEE விண்ணப்பங்களும் மற்றும் டிக்கெட் புக்கிங் அனைத்தும் உடனடியாகச் செய்து தரப்படும்.</p>
             </div>
           </div>
           <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-sm flex items-start gap-4">
@@ -377,41 +370,22 @@
       </section>
     </div>
 
-    <!-- =========================================
-         PAGE: MY APPLICATIONS (Logged-in customers)
-    ========================================== -->
-    <div id="page-myapps" class="page-view page-fade hidden">
+    <!-- ==========================================
+         PAGE: MY APPLICATIONS (CUSTOMER LOGIN)
+    =========================================== -->
+    <div id="page-apps" class="page-view page-fade hidden">
       <section class="bg-gradient-to-r from-slate-900 via-brand-900 to-slate-900 text-white py-6 border-b border-slate-800">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 flex flex-wrap justify-between items-center gap-4">
           <div>
-            <span data-auth-i18n="myAppsBadge" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400 bg-white/10 px-2.5 py-0.5 rounded-full">வாடிக்கையாளர் பகுதி</span>
-            <h2 data-auth-i18n="myAppsTitle" class="text-xl sm:text-3xl font-extrabold mt-1">எனது விண்ணப்பங்கள்</h2>
-            <p data-auth-i18n="myAppsSubtitle" class="text-slate-300 text-xs sm:text-sm mt-1">நீங்கள் இதற்கு முன் சமர்ப்பித்த விண்ணப்பங்களின் பட்டியல்.</p>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">CUSTOMER ACCOUNT</span>
+            <h2 class="text-xl sm:text-3xl font-extrabold mt-1">📂 எனது விண்ணப்பங்கள் (My Applications)</h2>
+            <p class="text-slate-300 text-xs sm:text-sm mt-1">நீங்கள் சமர்ப்பித்த விண்ணப்பங்கள் இங்கே தெரியும்.</p>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <button type="button" onclick="loadMyApplications()" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs px-4 py-2.5 rounded-xl transition" data-auth-i18n="refreshBtn">🔄 புதுப்பி</button>
-            <button type="button" onclick="openApplyModal('income-cert')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition" data-auth-i18n="newAppBtn">📤 புதிய விண்ணப்பம்</button>
-          </div>
+          <button onclick="navigateTo('home')" class="bg-white/10 hover:bg-white/20 text-white font-bold text-xs px-4 py-2.5 rounded-xl border border-white/20 transition">🏠 முகப்புக்குத் திரும்ப</button>
         </div>
       </section>
-
       <section class="py-8 max-w-7xl mx-auto px-3 sm:px-6">
-        <!-- Shown when logged out -->
-        <div id="myapps-login-prompt" class="hidden bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-sm text-center max-w-lg mx-auto">
-          <div class="w-14 h-14 mx-auto rounded-2xl bg-brand-50 text-brand-600 flex items-center justify-center text-3xl" aria-hidden="true">🔐</div>
-          <h3 data-auth-i18n="myAppsLoginTitle" class="text-lg font-extrabold text-slate-900 mt-3">உங்கள் விண்ணப்பங்களைப் பார்க்க உள்நுழையவும்</h3>
-          <p data-auth-i18n="myAppsLoginDesc" class="text-xs sm:text-sm text-slate-500 mt-1">உள்நுழைந்த பிறகு நீங்கள் அனுப்பும் ஒவ்வொரு விண்ணப்பமும் இங்கே சேமிக்கப்படும்.</p>
-          <div class="flex flex-wrap justify-center gap-2 mt-5">
-            <button type="button" onclick="openAuthModal('login')" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition" data-auth-i18n="loginBtnIcon">🔑 உள்நுழைய</button>
-            <button type="button" onclick="openAuthModal('signup')" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition" data-auth-i18n="signupBtnIcon">👤 பதிவு செய்ய</button>
-          </div>
-        </div>
-
-        <!-- Shown when logged in -->
-        <div id="myapps-content" class="hidden">
-          <p id="myapps-status" class="text-xs sm:text-sm font-bold text-slate-500 mb-4" role="status" aria-live="polite"></p>
-          <div id="myapps-list" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </div>
+        <div id="apps-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
       </section>
     </div>
 
@@ -431,6 +405,7 @@
       <div class="flex flex-wrap gap-2.5 font-semibold">
         <button onclick="navigateTo('home')" class="hover:text-amber-400">முகப்பு</button> •
         <button onclick="navigateTo('esevai')" class="hover:text-amber-400">இ-சேவை</button> •
+        <button onclick="navigateTo('tnpsc')" class="hover:text-amber-400">TNPSC/TRB/RRB/JEE</button> •
         <button onclick="navigateTo('sabarimala')" class="hover:text-amber-400">சபரிமலை Q</button> •
         <button onclick="navigateTo('ttd')" class="hover:text-amber-400">திருப்பதி TTD</button> •
         <button onclick="navigateTo('idcards')" class="hover:text-amber-400">பான் கார்டு</button> •
@@ -520,9 +495,6 @@
             <input type="tel" id="m-phone" required maxlength="10" placeholder="10 இலக்க மொபைல் எண்ணை டைப் செய்யவும்" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
           </div>
         </div>
-
-        <!-- Customer account hint (save to My Applications) -->
-        <div id="m-auth-note" class="text-[11px] sm:text-xs font-bold rounded-xl px-3 py-2 border"></div>
 
         <!-- Extra Typed Details (If service requires typed info like Father Name / OTR ID / Dates) -->
         <div id="m-extra-text-wrap" class="hidden">
@@ -633,71 +605,319 @@
     </div>
   </div>
 
-  <!-- MODAL 4: CUSTOMER LOGIN / SIGN UP (Firebase Authentication) -->
-  <div id="auth-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+  <!-- MODAL: CUSTOMER LOGIN / SIGN UP -->
+  <div id="auth-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/80 backdrop-blur-sm p-3 sm:p-4">
     <div class="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 shadow-2xl border border-slate-100 max-h-[94vh] overflow-y-auto">
       <div class="flex justify-between items-start border-b border-slate-100 pb-3 mb-4">
         <div>
-          <span data-auth-i18n="modalBadge" class="text-[10px] font-extrabold text-brand-600 uppercase bg-brand-50 px-2.5 py-0.5 rounded-full">👤 வாடிக்கையாளர் கணக்கு</span>
-          <h3 id="auth-modal-title" class="text-base sm:text-lg font-extrabold text-slate-900 mt-1"></h3>
+          <span class="text-[10px] font-extrabold text-brand-600 uppercase bg-brand-50 px-2.5 py-0.5 rounded-full">CUSTOMER ACCOUNT</span>
+          <h3 id="auth-title" class="text-lg font-extrabold text-slate-900 mt-1">Login / உள்நுழை</h3>
         </div>
-        <button type="button" onclick="closeAuthModal()" aria-label="Close" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
+        <button onclick="closeAuthModal()" class="text-slate-400 hover:text-slate-700 bg-slate-100 rounded-full p-2">✕</button>
       </div>
 
-      <!-- Login / Sign Up tabs -->
-      <div class="grid grid-cols-2 gap-2 mb-4" role="tablist">
-        <button type="button" id="auth-tab-login" role="tab" onclick="switchAuthMode('login')" class="py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 transition"></button>
-        <button type="button" id="auth-tab-signup" role="tab" onclick="switchAuthMode('signup')" class="py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 transition"></button>
+      <div class="grid grid-cols-2 gap-2 mb-4">
+        <button id="auth-tab-login" onclick="switchAuthMode('login')" class="py-2.5 rounded-xl font-extrabold text-xs border-2 border-brand-600 bg-brand-50 text-brand-700">Login / உள்நுழை</button>
+        <button id="auth-tab-signup" onclick="switchAuthMode('signup')" class="py-2.5 rounded-xl font-extrabold text-xs border-2 border-slate-200 bg-slate-50 text-slate-600">Sign Up / பதிவு</button>
       </div>
 
-      <form id="auth-form" onsubmit="handleAuthSubmit(event)" class="space-y-3" novalidate>
+      <div class="space-y-3">
         <div id="auth-name-wrap" class="hidden">
-          <label for="auth-name" data-auth-i18n="nameLbl" class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் (Name) *</label>
-          <input type="text" id="auth-name" autocomplete="name" maxlength="80" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+          <label class="block text-xs font-bold text-slate-700 mb-1">உங்கள் பெயர் (Name) *</label>
+          <input type="text" id="auth-name" maxlength="100" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
         </div>
         <div>
-          <label for="auth-email" data-auth-i18n="emailLbl" class="block text-xs font-bold text-slate-700 mb-1">மின்னஞ்சல் (Email) *</label>
-          <input type="email" id="auth-email" autocomplete="email" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
+          <label class="block text-xs font-bold text-slate-700 mb-1">மின்னஞ்சல் (Email) *</label>
+          <input type="email" id="auth-email" autocomplete="email" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
         </div>
         <div>
-          <label for="auth-password" data-auth-i18n="passwordLbl" class="block text-xs font-bold text-slate-700 mb-1">கடவுச்சொல் (Password) *</label>
-          <input type="password" id="auth-password" autocomplete="current-password" required minlength="6" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
-          <p id="auth-password-hint" data-auth-i18n="passwordHint" class="hidden text-[11px] text-slate-500 mt-1">குறைந்தது 6 எழுத்துகள்</p>
+          <label class="block text-xs font-bold text-slate-700 mb-1">கடவுச்சொல் (Password - குறைந்தது 6) *</label>
+          <input type="password" id="auth-password" autocomplete="current-password" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-brand-600 focus:outline-none" />
         </div>
-        <div id="auth-forgot-wrap" class="text-right">
-          <button type="button" onclick="sendPasswordReset()" data-auth-i18n="forgotBtn" class="text-[11px] font-bold text-brand-600 hover:underline">கடவுச்சொல் மறந்துவிட்டதா?</button>
-        </div>
-        <button type="submit" id="auth-submit-btn" class="w-full bg-brand-600 hover:bg-brand-700 disabled:opacity-60 text-white font-extrabold py-3 px-4 rounded-xl shadow-md transition text-xs sm:text-sm"></button>
-      </form>
 
-      <div class="flex items-center gap-3 my-4">
-        <span class="flex-1 h-px bg-slate-200"></span>
-        <span data-auth-i18n="orLbl" class="text-[11px] font-bold text-slate-400">அல்லது</span>
-        <span class="flex-1 h-px bg-slate-200"></span>
+        <div id="auth-error" class="hidden p-3 rounded-xl text-xs font-bold bg-red-100 text-red-800 border border-red-300"></div>
+
+        <button id="auth-submit-btn" onclick="vpsAuthSubmit()" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-3 px-4 rounded-xl shadow-md transition text-sm">Login / உள்நுழை</button>
+
+        <div class="flex items-center gap-3 text-[11px] text-slate-400 font-bold"><div class="flex-1 h-px bg-slate-200"></div>அல்லது / OR<div class="flex-1 h-px bg-slate-200"></div></div>
+
+        <button onclick="vpsGoogleLogin()" class="w-full bg-white hover:bg-slate-50 text-slate-800 font-extrabold py-3 px-4 rounded-xl border-2 border-slate-300 transition text-sm flex items-center justify-center gap-2">
+          <span class="font-black text-blue-600">G</span> <span>Google மூலம் உள்நுழை</span>
+        </button>
+
+        <button id="auth-forgot" onclick="vpsForgotPassword()" class="w-full text-xs font-bold text-brand-700 hover:underline">கடவுச்சொல் மறந்துவிட்டதா? (Forgot password)</button>
       </div>
-
-      <button type="button" id="auth-google-btn" onclick="signInWithGoogle()" class="w-full bg-white hover:bg-slate-50 disabled:opacity-60 text-slate-800 font-extrabold py-3 px-4 rounded-xl border-2 border-slate-200 shadow-sm transition text-xs sm:text-sm flex items-center justify-center gap-2">
-        <svg class="w-4 h-4" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>
-        <span data-auth-i18n="googleBtn">Google மூலம் தொடரவும்</span>
-      </button>
-
-      <div id="auth-status" class="hidden mt-4 p-3 rounded-xl text-xs font-bold text-center" role="alert" aria-live="assertive"></div>
     </div>
   </div>
 
-  <!-- FIREBASE SDK (CDN, compat build — no npm needed) -->
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-analytics-compat.js"></script>
+  <!-- Login buttons-ku safety stubs: Firebase load aagala na error message kaattum -->
+  <script>
+    (function () {
+      var msg = 'Login system load aagala. Internet / Firebase script block aagirukkalaam.\nGoogle Chrome-la localhost illa live website-la open panni, F12 > Console error paarunga.';
+      ['openAuthModal','switchAuthMode','vpsAuthSubmit','vpsGoogleLogin','vpsForgotPassword','vpsLogout'].forEach(function (n) {
+        window[n] = function () { alert(msg); };
+      });
+      window.closeAuthModal = function () {
+        var m = document.getElementById('auth-modal');
+        if (m) { m.classList.add('hidden'); m.classList.remove('flex'); }
+      };
+    })();
+  </script>
+
+  <!-- FIREBASE (Authentication + Firestore) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc, addDoc, collection, query, orderBy, limit, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+    // 👇 Firebase console → Project settings → Your apps → Config. apiKey / messagingSenderId / appId இங்கே paste செய்யவும் 👇
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxlRBzVua_2PMi5LKMNRTyzBBMkpnZGpc",
+      authDomain: "vps-computers.firebaseapp.com",
+      projectId: "vps-computers",
+      messagingSenderId: "981776298189",
+      appId: "1:981776298189:web:d32031fd5fac961a6ff984"
+    };
+
+    const configured = !String(firebaseConfig.apiKey).startsWith("PASTE");
+    let auth = null, db = null, currentUser = null, authMode = 'login';
+    const L = () => (typeof currentLang !== 'undefined' ? currentLang : 'ta');
+    const $ = (id) => document.getElementById(id);
+    const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    if (configured) {
+      const app = initializeApp(firebaseConfig);
+      auth = getAuth(app);
+      db = getFirestore(app);
+    }
+
+    function errText(code) {
+      const ta = {
+        'auth/invalid-email': 'மின்னஞ்சல் முகவரி சரியில்லை.',
+        'auth/missing-password': 'கடவுச்சொல்லை டைப் செய்யவும்.',
+        'auth/weak-password': 'கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்.',
+        'auth/email-already-in-use': 'இந்த மின்னஞ்சல் ஏற்கனவே பதிவு செய்யப்பட்டுள்ளது. Login செய்யவும்.',
+        'auth/invalid-credential': 'மின்னஞ்சல் அல்லது கடவுச்சொல் தவறு.',
+        'auth/wrong-password': 'கடவுச்சொல் தவறு.',
+        'auth/user-not-found': 'இந்த மின்னஞ்சலில் கணக்கு இல்லை. Sign Up செய்யவும்.',
+        'auth/too-many-requests': 'பல முறை முயற்சித்துவிட்டீர்கள். சிறிது நேரம் கழித்து முயற்சிக்கவும்.',
+        'auth/network-request-failed': 'இணைய இணைப்பு சரியில்லை.',
+        'auth/popup-closed-by-user': 'Google window மூடப்பட்டது.',
+        'auth/unauthorized-domain': 'இந்த domain Firebase-ல் அனுமதிக்கப்படவில்லை (Authorized domains-ல் சேர்க்கவும்).',
+        'missing-name': 'உங்கள் பெயரை டைப் செய்யவும்.'
+      };
+      const en = {
+        'auth/invalid-email': 'Invalid email address.',
+        'auth/missing-password': 'Please enter your password.',
+        'auth/weak-password': 'Password must be at least 6 characters.',
+        'auth/email-already-in-use': 'This email is already registered. Please login.',
+        'auth/invalid-credential': 'Wrong email or password.',
+        'auth/wrong-password': 'Wrong password.',
+        'auth/user-not-found': 'No account with this email. Please sign up.',
+        'auth/too-many-requests': 'Too many attempts. Try again later.',
+        'auth/network-request-failed': 'Network problem. Check your internet.',
+        'auth/popup-closed-by-user': 'Google window was closed.',
+        'auth/unauthorized-domain': 'This domain is not authorized in Firebase (add it in Authorized domains).',
+        'missing-name': 'Please type your name.'
+      };
+      const d = L() === 'ta' ? ta : en;
+      return d[code] || (L() === 'ta' ? 'ஏதோ பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.' : 'Something went wrong. Please try again.');
+    }
+
+    function showError(msg) { const e = $('auth-error'); e.textContent = msg; e.classList.remove('hidden'); }
+    function clearError() { $('auth-error').classList.add('hidden'); }
+
+    function needConfig() {
+      if (configured) return false;
+      alert('Firebase config இன்னும் சேர்க்கப்படவில்லை. HTML file-ல் firebaseConfig (apiKey, messagingSenderId, appId) paste செய்யவும்.');
+      return true;
+    }
+
+    window.openAuthModal = function (mode) {
+      if (needConfig()) return;
+      clearError();
+      window.switchAuthMode(mode || 'login');
+      const m = $('auth-modal'); m.classList.remove('hidden'); m.classList.add('flex');
+    };
+    window.closeAuthModal = function () {
+      const m = $('auth-modal'); m.classList.add('hidden'); m.classList.remove('flex');
+    };
+    window.switchAuthMode = function (mode) {
+      authMode = mode; clearError();
+      const signup = mode === 'signup';
+      $('auth-name-wrap').classList.toggle('hidden', !signup);
+      $('auth-forgot').classList.toggle('hidden', signup);
+      $('auth-title').textContent = signup ? 'Sign Up / பதிவு செய்ய' : 'Login / உள்நுழை';
+      $('auth-submit-btn').textContent = signup ? 'Account உருவாக்கு / Create Account' : 'Login / உள்நுழை';
+      $('auth-password').setAttribute('autocomplete', signup ? 'new-password' : 'current-password');
+      $('auth-tab-login').className = 'py-2.5 rounded-xl font-extrabold text-xs border-2 ' + (signup ? 'border-slate-200 bg-slate-50 text-slate-600' : 'border-brand-600 bg-brand-50 text-brand-700');
+      $('auth-tab-signup').className = 'py-2.5 rounded-xl font-extrabold text-xs border-2 ' + (signup ? 'border-brand-600 bg-brand-50 text-brand-700' : 'border-slate-200 bg-slate-50 text-slate-600');
+    };
+
+    async function saveProfile(user, nameOverride) {
+      try {
+        await setDoc(doc(db, 'users', user.uid), {
+          name: String(nameOverride || user.displayName || '').slice(0, 100),
+          email: String(user.email || '').slice(0, 200),
+          updatedAt: serverTimestamp()
+        }, { merge: true });
+      } catch (e) { console.warn('profile save skipped', e); }
+    }
+
+    window.vpsAuthSubmit = async function () {
+      if (needConfig()) return;
+      clearError();
+      const email = $('auth-email').value.trim();
+      const password = $('auth-password').value;
+      const name = $('auth-name').value.trim();
+      const btn = $('auth-submit-btn');
+      try {
+        btn.disabled = true;
+        if (authMode === 'signup') {
+          if (!name) { showError(errText('missing-name')); return; }
+          const cred = await createUserWithEmailAndPassword(auth, email, password);
+          await updateProfile(cred.user, { displayName: name });
+          await saveProfile(cred.user, name);
+          $('auth-user-name').textContent = '👤 ' + name;
+        } else {
+          await signInWithEmailAndPassword(auth, email, password);
+        }
+        $('auth-password').value = '';
+        window.closeAuthModal();
+      } catch (e) {
+        showError(errText(e.code));
+      } finally {
+        btn.disabled = false;
+      }
+    };
+
+    window.vpsGoogleLogin = async function () {
+      if (needConfig()) return;
+      clearError();
+      const provider = new GoogleAuthProvider();
+      try {
+        const cred = await signInWithPopup(auth, provider);
+        await saveProfile(cred.user);
+        window.closeAuthModal();
+      } catch (e) {
+        if (e.code === 'auth/popup-blocked' || e.code === 'auth/operation-not-supported-in-this-environment') {
+          try { await signInWithRedirect(auth, provider); } catch (e2) { showError(errText(e2.code)); }
+        } else {
+          showError(errText(e.code));
+        }
+      }
+    };
+
+    window.vpsForgotPassword = async function () {
+      if (needConfig()) return;
+      clearError();
+      const email = $('auth-email').value.trim();
+      if (!email) { showError(errText('auth/invalid-email')); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        alert(L() === 'ta' ? 'கடவுச்சொல் மாற்ற மின்னஞ்சல் அனுப்பப்பட்டது. உங்கள் Inbox / Spam-ஐ பார்க்கவும்.' : 'Password reset email sent. Check your inbox / spam.');
+      } catch (e) { showError(errText(e.code)); }
+    };
+
+    window.vpsLogout = async function () {
+      if (!auth) return;
+      await signOut(auth);
+      navigateTo('home');
+    };
+
+    // ---- Save an application (only when customer is logged in; login stays optional) ----
+    window.vpsSaveApplication = async function (a) {
+      if (!db || !currentUser) return;
+      try {
+        const s = a.service || {};
+        const rec = {
+          serviceId: String(s.id || '').slice(0, 100),
+          serviceTa: String(s.titleTa || '').slice(0, 200),
+          serviceEn: String(s.titleEn || '').slice(0, 200),
+          fee: String(s.fee || '').slice(0, 50),
+          name: String(a.name || '').slice(0, 100),
+          phone: String(a.phone || '').slice(0, 20),
+          method: a.method === 'web' ? 'web' : 'whatsapp',
+          status: 'submitted',
+          lang: L(),
+          createdAt: serverTimestamp()
+        };
+        if (a.details) rec.details = String(a.details).slice(0, 500);
+        if (a.notes) rec.notes = String(a.notes).slice(0, 1000);
+        if (a.utr) rec.utr = String(a.utr).slice(0, 50);
+        if (a.reqId) rec.reqId = String(a.reqId).slice(0, 50);
+        if (a.docs && a.docs.length) rec.docs = a.docs.slice(0, 20).map(d => String(d).slice(0, 100));
+        await addDoc(collection(db, 'users', currentUser.uid, 'applications'), rec);
+      } catch (e) { console.warn('application save skipped', e); }
+    };
+
+    // ---- My Applications page ----
+    window.renderMyApplications = async function () {
+      const box = $('apps-list');
+      const ta = L() === 'ta';
+      if (!currentUser) {
+        box.innerHTML = '<div class="col-span-full bg-white p-6 rounded-2xl border border-slate-200 text-center"><p class="text-sm font-bold text-slate-700 mb-3">' + (ta ? 'உங்கள் விண்ணப்பங்களைப் பார்க்க Login செய்யவும்.' : 'Please login to see your applications.') + '</p><button onclick="openAuthModal(\'login\')" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl">🔐 Login</button></div>';
+        return;
+      }
+      box.innerHTML = '<p class="text-sm text-slate-500 font-bold">⏳ ' + (ta ? 'ஏற்றப்படுகிறது...' : 'Loading...') + '</p>';
+      try {
+        const q = query(collection(db, 'users', currentUser.uid, 'applications'), orderBy('createdAt', 'desc'), limit(50));
+        const snap = await getDocs(q);
+        if (snap.empty) {
+          box.innerHTML = '<div class="col-span-full bg-white p-6 rounded-2xl border border-slate-200 text-center text-sm font-bold text-slate-600">' + (ta ? 'இன்னும் விண்ணப்பங்கள் இல்லை.' : 'No applications yet.') + '</div>';
+          return;
+        }
+        box.innerHTML = snap.docs.map(d => {
+          const a = d.data();
+          const title = ta ? (a.serviceTa || a.serviceEn) : (a.serviceEn || a.serviceTa);
+          const when = a.createdAt && a.createdAt.toDate ? a.createdAt.toDate().toLocaleString('en-IN') : '';
+          const sid = String(a.serviceId || '').replace(/[^A-Za-z0-9_-]/g, '');
+          const statusTxt = a.status === 'submitted' ? (ta ? 'சமர்ப்பிக்கப்பட்டது' : 'Submitted') : esc(a.status);
+          const waMsg = (ta ? 'வணக்கம் VPS Computers, என் விண்ணப்ப நிலை: ' : 'Hello VPS Computers, status of my application: ') + (a.serviceTa || a.serviceEn || '') + (a.reqId ? ' (' + a.reqId + ')' : '') + ' - ' + (a.name || '');
+          return '<div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm flex flex-col justify-between">' +
+            '<div><div class="flex items-center justify-between gap-2 mb-2"><span class="text-[10px] font-extrabold bg-emerald-100 text-emerald-800 border border-emerald-300 px-2.5 py-0.5 rounded-full">' + statusTxt + '</span><span class="text-[10px] font-bold text-slate-500">' + esc(when) + '</span></div>' +
+            '<h3 class="text-sm font-extrabold text-slate-900 leading-snug">' + esc(title) + '</h3>' +
+            '<p class="text-xs text-slate-600 mt-1">💳 ' + esc(a.fee) + ' • ' + (a.method === 'web' ? '🌐 Website' : '💬 WhatsApp') + '</p>' +
+            (a.reqId ? '<p class="text-xs font-bold text-brand-700 mt-1">Request ID: ' + esc(a.reqId) + '</p>' : '') + '</div>' +
+            '<div class="pt-4 mt-4 border-t border-slate-100 grid grid-cols-2 gap-2.5">' +
+            (sid ? '<button onclick="openApplyModal(\'' + sid + '\')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-[11px] py-2 rounded-xl">' + (ta ? 'மீண்டும் விண்ணப்பிக்க' : 'Apply Again') + '</button>' : '<span></span>') +
+            '<a href="https://wa.me/' + SHOP_PHONE + '?text=' + encodeURIComponent(waMsg) + '" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] py-2 rounded-xl text-center">' + (ta ? 'நிலை அறிய' : 'Ask Status') + '</a>' +
+            '</div></div>';
+        }).join('');
+      } catch (e) {
+        console.warn(e);
+        box.innerHTML = '<div class="col-span-full bg-red-50 p-5 rounded-2xl border border-red-200 text-sm font-bold text-red-700">' + (ta ? 'விண்ணப்பங்களை ஏற்ற முடியவில்லை. Firestore rules / index-ஐ சரிபார்க்கவும்.' : 'Could not load applications. Check Firestore rules.') + '</div>';
+      }
+    };
+
+    // ---- React to login / logout ----
+    if (auth) {
+      getRedirectResult(auth).then(r => { if (r && r.user) saveProfile(r.user); }).catch(() => {});
+      onAuthStateChanged(auth, (user) => {
+        currentUser = user;
+        const guest = $('auth-guest'), usr = $('auth-user');
+        if (user) {
+          guest.classList.add('hidden');
+          usr.classList.remove('hidden'); usr.classList.add('flex');
+          $('auth-user-name').textContent = '👤 ' + (user.displayName || user.email || 'My Account');
+          const n = $('m-name');
+          if (n && !n.value && user.displayName) n.value = user.displayName;
+        } else {
+          guest.classList.remove('hidden');
+          usr.classList.add('hidden'); usr.classList.remove('flex');
+        }
+        if (!$('page-apps').classList.contains('hidden')) window.renderMyApplications();
+      });
+    }
+  </script>
 
   <!-- JAVASCRIPT -->
   <script>
     const SHOP_PHONE = '919843991974';
-    // 👇 1. உங்கள் Google Apps Script Web App URL-ஐ இங்கே பேஸ்ட் செய்யவும் 👇
-    const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_WEB_APP_URL';
-    // 👇 2. உங்கள் UPI ID-ஐ இங்கே கொடுக்கலாம் (qr.png படம் இல்லையென்றால் இது தானாக QR உருவாக்கும்) 👇
-    const SHOP_UPI_ID = '9843991974@ybl';
+    // 👇 1. உங்கள் Google Apps Script Web App URL 👇
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwcj9iHfQ_dxH8IkX6V6ylkPsGktMuFT5P7cIDmqOgtuhuLCsVlP3VLhww9Xg5OUkQcZw/exec';
+    // 👇 2. உங்கள் UPI ID 👇
+    const SHOP_UPI_ID = 'vpscomputers@ybl';
 
     let currentLang = 'ta';
     let currentPage = 'home';
@@ -709,9 +929,49 @@
     }
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA (வைகுண்ட ஏகாதசி நீக்கப்பட்டுள்ளது)
+    // 1. LIVE NOTIFICATIONS DATA (TRB, RRB 2 Notifications, JEE Main 2027 Added)
     // =======================================================
     const notificationsData = [
+      {
+        tagTa: 'TRB ஆசிரியர்',
+        tagEn: 'TRB TEACHER',
+        titleTa: '<span class="text-slate-900">TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers Recruitment / Special TET)</span><br>🏫 தகுதி: <span class="text-blue-700">அரசு மற்றும் அரசு உதவி பெறும் பள்ளிகளில் பணியாற்றும் ஆசிரியர்கள் (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பணி நியமன ஆணை (Appointment Order) & பணிச் சான்றிதழ் (Bonafide / Service Certificate - HM கையொப்பத்துடன்)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed கல்விச் சான்றிதழ்கள்<br>3. ஆதார் அட்டை, சாதி சான்றிதழ், போட்டோ & கையொப்பம்',
+        titleEn: '<span class="text-slate-900">TRB In-Service Working Teachers Recruitment / Special TET Notification</span><br>🏫 Eligibility: <span class="text-blue-700">Working Teachers in Govt & Govt Aided Schools (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Appointment Order & Service / Bonafide Certificate (Signed by HM/CEO)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed Certificates<br>3. Aadhaar Card, Community Certificate, Photo & Signature',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'trb-working-teacher'
+      },
+      {
+        tagTa: 'RRB அறிவிப்பு 1',
+        tagEn: 'RRB NOTIF 1',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 1) – NTPC (Graduate & 12th Level) பணியிடங்கள்</span><br>🚆 பதவிகள்: <span class="text-purple-700">Station Master, Goods Train Manager, Junior Clerk, Typist & Commercial Cum Ticket Clerk</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th, 12th மார்க்ஷீட் மற்றும் பட்டப்படிப்பு சான்றிதழ் (Degree Certificate)<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST / EWS) & வங்கி பாஸ்புக் முதல் பக்கம் (கட்டணம் திரும்பப் பெற)',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 1) – NTPC (Graduate & Undergraduate Posts)</span><br>🚆 Posts: <span class="text-purple-700">Station Master, Goods Train Manager, Clerk, Typist & Ticket Clerk</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th, 12th Marksheet & Degree Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST/EWS) & Bank Passbook (for Fee Refund)',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'rrb-notif-1'
+      },
+      {
+        tagTa: 'RRB அறிவிப்பு 2',
+        tagEn: 'RRB NOTIF 2',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 2) – Group D (Level-1) & ALP / Technician பணியிடங்கள்</span><br>🛠️ கல்வித் தகுதி: <span class="text-red-600">10-ம் வகுப்பு தேர்ச்சி (SSLC) / ITI / Diploma முடித்தவர்கள் விண்ணப்பிக்கலாம்</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th மார்க்ஷீட் மற்றும் ITI / NAC / Diploma சான்றிதழ்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST) & வங்கி பாஸ்புக் முதல் பக்கம் (Refund Account)',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 2) – Group D (Level-1) & ALP / Technician Posts</span><br>🛠️ Qualification: <span class="text-red-600">10th Pass (SSLC) / ITI / Diploma Holders</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & ITI / NAC / Diploma Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST) & Bank Passbook Front Page',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'rrb-notif-2'
+      },
+      {
+        tagTa: 'JEE MAIN 2027',
+        tagEn: 'JEE MAIN 2027',
+        titleTa: '<span class="text-slate-900">JEE Main 2027 (Joint Entrance Examination – Session 1 & 2) பொறியியல் நுழைவுத் தேர்வு அறிவிப்பு</span><br>🎓 தகுதி: <span class="text-blue-700">+2 பயிலும் மற்றும் முடித்த மாணவர்கள் (NIT, IIIT, IIT & மத்திய அரசு பொறியியல் கல்லூரிகளில் சேர)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு விவரம்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி, 80% முகம் தெரியும்படி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)',
+        titleEn: '<span class="text-slate-900">JEE Main 2027 (Session 1 & 2) Engineering Entrance Exam Notification</span><br>🎓 Eligibility: <span class="text-blue-700">12th Studying / Passed Students (For NITs, IIITs, IITs & CFTIs Admission)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & 12th Roll/School Details<br>2. Aadhaar Card, Passport Photo (White background) & Signature<br>3. Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Certificate (if applicable)',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'jee-main-2027'
+      },
       {
         tagTa: 'சபரிமலை Q',
         tagEn: 'SABARIMALA Q',
@@ -723,24 +983,14 @@
         actionTarget: 'sabarimala'
       },
       {
-        tagTa: 'புதியது',
-        tagEn: 'NEW',
-        titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span><br>⏳ விண்ணப்பிக்கக் கடைசி நாள்: <span class="text-red-600">05-11-2026 (இரவு 11:59 வரை)</span><br>✏️ விண்ணப்பத் திருத்தம் (Correction): <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
-        titleEn: '<span class="text-slate-900">TNPSC Group 4 (VAO) Exam – 6,574 Vacancies (Notification No. 11/2026)</span><br>📅 Application Start: <span class="text-emerald-700">06-10-2026</span><br>⏳ Last Date to Apply: <span class="text-red-600">05-11-2026 (up to 11:59 PM)</span><br>✏️ Application Correction Window: <span class="text-blue-700">09-11-2026 to 11-11-2026</span><br>📝 Exam Date: <span class="text-purple-700">10-01-2027 (9:30 AM – 12:30 PM)</span>',
+        tagTa: 'TNPSC குரூப் 4',
+        tagEn: 'TNPSC GROUP 4',
+        titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span> | ⏳ கடைசி நாள்: <span class="text-red-600">05-11-2026</span><br>✏️ விண்ணப்பத் திருத்தம்: <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
+        titleEn: '<span class="text-slate-900">TNPSC Group 4 (VAO) Exam – 6,574 Vacancies (Notification No. 11/2026)</span><br>📅 Start: <span class="text-emerald-700">06-10-2026</span> | ⏳ Last Date: <span class="text-red-600">05-11-2026</span><br>✏️ Correction Window: <span class="text-blue-700">09-11-2026 to 11-11-2026</span><br>📝 Exam Date: <span class="text-purple-700">10-01-2027 (9:30 AM – 12:30 PM)</span>',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'page',
         actionTarget: 'tnpsc'
-      },
-      {
-        tagTa: 'TTD ஜனவரி 2027',
-        tagEn: 'TTD JAN 2027',
-        titleTa: '<span class="text-slate-900">திருப்பதி ஜனவரி 2027 – தரிசனம் & தங்கும் அறை முன்பதிவு தேதிகள்</span><br>🎟️ 24-10-2026 காலை 10:00 – ₹300 சிறப்பு தரிசனம்<br>🏨 24-10-2026 மதியம் 3:00 – திருமலை & திருப்பதி தங்கும் அறைகள்<br>🙏 23-10-2026 காலை 10:00 – அங்கப்பிரதட்சணம் டோக்கன்<br>🙏 23-10-2026 காலை 11:00 – ஸ்ரீவாணி டிரஸ்ட் தரிசனம்<br>👴 23-10-2026 மதியம் 3:00 – மூத்த குடிமக்கள் / மாற்றுத்திறனாளி தரிசனம்',
-        titleEn: '<span class="text-slate-900">Tirupati January 2027 – Darshan & Accommodation Booking Dates</span><br>🎟️ 24-10-2026, 10:00 AM – ₹300 Special Entry Darshan<br>🏨 24-10-2026, 3:00 PM – Tirumala & Tirupati Accommodation<br>🙏 23-10-2026, 10:00 AM – Angapradakshinam Tokens<br>🙏 23-10-2026, 11:00 AM – SRIVANI Trust Darshan<br>👴 23-10-2026, 3:00 PM – Senior Citizen / Differently-abled Darshan',
-        linkTextTa: '🛕 TTD பக்கம்',
-        linkTextEn: '🛕 Open TTD Tab',
-        actionType: 'page',
-        actionTarget: 'ttd'
       },
       {
         tagTa: 'பான் கார்டு',
@@ -838,7 +1088,7 @@
         pillHome: '🏠 முகப்பு',
         pillEsevai: '📜 இ-சேவை சான்றிதழ்கள்',
         pillTnpds: '🍚 TNPDS ரேஷன் கார்டு',
-        pillTnpsc: '🏛️ TNPSC',
+        pillTnpsc: '🏛️ TNPSC / TRB / RRB / JEE',
         pillTtd: '🛕 திருப்பதி TTD',
         pillSabarimala: '🙏 சபரிமலை Q',
         pillIdcards: '🪪 பான் & அடையாள அட்டை',
@@ -868,7 +1118,7 @@
         pillHome: '🏠 Home',
         pillEsevai: '📜 e-Sevai Certificates',
         pillTnpds: '🍚 TNPDS Ration Card',
-        pillTnpsc: '🏛️ TNPSC',
+        pillTnpsc: '🏛️ TNPSC / TRB / RRB / JEE',
         pillTtd: '🛕 Tirupati TTD',
         pillSabarimala: '🙏 Sabarimala Q',
         pillIdcards: '🪪 PAN & ID Cards',
@@ -896,7 +1146,7 @@
     const pageConfig = {
       esevai: { titleTa: 'அரசு இ-சேவை சான்றிதழ்கள் (e-Sevai Certificates)', titleEn: 'Government e-Sevai Certificates', subtitleTa: 'வருமானம், சாதி, OBC, இருப்பிடம், முதல் பட்டதாரி, வாரிசு, சிறு விவசாயி, திருமணமாகாதவர் மற்றும் ஆண் வாரிசு இல்லா சான்றிதழ்கள்.', subtitleEn: 'Income, Community, OBC, Nativity, First Graduate, Legal Heir, Small Farmer, Unmarried & No Male Issue Certificates.' },
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
-      tnpsc: { titleTa: 'TNPSC அரசுப் போட்டித் தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC Government Exam Applications', subtitleTa: 'OTR பதிவு, Group 4, Group 2 / 2A மற்றும் Group 1 தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'OTR Registration, Group 4, Group 2 / 2A and Group 1 online applications with required documents.' },
+      tnpsc: { titleTa: 'TNPSC, TRB, RRB இரயில்வே & JEE Main 2027 தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC, TRB, RRB Railway & JEE Main 2027 Exam Applications', subtitleTa: 'TRB பணியில் உள்ள ஆசிரியர் தேர்வு, RRB இரயில்வே 2 அறிவிப்புகள், JEE Main 2027, TNPSC OTR மற்றும் குரூப் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'TRB Working Teacher Recruitment, RRB Railway 2 Notifications, JEE Main 2027, TNPSC OTR & Group Exam online applications with required documents.' },
       ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'திருப்பதி ₹300 சிறப்பு தரிசனம், தங்கும் அறைகள், ஆர்ஜித சேவா மற்றும் ஸ்ரீவாணி தரிசன முன்பதிவு.', subtitleEn: 'Tirupati ₹300 Special Entry Darshan, Accommodation, Arjitha Seva & SRIVANI Darshan bookings.' },
       sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் (Sabarimala Q Ticket Opening: November 29) ஆன்லைன் முன்பதிவு.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking (Opening: November 29).' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
@@ -907,39 +1157,43 @@
     };
 
     // =========================================================================
-    // 💰 3. SERVICES & FEES DATA (கட்டணத்தை மாற்ற இங்கே உள்ள `fee: '₹...'` என்பதை மாற்றவும்)
+    // 💰 3. SERVICES & FEES DATA (TRB, RRB 2 Notifications, JEE Main 2027 Added)
     // =========================================================================
     const servicesData = [
       // Sabarimala Q
-      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', fee: '₹100', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (மேலே டைப் செய்யவும்)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number (Type above)'], uploadDocs: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி (Preferred Date)' },
+      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', fee: '₹50', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'மொபைல் எண் (மேலே டைப் செய்யவும்)'], docsEn: ['Aadhaar Card', 'Passport Size Photo', 'Mobile Number (Type above)'], uploadDocs: ['ஆதார் அட்டை (Aadhaar Card)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி (Preferred Date)' },
 
       // e-Sevai Certificates
-      { id: 'income-cert', page: 'esevai', icon: '📄', fee: '₹60', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'பான் கார்டு / சம்பள சான்று'] },
-      { id: 'community-cert', page: 'esevai', icon: '📜', fee: '₹60', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று'] },
-      { id: 'obc-cert', page: 'esevai', icon: '🧾', fee: '₹60', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community Cert)', 'வருமானச் சான்றிதழ் (Income Cert)'] },
-      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', fee: '₹60', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்'] },
-      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', fee: '₹60', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று'] },
-      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', fee: '₹60', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்றிதழ்கள்'] },
-      { id: 'nativity-cert', page: 'esevai', icon: '🏠', fee: '₹60', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்று / TC'] },
-      { id: 'first-grad', page: 'esevai', icon: '🎓', fee: '₹60', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC'], uploadDocs: ['மாணவர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC'] },
-      { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', fee: '₹60', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card'], uploadDocs: ['இறப்பு சான்றிதழ் (Death Cert)', 'இறந்தவர் ஆதார்', 'வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு'] },
-      { id: 'oap-widow', page: 'esevai', icon: '👵', fee: '₹60', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof'], uploadDocs: ['போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக் (Bank Passbook)', 'வயது சான்று / இறப்பு சான்று'] },
+      { id: 'income-cert', page: 'esevai', icon: '📄', fee: '₹60', titleTa: 'வருமான சான்றிதழ்', titleEn: 'Income Certificate', descTa: 'கல்வி மற்றும் அரசுத் திட்டங்களுக்கான ஆண்டு வருமான சான்றிதழ்.', descEn: 'Annual family income certificate for scholarships & govt schemes.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பான் கார்டு / சம்பள சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'PAN / Salary Slip', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'பான் கார்டு / சம்பள சான்று', 'கையொப்பம் (Signature)'] },
+      { id: 'community-cert', page: 'esevai', icon: '📜', fee: '₹60', titleTa: 'சாதி சான்றிதழ் (Community)', titleEn: 'Community Certificate', descTa: 'BC, MBC, SC, ST, OC ஆகிய அனைத்துப் பிரிவினருக்குமான நிரந்தர சாதி சான்றிதழ்.', descEn: 'Permanent Community Certificate for BC, MBC, SC, ST & OC.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Parent Community Cert', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'ஸ்மார்ட் ரேஷன் கார்டு (Ration Card)', 'TC அல்லது பிறப்பு சான்று', 'பெற்றோர் சாதி சான்று', 'கையொப்பம் (Signature)'] },
+      { id: 'obc-cert', page: 'esevai', icon: '🧾', fee: '₹60', titleTa: 'OBC சான்றிதழ்', titleEn: 'OBC Certificate', descTa: 'மத்திய அரசு வேலை மற்றும் கல்வி இடஒதுக்கீடுகளுக்கான OBC (Non-Creamy Layer) சான்றிதழ்.', descEn: 'OBC (Non-Creamy Layer) certificate for Central Govt jobs & education reservation.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community)', 'பெற்றோர் வருமான சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Community Certificate', 'Parents Income Proof', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'சாதி சான்றிதழ் (Community Cert)', 'வருமானச் சான்றிதழ் (Income Cert)', 'கையொப்பம் (Signature)'] },
+      { id: 'small-farmer-cert', page: 'esevai', icon: '🌾', fee: '₹60', titleTa: 'சிறு விவசாயி சான்றிதழ்', titleEn: 'Small Farmer Certificate', descTa: 'கல்வி உதவித்தொகை மற்றும் அரசு சலுகைகளுக்கான சிறு / குறு விவசாயி சான்றிதழ்.', descEn: 'Small / Marginal Farmer certificate for scholarships & govt benefits.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'Patta / Chitta Copy', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பட்டா / சிட்டா நகல்', 'கையொப்பம் (Signature)'] },
+      { id: 'unmarried-cert', page: 'esevai', icon: '🙍', fee: '₹60', titleTa: 'திருமணமாகாதவர் சான்றிதழ்', titleEn: 'Unmarried Certificate', descTa: 'திருமணமாகவில்லை என்பதற்கான அரசு சான்றிதழ் (வேலை, ஓய்வூதியம் மற்றும் பிற தேவைகளுக்கு).', descEn: 'Official certificate stating the applicant is unmarried (jobs, pension & other needs).', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மனுதாரர் போட்டோ', 'ஆதார் அட்டை', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo', 'Aadhaar Card', 'Smart Ration Card', 'TC or Birth Cert', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'TC அல்லது பிறப்பு சான்று', 'கையொப்பம் (Signature)'] },
+      { id: 'no-male-cert', page: 'esevai', icon: '👩‍👧‍👧', fee: '₹60', titleTa: 'ஆண் வாரிசு இல்லா சான்றிதழ் (No Male Certificate)', titleEn: 'No Male Issue Certificate', descTa: 'குடும்பத்தில் ஆண் வாரிசு இல்லை என்பதற்கான அரசு சான்றிதழ்.', descEn: 'Official certificate stating there is no male issue in the family.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['மனுதாரர் போட்டோ & ஆதார்', 'ஸ்மார்ட் ரேஷன் கார்டு', 'குடும்ப உறுப்பினர்கள் ஆதார்', 'பிறப்பு சான்றிதழ்கள் (பெண் குழந்தைகள்)', 'கையொப்பம் (Signature)'], docsEn: ['Applicant Photo & Aadhaar', 'Smart Ration Card', 'Family Members Aadhaar', 'Birth Certificates (Daughters)', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்றிதழ்கள்', 'கையொப்பம் (Signature)'] },
+      { id: 'nativity-cert', page: 'esevai', icon: '🏠', fee: '₹60', titleTa: 'பிறப்பிட / இருப்பிட சான்றிதழ்', titleEn: 'Nativity Certificate', descTa: 'தமிழ்நாட்டில் தொடர்ந்து வசிப்பதற்கான இருப்பிட மற்றும் பிறப்பிட சான்றிதழ்.', descEn: 'Official Nativity and Residence proof certificate.', timeTa: '5-10 நாட்கள்', timeEn: '5-10 Days', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'வீட்டு வரி / EB ரசீது', 'கையொப்பம் (Signature)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Birth Cert / TC', 'Tax / EB Bill', 'Signature'], uploadDocs: ['மனுதாரர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ஸ்மார்ட் ரேஷன் கார்டு', 'பிறப்பு சான்று / TC', 'கையொப்பம் (Signature)'] },
+      { id: 'first-grad', page: 'esevai', icon: '🎓', fee: '₹60', titleTa: 'முதல் பட்டதாரி சான்றிதழ்', titleEn: 'First Graduate Certificate', descTa: 'கல்லூரி கல்விக் கட்டணச் சலுகை பெற முதல் பட்டதாரி சான்று.', descEn: 'First Graduate Certificate for college tuition fee concession.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['மாணவர் போட்டோ & ஆதார்', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC', 'கையொப்பம் (Signature)'], docsEn: ['Student Photo & Aadhaar', 'Ration Card', '10th, 12th Marksheet & TC', 'Parents TC', 'Signature'], uploadDocs: ['மாணவர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', '10th, 12th மார்க்ஷீட் & TC', 'பெற்றோர் TC', 'கையொப்பம் (Signature)'] },
+      { id: 'legal-heir', page: 'esevai', icon: '👨‍👩‍👧‍👦', fee: '₹60', titleTa: 'வாரிசு சான்றிதழ் (Legal Heir)', titleEn: 'Legal Heir Certificate', descTa: 'இறந்தவரின் சொத்துக்கள் மற்றும் வங்கி கணக்குகளை மாற்ற வாரிசு சான்றிதழ்.', descEn: 'Official Legal Heir Certificate for property & bank claims.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['இறப்பு சான்றிதழ் (அசல்)', 'இறந்தவர் ஆதார்', 'அனைத்து வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு', 'கையொப்பம் (Signature)'], docsEn: ['Original Death Certificate', 'Deceased Aadhaar', 'All Heirs Aadhaar & Photo', 'Ration Card', 'Signature'], uploadDocs: ['இறப்பு சான்றிதழ் (Death Cert)', 'இறந்தவர் ஆதார்', 'வாரிசுதாரர்கள் ஆதார் & போட்டோ', 'ரேஷன் கார்டு', 'கையொப்பம் (Signature)'] },
+      { id: 'oap-widow', page: 'esevai', icon: '👵', fee: '₹60', titleTa: 'முதியோர் / விதவை ஓய்வூதியம்', titleEn: 'OAP & Widow Pension', descTa: 'மாதாந்திர அரசு உதவித்தொகை (₹1,200) பெறுவதற்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Monthly government pension schemes online application.', timeTa: 'ஆய்வு படி', timeEn: 'Verification', docsTa: ['போட்டோ & ஆதார்', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக்', 'வயது சான்று / இறப்பு சான்று', 'கையொப்பம் / கைரேகை (Signature)'], docsEn: ['Photo & Aadhaar', 'Ration Card', 'Bank Passbook', 'Age / Death Proof', 'Signature / Thumb Impression'], uploadDocs: ['போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வங்கி பாஸ்புக் (Bank Passbook)', 'வயது சான்று / இறப்பு சான்று', 'கையொப்பம் / கைரேகை (Signature)'] },
 
       // TNPDS Ration Card
-      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', fee: '₹150', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் போட்டோ & ஆதார்', 'உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'], docsEn: ['Family Head Photo & Aadhaar', 'Members Aadhaar', 'Tax / EB Bill', 'Marriage / Birth Certificate'], uploadDocs: ['குடும்பத் தலைவர் போட்டோ', 'உறுப்பினர்கள் ஆதார் கார்டுகள்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'] },
+      { id: 'tnpds-new', page: 'tnpds', icon: '🆕', fee: '₹300', titleTa: 'புதிய ரேஷன் கார்டு (New Card)', titleEn: 'New Smart Ration Card', descTa: 'புதிய ஸ்மார்ட் ரேஷன் கார்டுக்கான ஆன்லைன் விண்ணப்பம் (TNPDS).', descEn: 'Online application for a new Smart Ration Card (TNPDS).', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['குடும்பத் தலைவர் போட்டோ & ஆதார்', 'உறுப்பினர்கள் ஆதார்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'], docsEn: ['Family Head Photo & Aadhaar', 'Members Aadhaar', 'Tax / EB Bill', 'Marriage / Birth Certificate'], uploadDocs: ['குடும்பத் தலைவர் போட்டோ', 'உறுப்பினர்கள் ஆதார் கார்டுகள்', 'வீட்டு வரி / EB ரசீது', 'திருமண சான்று / பிறப்பு சான்று'] },
       { id: 'tnpds-address', page: 'tnpds', icon: '📍', fee: '₹100', titleTa: 'முகவரி மாற்றம் (Address Change)', titleEn: 'Address Change', descTa: 'ரேஷன் கார்டில் முகவரியை மாற்றம் செய்ய ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to change the address on your Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரிக்கான சான்று (EB பில் / வீட்டு வரி)'], docsEn: ['Ration Card Copy', 'Head of Family Aadhaar', 'New Address Proof (EB Bill / Tax)'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'குடும்பத் தலைவர் ஆதார்', 'புதிய முகவரி சான்று (EB பில் / வீட்டு வரி)'] },
       { id: 'tnpds-head', page: 'tnpds', icon: '👤', fee: '₹100', titleTa: 'குடும்பத் தலைவர் மாற்றம் (Family Head Change)', titleEn: 'Family Head Change', descTa: 'ரேஷன் கார்டில் குடும்பத் தலைவரை மாற்றுவதற்கான விண்ணப்பம்.', descEn: 'Application to change the Head of Family on the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'புதிய தலைவர் போட்டோ & ஆதார்', 'இறப்பு சான்றிதழ் (தலைவர் இறந்திருந்தால்)'], docsEn: ['Ration Card Copy', 'New Head Photo & Aadhaar', 'Death Certificate (if head is deceased)'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'புதிய தலைவர் போட்டோ & ஆதார்', 'இறப்பு சான்றிதழ்'] },
       { id: 'tnpds-remove', page: 'tnpds', icon: '➖', fee: '₹100', titleTa: 'உறுப்பினர் நீக்கம் (Remove Members)', titleEn: 'Remove Members', descTa: 'ரேஷன் கார்டில் இருந்து உறுப்பினர்களை நீக்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to remove members from the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'நீக்க வேண்டிய உறுப்பினர் ஆதார்', 'இறப்பு சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Removed', 'Death / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'இறப்பு சான்றிதழ் / திருமண சான்று'] },
       { id: 'tnpds-add', page: 'tnpds', icon: '➕', fee: '₹100', titleTa: 'உறுப்பினர் சேர்த்தல் (Add Members)', titleEn: 'Add Members', descTa: 'குழந்தை, மனைவி / மருமகள் போன்றோரை ரேஷன் கார்டில் சேர்க்க ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application to add a child, spouse or other members to the Ration Card.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'], docsEn: ['Ration Card Copy', 'Aadhaar of Member to be Added', 'Birth / Marriage Certificate'], uploadDocs: ['ரேஷன் கார்டு நகல்', 'சேர்க்க வேண்டிய உறுப்பினர் ஆதார்', 'பிறப்புச் சான்றிதழ் / திருமண சான்று'] },
 
-      // TNPSC
+      // TNPSC, TRB, RRB & JEE Main 2027
+      { id: 'trb-working-teacher', page: 'tnpsc', icon: '👩‍🏫', fee: '₹200 + Exam Fee', titleTa: 'TRB பணியில் உள்ள ஆசிரியர் தேர்வு (Working Teacher Recruitment)', titleEn: 'TRB In-Service Working Teachers Exam', descTa: 'பணியில் உள்ள ஆசிரியர்களுக்கான TRB சிறப்புத் தகுதித் தேர்வு (Paper I & Paper II) ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for TRB In-Service Working Teachers Special TET (Paper I & Paper II).', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['பணி நியமன ஆணை (Appointment Order)', 'பணிச் சான்றிதழ் (Service / Bonafide Certificate - HM / CEO கையொப்பத்துடன்)', '10th, 12th, Degree & D.El.Ed / B.Ed சான்றிதழ்கள்', 'ஆதார் அட்டை & சாதி சான்றிதழ்', 'பாஸ்போர்ட் சைஸ் போட்டோ & கையொப்பம்'], docsEn: ['Appointment Order', 'Service / Bonafide Certificate (Signed by HM/CEO)', '10th, 12th, Degree & D.El.Ed / B.Ed Certificates', 'Aadhaar Card & Community Certificate', 'Passport Size Photo & Signature'], uploadDocs: ['பணி நியமன ஆணை (Appointment Order)', 'பணிச் சான்றிதழ் (Service Cert)', 'கல்வி & B.Ed / D.El.Ed சான்றிதழ்கள்', 'சாதி சான்றிதழ் & ஆதார்', 'போட்டோ & கையொப்பம்'], extraInput: 'Paper I / Paper II & பள்ளி விவரம்' },
+      { id: 'rrb-notif-1', page: 'tnpsc', icon: '🚆', fee: '₹200 + Exam Fee', titleTa: 'RRB Notification 1: NTPC (Graduate & 12th Level)', titleEn: 'RRB Notification 1: NTPC Recruitment', descTa: 'இரயில்வே துறையில் Station Master, Goods Train Manager, Clerk, Typist உள்ளிட்ட NTPC பணியிடங்களுக்கான விண்ணப்பம்.', descEn: 'Railway RRB NTPC Graduate & Undergraduate level posts online application.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10th, 12th மார்க்ஷீட் & Degree சான்றிதழ்', 'ஆதார் அட்டை', 'சாதி சான்றிதழ் (OBC / SC / ST / EWS)', 'வங்கி பாஸ்புக் முதல் பக்கம் (கட்டணம் திரும்பப் பெற)', 'பாஸ்போர்ட் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்'], docsEn: ['10th, 12th Marksheet & Degree Certificate', 'Aadhaar Card', 'Community Certificate (OBC/SC/ST/EWS)', 'Bank Passbook Front Page (for Fee Refund)', 'White Background Photo & Signature'], uploadDocs: ['10th / 12th / Degree சான்றிதழ்', 'ஆதார் & சாதி சான்றிதழ்', 'வங்கி பாஸ்புக் முதல் பக்கம்', 'போட்டோ & கையொப்பம்'], extraInput: 'கல்வித் தகுதி (12th / Degree)' },
+      { id: 'rrb-notif-2', page: 'tnpsc', icon: '🛠️', fee: '₹200 + Exam Fee', titleTa: 'RRB Notification 2: Group D (Level-1) & ALP / Technician', titleEn: 'RRB Notification 2: Group D & ALP / Tech', descTa: 'இரயில்வே துறையில் 10th / ITI / Diploma முடித்தவர்களுக்கான Group D மற்றும் ALP / Technician பணியிடங்கள்.', descEn: 'Railway RRB Group D (Level-1) and ALP / Technician recruitment online application.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10th மார்க்ஷீட் மற்றும் ITI / Diploma சான்றிதழ்', 'ஆதார் அட்டை', 'சாதி சான்றிதழ் (OBC / SC / ST / EWS)', 'வங்கி பாஸ்புக் முதல் பக்கம் (Refund Account)', 'பாஸ்போர்ட் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்'], docsEn: ['10th Marksheet & ITI / Diploma Certificate', 'Aadhaar Card', 'Community Certificate (OBC/SC/ST/EWS)', 'Bank Passbook Front Page (Refund Account)', 'White Background Photo & Signature'], uploadDocs: ['10th & ITI / Diploma சான்றிதழ்', 'ஆதார் & சாதி சான்றிதழ்', 'வங்கி பாஸ்புக் முதல் பக்கம்', 'போட்டோ & கையொப்பம்'], extraInput: 'விண்ணப்பிக்கும் பதவி (Group D / ALP / Tech)' },
+      { id: 'jee-main-2027', page: 'tnpsc', icon: '🎓', fee: '₹250 + Exam Fee', titleTa: 'JEE Main 2027 நுழைவுத் தேர்வு விண்ணப்பம்', titleEn: 'JEE Main 2027 Entrance Exam Application', descTa: 'NIT, IIIT, IIT மற்றும் மத்திய அரசு பொறியியல் கல்லூரிகளில் சேர JEE Main 2027 (Session 1 & 2) ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for JEE Main 2027 (Session 1 & 2) Engineering Entrance Examination.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'Active Notification', docsTa: ['10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு பள்ளி விவரம்', 'ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி, 80% முகம் தெரியும்படி)', 'மாணவர் கையொப்பம் (Signature)', 'சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)'], docsEn: ['10th Marksheet & 12th School Details', 'Aadhaar Card', 'Passport Photo (White Background, 80% Face Visible)', 'Candidate Signature', 'Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Cert (if any)'], uploadDocs: ['10th மார்க்ஷீட் (10th Marksheet)', 'ஆதார் அட்டை (Aadhaar)', 'சாதி சான்றிதழ் (Category Cert)', 'போட்டோ & கையொப்பம் (Photo & Sign)'], extraInput: 'பள்ளியின் பெயர் & தேர்வு மையம் (Preferred Exam City)' },
       { id: 'tnpsc-otr', page: 'tnpsc', icon: '🆔', fee: '₹250', titleTa: 'TNPSC OTR பதிவு (One Time Registration)', titleEn: 'TNPSC OTR Registration', descTa: 'அனைத்து TNPSC தேர்வுகளுக்கும் தேவையான ஒருமுறை பதிவு (OTR) மற்றும் புதுப்பித்தல்.', descEn: 'One Time Registration (OTR) and renewal required for all TNPSC exams.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['ஆதார் அட்டை', 'போட்டோ & கையொப்பம்', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'], docsEn: ['Aadhaar Card', 'Photo & Signature', '10th Marksheet', 'Community Certificate'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th மார்க்ஷீட்', 'சாதி சான்றிதழ்'] },
       { id: 'tnpsc-group4', page: 'tnpsc', icon: '📝', fee: '₹200', titleTa: 'TNPSC Group 4 / VAO விண்ணப்பம்', titleEn: 'TNPSC Group 4 / VAO Application', descTa: 'Group 4 மற்றும் VAO தேர்வுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 4 and VAO exam.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு (டைப் செய்யவும்)', 'ஆதார் அட்டை', '10th / 12th / Degree மார்க்ஷீட்', 'சாதி சான்றிதழ்', 'போட்டோ & கையொப்பம்'], docsEn: ['OTR ID & Password (Type)', 'Aadhaar Card', '10th / 12th / Degree Marksheet', 'Community Cert', 'Photo & Signature'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'கையொப்பம் (Signature)', '10th / கல்விச் சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password (இருந்தால்)' },
       { id: 'tnpsc-group2', page: 'tnpsc', icon: '📚', fee: '₹200', titleTa: 'TNPSC Group 2 / 2A விண்ணப்பம்', titleEn: 'TNPSC Group 2 / 2A Application', descTa: 'Group 2 மற்றும் Group 2A தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 2 and Group 2A exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ் / மார்க்ஷீட்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate / Marksheet', 'Community Certificate & Photo'], uploadDocs: ['பாஸ்போர்ட் போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
       { id: 'tnpsc-group1', page: 'tnpsc', icon: '🏆', fee: '₹200', titleTa: 'TNPSC Group 1 & பிற தேர்வுகள்', titleEn: 'TNPSC Group 1 & Other Exams', descTa: 'Group 1 மற்றும் பிற TNPSC துறைத் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பம்.', descEn: 'Online application for Group 1 and other TNPSC departmental exams.', timeTa: 'அறிவிப்பு நாட்களில்', timeEn: 'During Notification', docsTa: ['OTR ஐடி & பாஸ்வேர்டு', 'பட்டப்படிப்பு சான்றிதழ்', 'சாதி சான்றிதழ் & போட்டோ'], docsEn: ['OTR ID & Password', 'Degree Certificate', 'Community Certificate & Photo'], uploadDocs: ['போட்டோ & கையொப்பம்', 'Degree சான்றிதழ்', 'சாதி சான்றிதழ்'], extraInput: 'உங்கள் OTR ID & Password' },
-      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', fee: '₹30', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC தேர்வு ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['விண்ணப்ப எண் & பிறந்த தேதி (டைப் செய்தால் போதும்)'], docsEn: ['Application Number & DOB'], uploadDocs: ['பழைய விண்ணப்ப நகல் (இருந்தால் மட்டும்)'], extraInput: 'Application Number & பிறந்த தேதி (DOB)' },
+      { id: 'tnpsc-hallticket', page: 'tnpsc', icon: '🎫', fee: '₹30', titleTa: 'ஹால் டிக்கெட் & ரிசல்ட் டவுன்லோட்', titleEn: 'Hall Ticket & Result Download', descTa: 'TNPSC, TRB, RRB, JEE ஹால் டிக்கெட் மற்றும் தேர்வு முடிவுகளை டவுன்லோட் செய்து பிரிண்ட் எடுத்தல்.', descEn: 'Download and print TNPSC, TRB, RRB, JEE Hall Ticket and Exam Results.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['விண்ணப்ப எண் & பிறந்த தேதி (டைப் செய்தால் போதும்)'], docsEn: ['Application Number & DOB'], uploadDocs: ['பழைய விண்ணப்ப நகல் (இருந்தால் மட்டும்)'], extraInput: 'Application Number & பிறந்த தேதி (DOB)' },
 
-      // TTD (வைகுண்ட ஏகாதசி நீக்கப்பட்டுள்ளது)
+      // TTD
       { id: 'ttd-300', page: 'ttd', icon: '🛕', fee: '₹100 + ₹300', titleTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட்', titleEn: 'Tirupati ₹300 Special Entry Darshan', descTa: 'திருப்பதி ₹300 சிறப்பு தரிசன டிக்கெட் மற்றும் தங்கும் அறை முன்பதிவு.', descEn: 'TTD ₹300 Special Entry Darshan & Accommodation Booking.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'], uploadDocs: ['பக்தர்கள் ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'தரிசனத் தேதி & நபர்கள் எண்ணிக்கை' },
       { id: 'ttd-room', page: 'ttd', icon: '🏨', fee: '₹100 + Room Rent', titleTa: 'தங்கும் அறை முன்பதிவு (Accommodation)', titleEn: 'Accommodation Booking', descTa: 'திருமலை மற்றும் திருப்பதியில் TTD தங்கும் அறைகள் முன்பதிவு.', descEn: 'TTD rooms booking at Tirumala and Tirupati.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'தரிசன டிக்கெட் நகல்'], docsEn: ['Devotees Aadhaar Card', 'Darshan Ticket Copy'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'தரிசன டிக்கெட் நகல்'], extraInput: 'தங்கும் தேதி (Check-in Date)' },
       { id: 'ttd-arjitha', page: 'ttd', icon: '🪔', fee: '₹100', titleTa: 'ஆர்ஜித சேவா முன்பதிவு (Arjitha Seva)', titleEn: 'Arjitha Seva Booking', descTa: 'சுப்ரபாதம், அர்ச்சனை, கல்யாணோற்சவம் போன்ற ஆர்ஜித சேவை டிக்கெட்டுகள்.', descEn: 'Suprabhatam, Archana, Kalyanotsavam & other Arjitha Seva tickets.', timeTa: 'கோட்டா நாளில்', timeEn: 'Quota Release', docsTa: ['பக்தர்கள் ஆதார் அட்டை', 'பாஸ்போர்ட் சைஸ் போட்டோ'], docsEn: ['Devotees Aadhaar Card', 'Passport Size Photo'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பாஸ்போர்ட் சைஸ் போட்டோ (Photo)'], extraInput: 'சேவை பெயர் & தேதி' },
@@ -948,10 +1202,10 @@
       { id: 'ttd-donation', page: 'ttd', icon: '🎁', fee: '₹50', titleTa: 'TTD நன்கொடை & சேவைகள்', titleEn: 'TTD Donations & Services', descTa: 'திருப்பதி தேவஸ்தான அறக்கட்டளைகளுக்கு ஆன்லைன் நன்கொடை.', descEn: 'Online donations to TTD trusts.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் / பான் கார்டு'], docsEn: ['Aadhaar / PAN Card'], uploadDocs: ['ஆதார் / பான் கார்டு நகல்'] },
 
       // PAN & ID Cards
-      { id: 'pan-new', page: 'idcards', icon: '💳', fee: '₹250', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'கையொப்பம் (வெள்ளை பேப்பரில்)', 'தந்தை பெயர் (டைப் செய்யவும்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Signature on White Paper', 'Father Name'], uploadDocs: ['பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'கையொப்பம் (Signature on White Paper)'], extraInput: 'தந்தையின் பெயர் (Father Name)' },
-      { id: 'pan-correction', page: 'idcards', icon: '✏️', fee: '₹250', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Photo & Signature'], uploadDocs: ['பழைய பான் கார்டு நகல் (Old PAN)', 'ஆதார் அட்டை (Aadhaar)', 'போட்டோ (Photo)', 'கையொப்பம் (Signature)'] },
-      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', fee: '₹100', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'], uploadDocs: ['ஆதார் அட்டை நகல்', 'முகவரிச் சான்று (Ration Card / Voter ID)'] },
-      { id: 'voter-id', page: 'idcards', icon: '🗳️', fee: '₹100', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வயது சான்று (TC / Birth Cert)'] },
+      { id: 'pan-new', page: 'idcards', icon: '💳', fee: '₹300', titleTa: 'புதிய பான் கார்டு (New PAN Card)', titleEn: 'New PAN Card Application', descTa: 'புதிய பான் கார்டு விண்ணப்பம், சிறுவர் (Minor) பான் கார்டு மற்றும் உடனடி e-PAN.', descEn: 'Apply for New Individual PAN Card, Minor PAN & Instant e-PAN.', timeTa: '3-5 நாட்கள்', timeEn: '3-5 Days', docsTa: ['பாஸ்போர்ட் சைஸ் போட்டோ', 'ஆதார் அட்டை', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'கையொப்பம் (வெள்ளை பேப்பரில்)', 'தந்தை பெயர் (டைப் செய்யவும்)'], docsEn: ['Passport Size Photo', 'Aadhaar Card', 'Date of Birth Proof (Birth Certificate / Marksheet)', 'Signature on White Paper', 'Father Name'], uploadDocs: ['பாஸ்போர்ட் சைஸ் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar Card)', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'கையொப்பம் (Signature on White Paper)'], extraInput: 'தந்தையின் பெயர் (Father Name)' },
+      { id: 'pan-correction', page: 'idcards', icon: '✏️', fee: '₹300', titleTa: 'பான் கார்டு திருத்தம் & ஆதார் இணைப்பு', titleEn: 'PAN Correction & Reprint', descTa: 'பான் கார்டில் பெயர், பிறந்த தேதி திருத்தம் & தொலைந்த பான் கார்டு.', descEn: 'Name/DOB correction in PAN Card, Lost PAN Reprint & Aadhaar Link.', timeTa: '7-15 நாட்கள்', timeEn: '7-15 Days', docsTa: ['பழைய பான் கார்டு நகல்', 'ஆதார் அட்டை', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'போட்டோ & கையொப்பம்'], docsEn: ['Old PAN Copy', 'Aadhaar Card', 'Date of Birth Proof (Birth Certificate / Marksheet)', 'Photo & Signature'], uploadDocs: ['பழைய பான் கார்டு நகல் (Old PAN)', 'ஆதார் அட்டை (Aadhaar)', 'பிறந்த தேதி சான்று (Birth Certificate / Marksheet)', 'போட்டோ (Photo)', 'கையொப்பம் (Signature)'] },
+      { id: 'aadhaar-service', page: 'idcards', icon: '🆔', fee: '₹200', titleTa: 'ஆதார் அட்டை சேவைகள் (Aadhaar)', titleEn: 'Aadhaar Card Services', descTa: 'ஆதார் முகவரி மாற்றம், டவுன்லோட் & பிளாஸ்டிக் PVC கார்டு பிரிண்ட்.', descEn: 'Aadhaar Address Update, e-Aadhaar Download & PVC Card Print.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['ஆதார் அட்டை நகல்', 'முகவரி மாற்றத்திற்கு: ரேஷன் கார்டு / EB பில்'], docsEn: ['Aadhaar Card Copy', 'Address Proof (Ration Card / EB Bill)'], uploadDocs: ['ஆதார் அட்டை நகல்', 'முகவரிச் சான்று (Ration Card / Voter ID)'] },
+      { id: 'voter-id', page: 'idcards', icon: '🗳️', fee: '₹150', titleTa: 'வாக்காளர் அட்டை (Voter ID)', titleEn: 'Voter ID Card Services', descTa: 'புதிய வாக்காளர் அட்டை விண்ணப்பம், திருத்தம் & e-EPIC டவுன்லோட்.', descEn: 'New Voter ID Registration, Correction & e-EPIC Download.', timeTa: 'ECI ஒப்புதல்', timeEn: 'As per ECI', docsTa: ['போட்டோ', 'ஆதார் & ரேஷன் கார்டு', 'வயது சான்று (TC / பிறப்பு சான்று)'], docsEn: ['Photo', 'Aadhaar & Ration Card', 'Age Proof (TC / Birth Cert)'], uploadDocs: ['பாஸ்போர்ட் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'ரேஷன் கார்டு', 'வயது சான்று (TC / Birth Cert)'] },
 
       // Tickets
       { id: 'bus-ticket', page: 'tickets', icon: '🚌', fee: 'Ticket + ₹50', titleTa: 'பஸ் டிக்கெட் புக்கிங் (Bus Ticket)', titleEn: 'Bus Ticket Booking', descTa: 'தமிழ்நாடு அரசு பஸ் (SETC), KSRTC மற்றும் அனைத்து ஆம்னி பஸ் (Sleeper/AC) டிக்கெட்.', descEn: 'SETC, KSRTC & all private Omni Sleeper/AC Bus Tickets.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['புறப்படும் ஊர், செல்லும் ஊர் & பயணத் தேதி (டைப் செய்தால் போதும்)'], docsEn: ['From, To & Travel Date'], uploadDocs: ['பயணிகள் ஆதார் நகல் (விருப்பப்பட்டால்)'], extraInput: 'புறப்படும் ஊர் - செல்லும் ஊர் & பயணத் தேதி' },
@@ -961,13 +1215,13 @@
       // MSME & Passport
       { id: 'msme-udyam', page: 'msme', icon: '🏭', fee: '₹300', titleTa: 'MSME / Udyam தொழில் பதிவு சான்றிதழ்', titleEn: 'MSME / Udyam Registration', descTa: 'கடைகள், சிறு/குறு தொழில்கள் மற்றும் வங்கிக் கடன் பெற மத்திய அரசின் MSME சான்றிதழ்.', descEn: 'Central Govt Udyam Registration Certificate for shops & bank loans.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['உரிமையாளர் ஆதார் அட்டை', 'பான் கார்டு', 'வங்கி பாஸ்புக் முதல் பக்கம்'], docsEn: ['Proprietor Aadhaar Card', 'PAN Card', 'Bank Passbook Front Page'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பான் கார்டு (PAN Card)', 'வங்கி பாஸ்புக் (Bank Passbook)'], extraInput: 'கடை / நிறுவனத்தின் பெயர் & முகவரி' },
       { id: 'fssai-license', page: 'msme', icon: '🍽️', fee: '₹500', titleTa: 'உணவு பாதுகாப்பு சான்று (FSSAI)', titleEn: 'FSSAI Food License', descTa: 'மளிகைக் கடை, ஓட்டல், பேக்கரி மற்றும் உணவுத் தொழில்களுக்கான FSSAI சான்று.', descEn: 'Mandatory FSSAI Registration & License for food businesses.', timeTa: '3-7 நாட்கள்', timeEn: '3-7 Days', docsTa: ['போட்டோ & ஆதார் அட்டை', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], docsEn: ['Photo & Aadhaar Card', 'Shop EB Bill / Rental Proof'], uploadDocs: ['உரிமையாளர் போட்டோ (Photo)', 'ஆதார் அட்டை (Aadhaar)', 'கடை EB பில் / வாடகை ஒப்பந்தம்'], extraInput: 'கடையின் பெயர் (Shop Name)' },
-      { id: 'passport-seva', page: 'msme', icon: '🛂', fee: '₹1,700', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பான் கார்டு (PAN Card)', '10th மார்க்ஷீட் / TC', 'ரேஷன் கார்டு'] },
-      { id: 'tneb-service', page: 'msme', icon: '⚡', fee: '₹100', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது & ஆதார்'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt & Aadhaar'], uploadDocs: ['EB ரசீது / அட்டை', 'ஆதார் அட்டை', 'பத்திரம் & வீட்டு வரி ரசீது (பெயர் மாற்றத்திற்கு)'], extraInput: 'மின் இணைப்பு எண் (EB Consumer Number)' },
+      { id: 'passport-seva', page: 'msme', icon: '🛂', fee: '₹3000', titleTa: 'பாஸ்போர்ட் விண்ணப்பம் (Passport)', titleEn: 'Passport Application', descTa: 'புதிய பாஸ்போர்ட், பாஸ்போர்ட் புதுப்பித்தல் (Renewal) & போலீஸ் கிளியரன்ஸ்.', descEn: 'Fresh Passport Application, Renewal & Police Clearance (PCC).', timeTa: 'உடனடியாக', timeEn: 'Instant Slot', docsTa: ['ஆதார் அட்டை & பான் கார்டு', '10th / 12th மார்க்ஷீட் அல்லது TC', 'பிறப்பு சான்று & ரேஷன் கார்டு'], docsEn: ['Aadhaar & PAN Card', '10th / 12th Marksheet or TC', 'Birth Cert & Ration Card'], uploadDocs: ['ஆதார் அட்டை (Aadhaar)', 'பான் கார்டு (PAN Card)', '10th மார்க்ஷீட் / TC', 'ரேஷன் கார்டு'] },
+      { id: 'tneb-service', page: 'msme', icon: '⚡', fee: '₹200', titleTa: 'TNEB மின்சார வாரிய சேவைகள்', titleEn: 'TNEB Online Services', descTa: 'புதிய மின் இணைப்பு விண்ணப்பம், பெயர் மாற்றம், ஆதார் இணைப்பு & கட்டணம்.', descEn: 'New EB Connection, Name Transfer, Aadhaar Link & Bill Payment.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['மின் நுகர்வோர் எண் / EB ரசீது', 'பத்திரம் & பட்டா', 'வீட்டு வரி ரசீது & ஆதார்'], docsEn: ['EB Consumer No / Bill', 'Sale Deed & Patta', 'Tax Receipt & Aadhaar'], uploadDocs: ['EB ரசீது / அட்டை', 'ஆதார் அட்டை', 'பத்திரம் & வீட்டு வரி ரசீது (பெயர் மாற்றத்திற்கு)'], extraInput: 'மின் இணைப்பு எண் (EB Consumer Number)' },
 
       // Patta / Chitta
-      { id: 'patta-chitta', page: 'patta', icon: '🗺️', fee: '₹50', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம், கிராமம் & சர்வே எண் / பட்டா எண்'], docsEn: ['District, Taluk, Village & Survey/Patta No'], uploadDocs: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], extraInput: 'கிராமத்தின் பெயர் & பட்டா எண் / சர்வே எண்' },
-      { id: 'patta-transfer', page: 'patta', icon: '📝', fee: '₹400', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'], uploadDocs: ['கிரையப் பத்திரம் (Sale Deed PDF)', 'பழைய பட்டா & EC', 'ஆதார் அட்டை & போட்டோ'] },
-      { id: 'ec-cert', page: 'patta', icon: '📑', fee: '₹100', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'], uploadDocs: ['பழைய பத்திர நகல் (இருந்தால்)'], extraInput: 'சார்பதிவாளர் அலுவலகம், கிராமம் & சர்வே/பத்திர எண்' },
+      { id: 'patta-chitta', page: 'patta', icon: '🗺️', fee: '₹30', titleTa: 'பட்டா / சிட்டா / FMB டவுன்லோட்', titleEn: 'Patta / Chitta & FMB Print', descTa: 'நிலத்தின் பட்டா, சிட்டா, அடங்கல் மற்றும் FMB புலப்படம் உடனடி பிரிண்ட்.', descEn: 'Instant online download and printout of Patta, Chitta & FMB Sketch.', timeTa: '5 நிமிடம்', timeEn: '5 Mins', docsTa: ['மாவட்டம், வட்டம், கிராமம் & சர்வே எண் / பட்டா எண்'], docsEn: ['District, Taluk, Village & Survey/Patta No'], uploadDocs: ['பழைய பட்டா / பத்திர நகல் (இருந்தால்)'], extraInput: 'கிராமத்தின் பெயர் & பட்டா எண் / சர்வே எண்' },
+      { id: 'patta-transfer', page: 'patta', icon: '📝', fee: '₹60+E.Doc Charge', titleTa: 'ஆன்லைன் பட்டா பெயர் மாற்றம்', titleEn: 'Online Patta Transfer', descTa: 'கிரையப் பத்திரம், செட்டில்மென்ட் மற்றும் வாரிசு அடிப்படையில் பட்டா பெயர் மாற்றம்.', descEn: 'Online Patta Name Transfer application based on Sale Deed.', timeTa: '15-30 நாட்கள்', timeEn: '15-30 Days', docsTa: ['கிரையப் பத்திரம் (Sale Deed)', 'பழைய பட்டா & வில்லங்க சான்று (EC)', 'ஆதார் & போட்டோ'], docsEn: ['Registered Sale Deed', 'Old Patta & EC Copy', 'Aadhaar & Photo'], uploadDocs: ['கிரையப் பத்திரம் (Sale Deed PDF)', 'பழைய பட்டா & EC', 'ஆதார் அட்டை & போட்டோ'] },
+      { id: 'ec-cert', page: 'patta', icon: '📑', fee: '₹100+P.Fee', titleTa: 'வில்லங்க சான்று (EC) & பத்திர நகல்', titleEn: 'EC & Document Copy', descTa: 'சொத்தின் வில்லங்க சான்றிதழ் (EC) மற்றும் பதிவுத்துறை பத்திர நகல் டவுன்லோட்.', descEn: 'Encumbrance Certificate (EC) search/print & Certified Document Copy.', timeTa: '10 நிமிடம்', timeEn: '10 Mins', docsTa: ['பத்திர நகல் / சர்வே எண் விவரம்'], docsEn: ['Deed Copy / Survey No Details'], uploadDocs: ['பழைய பத்திர நகல் (இருந்தால்)'], extraInput: 'சார்பதிவாளர் அலுவலகம், கிராமம் & சர்வே/பத்திர எண்' },
 
       // Printing
       { id: 'wedding-cards', page: 'printing', icon: '💌', fee: 'மாடலுக்கு ஏற்ப', titleTa: 'திருமண அழைப்பிதழ்கள் & ஆஃப்செட் பிரிண்டிங்', titleEn: 'Wedding Invitations & Offset Printing', descTa: 'திருமணம், காதணி விழா, புதுமனை புகுவிழா அழைப்பிதழ்கள், பில் புக், நோட்டீஸ் & விசிட்டிங் கார்டு.', descEn: 'Custom Wedding Invitations, Housewarming Cards, Bill Books, Notices & Visiting Cards.', timeTa: '1-3 நாட்கள்', timeEn: '1-3 Days', docsTa: ['அச்சடிக்க வேண்டிய விவரங்கள் (Matter / Text)', 'புகைப்படங்கள் / லோகோ (தேவைப்பட்டால்)'], docsEn: ['Event Matter / Text File', 'Photos / Logo (if required)'], uploadDocs: ['பத்திரிகை விவரம் (Matter Photo / File)', 'போட்டோ (தேவைப்பட்டால்)'], extraInput: 'தேவைப்படும் எண்ணிக்கை & கார்டு மாடல்' },
@@ -1144,7 +1398,6 @@
       document.getElementById('gallery-title').textContent = t.galleryTitle;
       document.getElementById('gallery-subtitle').textContent = t.gallerySubtitle;
 
-      applyAuthLanguage();
       renderNotifications();
       renderWeddingGallery();
       populateServiceSelect();
@@ -1171,7 +1424,7 @@
       document.getElementById('page-home').classList.add('hidden');
       document.getElementById('page-category').classList.add('hidden');
       document.getElementById('page-contact').classList.add('hidden');
-      document.getElementById('page-myapps').classList.add('hidden');
+      document.getElementById('page-apps').classList.add('hidden');
 
       document.querySelectorAll('.page-pill').forEach(pill => {
         if (pill.dataset.pill === pageKey) {
@@ -1183,11 +1436,11 @@
 
       if (pageKey === 'home') {
         document.getElementById('page-home').classList.remove('hidden');
+      } else if (pageKey === 'apps') {
+        document.getElementById('page-apps').classList.remove('hidden');
+        if (window.renderMyApplications) window.renderMyApplications();
       } else if (pageKey === 'contact') {
         document.getElementById('page-contact').classList.remove('hidden');
-      } else if (pageKey === 'myapps') {
-        document.getElementById('page-myapps').classList.remove('hidden');
-        renderMyAppsPage();
       } else if (pageConfig[pageKey]) {
         renderCategoryPage(pageKey);
         document.getElementById('page-category').classList.remove('hidden');
@@ -1285,11 +1538,6 @@
       submitBtn.disabled = false;
       submitBtn.textContent = '🚀 ஆவணங்களை Upload செய்து விண்ணப்பத்தை சமர்ப்பி';
 
-      // Prefill customer name & show save-to-account hint
-      const nameInput = document.getElementById('m-name');
-      if (currentUser && !nameInput.value.trim()) nameInput.value = getCustomerName(currentUser);
-      renderApplyAuthNote();
-
       const modal = document.getElementById('apply-modal');
       modal.classList.remove('hidden');
       modal.classList.add('flex');
@@ -1380,13 +1628,8 @@
 
       const msg = `*வணக்கம் VPS COMPUTERS AND PRINTERS,*\n\nஎனக்கு கீழ்க்கண்ட சேவைக்கு விண்ணப்பிக்க வேண்டும்:\n\n👤 *பெயர்:* ${name}\n📞 *மொபைல்:* ${phone}\n📄 *சேவை:* ${serviceTitle}\n💳 *கட்டணம்:* ${s.fee || '₹60'}${extraText ? `\n✍️ *விவரம்:* ${extraText}` : ''}${notes ? `\n📝 *குறிப்பு:* ${notes}` : ''}\n\n*தேவையான ஆவணங்கள்:*\n${docListText}\n\n(இதோ எனது ஆவணங்களின் புகைப்படங்களை கீழே அனுப்புகிறேன்)`;
 
-      // Open WhatsApp first (synchronously) so mobile browsers don't block the popup
+      if (window.vpsSaveApplication) window.vpsSaveApplication({ method: 'whatsapp', service: s, name: name, phone: phone, details: extraText, notes: notes });
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
-
-      // Save a text-only copy to "My Applications" (only if logged in)
-      saveApplicationRecord({
-        service: s, method: 'whatsapp', name, phone, extraText, notes, docs: s.docsTa || []
-      });
     }
 
     // Option 1: Direct Website Upload to Google Drive & Sheet Dashboard
@@ -1448,15 +1691,10 @@
 
         const result = await response.json();
         if (result.status === 'success') {
+          if (window.vpsSaveApplication) window.vpsSaveApplication({ method: 'web', service: s, name: name, phone: phone, details: extraText, notes: notes, utr: utr, reqId: result.reqId, docs: filesArray.map(f => f.name) });
           statusEl.className = 'p-3.5 rounded-xl text-xs font-extrabold text-center bg-emerald-100 text-emerald-900 border border-emerald-300 block';
           statusEl.innerHTML = `✅ உங்கள் விண்ணப்பமும் ஆவணங்களும் வெற்றிகரமாகப் பெறப்பட்டன!<br>உங்கள் விண்ணப்ப எண் (Request ID): <span class="text-base text-brand-700">${result.reqId}</span>`;
           submitBtn.textContent = '✔ வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது';
-
-          // Save a text-only copy to "My Applications" (file names only, never the files)
-          saveApplicationRecord({
-            service: s, method: 'web', name, phone, extraText, notes, utr,
-            reqId: result.reqId, docs: filesArray.map(f => f.name)
-          });
         } else {
           throw new Error(result.message || 'Upload Error');
         }
@@ -1474,501 +1712,6 @@
         reader.readAsDataURL(file);
         reader.onload = () => resolve(reader.result);
         reader.onerror = err => reject(err);
-      });
-    }
-
-    // =========================================================================
-    // 🔐 CUSTOMER ACCOUNTS: FIREBASE AUTHENTICATION + FIRESTORE (text data only)
-    // Firestore path: users/{uid}/applications/{autoId}
-    // =========================================================================
-    const firebaseConfig = {
-      apiKey: "AIzaSyAxlRBzVua_2PMi5LKMNRTyzBBMkpnZGpc",
-      authDomain: "vps-computers.firebaseapp.com",
-      projectId: "vps-computers",
-      storageBucket: "vps-computers.firebasestorage.app",
-      messagingSenderId: "981776298189",
-      appId: "1:981776298189:web:d32031fd5fac961a6ff984",
-      measurementId: "G-78XK0R4QQJ"
-    };
-
-    let fbAuth = null;
-    let fbDb = null;
-    let currentUser = null;
-    let authMode = 'login';
-
-    // If the Firebase CDN fails to load, the rest of the site keeps working.
-    try {
-      if (window.firebase) {
-        firebase.initializeApp(firebaseConfig);
-        fbAuth = firebase.auth();
-        fbDb = firebase.firestore();
-        try { firebase.analytics(); } catch (e) { /* analytics optional */ }
-      }
-    } catch (e) {
-      console.error('Firebase init failed:', e);
-    }
-
-    const authTranslations = {
-      ta: {
-        loginBtn: 'உள்நுழைய', signupBtn: 'பதிவு செய்ய', logoutBtn: 'வெளியேற',
-        loginBtnIcon: '🔑 உள்நுழைய', signupBtnIcon: '👤 பதிவு செய்ய',
-        pillMyApps: '🗂️ எனது விண்ணப்பங்கள்',
-        modalBadge: '👤 வாடிக்கையாளர் கணக்கு',
-        loginTitle: 'உங்கள் கணக்கில் உள்நுழையவும்', signupTitle: 'புதிய கணக்கு உருவாக்கவும்',
-        loginTab: '🔑 உள்நுழைய (Login)', signupTab: '👤 பதிவு செய்ய (Sign Up)',
-        loginSubmit: '🔑 உள்நுழைய', signupSubmit: '✅ கணக்கை உருவாக்கு',
-        nameLbl: 'உங்கள் பெயர் (Name) *', emailLbl: 'மின்னஞ்சல் (Email) *', passwordLbl: 'கடவுச்சொல் (Password) *',
-        passwordHint: 'குறைந்தது 6 எழுத்துகள்', forgotBtn: 'கடவுச்சொல் மறந்துவிட்டதா?',
-        orLbl: 'அல்லது', googleBtn: 'Google மூலம் தொடரவும்',
-        pleaseWait: '⏳ காத்திருக்கவும்...',
-        myAppsBadge: 'வாடிக்கையாளர் பகுதி', myAppsTitle: 'எனது விண்ணப்பங்கள்',
-        myAppsSubtitle: 'நீங்கள் இதற்கு முன் சமர்ப்பித்த விண்ணப்பங்களின் பட்டியல்.',
-        refreshBtn: '🔄 புதுப்பி', newAppBtn: '📤 புதிய விண்ணப்பம்',
-        myAppsLoginTitle: 'உங்கள் விண்ணப்பங்களைப் பார்க்க உள்நுழையவும்',
-        myAppsLoginDesc: 'உள்நுழைந்த பிறகு நீங்கள் அனுப்பும் ஒவ்வொரு விண்ணப்பமும் இங்கே சேமிக்கப்படும்.',
-        loading: '⏳ விண்ணப்பங்கள் ஏற்றப்படுகின்றன...', noApps: 'இதுவரை விண்ணப்பங்கள் இல்லை. மேலே உள்ள "புதிய விண்ணப்பம்" பட்டனை அழுத்தவும்.',
-        appsCount: n => `மொத்தம் ${n} விண்ணப்பங்கள்`, loadError: '❌ விண்ணப்பங்களை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்.',
-        lblService: 'சேவை', lblFee: 'கட்டணம்', lblDate: 'தேதி', lblMethod: 'முறை', lblPhone: 'மொபைல்',
-        lblDetails: 'விவரம்', lblNotes: 'குறிப்பு', lblReqId: 'விண்ணப்ப எண்', lblDocs: 'ஆவணங்கள்', lblUtr: 'UTR',
-        methodWa: '💬 WhatsApp', methodWeb: '🌐 Website Upload', statusSubmitted: 'சமர்ப்பிக்கப்பட்டது',
-        noteLoggedIn: name => `✅ ${name} ஆக உள்நுழைந்துள்ளீர்கள் — இந்த விண்ணப்பம் "எனது விண்ணப்பங்கள்" பகுதியில் சேமிக்கப்படும்.`,
-        noteLoggedOut: '💡 உள்நுழைந்தால் உங்கள் விண்ணப்பங்கள் "எனது விண்ணப்பங்கள்" பகுதியில் சேமிக்கப்படும் (விருப்பம்).',
-        noteLoginLink: 'உள்நுழைய',
-        resetSent: '📧 கடவுச்சொல் மாற்றும் இணைப்பு உங்கள் மின்னஞ்சலுக்கு அனுப்பப்பட்டது.',
-        welcome: name => `✅ வரவேற்கிறோம், ${name}!`,
-        unavailable: '❌ லாகின் சேவை தற்போது கிடைக்கவில்லை. இணைய இணைப்பைச் சரிபார்க்கவும்.',
-        errors: {
-          'auth/invalid-email': 'சரியான மின்னஞ்சல் முகவரியை டைப் செய்யவும்.',
-          'auth/missing-email': 'மின்னஞ்சல் முகவரியை டைப் செய்யவும்.',
-          'auth/missing-password': 'கடவுச்சொல்லை டைப் செய்யவும்.',
-          'auth/weak-password': 'கடவுச்சொல் குறைந்தது 6 எழுத்துகள் இருக்க வேண்டும்.',
-          'auth/email-already-in-use': 'இந்த மின்னஞ்சலில் ஏற்கனவே கணக்கு உள்ளது. உள்நுழையவும்.',
-          'auth/invalid-credential': 'மின்னஞ்சல் அல்லது கடவுச்சொல் தவறு.',
-          'auth/wrong-password': 'மின்னஞ்சல் அல்லது கடவுச்சொல் தவறு.',
-          'auth/user-not-found': 'இந்த மின்னஞ்சலில் கணக்கு இல்லை. பதிவு செய்யவும்.',
-          'auth/too-many-requests': 'பல முறை முயற்சித்துள்ளீர்கள். சிறிது நேரம் கழித்து முயற்சிக்கவும்.',
-          'auth/network-request-failed': 'இணைய இணைப்பில் சிக்கல். மீண்டும் முயற்சிக்கவும்.',
-          'auth/popup-blocked': 'Popup தடுக்கப்பட்டது. மீண்டும் முயற்சிக்கவும்.',
-          'auth/unauthorized-domain': 'இந்த இணையதள முகவரி Firebase-ல் அனுமதிக்கப்படவில்லை.',
-          'missing-name': 'தயவுசெய்து உங்கள் பெயரை டைப் செய்யவும்.',
-          default: 'ஏதோ தவறு நடந்தது. மீண்டும் முயற்சிக்கவும்.'
-        }
-      },
-      en: {
-        loginBtn: 'Login', signupBtn: 'Sign Up', logoutBtn: 'Logout',
-        loginBtnIcon: '🔑 Login', signupBtnIcon: '👤 Sign Up',
-        pillMyApps: '🗂️ My Applications',
-        modalBadge: '👤 Customer Account',
-        loginTitle: 'Login to your account', signupTitle: 'Create a new account',
-        loginTab: '🔑 Login', signupTab: '👤 Sign Up',
-        loginSubmit: '🔑 Login', signupSubmit: '✅ Create Account',
-        nameLbl: 'Your Name *', emailLbl: 'Email *', passwordLbl: 'Password *',
-        passwordHint: 'At least 6 characters', forgotBtn: 'Forgot password?',
-        orLbl: 'or', googleBtn: 'Continue with Google',
-        pleaseWait: '⏳ Please wait...',
-        myAppsBadge: 'Customer Area', myAppsTitle: 'My Applications',
-        myAppsSubtitle: 'A list of the applications you have submitted before.',
-        refreshBtn: '🔄 Refresh', newAppBtn: '📤 New Application',
-        myAppsLoginTitle: 'Login to view your applications',
-        myAppsLoginDesc: 'After you login, every application you send will be saved here.',
-        loading: '⏳ Loading applications...', noApps: 'No applications yet. Tap "New Application" above to start.',
-        appsCount: n => `${n} application${n === 1 ? '' : 's'} in total`, loadError: '❌ Could not load applications. Please try again.',
-        lblService: 'Service', lblFee: 'Fee', lblDate: 'Date', lblMethod: 'Method', lblPhone: 'Mobile',
-        lblDetails: 'Details', lblNotes: 'Notes', lblReqId: 'Request ID', lblDocs: 'Documents', lblUtr: 'UTR',
-        methodWa: '💬 WhatsApp', methodWeb: '🌐 Website Upload', statusSubmitted: 'Submitted',
-        noteLoggedIn: name => `✅ Logged in as ${name} — this application will be saved in "My Applications".`,
-        noteLoggedOut: '💡 Login to save your applications in "My Applications" (optional).',
-        noteLoginLink: 'Login',
-        resetSent: '📧 A password reset link has been sent to your email.',
-        welcome: name => `✅ Welcome, ${name}!`,
-        unavailable: '❌ Login service is unavailable right now. Please check your internet connection.',
-        errors: {
-          'auth/invalid-email': 'Please enter a valid email address.',
-          'auth/missing-email': 'Please enter your email address.',
-          'auth/missing-password': 'Please enter your password.',
-          'auth/weak-password': 'Password must be at least 6 characters.',
-          'auth/email-already-in-use': 'An account already exists with this email. Please login.',
-          'auth/invalid-credential': 'Incorrect email or password.',
-          'auth/wrong-password': 'Incorrect email or password.',
-          'auth/user-not-found': 'No account found with this email. Please sign up.',
-          'auth/too-many-requests': 'Too many attempts. Please try again later.',
-          'auth/network-request-failed': 'Network problem. Please try again.',
-          'auth/popup-blocked': 'Popup was blocked. Please try again.',
-          'auth/unauthorized-domain': 'This website domain is not authorized in Firebase.',
-          'missing-name': 'Please enter your name.',
-          default: 'Something went wrong. Please try again.'
-        }
-      }
-    };
-
-    function at() { return authTranslations[currentLang] || authTranslations.ta; }
-
-    // Escape user-entered text before putting it into innerHTML
-    function escapeHtml(value) {
-      return String(value == null ? '' : value)
-        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-    }
-
-    function getCustomerName(user) {
-      if (!user) return '';
-      return user.displayName || (user.email ? user.email.split('@')[0] : 'Customer');
-    }
-
-    function applyAuthLanguage() {
-      const t = at();
-      document.querySelectorAll('[data-auth-i18n]').forEach(el => {
-        const val = t[el.dataset.authI18n];
-        if (typeof val === 'string') el.textContent = val;
-      });
-      const pill = document.querySelector('[data-pill="myapps"]');
-      if (pill) pill.textContent = t.pillMyApps;
-      renderAuthModalMode();
-      renderApplyAuthNote();
-      if (currentPage === 'myapps') renderMyAppsPage();
-    }
-
-    function updateAuthUI(user) {
-      const outEl = document.getElementById('auth-logged-out');
-      const inEl = document.getElementById('auth-logged-in');
-      if (user) {
-        document.getElementById('auth-user-name').textContent = getCustomerName(user);
-        outEl.classList.add('hidden'); outEl.classList.remove('flex');
-        inEl.classList.remove('hidden'); inEl.classList.add('flex');
-      } else {
-        inEl.classList.add('hidden'); inEl.classList.remove('flex');
-        outEl.classList.remove('hidden'); outEl.classList.add('flex');
-      }
-      renderApplyAuthNote();
-      if (currentPage === 'myapps') renderMyAppsPage();
-    }
-
-    // Small note inside the Apply modal telling the customer whether it will be saved
-    function renderApplyAuthNote() {
-      const note = document.getElementById('m-auth-note');
-      if (!note) return;
-      const t = at();
-      if (currentUser) {
-        note.className = 'text-[11px] sm:text-xs font-bold rounded-xl px-3 py-2 border bg-emerald-50 border-emerald-200 text-emerald-800';
-        note.textContent = t.noteLoggedIn(getCustomerName(currentUser));
-      } else {
-        note.className = 'text-[11px] sm:text-xs font-bold rounded-xl px-3 py-2 border bg-amber-50 border-amber-200 text-amber-900';
-        note.innerHTML = `${escapeHtml(t.noteLoggedOut)} <button type="button" onclick="openAuthModal('login')" class="underline text-brand-700 font-extrabold">${escapeHtml(t.noteLoginLink)}</button>`;
-      }
-    }
-
-    // ---------- Auth modal ----------
-    function openAuthModal(mode) {
-      switchAuthMode(mode || 'login');
-      showAuthStatus('');
-      const modal = document.getElementById('auth-modal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-      setTimeout(() => document.getElementById(authMode === 'signup' ? 'auth-name' : 'auth-email').focus(), 50);
-    }
-
-    function closeAuthModal() {
-      const modal = document.getElementById('auth-modal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-      document.getElementById('auth-password').value = '';
-    }
-
-    function switchAuthMode(mode) {
-      authMode = mode === 'signup' ? 'signup' : 'login';
-      showAuthStatus('');
-      renderAuthModalMode();
-    }
-
-    function renderAuthModalMode() {
-      const t = at();
-      const isSignup = authMode === 'signup';
-      const activeCls = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 transition border-brand-600 bg-brand-50 text-brand-700 shadow-sm';
-      const idleCls = 'py-2.5 px-3 rounded-xl font-extrabold text-xs border-2 transition border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100';
-      const tabLogin = document.getElementById('auth-tab-login');
-      const tabSignup = document.getElementById('auth-tab-signup');
-      tabLogin.className = isSignup ? idleCls : activeCls;
-      tabSignup.className = isSignup ? activeCls : idleCls;
-      tabLogin.setAttribute('aria-selected', String(!isSignup));
-      tabSignup.setAttribute('aria-selected', String(isSignup));
-      tabLogin.textContent = t.loginTab;
-      tabSignup.textContent = t.signupTab;
-      document.getElementById('auth-modal-title').textContent = isSignup ? t.signupTitle : t.loginTitle;
-      document.getElementById('auth-submit-btn').textContent = isSignup ? t.signupSubmit : t.loginSubmit;
-      document.getElementById('auth-name-wrap').classList.toggle('hidden', !isSignup);
-      document.getElementById('auth-password-hint').classList.toggle('hidden', !isSignup);
-      document.getElementById('auth-forgot-wrap').classList.toggle('hidden', isSignup);
-      document.getElementById('auth-password').setAttribute('autocomplete', isSignup ? 'new-password' : 'current-password');
-    }
-
-    function showAuthStatus(message, type) {
-      const el = document.getElementById('auth-status');
-      if (!message) { el.className = 'hidden mt-4 p-3 rounded-xl text-xs font-bold text-center'; el.textContent = ''; return; }
-      const colors = type === 'success'
-        ? 'bg-emerald-100 text-emerald-900 border border-emerald-300'
-        : 'bg-red-100 text-red-800 border border-red-300';
-      el.className = `mt-4 p-3 rounded-xl text-xs font-bold text-center block ${colors}`;
-      el.textContent = message;
-    }
-
-    function authErrorMessage(err) {
-      const errors = at().errors;
-      return errors[err && err.code] || errors.default;
-    }
-
-    function setAuthBusy(busy) {
-      const submitBtn = document.getElementById('auth-submit-btn');
-      const googleBtn = document.getElementById('auth-google-btn');
-      submitBtn.disabled = busy;
-      googleBtn.disabled = busy;
-      if (busy) submitBtn.textContent = at().pleaseWait;
-      else renderAuthModalMode();
-    }
-
-    // ---------- Email / Password ----------
-    async function handleAuthSubmit(event) {
-      event.preventDefault();
-      if (!fbAuth) { showAuthStatus(at().unavailable); return; }
-
-      const name = document.getElementById('auth-name').value.trim();
-      const email = document.getElementById('auth-email').value.trim();
-      const password = document.getElementById('auth-password').value;
-
-      if (authMode === 'signup' && !name) { showAuthStatus(at().errors['missing-name']); return; }
-      if (!email) { showAuthStatus(at().errors['auth/missing-email']); return; }
-      if (!password) { showAuthStatus(at().errors['auth/missing-password']); return; }
-
-      setAuthBusy(true);
-      showAuthStatus('');
-      try {
-        if (authMode === 'signup') {
-          const cred = await fbAuth.createUserWithEmailAndPassword(email, password);
-          await cred.user.updateProfile({ displayName: name });
-          // onAuthStateChanged fires before the name is set, so refresh the header now
-          currentUser = fbAuth.currentUser;
-          updateAuthUI(currentUser);
-          await saveUserProfile(currentUser);
-        } else {
-          await fbAuth.signInWithEmailAndPassword(email, password);
-        }
-        onAuthSuccess();
-      } catch (err) {
-        console.error('Auth error:', err);
-        showAuthStatus(authErrorMessage(err));
-      } finally {
-        setAuthBusy(false);
-      }
-    }
-
-    // ---------- Google Sign-In ----------
-    async function signInWithGoogle() {
-      if (!fbAuth) { showAuthStatus(at().unavailable); return; }
-      const provider = new firebase.auth.GoogleAuthProvider();
-      provider.setCustomParameters({ prompt: 'select_account' });
-      setAuthBusy(true);
-      showAuthStatus('');
-      try {
-        const result = await fbAuth.signInWithPopup(provider);
-        await saveUserProfile(result.user);
-        onAuthSuccess();
-      } catch (err) {
-        // Some mobile / in-app browsers block popups: fall back to a full-page redirect
-        if (err && (err.code === 'auth/popup-blocked' || err.code === 'auth/operation-not-supported-in-this-environment')) {
-          try { await fbAuth.signInWithRedirect(provider); return; } catch (e) { err = e; }
-        }
-        if (err && (err.code === 'auth/popup-closed-by-user' || err.code === 'auth/cancelled-popup-request')) {
-          showAuthStatus('');
-        } else {
-          console.error('Google sign-in error:', err);
-          showAuthStatus(authErrorMessage(err));
-        }
-      } finally {
-        setAuthBusy(false);
-      }
-    }
-
-    async function sendPasswordReset() {
-      if (!fbAuth) { showAuthStatus(at().unavailable); return; }
-      const email = document.getElementById('auth-email').value.trim();
-      if (!email) { showAuthStatus(at().errors['auth/missing-email']); return; }
-      try {
-        await fbAuth.sendPasswordResetEmail(email);
-        showAuthStatus(at().resetSent, 'success');
-      } catch (err) {
-        showAuthStatus(authErrorMessage(err));
-      }
-    }
-
-    function onAuthSuccess() {
-      const user = fbAuth.currentUser;
-      showAuthStatus(at().welcome(getCustomerName(user)), 'success');
-      setTimeout(closeAuthModal, 900);
-    }
-
-    async function logoutCustomer() {
-      if (!fbAuth) return;
-      try {
-        await fbAuth.signOut();
-        if (currentPage === 'myapps') renderMyAppsPage();
-      } catch (err) {
-        console.error('Logout error:', err);
-      }
-    }
-
-    // Basic profile document: users/{uid}
-    async function saveUserProfile(user) {
-      if (!fbDb || !user) return;
-      try {
-        await fbDb.collection('users').doc(user.uid).set({
-          name: getCustomerName(user).slice(0, 100),
-          email: (user.email || '').slice(0, 200),
-          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }, { merge: true });
-      } catch (err) {
-        console.error('Profile save error:', err);
-      }
-    }
-
-    // ---------- Save application (text only, no files) ----------
-    // users/{uid}/applications/{autoId}
-    function saveApplicationRecord(data) {
-      if (!fbDb || !currentUser) return Promise.resolve(null);
-      const s = data.service || {};
-      const clip = (v, n) => String(v || '').slice(0, n);
-      // Never store login passwords (e.g. TNPSC "OTR ID & Password") in the database
-      const isSecretField = /password/i.test(s.extraInput || '');
-
-      const record = {
-        serviceId: clip(s.id, 100),
-        serviceTa: clip(s.titleTa, 300),
-        serviceEn: clip(s.titleEn, 300),
-        fee: clip(s.fee || '₹60', 50),
-        name: clip(data.name, 100),
-        phone: clip(data.phone, 20),
-        method: data.method === 'web' ? 'web' : 'whatsapp',
-        details: isSecretField ? '' : clip(data.extraText, 500),
-        notes: clip(data.notes, 1000),
-        utr: clip(data.utr, 100),
-        reqId: clip(data.reqId, 100),
-        docs: (data.docs || []).slice(0, 20).map(d => clip(d, 200)),
-        status: 'submitted',
-        lang: currentLang,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-
-      return fbDb.collection('users').doc(currentUser.uid).collection('applications').add(record)
-        .then(ref => {
-          if (currentPage === 'myapps') loadMyApplications();
-          return ref;
-        })
-        .catch(err => {
-          // Saving history must never block the WhatsApp / upload flow
-          console.error('Application save error:', err);
-          return null;
-        });
-    }
-
-    // ---------- My Applications page ----------
-    function renderMyAppsPage() {
-      const prompt = document.getElementById('myapps-login-prompt');
-      const content = document.getElementById('myapps-content');
-      if (!currentUser) {
-        content.classList.add('hidden');
-        prompt.classList.remove('hidden');
-        document.getElementById('myapps-list').innerHTML = '';
-        return;
-      }
-      prompt.classList.add('hidden');
-      content.classList.remove('hidden');
-      loadMyApplications();
-    }
-
-    let myAppsLoadToken = 0;
-    async function loadMyApplications() {
-      const statusEl = document.getElementById('myapps-status');
-      const listEl = document.getElementById('myapps-list');
-      if (!currentUser) { renderMyAppsPage(); return; }
-      if (!fbDb) { statusEl.textContent = at().unavailable; return; }
-
-      const token = ++myAppsLoadToken;
-      const uid = currentUser.uid;
-      statusEl.textContent = at().loading;
-      try {
-        const snap = await fbDb.collection('users').doc(uid).collection('applications')
-          .orderBy('createdAt', 'desc').limit(50).get();
-        // Ignore stale responses (e.g. user logged out / switched while loading)
-        if (token !== myAppsLoadToken || !currentUser || currentUser.uid !== uid) return;
-
-        const apps = snap.docs.map(d => ({ id: d.id, ...d.data({ serverTimestamps: 'estimate' }) }));
-        statusEl.textContent = apps.length ? at().appsCount(apps.length) : '';
-        listEl.innerHTML = apps.length
-          ? apps.map(createApplicationCardHTML).join('')
-          : `<div class="md:col-span-2 bg-white rounded-2xl border border-dashed border-slate-300 p-6 text-center text-xs sm:text-sm font-bold text-slate-500">${escapeHtml(at().noApps)}</div>`;
-      } catch (err) {
-        console.error('Load applications error:', err);
-        if (token === myAppsLoadToken) statusEl.textContent = at().loadError;
-      }
-    }
-
-    function formatAppDate(ts) {
-      const date = ts && typeof ts.toDate === 'function' ? ts.toDate() : null;
-      if (!date) return '-';
-      return date.toLocaleString(currentLang === 'ta' ? 'ta-IN' : 'en-IN', {
-        day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit'
-      });
-    }
-
-    function createApplicationCardHTML(app) {
-      const t = at();
-      const svc = servicesData.find(s => s.id === app.serviceId);
-      const icon = svc ? svc.icon : '📄';
-      const title = currentLang === 'ta' ? (app.serviceTa || app.serviceEn) : (app.serviceEn || app.serviceTa);
-      const methodLabel = app.method === 'web' ? t.methodWeb : t.methodWa;
-      const row = (label, value) => value
-        ? `<div class="flex gap-2"><dt class="font-bold text-slate-500 shrink-0">${escapeHtml(label)}:</dt><dd class="text-slate-800 font-semibold break-words min-w-0">${escapeHtml(value)}</dd></div>`
-        : '';
-      const docs = Array.isArray(app.docs) ? app.docs : [];
-
-      return `
-        <article class="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3">
-            <div class="flex items-start gap-3 min-w-0">
-              <div class="w-11 h-11 rounded-2xl bg-brand-50 border border-brand-100 flex items-center justify-center text-xl shrink-0" aria-hidden="true">${escapeHtml(icon)}</div>
-              <div class="min-w-0">
-                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 leading-snug">${escapeHtml(title)}</h3>
-                <p class="text-[11px] font-semibold text-slate-500 mt-0.5">${escapeHtml(formatAppDate(app.createdAt))}</p>
-              </div>
-            </div>
-            <span class="text-[10px] font-extrabold text-emerald-800 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full shrink-0">${escapeHtml(t.statusSubmitted)}</span>
-          </div>
-          <dl class="mt-3 pt-3 border-t border-slate-100 space-y-1 text-xs">
-            ${row(t.lblFee, app.fee)}
-            ${row(t.lblMethod, methodLabel)}
-            ${row(t.lblPhone, app.phone)}
-            ${row(t.lblReqId, app.reqId)}
-            ${row(t.lblUtr, app.utr)}
-            ${row(t.lblDetails, app.details)}
-            ${row(t.lblNotes, app.notes)}
-            ${row(t.lblDocs, docs.join(', '))}
-          </dl>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <button type="button" onclick="openApplyModal('${svc ? svc.id : 'income-cert'}')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-[11px] px-3 py-2 rounded-xl shadow-sm transition">${currentLang === 'ta' ? '🔁 மீண்டும் விண்ணப்பிக்க' : '🔁 Apply Again'}</button>
-            <a href="https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(`வணக்கம் VPS Computers, எனது விண்ணப்பம் பற்றி அறிய வேண்டும்: ${title}${app.reqId ? ' (' + app.reqId + ')' : ''}`)}" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-3 py-2 rounded-xl shadow-sm transition">💬 ${currentLang === 'ta' ? 'நிலை அறிய' : 'Ask Status'}</a>
-          </div>
-        </article>
-      `;
-    }
-
-    // ---------- Auth state listener ----------
-    if (fbAuth) {
-      fbAuth.getRedirectResult()
-        .then(result => { if (result && result.user) saveUserProfile(result.user); })
-        .catch(err => console.error('Redirect sign-in error:', err));
-
-      fbAuth.onAuthStateChanged(user => {
-        currentUser = user;
-        myAppsLoadToken++;
-        updateAuthUI(user);
       });
     }
 
