@@ -107,11 +107,7 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
-            ★ [TRB ஆசிரியர்] தேவையான ஆவணங்கள்: 1. பணி நியமன ஆணை & பணிச் சான்றிதழ், 2. 10th, 12th, Degree & D.El.Ed / B.Ed சான்றிதழ்கள், 3. ஆதார், சாதி சான்றிதழ், போட்டோ & கையொப்பம் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ [RRB NTPC] தேவையான ஆவணங்கள்: 1. 10th, 12th & Degree சான்றிதழ், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் & வங்கி பாஸ்புக் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ [RRB Group D / ALP] தேவையான ஆவணங்கள்: 1. 10th & ITI / Diploma சான்றிதழ், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் & வங்கி பாஸ்புக் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ [JEE Main] தேவையான ஆவணங்கள்: 1. 10th மார்க்ஷீட் & +2 விவரம், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ [சபரிமலை Q] தேவையான ஆவணங்கள்: 1. Photo, 2. Aadhaar, 3. Mobile Number, 4. Nominee Name, Age, Relation Type ★
+            ★ VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ், வடகரை ஆத்தூர் - அரசு இ-சேவை, ஆன்லைன் விண்ணப்பங்கள், டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம் ★
           </div>
         </div>
       </div>
@@ -265,27 +261,52 @@
               </div>
             </div>
 
-            <!-- Right: LIVE NOTIFICATION BOX WITH LINKS (7 Cols) -->
+            <!-- Right: LIVE FLASH CARD & MANUAL NOTIFICATION BOX (7 Cols) -->
             <div class="lg:col-span-7 bg-white text-slate-800 rounded-3xl border-2 border-amber-400 shadow-2xl overflow-hidden flex flex-col">
               <div class="bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-400 text-slate-950 px-4 sm:px-5 py-3.5 flex flex-wrap items-center justify-between gap-2 border-b border-amber-500">
                 <div class="flex items-center gap-2">
                   <span class="w-3 h-3 rounded-full bg-red-600 animate-ping shrink-0"></span>
-                  <h3 id="notif-box-title" class="font-black text-xs sm:text-base tracking-tight">🔔 புதிய அறிவிப்புகள் & ஆன்லைன் லிங்குகள் (Live Notifications)</h3>
+                  <h3 id="notif-box-title" class="font-black text-xs sm:text-base tracking-tight">🔔 நேரலை அறிவிப்புகள் & Flash Card (Live Notifications)</h3>
                 </div>
                 <div class="flex items-center gap-1.5 ml-auto">
-                  <button type="button" onclick="window.fetchAutoLiveUpdates && window.fetchAutoLiveUpdates(true)" id="btn-refresh-live-notif" class="bg-slate-950/15 hover:bg-slate-950/25 text-slate-950 text-[10px] font-extrabold px-2 py-1 rounded-lg transition flex items-center gap-1" title="Refresh Live Notifications">
-                    <span id="live-sync-spin">🔄</span> <span id="live-sync-label">Auto-Sync</span>
+                  <button type="button" id="home-admin-notif-shortcut" onclick="navigateTo('admin')" class="hidden bg-slate-950 text-amber-300 hover:bg-slate-800 text-[10px] font-extrabold px-2.5 py-1 rounded-lg transition items-center gap-1 shadow">
+                    <span>➕</span> <span>அறிவிப்பு சேர்க்க (Admin)</span>
                   </button>
                   <span class="bg-slate-950 text-amber-400 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow">LIVE UPDATES</span>
                 </div>
               </div>
 
-              <!-- Live Notifications List -->
+              <!-- Manual Live Flash Card Banner (Shown when Admin adds Flash Card) -->
+              <div id="live-flash-card-container" class="hidden bg-gradient-to-r from-indigo-950 via-brand-900 to-slate-950 text-white px-4 py-3 border-b border-indigo-800">
+                <!-- Populated by JS from Admin Manual Flash Cards -->
+              </div>
+
+              <!-- Manual Live Notifications List -->
               <div class="p-4 space-y-2.5 bg-slate-50 flex-1 overflow-y-auto max-h-96" id="notification-list">
-                <!-- Populated by JS -->
+                <!-- Populated by JS from Admin Manual Notifications -->
               </div>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      <!-- HOME PAGE MANUAL PHOTO GALLERY BOX (Admin Uploaded Images) -->
+      <section class="pt-8 pb-2 max-w-7xl mx-auto px-3 sm:px-6">
+        <div class="bg-white rounded-3xl border-2 border-indigo-100 p-5 sm:p-6 shadow-md">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-100">
+            <div>
+              <span class="bg-indigo-100 text-indigo-700 text-[11px] font-extrabold px-3 py-1 rounded-full">🖼️ PHOTO GALLERY & UPDATES</span>
+              <h3 id="home-gallery-title" class="text-lg sm:text-2xl font-extrabold text-slate-900 mt-1.5">எங்கள் சேவைகள் & அறிவிப்பு படங்கள் (Gallery Box)</h3>
+              <p id="home-gallery-subtitle" class="text-xs sm:text-sm text-slate-500 mt-0.5">படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம்.</p>
+            </div>
+            <button type="button" id="home-admin-gallery-shortcut" onclick="navigateTo('admin')" class="hidden bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition items-center gap-1.5">
+              <span>📤</span> <span>படம் Upload செய்ய (Admin)</span>
+            </button>
+          </div>
+
+          <div id="home-gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Populated by JS from Admin Manual Gallery Uploads -->
           </div>
         </div>
       </section>
@@ -487,50 +508,117 @@
             <span id="adm-logged-email" class="text-xs font-bold text-brand-700 bg-brand-50 px-3 py-1 rounded-full border border-brand-200"></span>
           </div>
 
-          <!-- Live Notifications Manager (Admin Post / Auto-Fetch Control) -->
+          <!-- 1. MANUAL LIVE NOTIFICATIONS MANAGER -->
           <div class="bg-white p-5 rounded-2xl border-2 border-amber-300 shadow-sm space-y-4">
             <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
               <div>
-                <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">🔔 LIVE NOTIFICATION MANAGER</span>
-                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">புதிய நேரலை அறிவிப்பு சேர்க்க / ஆட்டோ அப்டேட் (Live Updates)</h3>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-full">🔔 1. MANUAL LIVE NOTIFICATION MANAGER</span>
+                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">நேரலை அறிவிப்புகள் சேர்க்க & நீக்க (Manual Live Notifications)</h3>
+                <p class="text-xs text-slate-500">இங்கே நீங்கள் கொடுக்கும் அறிவிப்புகள் மட்டுமே முகப்புப் பக்க Live Notifications பெட்டியில் தோன்றும்.</p>
               </div>
-              <button type="button" onclick="window.fetchAutoLiveUpdates && window.fetchAutoLiveUpdates(true)" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs px-3.5 py-2 rounded-xl shadow-sm transition">
-                🌐 இணையதளங்களில் இருந்து இப்போதே Auto-Fetch செய்
+              <button type="button" onclick="window.vpsClearAllLiveNotifications && window.vpsClearAllLiveNotifications()" class="bg-red-100 hover:bg-red-200 text-red-700 font-extrabold text-xs px-3.5 py-2 rounded-xl border border-red-200 transition">
+                🗑️ அனைத்து அறிவிப்புகளையும் நீக்கு (Clear All)
               </button>
             </div>
-            <div class="grid sm:grid-cols-12 gap-3 items-end">
+            <div class="grid sm:grid-cols-12 gap-3 items-start">
               <div class="sm:col-span-3">
                 <label class="block text-[11px] font-bold text-slate-700 mb-1">பிரிவு Tag (உதா: TNPSC / TRB / TTD) *</label>
-                <input type="text" id="adm-notif-tag" placeholder="உதா: TNPSC / சபரிமலை" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold focus:border-brand-600 focus:outline-none" />
+                <input type="text" id="adm-notif-tag" placeholder="உதா: TNPSC / சபரிமலை" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-bold focus:border-brand-600 focus:outline-none" />
               </div>
               <div class="sm:col-span-6">
-                <label class="block text-[11px] font-bold text-slate-700 mb-1">அறிவிப்பு விவரம் (Live Notification Text) *</label>
-                <input type="text" id="adm-notif-title" placeholder="புதிய அறிவிப்பு மற்றும் தேவையான ஆவணங்கள்..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none" />
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">அறிவிப்பு & தேவையான ஆவணங்கள் விவரம் (Notification Details) *</label>
+                <textarea id="adm-notif-title" rows="2" placeholder="தலைப்பு மற்றும் தேவையான ஆவணங்களை இங்கே டைப் செய்யவும் (புதிய வரிக்கு Enter அழுத்தலாம்)..." class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none"></textarea>
               </div>
               <div class="sm:col-span-3">
-                <label class="block text-[11px] font-bold text-slate-700 mb-1">இணைப்புப் பக்கம் (Target Tab)</label>
-                <select id="adm-notif-target" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-bold bg-slate-50 focus:border-brand-600 focus:outline-none">
-                  <option value="tnpsc">🏛️ TNPSC / TRB / RRB / JEE</option>
-                  <option value="sabarimala">🙏 சபரிமலை Q</option>
-                  <option value="ttd">🛕 திருப்பதி TTD</option>
-                  <option value="esevai">📜 இ-சேவை சான்றிதழ்கள்</option>
-                  <option value="tnpds">🍚 TNPDS ரேஷன் கார்டு</option>
-                  <option value="astro">🪐 ஜோதிடம் (Astro)</option>
-                  <option value="idcards">🪪 பான் & அடையாள அட்டை</option>
-                  <option value="tickets">✈️ டிக்கெட் புக்கிங்</option>
-                  <option value="msme">🏢 MSME & பாஸ்போர்ட்</option>
-                  <option value="patta">🗺️ பட்டா / சிட்டா & EC</option>
-                  <option value="printing">💌 திருமண அழைப்பிதழ்</option>
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">இணைப்புப் பக்கம் / சேவை (Target)</label>
+                <select id="adm-notif-target" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-bold bg-slate-50 focus:border-brand-600 focus:outline-none">
+                  <option value="page:tnpsc">🏛️ TNPSC / TRB / RRB / JEE பக்கம்</option>
+                  <option value="apply:trb-working-teacher">👩‍🏫 TRB ஆசிரியர் விண்ணப்பம்</option>
+                  <option value="apply:rrb-notif-1">🚆 RRB NTPC விண்ணப்பம்</option>
+                  <option value="apply:rrb-notif-2">🛠️ RRB Group D / ALP விண்ணப்பம்</option>
+                  <option value="apply:jee-main-2027">🎓 JEE Main விண்ணப்பம்</option>
+                  <option value="apply:sabarimala-q-ticket">🙏 சபரிமலை Q விண்ணப்பம்</option>
+                  <option value="page:ttd">🛕 திருப்பதி TTD பக்கம்</option>
+                  <option value="page:esevai">📜 இ-சேவை சான்றிதழ்கள் பக்கம்</option>
+                  <option value="page:tnpds">🍚 TNPDS ரேஷன் கார்டு பக்கம்</option>
+                  <option value="apply:astro-jathagam">🪐 ஜோதிடம் (Astro) விண்ணப்பம்</option>
+                  <option value="page:idcards">🪪 பான் & அடையாள அட்டை பக்கம்</option>
+                  <option value="page:tickets">✈️ டிக்கெட் புக்கிங் பக்கம்</option>
+                  <option value="page:msme">🏢 MSME & பாஸ்போர்ட் பக்கம்</option>
+                  <option value="page:patta">🗺️ பட்டா / சிட்டா & EC பக்கம்</option>
+                  <option value="page:printing">💌 திருமண அழைப்பிதழ் பக்கம்</option>
                 </select>
               </div>
             </div>
             <div class="flex flex-wrap items-center justify-between gap-2">
-              <button type="button" onclick="window.vpsAddLiveNotification && window.vpsAddLiveNotification()" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-sm transition">
-                ➕ Live Notification-ல் சேர்க்கவும் (Publish Live)
+              <button type="button" onclick="window.vpsAddLiveNotification && window.vpsAddLiveNotification()" class="bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-sm transition">
+                ➕ Live Notification சேர்க்கவும் (Publish Notification)
               </button>
               <span id="adm-notif-status" class="text-xs font-bold text-emerald-700"></span>
             </div>
             <div id="adm-custom-notif-list" class="space-y-1.5 pt-2"></div>
+          </div>
+
+          <!-- 2. MANUAL LIVE FLASH CARD MANAGER -->
+          <div class="bg-white p-5 rounded-2xl border-2 border-indigo-300 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-indigo-800 bg-indigo-100 px-2.5 py-0.5 rounded-full">⚡ 2. MANUAL LIVE FLASH CARD MANAGER</span>
+                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">நேரலை Flash Card & மேல் ஓடும் செய்தி (Manual Flash Cards)</h3>
+                <p class="text-xs text-slate-500">இங்கே சேர்க்கும் Flash Card முகப்புப் பக்கத்தில் தனி பெட்டியாகவும், மேலே ஓடும் நேரலை செய்தியிலும் (Top Ticker) தோன்றும்.</p>
+              </div>
+              <button type="button" onclick="window.vpsClearAllFlashCards && window.vpsClearAllFlashCards()" class="bg-red-100 hover:bg-red-200 text-red-700 font-extrabold text-xs px-3.5 py-2 rounded-xl border border-red-200 transition">
+                🗑️ அனைத்து Flash Card-களையும் நீக்கு
+              </button>
+            </div>
+            <div class="grid sm:grid-cols-12 gap-3 items-end">
+              <div class="sm:col-span-3">
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">Flash தலைப்பு / Badge *</label>
+                <input type="text" id="adm-flash-badge" placeholder="உதா: முக்கிய அறிவிப்பு / FLASH" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-bold focus:border-brand-600 focus:outline-none" />
+              </div>
+              <div class="sm:col-span-9">
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">Flash Card செய்தி (Flash Message) *</label>
+                <input type="text" id="adm-flash-text" placeholder="உதா: சபரிமலை தரிசன டிக்கெட் முன்பதிவு நடைபெறுகிறது! உடனே விண்ணப்பிக்கவும்..." class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs focus:border-brand-600 focus:outline-none" />
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <button type="button" onclick="window.vpsAddFlashCard && window.vpsAddFlashCard()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-sm transition">
+                ⚡ Live Flash Card சேர்க்கவும் (Publish Flash Card)
+              </button>
+              <span id="adm-flash-status" class="text-xs font-bold text-emerald-700"></span>
+            </div>
+            <div id="adm-flash-list" class="space-y-1.5 pt-2"></div>
+          </div>
+
+          <!-- 3. MANUAL HOME PAGE GALLERY IMAGE UPLOAD MANAGER -->
+          <div class="bg-white p-5 rounded-2xl border-2 border-emerald-300 shadow-sm space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+              <div>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">🖼️ 3. HOME PAGE GALLERY BOX MANAGER</span>
+                <h3 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">முகப்புப் பக்க Gallery Box-ல் படங்கள் Upload செய்ய (Manual Image Upload)</h3>
+                <p class="text-xs text-slate-500">உங்கள் மொபைல் அல்லது கம்ப்யூட்டரில் இருந்து படங்களைத் தேர்ந்தெடுத்து Upload செய்தால் முகப்புப் பக்க Gallery Box-ல் தோன்றும்.</p>
+              </div>
+              <button type="button" onclick="window.vpsClearAllGalleryImages && window.vpsClearAllGalleryImages()" class="bg-red-100 hover:bg-red-200 text-red-700 font-extrabold text-xs px-3.5 py-2 rounded-xl border border-red-200 transition">
+                🗑️ அனைத்து படங்களையும் நீக்கு
+              </button>
+            </div>
+            <div class="grid sm:grid-cols-12 gap-3 items-end">
+              <div class="sm:col-span-5">
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">படத்தைத் தேர்ந்தெடுக்கவும் (Select Image File) *</label>
+                <input type="file" id="adm-gallery-file" accept="image/*" class="w-full text-xs text-slate-700 file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-extrabold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100 border border-slate-300 rounded-xl p-1" />
+              </div>
+              <div class="sm:col-span-4">
+                <label class="block text-[11px] font-bold text-slate-700 mb-1">படத்தின் தலைப்பு (Caption / Title)</label>
+                <input type="text" id="adm-gallery-caption" placeholder="உதா: புதிய அறிவிப்பு / கடைப் படம்" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-xs font-bold focus:border-brand-600 focus:outline-none" />
+              </div>
+              <div class="sm:col-span-3">
+                <button type="button" id="btn-adm-gallery-upload" onclick="window.vpsUploadGalleryImage && window.vpsUploadGalleryImage()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow-sm transition">
+                  📤 படம் Upload செய்
+                </button>
+              </div>
+            </div>
+            <span id="adm-gallery-status" class="text-xs font-bold text-emerald-700 block"></span>
+            <div id="adm-gallery-list" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2"></div>
           </div>
 
           <!-- Summary Counters -->
@@ -1248,6 +1336,16 @@
         tabPillAdmin.classList.toggle('hidden', !showAdmin);
         tabPillAdmin.classList.toggle('flex', showAdmin);
       }
+      const homeNotifShortcut = $('home-admin-notif-shortcut');
+      if (homeNotifShortcut) {
+        homeNotifShortcut.classList.toggle('hidden', !showAdmin);
+        homeNotifShortcut.classList.toggle('flex', showAdmin);
+      }
+      const homeGalleryShortcut = $('home-admin-gallery-shortcut');
+      if (homeGalleryShortcut) {
+        homeGalleryShortcut.classList.toggle('hidden', !showAdmin);
+        homeGalleryShortcut.classList.toggle('flex', showAdmin);
+      }
       if (emailBadge && currentUser) {
         emailBadge.textContent = '🛡️ Admin: ' + (currentUser.email || '');
       }
@@ -1269,6 +1367,7 @@
       }
       if (gateBox) gateBox.classList.add('hidden');
       if (dashContent) dashContent.classList.remove('hidden');
+      if (window.refreshAdminManualLists) window.refreshAdminManualLists();
       window.loadAdminApplications();
     };
 
@@ -1676,56 +1775,101 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     };
 
     // =========================================================================
-    // 🔔 REAL-TIME FIRESTORE LIVE NOTIFICATIONS SYNC & ADMIN PUBLISHER
+    // 🔔 MANUAL LIVE NOTIFICATIONS, FLASH CARDS & HOME GALLERY CMS (FIRESTORE + LOCAL STORAGE)
     // =========================================================================
-    window.firestoreLiveNotifs = [];
+    const LS_NOTIFS_KEY = 'vps_manual_notifs_v1';
+    const LS_FLASH_KEY = 'vps_manual_flash_v1';
+    const LS_GALLERY_KEY = 'vps_manual_gallery_v1';
 
+    function loadLocalArray(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        const parsed = raw ? JSON.parse(raw) : [];
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function saveLocalArray(key, arr) {
+      try { localStorage.setItem(key, JSON.stringify(arr || [])); } catch (e) {}
+    }
+
+    window.manualLiveNotifs = loadLocalArray(LS_NOTIFS_KEY);
+    window.manualFlashCards = loadLocalArray(LS_FLASH_KEY);
+    window.manualGalleryImages = loadLocalArray(LS_GALLERY_KEY);
+
+    // Real-time listeners from Firestore (so changes sync across all customer phones/computers)
     if (db) {
       try {
-        const notifQuery = query(collection(db, 'live_notifications'), orderBy('createdAt', 'desc'), limit(25));
+        const notifQuery = query(collection(db, 'manual_live_notifications'), orderBy('createdAt', 'desc'), limit(30));
         onSnapshot(notifQuery, (snap) => {
           const items = [];
           snap.forEach((d) => {
             const data = d.data();
-            items.push({
-              id: d.id,
-              tagTa: data.tagTa || 'புதிய அறிவிப்பு',
-              tagEn: data.tagEn || data.tagTa || 'LIVE UPDATE',
-              titleTa: data.titleTa || '',
-              titleEn: data.titleEn || data.titleTa || '',
-              linkTextTa: '🔗 விண்ணப்பிக்க',
-              linkTextEn: '🔗 Apply Now',
-              actionType: data.actionType || 'page',
-              actionTarget: data.actionTarget || 'tnpsc',
-              isCustom: true
-            });
+            items.push({ id: d.id, ...data });
           });
-          window.firestoreLiveNotifs = items;
-          if (typeof window.mergeAndRenderLiveNotifications === 'function') {
-            window.mergeAndRenderLiveNotifications();
-          }
+          window.manualLiveNotifs = items;
+          saveLocalArray(LS_NOTIFS_KEY, items);
+          if (typeof window.renderNotifications === 'function') window.renderNotifications();
           renderAdminCustomNotifs();
         }, (err) => {
-          console.warn('live_notifications snapshot notice:', err);
+          console.warn('manual_live_notifications snapshot fallback to local:', err);
+          if (typeof window.renderNotifications === 'function') window.renderNotifications();
+          renderAdminCustomNotifs();
         });
-      } catch (eSnap) {
-        console.warn('live_notifications setup notice:', eSnap);
-      }
+      } catch (e) {}
+
+      try {
+        const flashQuery = query(collection(db, 'manual_flash_cards'), orderBy('createdAt', 'desc'), limit(15));
+        onSnapshot(flashQuery, (snap) => {
+          const items = [];
+          snap.forEach((d) => {
+            const data = d.data();
+            items.push({ id: d.id, ...data });
+          });
+          window.manualFlashCards = items;
+          saveLocalArray(LS_FLASH_KEY, items);
+          if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+          renderAdminFlashList();
+        }, (err) => {
+          console.warn('manual_flash_cards snapshot fallback to local:', err);
+          if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+          renderAdminFlashList();
+        });
+      } catch (e) {}
+
+      try {
+        const galQuery = query(collection(db, 'manual_home_gallery'), orderBy('createdAt', 'desc'), limit(24));
+        onSnapshot(galQuery, (snap) => {
+          const items = [];
+          snap.forEach((d) => {
+            const data = d.data();
+            items.push({ id: d.id, ...data });
+          });
+          window.manualGalleryImages = items;
+          saveLocalArray(LS_GALLERY_KEY, items);
+          if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+          renderAdminGalleryList();
+        }, (err) => {
+          console.warn('manual_home_gallery snapshot fallback to local:', err);
+          if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+          renderAdminGalleryList();
+        });
+      } catch (e) {}
     }
 
+    // ---- 1. Admin Manual Notifications Functions ----
     function renderAdminCustomNotifs() {
       const box = $('adm-custom-notif-list');
       if (!box) return;
-      const list = window.firestoreLiveNotifs || [];
+      const list = window.manualLiveNotifs || [];
       if (list.length === 0) {
-        box.innerHTML = '';
+        box.innerHTML = '<p class="text-xs text-slate-400 font-semibold">தற்போது அறிவிப்புகள் எதுவும் இல்லை. மேலே டைப் செய்து சேர்க்கவும்.</p>';
         return;
       }
-      box.innerHTML = '<p class="text-[11px] font-extrabold text-slate-500 mb-1">📌 நீங்கள் சேர்த்த நேரலை அறிவிப்புகள்:</p>' +
+      box.innerHTML = '<p class="text-[11px] font-extrabold text-slate-500 mb-1">📌 தற்போதைய நேரலை அறிவிப்புகள் (' + list.length + '):</p>' +
         list.map(item => `
-          <div class="flex items-center justify-between gap-2 bg-slate-50 px-3 py-2 rounded-xl border border-slate-200 text-xs">
-            <div class="truncate"><span class="font-extrabold text-red-600">[${esc(item.tagTa)}]</span> <span class="font-semibold text-slate-800">${esc(item.titleTa)}</span></div>
-            <button type="button" onclick="window.vpsDeleteLiveNotification('${esc(item.id)}')" class="text-red-600 hover:text-red-800 font-extrabold text-[11px] shrink-0 px-2 py-0.5 rounded bg-red-50 border border-red-200">🗑️ நீக்கு</button>
+          <div class="flex items-start justify-between gap-2 bg-slate-50 px-3 py-2.5 rounded-xl border border-slate-200 text-xs">
+            <div class="min-w-0"><span class="font-extrabold text-red-600">[${esc(item.tagTa)}]</span> <span class="font-semibold text-slate-800">${item.titleTa || ''}</span></div>
+            <button type="button" onclick="window.vpsDeleteLiveNotification('${esc(item.id)}')" class="text-red-600 hover:text-red-800 font-extrabold text-[11px] shrink-0 px-2.5 py-1 rounded-lg bg-red-50 border border-red-200">🗑️ நீக்கு</button>
           </div>
         `).join('');
     }
@@ -1737,66 +1881,309 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       const targetEl = $('adm-notif-target');
       const statusEl = $('adm-notif-status');
 
-      const tag = (tagEl ? tagEl.value : '').trim() || 'புதியது';
-      const title = (titleEl ? titleEl.value : '').trim();
-      const target = (targetEl ? targetEl.value : 'tnpsc').trim();
+      const tag = (tagEl ? tagEl.value : '').trim() || 'அறிவிப்பு';
+      const rawTitle = (titleEl ? titleEl.value : '').trim();
+      const targetVal = (targetEl ? targetEl.value : 'page:tnpsc').trim();
 
-      if (!title) {
-        alert('தயவுசெய்து அறிவிப்பு விவரத்தை (Notification Text) உள்ளிடவும்!');
+      if (!rawTitle) {
+        alert('தயவுசெய்து அறிவிப்பு விவரத்தை (Notification Details) டைப் செய்யவும்!');
         return;
       }
+
+      const formattedHtml = esc(rawTitle).replace(/\n/g, '<br>');
+      const [actType, actTarget] = targetVal.includes(':') ? targetVal.split(':') : ['page', targetVal];
 
       const newNotif = {
         tagTa: tag,
         tagEn: tag.toUpperCase(),
-        titleTa: title,
-        titleEn: title,
+        titleTa: formattedHtml,
+        titleEn: formattedHtml,
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
-        actionType: 'page',
-        actionTarget: target,
+        actionType: actType,
+        actionTarget: actTarget,
         createdAt: serverTimestamp()
       };
 
+      const localItem = { id: 'local-' + Date.now(), ...newNotif, createdAt: Date.now() };
+      window.manualLiveNotifs = [localItem, ...(window.manualLiveNotifs || [])];
+      saveLocalArray(LS_NOTIFS_KEY, window.manualLiveNotifs);
+      if (typeof window.renderNotifications === 'function') window.renderNotifications();
+      renderAdminCustomNotifs();
+
       try {
         if (db) {
-          await addDoc(collection(db, 'live_notifications'), newNotif);
-        }
-        if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
-          fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify({ action: 'addNotification', ...newNotif })
-          }).catch(() => {});
-        }
-        if (tagEl) tagEl.value = '';
-        if (titleEl) titleEl.value = '';
-        if (statusEl) {
-          statusEl.textContent = '✅ புதிய அறிவிப்பு நேரலையில் (Live) சேர்க்கப்பட்டது!';
-          setTimeout(() => { statusEl.textContent = ''; }, 3500);
+          await addDoc(collection(db, 'manual_live_notifications'), newNotif);
         }
       } catch (eAdd) {
-        // Fallback to local live array if Firestore rules block write
-        window.firestoreLiveNotifs.unshift({ id: 'local-' + Date.now(), ...newNotif, isCustom: true });
-        if (typeof window.mergeAndRenderLiveNotifications === 'function') window.mergeAndRenderLiveNotifications();
-        renderAdminCustomNotifs();
-        if (tagEl) tagEl.value = '';
-        if (titleEl) titleEl.value = '';
+        console.warn('Firestore manual_live_notifications write notice:', eAdd);
+      }
+
+      if (tagEl) tagEl.value = '';
+      if (titleEl) titleEl.value = '';
+      if (statusEl) {
+        statusEl.textContent = '✅ புதிய அறிவிப்பு நேரலையில் சேர்க்கப்பட்டது!';
+        setTimeout(() => { statusEl.textContent = ''; }, 3000);
       }
     };
 
     window.vpsDeleteLiveNotification = async function (notifId) {
       if (!isUserAdminEmail(currentUser) || !notifId) return;
+      window.manualLiveNotifs = (window.manualLiveNotifs || []).filter(x => x.id !== notifId);
+      saveLocalArray(LS_NOTIFS_KEY, window.manualLiveNotifs);
+      if (typeof window.renderNotifications === 'function') window.renderNotifications();
+      renderAdminCustomNotifs();
       try {
         if (db && !String(notifId).startsWith('local-')) {
-          await deleteDoc(doc(db, 'live_notifications', notifId));
+          await deleteDoc(doc(db, 'manual_live_notifications', notifId));
         }
-      } catch (eDel) {
-        console.warn('Delete notification notice:', eDel);
-      }
-      window.firestoreLiveNotifs = (window.firestoreLiveNotifs || []).filter(x => x.id !== notifId);
-      if (typeof window.mergeAndRenderLiveNotifications === 'function') window.mergeAndRenderLiveNotifications();
+      } catch (eDel) {}
+    };
+
+    window.vpsClearAllLiveNotifications = async function () {
+      if (!isUserAdminEmail(currentUser)) return;
+      if (!confirm('அனைத்து Live Notifications-களையும் நீக்க வேண்டுமா?')) return;
+      const oldList = (window.manualLiveNotifs || []).slice();
+      window.manualLiveNotifs = [];
+      saveLocalArray(LS_NOTIFS_KEY, []);
+      if (typeof window.renderNotifications === 'function') window.renderNotifications();
       renderAdminCustomNotifs();
+      if (db) {
+        for (const item of oldList) {
+          if (item.id && !String(item.id).startsWith('local-')) {
+            try { await deleteDoc(doc(db, 'manual_live_notifications', item.id)); } catch (e) {}
+          }
+        }
+      }
+    };
+
+    // ---- 2. Admin Manual Flash Card Functions ----
+    function renderAdminFlashList() {
+      const box = $('adm-flash-list');
+      if (!box) return;
+      const list = window.manualFlashCards || [];
+      if (list.length === 0) {
+        box.innerHTML = '<p class="text-xs text-slate-400 font-semibold">தற்போது Flash Card எதுவும் இல்லை.</p>';
+        return;
+      }
+      box.innerHTML = '<p class="text-[11px] font-extrabold text-slate-500 mb-1">⚡ தற்போதைய Flash Cards (' + list.length + '):</p>' +
+        list.map(item => `
+          <div class="flex items-center justify-between gap-2 bg-indigo-50/70 px-3 py-2 rounded-xl border border-indigo-200 text-xs">
+            <div class="truncate"><span class="font-extrabold text-indigo-700">[${esc(item.badge)}]</span> <span class="font-semibold text-slate-800">${esc(item.text)}</span></div>
+            <button type="button" onclick="window.vpsDeleteFlashCard('${esc(item.id)}')" class="text-red-600 hover:text-red-800 font-extrabold text-[11px] shrink-0 px-2.5 py-1 rounded-lg bg-white border border-red-200">🗑️ நீக்கு</button>
+          </div>
+        `).join('');
+    }
+
+    window.vpsAddFlashCard = async function () {
+      if (!isUserAdminEmail(currentUser)) return;
+      const badgeEl = $('adm-flash-badge');
+      const textEl = $('adm-flash-text');
+      const statusEl = $('adm-flash-status');
+
+      const badge = (badgeEl ? badgeEl.value : '').trim() || 'FLASH UPDATE';
+      const text = (textEl ? textEl.value : '').trim();
+
+      if (!text) {
+        alert('தயவுசெய்து Flash Card செய்தியை டைப் செய்யவும்!');
+        return;
+      }
+
+      const newFlash = {
+        badge: badge,
+        text: text,
+        createdAt: serverTimestamp()
+      };
+
+      const localItem = { id: 'local-' + Date.now(), badge: badge, text: text, createdAt: Date.now() };
+      window.manualFlashCards = [localItem, ...(window.manualFlashCards || [])];
+      saveLocalArray(LS_FLASH_KEY, window.manualFlashCards);
+      if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+      renderAdminFlashList();
+
+      try {
+        if (db) {
+          await addDoc(collection(db, 'manual_flash_cards'), newFlash);
+        }
+      } catch (e) {}
+
+      if (badgeEl) badgeEl.value = '';
+      if (textEl) textEl.value = '';
+      if (statusEl) {
+        statusEl.textContent = '✅ Flash Card நேரலையில் சேர்க்கப்பட்டது!';
+        setTimeout(() => { statusEl.textContent = ''; }, 3000);
+      }
+    };
+
+    window.vpsDeleteFlashCard = async function (flashId) {
+      if (!isUserAdminEmail(currentUser) || !flashId) return;
+      window.manualFlashCards = (window.manualFlashCards || []).filter(x => x.id !== flashId);
+      saveLocalArray(LS_FLASH_KEY, window.manualFlashCards);
+      if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+      renderAdminFlashList();
+      try {
+        if (db && !String(flashId).startsWith('local-')) {
+          await deleteDoc(doc(db, 'manual_flash_cards', flashId));
+        }
+      } catch (e) {}
+    };
+
+    window.vpsClearAllFlashCards = async function () {
+      if (!isUserAdminEmail(currentUser)) return;
+      if (!confirm('அனைத்து Flash Card-களையும் நீக்க வேண்டுமா?')) return;
+      const oldList = (window.manualFlashCards || []).slice();
+      window.manualFlashCards = [];
+      saveLocalArray(LS_FLASH_KEY, []);
+      if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+      renderAdminFlashList();
+      if (db) {
+        for (const item of oldList) {
+          if (item.id && !String(item.id).startsWith('local-')) {
+            try { await deleteDoc(doc(db, 'manual_flash_cards', item.id)); } catch (e) {}
+          }
+        }
+      }
+    };
+
+    // ---- 3. Admin Manual Home Page Gallery Upload Functions (Auto-compress image so it saves fast in Firestore & LocalStorage) ----
+    function compressImageFile(file, maxWidth = 900, quality = 0.78) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let w = img.width;
+            let h = img.height;
+            if (w > maxWidth) {
+              h = Math.round((h * maxWidth) / w);
+              w = maxWidth;
+            }
+            canvas.width = w;
+            canvas.height = h;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, w, h);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = reject;
+          img.src = ev.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function renderAdminGalleryList() {
+      const box = $('adm-gallery-list');
+      if (!box) return;
+      const list = window.manualGalleryImages || [];
+      if (list.length === 0) {
+        box.innerHTML = '<p class="col-span-full text-xs text-slate-400 font-semibold">தற்போது முகப்புப் பக்க Gallery Box-ல் படங்கள் எதுவும் இல்லை.</p>';
+        return;
+      }
+      box.innerHTML = list.map(item => `
+        <div class="bg-slate-50 rounded-xl border border-slate-200 overflow-hidden flex flex-col justify-between">
+          <img src="${item.imgData}" alt="${esc(item.caption || 'Gallery')}" class="w-full h-28 object-cover bg-slate-200" />
+          <div class="p-2 flex items-center justify-between gap-1">
+            <span class="text-[11px] font-bold text-slate-700 truncate">${esc(item.caption || 'படம்')}</span>
+            <button type="button" onclick="window.vpsDeleteGalleryImage('${esc(item.id)}')" class="text-red-600 hover:text-red-800 font-extrabold text-[10px] px-2 py-0.5 rounded bg-red-50 border border-red-200 shrink-0">🗑️ நீக்கு</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.vpsUploadGalleryImage = async function () {
+      if (!isUserAdminEmail(currentUser)) return;
+      const fileEl = $('adm-gallery-file');
+      const capEl = $('adm-gallery-caption');
+      const btnEl = $('btn-adm-gallery-upload');
+      const statusEl = $('adm-gallery-status');
+
+      if (!fileEl || !fileEl.files || fileEl.files.length === 0) {
+        alert('தயவுசெய்து Upload செய்ய ஒரு படத்தைத் (Image File) தேர்ந்தெடுக்கவும்!');
+        return;
+      }
+
+      const file = fileEl.files[0];
+      const caption = (capEl ? capEl.value : '').trim() || 'VPS Computers & Printers';
+
+      if (btnEl) {
+        btnEl.disabled = true;
+        btnEl.textContent = '⏳ Uploading...';
+      }
+
+      try {
+        const compressedBase64 = await compressImageFile(file, 900, 0.78);
+        const newImgObj = {
+          caption: caption,
+          imgData: compressedBase64,
+          createdAt: serverTimestamp()
+        };
+
+        const localItem = { id: 'local-' + Date.now(), caption: caption, imgData: compressedBase64, createdAt: Date.now() };
+        window.manualGalleryImages = [localItem, ...(window.manualGalleryImages || [])];
+        saveLocalArray(LS_GALLERY_KEY, window.manualGalleryImages);
+        if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+        renderAdminGalleryList();
+
+        try {
+          if (db) {
+            await addDoc(collection(db, 'manual_home_gallery'), newImgObj);
+          }
+        } catch (eDb) {
+          console.warn('Firestore gallery save notice:', eDb);
+        }
+
+        fileEl.value = '';
+        if (capEl) capEl.value = '';
+        if (statusEl) {
+          statusEl.textContent = '✅ படம் வெற்றிகரமாக முகப்புப் பக்க Gallery Box-ல் சேர்க்கப்பட்டது!';
+          setTimeout(() => { statusEl.textContent = ''; }, 3500);
+        }
+      } catch (err) {
+        alert('படத்தைப் பதிவேற்றுவதில் பிழை ஏற்பட்டது. மீண்டும் முயற்சிக்கவும்.');
+      } finally {
+        if (btnEl) {
+          btnEl.disabled = false;
+          btnEl.textContent = '📤 படம் Upload செய்';
+        }
+      }
+    };
+
+    window.vpsDeleteGalleryImage = async function (imgId) {
+      if (!isUserAdminEmail(currentUser) || !imgId) return;
+      window.manualGalleryImages = (window.manualGalleryImages || []).filter(x => x.id !== imgId);
+      saveLocalArray(LS_GALLERY_KEY, window.manualGalleryImages);
+      if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+      renderAdminGalleryList();
+      try {
+        if (db && !String(imgId).startsWith('local-')) {
+          await deleteDoc(doc(db, 'manual_home_gallery', imgId));
+        }
+      } catch (e) {}
+    };
+
+    window.vpsClearAllGalleryImages = async function () {
+      if (!isUserAdminEmail(currentUser)) return;
+      if (!confirm('முகப்புப் பக்க Gallery Box-ல் உள்ள அனைத்து படங்களையும் நீக்க வேண்டுமா?')) return;
+      const oldList = (window.manualGalleryImages || []).slice();
+      window.manualGalleryImages = [];
+      saveLocalArray(LS_GALLERY_KEY, []);
+      if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+      renderAdminGalleryList();
+      if (db) {
+        for (const item of oldList) {
+          if (item.id && !String(item.id).startsWith('local-')) {
+            try { await deleteDoc(doc(db, 'manual_home_gallery', item.id)); } catch (e) {}
+          }
+        }
+      }
+    };
+
+    window.refreshAdminManualLists = function () {
+      renderAdminCustomNotifs();
+      renderAdminFlashList();
+      renderAdminGalleryList();
     };
 
     // ---- React to login / logout ----
@@ -1863,90 +2250,9 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     }
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA (ONLY REQUIREMENT DETAILS - NO OLD DATES)
+    // 1. LIVE NOTIFICATIONS DATA (OLD NOTIFICATIONS CLEARED - 100% MANUAL CONTROL)
     // =======================================================
-    const notificationsData = [
-      {
-        tagTa: 'TRB ஆசிரியர்',
-        tagEn: 'TRB TEACHER',
-        titleTa: '<span class="text-slate-900">TRB பணியில் உள்ள ஆசிரியர் தேர்வு (In-Service Working Teachers / Special TET)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பணி நியமன ஆணை (Appointment Order) & பணிச் சான்றிதழ் (Service Certificate)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed கல்விச் சான்றிதழ்கள்<br>3. ஆதார் அட்டை, சாதி சான்றிதழ், போட்டோ & கையொப்பம்',
-        titleEn: '<span class="text-slate-900">TRB In-Service Working Teachers / Special TET</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Appointment Order & Service Certificate<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed Certificates<br>3. Aadhaar Card, Community Certificate, Photo & Signature',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'trb-working-teacher'
-      },
-      {
-        tagTa: 'RRB அறிவிப்பு 1',
-        tagEn: 'RRB NOTIF 1',
-        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 1 – NTPC Graduate & 12th Level)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th, 12th மார்க்ஷீட் மற்றும் பட்டப்படிப்பு சான்றிதழ் (Degree Certificate)<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST / EWS) & வங்கி பாஸ்புக் முதல் பக்கம்',
-        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 1 – NTPC Graduate & 12th Level)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th, 12th Marksheet & Degree Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST/EWS) & Bank Passbook Front Page',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'rrb-notif-1'
-      },
-      {
-        tagTa: 'RRB அறிவிப்பு 2',
-        tagEn: 'RRB NOTIF 2',
-        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 2 – Group D & ALP / Technician)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th மார்க்ஷீட் மற்றும் ITI / NAC / Diploma சான்றிதழ்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST) & வங்கி பாஸ்புக் முதல் பக்கம்',
-        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 2 – Group D & ALP / Technician)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & ITI / NAC / Diploma Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST) & Bank Passbook Front Page',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'rrb-notif-2'
-      },
-      {
-        tagTa: 'JEE MAIN',
-        tagEn: 'JEE MAIN',
-        titleTa: '<span class="text-slate-900">JEE Main பொறியியல் நுழைவுத் தேர்வு (Engineering Entrance Exam)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு பள்ளி விவரம்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)',
-        titleEn: '<span class="text-slate-900">JEE Main Engineering Entrance Exam</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & 12th School Details<br>2. Aadhaar Card, Passport Photo (White background) & Signature<br>3. Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Certificate (if applicable)',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'jee-main-2027'
-      },
-      {
-        tagTa: 'சபரிமலை Q',
-        tagEn: 'SABARIMALA Q',
-        titleTa: '<span class="text-slate-900">சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. போட்டோ (Photo)<br>2. ஆதார் (Aadhaar)<br>3. மொபைல் எண் (Mobile Number)<br>4. நாமினி பெயர், வயது, உறவுமுறை (Nominee Name, Age, Relation Type)',
-        titleEn: '<span class="text-slate-900">Sabarimala Virtual Q Ticket Booking</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Photo<br>2. Aadhaar<br>3. Mobile Number<br>4. Nominee Name, Age, Relation Type',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'sabarimala-q-ticket'
-      },
-      {
-        tagTa: 'TNPSC தேர்வுகள்',
-        tagEn: 'TNPSC EXAMS',
-        titleTa: '<span class="text-slate-900">TNPSC OTR மற்றும் குரூப் 4 / குரூப் 2 / குரூப் 1 தேர்வு விண்ணப்பம்</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. OTR ஐடி & பாஸ்வேர்டு<br>2. 10th / 12th / Degree மார்க்ஷீட் & சாதி சான்றிதழ்<br>3. ஆதார் அட்டை, பாஸ்போர்ட் போட்டோ & கையொப்பம்',
-        titleEn: '<span class="text-slate-900">TNPSC OTR & Group 4 / Group 2 / Group 1 Exam Application</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. OTR ID & Password<br>2. 10th / 12th / Degree Marksheet & Community Certificate<br>3. Aadhaar Card, Passport Photo & Signature',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'tnpsc-group4'
-      },
-      {
-        tagTa: 'ஜோதிடம் (ASTRO)',
-        tagEn: 'ASTRO',
-        titleTa: '<span class="text-slate-900">கம்ப்யூட்டர் ஜாதகம் & ஜோதிட சேவை (Computer Horoscope / Jathagam)</span><br>📋 <span class="text-emerald-700">தேவையான விவரங்கள் (Required Details):</span><br>1. பெயர் (Name), தந்தை பெயர் (Father Name), தாயார் பெயர் (Mother Name)<br>2. பிறந்த ஊர் (Birth Place), பிறந்த தேதி (Birth Date), பிறந்த நேரம் (Birth Time)<br>3. ஜாதக நோட்டு (Jathaga Book - Optional)',
-        titleEn: '<span class="text-slate-900">Computer Horoscope & Astrology (Jathagam)</span><br>📋 <span class="text-emerald-700">Required Details:</span><br>1. Name, Father Name, Mother Name<br>2. Birth Place, Birth Date, Birth Time<br>3. Jathaga Book (Optional)',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'astro-jathagam'
-      },
-      {
-        tagTa: 'பான் கார்டு',
-        tagEn: 'PAN CARD',
-        titleTa: '<span class="text-slate-900">புதிய பான் கார்டு & பான் திருத்தம் (New PAN Card & Correction)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பாஸ்போர்ட் சைஸ் போட்டோ (Photo) & ஆதார் அட்டை (Aadhaar)<br>2. பிறந்த தேதி சான்று (Birth Certificate / Marksheet)<br>3. கையொப்பம் (Signature) & தந்தை பெயர் (Father Name)',
-        titleEn: '<span class="text-slate-900">New PAN Card & PAN Correction</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Passport Size Photo & Aadhaar Card<br>2. Date of Birth Proof (Birth Certificate / Marksheet)<br>3. Signature & Father Name',
-        linkTextTa: '🔗 விண்ணப்பிக்க',
-        linkTextEn: '🔗 Apply Now',
-        actionType: 'apply',
-        actionTarget: 'pan-new'
-      }
-    ];
+    const notificationsData = [];
 
     // =======================================================
     // 2. WEDDING INVITATION PICTURES DATA
@@ -2168,36 +2474,94 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     ];
 
     // =======================================================
-    // 🔄 LIVE REQUIREMENT NOTIFICATIONS ENGINE (NO OLD NEWS/DATES)
+    // 🔄 100% MANUAL LIVE NOTIFICATIONS, FLASH CARDS & HOME GALLERY RENDERER
     // =======================================================
-    let sheetLiveNotifs = [];
-
     function getActiveNotificationsList() {
-      const customFs = window.firestoreLiveNotifs || [];
-      return [...customFs, ...sheetLiveNotifs, ...notificationsData];
+      return window.manualLiveNotifs || [];
     }
 
     function updateTopLiveTicker() {
       const tickerEl = document.getElementById('ui-ticker');
       if (!tickerEl) return;
-      const allNotifs = getActiveNotificationsList();
-      const plainItems = allNotifs.slice(0, 8).map(n => {
+      const flashList = window.manualFlashCards || [];
+      const notifList = window.manualLiveNotifs || [];
+
+      const parts = [];
+      flashList.forEach(f => {
+        parts.push(`⚡ [${f.badge || 'FLASH'}] ${f.text} ⚡`);
+      });
+      notifList.forEach(n => {
         const rawHtml = currentLang === 'ta' ? (n.titleTa || n.titleEn) : (n.titleEn || n.titleTa);
         const cleanTxt = String(rawHtml || '').replace(/<br\s*\/?>/gi, ' • ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
         const tag = currentLang === 'ta' ? (n.tagTa || n.tagEn) : (n.tagEn || n.tagTa);
-        return `★ [${tag}] ${cleanTxt} ★`;
+        parts.push(`★ [${tag}] ${cleanTxt} ★`);
       });
-      if (plainItems.length > 0) {
-        tickerEl.innerHTML = plainItems.join(' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ');
+
+      if (parts.length > 0) {
+        tickerEl.innerHTML = parts.join(' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ');
+      } else {
+        tickerEl.innerHTML = '★ VPS கம்ப்யூட்டர்ஸ் & பிரிண்டர்ஸ், வடகரை ஆத்தூர் - அரசு இ-சேவை, ஆன்லைன் விண்ணப்பங்கள், டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம் ★';
       }
     }
 
-    // Render Live Notifications Box on Home Page (Only Requirement Details)
+    // Render Manual Live Flash Cards
+    let activeFlashIdx = 0;
+    function renderFlashCards() {
+      const box = document.getElementById('live-flash-card-container');
+      if (!box) return;
+      const list = window.manualFlashCards || [];
+      if (list.length === 0) {
+        box.classList.add('hidden');
+        box.innerHTML = '';
+        updateTopLiveTicker();
+        return;
+      }
+      box.classList.remove('hidden');
+      if (activeFlashIdx >= list.length) activeFlashIdx = 0;
+      const current = list[activeFlashIdx];
+
+      box.innerHTML = `
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-1 rounded-lg uppercase tracking-wider shrink-0 shadow animate-pulse">⚡ ${current.badge || 'FLASH'}</span>
+            <p class="text-xs sm:text-sm font-extrabold text-amber-200 leading-snug">${current.text}</p>
+          </div>
+          ${list.length > 1 ? `<button type="button" onclick="nextFlashCard()" class="text-[10px] font-extrabold bg-white/15 hover:bg-white/25 text-white px-2.5 py-1 rounded-lg shrink-0">${activeFlashIdx + 1}/${list.length} ›</button>` : ''}
+        </div>
+      `;
+      updateTopLiveTicker();
+    }
+    window.renderFlashCards = renderFlashCards;
+
+    function nextFlashCard() {
+      const list = window.manualFlashCards || [];
+      if (list.length <= 1) return;
+      activeFlashIdx = (activeFlashIdx + 1) % list.length;
+      renderFlashCards();
+    }
+    setInterval(() => {
+      if ((window.manualFlashCards || []).length > 1) nextFlashCard();
+    }, 5000);
+
+    // Render Manual Live Notifications Box on Home Page
     function renderNotifications() {
       const container = document.getElementById('notification-list');
       if (!container) return;
       const loggedIn = !!window.isCustomerLoggedIn;
       const activeList = getActiveNotificationsList();
+
+      if (activeList.length === 0) {
+        const isAdmin = window.isCurrentUserAdmin && window.isCurrentUserAdmin();
+        container.innerHTML = `
+          <div class="bg-white p-6 rounded-2xl border border-dashed border-slate-300 text-center space-y-2">
+            <div class="text-2xl">🔔</div>
+            <p class="text-xs sm:text-sm font-extrabold text-slate-700">தற்போது புதிய அறிவிப்புகள் எதுவும் இல்லை.</p>
+            ${isAdmin ? `<button type="button" onclick="navigateTo('admin')" class="mt-2 inline-flex items-center gap-1.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow">➕ Admin Panel-ல் அறிவிப்பு சேர்க்க</button>` : `<p class="text-[11px] text-slate-500">புதிய அறிவிப்புகள் விரைவில் இங்கே பதிவேற்றப்படும்.</p>`}
+          </div>
+        `;
+        updateTopLiveTicker();
+        return;
+      }
 
       container.innerHTML = activeList.map(n => {
         const tag = currentLang === 'ta' ? (n.tagTa || n.tagEn) : (n.tagEn || n.tagTa);
@@ -2232,63 +2596,54 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
 
       updateTopLiveTicker();
     }
+    window.renderNotifications = renderNotifications;
     window.mergeAndRenderLiveNotifications = renderNotifications;
 
-    // Fetch live requirement notifications from Google Sheet or live-notifications.json (No external old news)
-    async function fetchAutoLiveUpdates(showIndicator) {
-      const spinEl = document.getElementById('live-sync-spin');
-      const lblEl = document.getElementById('live-sync-label');
-      if (showIndicator && lblEl) {
-        lblEl.textContent = currentLang === 'ta' ? 'புதுப்பிக்கப்படுகிறது...' : 'Syncing...';
-        if (spinEl) spinEl.classList.add('animate-spin');
+    // Render Manual Home Page Photo Gallery Box
+    function renderHomeGallery() {
+      const grid = document.getElementById('home-gallery-grid');
+      if (!grid) return;
+      const list = window.manualGalleryImages || [];
+      if (list.length === 0) {
+        const isAdmin = window.isCurrentUserAdmin && window.isCurrentUserAdmin();
+        grid.innerHTML = `
+          <div class="col-span-full bg-slate-50 p-6 rounded-2xl border border-dashed border-slate-300 text-center space-y-2">
+            <div class="text-2xl">🖼️</div>
+            <p class="text-xs sm:text-sm font-extrabold text-slate-700">தற்போது Gallery-ல் படங்கள் எதுவும் சேர்க்கப்படவில்லை.</p>
+            ${isAdmin ? `<button type="button" onclick="navigateTo('admin')" class="mt-2 inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow">📤 Admin Panel-ல் படம் Upload செய்ய</button>` : `<p class="text-[11px] text-slate-500">எங்கள் சேவைகள் மற்றும் அறிவிப்புப் படங்கள் இங்கே பதிவேற்றப்படும்.</p>`}
+          </div>
+        `;
+        return;
       }
 
-      // Source A: Check local/hosted `live-notifications.json` file on the website if present
-      try {
-        const localRes = await fetch('live-notifications.json?t=' + Date.now(), { cache: 'no-store' });
-        if (localRes.ok) {
-          const localJson = await localRes.json();
-          if (Array.isArray(localJson) && localJson.length > 0) {
-            sheetLiveNotifs = localJson;
-            renderNotifications();
-          }
-        }
-      } catch (eLocalJson) { /* optional file */ }
-
-      // Source B: Fetch live notifications from Google Sheet (`GOOGLE_SCRIPT_URL?action=getNotifications`)
-      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
-        try {
-          const sheetUrl = GOOGLE_SCRIPT_URL + (GOOGLE_SCRIPT_URL.includes('?') ? '&' : '?') + 'action=getNotifications&t=' + Date.now();
-          const res = await fetch(sheetUrl);
-          if (res.ok) {
-            const json = await res.json();
-            const list = Array.isArray(json) ? json : (json.notifications || []);
-            if (Array.isArray(list) && list.length > 0) {
-              sheetLiveNotifs = list.map(item => ({
-                tagTa: item.tagTa || item.tag || 'புதிய அறிவிப்பு',
-                tagEn: item.tagEn || item.tag || 'NEW UPDATE',
-                titleTa: item.titleTa || item.title || '',
-                titleEn: item.titleEn || item.title || '',
-                linkTextTa: item.linkTextTa || '🔗 விண்ணப்பிக்க',
-                linkTextEn: item.linkTextEn || '🔗 Apply Now',
-                actionType: item.actionType || 'apply',
-                actionTarget: item.actionTarget || 'tnpsc-group4'
-              })).filter(x => x.titleTa);
-              renderNotifications();
-            }
-          }
-        } catch (eSheetNotif) { /* optional endpoint */ }
-      }
-
-      renderNotifications();
-      if (lblEl) {
-        lblEl.textContent = currentLang === 'ta' ? 'நேரலை' : 'Live';
-      }
-      if (spinEl) spinEl.classList.remove('animate-spin');
+      grid.innerHTML = list.map((item, idx) => `
+        <div onclick="openHomeGalleryModal(${idx})" class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition flex flex-col justify-between group cursor-pointer">
+          <div class="relative h-44 sm:h-52 bg-slate-200 overflow-hidden">
+            <img src="${item.imgData}" alt="${ item.caption || 'Gallery Image' }" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+            <span class="absolute bottom-2.5 right-2.5 bg-white/95 text-slate-900 text-[10px] font-extrabold px-2.5 py-1 rounded-lg shadow">🔍 பெரிதாகப் பார்க்க</span>
+          </div>
+          <div class="p-3">
+            <h4 class="font-extrabold text-xs sm:text-sm text-slate-900 leading-snug truncate">${item.caption || 'VPS Computers & Printers'}</h4>
+          </div>
+        </div>
+      `).join('');
     }
-    window.fetchAutoLiveUpdates = fetchAutoLiveUpdates;
+    window.renderHomeGallery = renderHomeGallery;
 
-    setTimeout(() => { fetchAutoLiveUpdates(false); }, 500);
+    function openHomeGalleryModal(idx) {
+      const list = window.manualGalleryImages || [];
+      const item = list[idx];
+      if (!item) return;
+      const imgEl = document.getElementById('img-modal-preview');
+      imgEl.src = item.imgData;
+      document.getElementById('img-modal-title').textContent = item.caption || 'VPS Computers & Printers';
+      document.getElementById('img-modal-code').textContent = '';
+      const orderBtn = document.getElementById('img-modal-order-btn');
+      if (orderBtn) orderBtn.classList.add('hidden');
+      const modal = document.getElementById('image-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
 
     // Render Wedding Invitation Picture Gallery
     function renderWeddingGallery() {
@@ -2460,6 +2815,8 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       document.getElementById('gallery-subtitle').textContent = t.gallerySubtitle;
 
       renderNotifications();
+      if (typeof renderFlashCards === 'function') renderFlashCards();
+      if (typeof renderHomeGallery === 'function') renderHomeGallery();
       renderWeddingGallery();
       populateServiceSelect();
       if (pageConfig[currentPage]) {
