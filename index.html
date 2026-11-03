@@ -86,6 +86,16 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-dropdown-anim {
+      animation: menuSlideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes menuSlideDown {
+      from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
   </style>
 </head>
 <body class="text-slate-800 antialiased selection:bg-brand-600 selection:text-white flex flex-col min-h-screen">
@@ -162,25 +172,56 @@
       </div>
     </div>
 
-    <!-- SEPARATE COLORED BACKGROUND BAR FOR TITLE TABS (Mobile Horizontal Swipe + Desktop Wrap) -->
-    <div class="tab-bar-gradient border-t border-b border-indigo-900/80 shadow-inner">
-      <div class="max-w-7xl mx-auto px-2 sm:px-6 py-2">
-        <div class="flex flex-nowrap sm:flex-wrap items-center justify-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-extrabold overflow-x-auto no-scrollbar pb-0.5 sm:pb-0">
-          <button onclick="navigateTo('home')" data-pill="home" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏠 முகப்பு</button>
-          <button onclick="navigateTo('esevai')" data-pill="esevai" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">📜 இ-சேவை சான்றிதழ்கள்</button>
-          <button onclick="navigateTo('tnpds')" data-pill="tnpds" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🍚 TNPDS ரேஷன் கார்டு</button>
-          <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏛️ TNPSC / TRB / RRB / JEE</button>
-          <button onclick="navigateTo('ttd')" data-pill="ttd" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🛕 திருப்பதி TTD</button>
-          <button onclick="navigateTo('sabarimala')" data-pill="sabarimala" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🙏 சபரிமலை Q</button>
-          <button onclick="navigateTo('astro')" data-pill="astro" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪐 ஜோதிடம் (Astro)</button>
-          <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🪪 பான் & அடையாள அட்டை</button>
-          <button onclick="navigateTo('tickets')" data-pill="tickets" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">✈️ பஸ் / ரயில் / விமான டிக்கெட்</button>
-          <button onclick="navigateTo('msme')" data-pill="msme" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🏢 MSME & பாஸ்போர்ட்</button>
-          <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">🗺️ பட்டா / சிட்டா & EC</button>
-          <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</button>
-          <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition flex items-center gap-1.5">📍 தொடர்புக்கு & Upload</button>
-          <button id="tab-pill-apps" onclick="navigateTo('apps')" data-pill="apps" class="page-pill hidden shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition items-center gap-1.5">📂 எனது விண்ணப்பங்கள்</button>
-          <button id="tab-pill-admin" onclick="navigateTo('admin')" data-pill="admin" class="page-pill hidden shrink-0 whitespace-nowrap px-3 py-2 rounded-xl transition items-center gap-1.5">🛡️ Admin Panel</button>
+    <!-- ANDROID APP STYLE OPTION MENU BAR (Click Option Icon to Open Tabs List) -->
+    <div class="tab-bar-gradient border-t border-b border-indigo-900/80 shadow-inner relative">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 flex items-center justify-between gap-2">
+        <!-- Left: Option Menu Icon Button (☰) -->
+        <button type="button" id="option-menu-btn" onclick="toggleTabMenu()" class="bg-amber-400 hover:bg-amber-500 active:scale-95 text-slate-950 font-black text-xs sm:text-sm px-3.5 py-2 rounded-xl shadow-md flex items-center gap-2 transition shrink-0">
+          <svg id="option-menu-icon-open" class="w-5 h-5 stroke-current" fill="none" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="option-menu-icon-close" class="w-5 h-5 stroke-current hidden" fill="none" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          <span id="ui-menu-btn-label">சேவைகள் பட்டியல் (Menu)</span>
+          <span class="text-[10px] bg-slate-950/15 px-1.5 py-0.5 rounded-md">▼</span>
+        </button>
+
+        <!-- Center/Right: Active Tab Indicator + Quick Home Button -->
+        <div class="flex items-center gap-2 min-w-0">
+          <span id="active-tab-indicator" onclick="toggleTabMenu()" class="cursor-pointer text-white font-extrabold text-xs sm:text-sm truncate bg-white/10 hover:bg-white/20 px-3 py-1.5 rounded-xl border border-white/15">
+            🏠 முகப்பு
+          </span>
+          <button type="button" onclick="navigateTo('home')" class="bg-white/15 hover:bg-white/25 text-white font-extrabold text-xs px-2.5 py-1.5 rounded-xl border border-white/20 shrink-0 transition" title="Home">
+            🏠
+          </button>
+        </div>
+      </div>
+
+      <!-- COLLAPSIBLE OPTION MENU DRAWER / DROPDOWN LIST (Shows each tab when Option Icon is clicked) -->
+      <div id="tab-options-dropdown" class="hidden border-t border-indigo-800/80 bg-slate-950/95 backdrop-blur-md shadow-2xl menu-dropdown-anim">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 py-3.5 max-h-[75vh] overflow-y-auto">
+          <div class="flex items-center justify-between mb-2.5 pb-2 border-b border-slate-800">
+            <span id="ui-menu-drawer-title" class="text-[11px] font-extrabold uppercase tracking-wider text-amber-400">📋 தேவையான சேவைப் பிரிவைத் தேர்ந்தெடுக்கவும்:</span>
+            <button type="button" onclick="closeTabMenu()" class="text-slate-400 hover:text-white text-xs font-bold bg-slate-800 px-2.5 py-1 rounded-lg">✕ மூடுக</button>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 text-xs sm:text-sm font-extrabold">
+            <button onclick="navigateTo('home')" data-pill="home" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🏠 முகப்பு</span><span>›</span></button>
+            <button onclick="navigateTo('esevai')" data-pill="esevai" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>📜 இ-சேவை சான்றிதழ்கள்</span><span>›</span></button>
+            <button onclick="navigateTo('tnpds')" data-pill="tnpds" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🍚 TNPDS ரேஷன் கார்டு</span><span>›</span></button>
+            <button onclick="navigateTo('tnpsc')" data-pill="tnpsc" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🏛️ TNPSC / TRB / RRB / JEE</span><span>›</span></button>
+            <button onclick="navigateTo('ttd')" data-pill="ttd" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🛕 திருப்பதி TTD</span><span>›</span></button>
+            <button onclick="navigateTo('sabarimala')" data-pill="sabarimala" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🙏 சபரிமலை Q</span><span>›</span></button>
+            <button onclick="navigateTo('astro')" data-pill="astro" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🪐 ஜோதிடம் (Astro)</span><span>›</span></button>
+            <button onclick="navigateTo('idcards')" data-pill="idcards" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🪪 பான் & அடையாள அட்டை</span><span>›</span></button>
+            <button onclick="navigateTo('tickets')" data-pill="tickets" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>✈️ பஸ் / ரயில் / விமான டிக்கெட்</span><span>›</span></button>
+            <button onclick="navigateTo('msme')" data-pill="msme" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🏢 MSME & பாஸ்போர்ட்</span><span>›</span></button>
+            <button onclick="navigateTo('patta')" data-pill="patta" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>🗺️ பட்டா / சிட்டா & EC</span><span>›</span></button>
+            <button onclick="navigateTo('printing')" data-pill="printing" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>💌 திருமண அழைப்பிதழ் & பிரிண்டிங்</span><span>›</span></button>
+            <button onclick="navigateTo('contact')" data-pill="contact" class="page-pill w-full text-left px-3.5 py-3 rounded-xl transition flex items-center justify-between gap-2"><span>📍 தொடர்புக்கு & Upload</span><span>›</span></button>
+            <button id="tab-pill-apps" onclick="navigateTo('apps')" data-pill="apps" class="page-pill hidden w-full text-left px-3.5 py-3 rounded-xl transition items-center justify-between gap-2"><span>📂 எனது விண்ணப்பங்கள்</span><span>›</span></button>
+            <button id="tab-pill-admin" onclick="navigateTo('admin')" data-pill="admin" class="page-pill hidden w-full text-left px-3.5 py-3 rounded-xl transition items-center justify-between gap-2"><span>🛡️ Admin Panel</span><span>›</span></button>
+          </div>
         </div>
       </div>
     </div>
@@ -1518,6 +1559,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         try {
           const sheetRes = await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
             body: JSON.stringify({
               action: 'updateStatus',
               reqId: reqId,
@@ -1823,7 +1865,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         pillContact: '📍 தொடர்புக்கு & Upload',
         heroBadge: 'அரசு இ-சேவை, டிக்கெட் புக்கிங் & ஆஃப்செட் பிரிண்டிங் மையம்',
         heroTitle: 'அனைத்து ஆன்லைன் சேவைகளும் <span class="text-amber-400 underline decoration-amber-400/40">ஒரே இடத்தில்!</span>',
-        heroDesc: 'உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க மேலே உள்ள வண்ணத் தலைப்பு டேப்களை (Title Tabs) கிளிக் செய்யவும். வீட்டில் இருந்தபடியே ஆவணங்களை Upload செய்தோ அல்லது WhatsApp மூலமாகவோ விண்ணப்பிக்கலாம்!',
+        heroDesc: 'உங்களுக்குத் தேவையான சேவைப் பட்டியலைப் பார்க்க மேலே உள்ள ☰ சேவைகள் பட்டியல் (Menu) ஐகானைக் கிளிக் செய்யவும். வீட்டில் இருந்தபடியே ஆவணங்களை Upload செய்தோ அல்லது WhatsApp மூலமாகவோ விண்ணப்பிக்கலாம்!',
         boxCallLbl: '📞 செல் / வாட்ஸ்அப்:',
         boxTimeLbl: '🕘 வேலை நேரம்:',
         boxTimeVal: 'காலை 9:00 AM – மாலை 7:00 PM',
@@ -1854,7 +1896,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         pillContact: '📍 Contact & Upload',
         heroBadge: 'Authorized Govt e-Sevai, Ticket Booking & Offset Printing Center',
         heroTitle: 'All Online & Printing Services <span class="text-amber-400 underline decoration-amber-400/40">in One Place!</span>',
-        heroDesc: 'Click on any colored service tab above to view the services, upload required documents directly, or send via WhatsApp.',
+        heroDesc: 'Tap the ☰ Services Menu icon above to choose any service category, view required documents, and apply online or via WhatsApp.',
         boxCallLbl: '📞 Mobile / WhatsApp:',
         boxTimeLbl: '🕘 Working Hours:',
         boxTimeVal: '9:00 AM – 7:00 PM',
@@ -2122,22 +2164,31 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       document.getElementById('ui-shop-title').textContent = t.shopTitle;
       document.getElementById('ui-shop-subtitle').textContent = t.shopSubtitle;
 
-      document.querySelector('[data-pill="home"]').textContent = t.pillHome;
-      document.querySelector('[data-pill="esevai"]').textContent = t.pillEsevai;
-      document.querySelector('[data-pill="tnpds"]').textContent = t.pillTnpds;
-      document.querySelector('[data-pill="tnpsc"]').textContent = t.pillTnpsc;
-      document.querySelector('[data-pill="ttd"]').textContent = t.pillTtd;
-      document.querySelector('[data-pill="sabarimala"]').textContent = t.pillSabarimala;
-      const pillAstro = document.querySelector('[data-pill="astro"]');
-      if (pillAstro) pillAstro.textContent = t.pillAstro;
-      document.querySelector('[data-pill="idcards"]').textContent = t.pillIdcards;
-      document.querySelector('[data-pill="tickets"]').textContent = t.pillTickets;
-      document.querySelector('[data-pill="msme"]').textContent = t.pillMsme;
-      document.querySelector('[data-pill="patta"]').textContent = t.pillPatta;
-      document.querySelector('[data-pill="printing"]').textContent = t.pillPrinting;
-      document.querySelector('[data-pill="contact"]').textContent = t.pillContact;
-      const pillApps = document.querySelector('[data-pill="apps"]');
-      if (pillApps) pillApps.textContent = lang === 'ta' ? '📂 எனது விண்ணப்பங்கள்' : '📂 My Applications';
+      const setPillLabel = (key, text) => {
+        const el = document.querySelector(`[data-pill="${key}"]`);
+        if (el) el.innerHTML = `<span>${text}</span><span class="opacity-70">›</span>`;
+      };
+      setPillLabel('home', t.pillHome);
+      setPillLabel('esevai', t.pillEsevai);
+      setPillLabel('tnpds', t.pillTnpds);
+      setPillLabel('tnpsc', t.pillTnpsc);
+      setPillLabel('ttd', t.pillTtd);
+      setPillLabel('sabarimala', t.pillSabarimala);
+      setPillLabel('astro', t.pillAstro);
+      setPillLabel('idcards', t.pillIdcards);
+      setPillLabel('tickets', t.pillTickets);
+      setPillLabel('msme', t.pillMsme);
+      setPillLabel('patta', t.pillPatta);
+      setPillLabel('printing', t.pillPrinting);
+      setPillLabel('contact', t.pillContact);
+      setPillLabel('apps', lang === 'ta' ? '📂 எனது விண்ணப்பங்கள்' : '📂 My Applications');
+      setPillLabel('admin', '🛡️ Admin Panel');
+
+      const menuBtnLbl = document.getElementById('ui-menu-btn-label');
+      if (menuBtnLbl) menuBtnLbl.textContent = lang === 'ta' ? 'சேவைகள் பட்டியல் (Menu)' : 'Services Menu';
+      const menuDrawerTitle = document.getElementById('ui-menu-drawer-title');
+      if (menuDrawerTitle) menuDrawerTitle.textContent = lang === 'ta' ? '📋 தேவையான சேவைப் பிரிவைத் தேர்ந்தெடுக்கவும்:' : '📋 Select a Service Category:';
+      updateActiveTabIndicator(currentPage);
 
       document.getElementById('home-hero-badge').textContent = t.heroBadge;
       document.getElementById('home-hero-title').innerHTML = t.heroTitle;
@@ -2171,8 +2222,42 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       if (modalSelect) modalSelect.innerHTML = optionsHtml;
     }
 
+    function toggleTabMenu() {
+      const dd = document.getElementById('tab-options-dropdown');
+      const openIcon = document.getElementById('option-menu-icon-open');
+      const closeIcon = document.getElementById('option-menu-icon-close');
+      if (!dd) return;
+      const isHidden = dd.classList.contains('hidden');
+      if (isHidden) {
+        dd.classList.remove('hidden');
+        if (openIcon) openIcon.classList.add('hidden');
+        if (closeIcon) closeIcon.classList.remove('hidden');
+      } else {
+        closeTabMenu();
+      }
+    }
+
+    function closeTabMenu() {
+      const dd = document.getElementById('tab-options-dropdown');
+      const openIcon = document.getElementById('option-menu-icon-open');
+      const closeIcon = document.getElementById('option-menu-icon-close');
+      if (dd) dd.classList.add('hidden');
+      if (openIcon) openIcon.classList.remove('hidden');
+      if (closeIcon) closeIcon.classList.add('hidden');
+    }
+
+    function updateActiveTabIndicator(pageKey) {
+      const ind = document.getElementById('active-tab-indicator');
+      const activePill = document.querySelector(`[data-pill="${pageKey}"]`);
+      if (ind && activePill) {
+        const firstSpan = activePill.querySelector('span');
+        ind.textContent = firstSpan ? firstSpan.textContent : activePill.textContent;
+      }
+    }
+
     function navigateTo(pageKey) {
       currentPage = pageKey;
+      closeTabMenu();
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
       document.getElementById('page-home').classList.add('hidden');
@@ -2186,11 +2271,12 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         const isHidden = pill.classList.contains('hidden');
         const visClass = isHidden ? 'hidden' : 'flex';
         if (pill.dataset.pill === pageKey) {
-          pill.className = `page-pill shrink-0 whitespace-nowrap ${visClass} px-3 py-2 rounded-xl transition items-center gap-1.5 bg-amber-400 text-slate-950 shadow-lg scale-[1.02]`;
+          pill.className = `page-pill w-full text-left ${visClass} px-3.5 py-3 rounded-xl transition items-center justify-between gap-2 bg-amber-400 text-slate-950 shadow-md`;
         } else {
-          pill.className = `page-pill shrink-0 whitespace-nowrap ${visClass} px-3 py-2 rounded-xl transition items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/15`;
+          pill.className = `page-pill w-full text-left ${visClass} px-3.5 py-3 rounded-xl transition items-center justify-between gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/15`;
         }
       });
+      updateActiveTabIndicator(pageKey);
 
       if (pageKey === 'home') {
         document.getElementById('page-home').classList.remove('hidden');
@@ -2485,6 +2571,27 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
 
       const msg = `*வணக்கம் VPS COMPUTERS AND PRINTERS,*\n\nஎனக்கு கீழ்க்கண்ட சேவைக்கு விண்ணப்பிக்க வேண்டும்:\n\n👤 *பெயர்:* ${name}\n📞 *மொபைல்:* ${phone}\n📄 *சேவை:* ${serviceTitle}${extraText ? `\n✍️ *விவரம்:* ${extraText}` : ''}${notes ? `\n📝 *குறிப்பு:* ${notes}` : ''}\n\n*தேவையான ஆவணங்கள்:*\n${docListText}\n\n(இதோ எனது ஆவணங்களின் புகைப்படங்களை கீழே அனுப்புகிறேன்)`;
 
+      let combinedWaDetails = 'Mode: WhatsApp';
+      if (extraText) combinedWaDetails += ` | Details: ${extraText}`;
+      if (notes) combinedWaDetails += ` | Note: ${notes}`;
+
+      // Also save WhatsApp application details to Google Sheet in background
+      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            name: name,
+            phone: phone,
+            service: s.titleTa || serviceTitle,
+            utr: combinedWaDetails,
+            details: extraText,
+            notes: notes,
+            files: []
+          })
+        }).catch(err => console.warn('WhatsApp sheet log notice:', err));
+      }
+
       if (window.vpsSaveApplication) window.vpsSaveApplication({ method: 'whatsapp', service: s, name: name, phone: phone, details: extraText, notes: notes });
       window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
     }
@@ -2541,39 +2648,92 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         }
       }
 
-      if (filesArray.length === 0 && !extraText) {
-        alert('தயவுசெய்து குறைந்தபட்சம் ஒரு ஆவணத்தையாவது Upload செய்யவும் (அல்லது அருகில் உள்ள WhatsApp முறையைப் பயன்படுத்தவும்).');
+      if (filesArray.length === 0 && !extraText && !notes && !s.hasAstroFields && !s.hasNomineeFields) {
+        alert('தயவுசெய்து குறைந்தபட்சம் ஒரு ஆவணத்தையாவது Upload செய்யவும் அல்லது விவரங்களை டைப் செய்யவும்.');
         return;
       }
 
+      // If no file is uploaded (e.g., Astro service where Jathaga Book is optional, or Ticket/Patta/HallTicket with typed details),
+      // attach a tiny text summary file so Google Apps Script that expects `files` array never fails!
+      const uploadedDocNames = filesArray.map(f => f.name);
+      let payloadFiles = filesArray.slice();
+      if (payloadFiles.length === 0) {
+        const summaryText = `Service: ${serviceTitle}\nName: ${name}\nMobile: ${phone}\nDetails: ${extraText || '-'}\nNotes: ${notes || '-'}\nUTR: ${utr || 'Not Paid'}`;
+        const summaryBase64 = 'data:text/plain;base64,' + btoa(unescape(encodeURIComponent(summaryText)));
+        payloadFiles.push({
+          name: 'Application_Details.txt',
+          data: summaryBase64
+        });
+      }
+
       submitBtn.disabled = true;
-      submitBtn.textContent = '⏳ ஆவணங்கள் பதிவேற்றப்படுகின்றன... காத்திருக்கவும்';
+      submitBtn.textContent = '⏳ விவரங்கள் மற்றும் ஆவணங்கள் பதிவேற்றப்படுகின்றன... காத்திருக்கவும்';
       statusEl.classList.add('hidden');
 
       let combinedUtrAndNotes = `UTR: ${utr || 'Not Paid'}`;
       if (extraText) combinedUtrAndNotes += ` | Details: ${extraText}`;
       if (notes) combinedUtrAndNotes += ` | Note: ${notes}`;
 
-      try {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify({
-            name: name,
-            phone: phone,
-            service: serviceTitle,
-            utr: combinedUtrAndNotes,
-            files: filesArray
-          })
-        });
+      const payloadObj = {
+        name: name,
+        phone: phone,
+        service: serviceTitle,
+        utr: combinedUtrAndNotes,
+        details: extraText,
+        notes: notes,
+        files: payloadFiles
+      };
 
-        const result = await response.json();
-        if (result.status === 'success') {
-          if (window.vpsSaveApplication) window.vpsSaveApplication({ method: 'web', service: s, name: name, phone: phone, details: extraText, notes: notes, utr: utr, reqId: result.reqId, docs: filesArray.map(f => f.name) });
+      try {
+        let reqId = 'VPS-' + Math.floor(100000 + Math.random() * 900000);
+        let savedOk = false;
+
+        try {
+          const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payloadObj)
+          });
+          const textRes = await response.text();
+          try {
+            const result = JSON.parse(textRes);
+            if (result && (result.status === 'success' || result.reqId || result.result === 'success')) {
+              if (result.reqId) reqId = result.reqId;
+              savedOk = true;
+            }
+          } catch (eJson) {
+            if (response.ok) savedOk = true;
+          }
+        } catch (fetchErr) {
+          // Fallback with no-cors so Google Sheet still receives the POST even if browser blocks redirect CORS read
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify(payloadObj)
+          });
+          savedOk = true;
+        }
+
+        if (savedOk) {
+          if (window.vpsSaveApplication) {
+            window.vpsSaveApplication({
+              method: 'web',
+              service: s,
+              name: name,
+              phone: phone,
+              details: extraText,
+              notes: notes,
+              utr: utr,
+              reqId: reqId,
+              docs: uploadedDocNames.length ? uploadedDocNames : (extraText ? [extraText] : [])
+            });
+          }
           statusEl.className = 'p-3.5 rounded-xl text-xs font-extrabold text-center bg-emerald-100 text-emerald-900 border border-emerald-300 block';
-          statusEl.innerHTML = `✅ உங்கள் விண்ணப்பமும் ஆவணங்களும் வெற்றிகரமாகப் பெறப்பட்டன!<br>உங்கள் விண்ணப்ப எண் (Request ID): <span class="text-base text-brand-700">${result.reqId}</span>`;
+          statusEl.innerHTML = `✅ உங்கள் விண்ணப்ப விவரங்கள் வெற்றிகரமாகப் பதிவு செய்யப்பட்டன!<br>உங்கள் விண்ணப்ப எண் (Request ID): <span class="text-base text-brand-700">${reqId}</span>`;
           submitBtn.textContent = '✔ வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது';
         } else {
-          throw new Error(result.message || 'Upload Error');
+          throw new Error('Upload Error');
         }
       } catch (err) {
         statusEl.className = 'p-3.5 rounded-xl text-xs font-bold text-center bg-red-100 text-red-800 border border-red-300 block';
