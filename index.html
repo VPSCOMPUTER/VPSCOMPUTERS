@@ -107,11 +107,11 @@
         <span id="ui-live-badge" class="bg-amber-500 text-slate-950 font-extrabold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider shrink-0 shadow">நேரலை</span>
         <div class="overflow-hidden whitespace-nowrap w-full">
           <div id="ui-ticker" class="animate-ticker font-medium text-amber-300">
-            ★ TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers) ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ இரயில்வே துறை (RRB NTPC & RRB Group-D / ALP) 2 புதிய வேலைவாய்ப்பு அறிவிப்புகளுக்கு ஆன்லைனில் விண்ணப்பிக்கலாம்! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ JEE Main 2027 பொறியியல் நுழைவுத் தேர்வு ஆன்லைன் விண்ணப்பம் நடைபெறுகிறது! ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ சபரிமலை தரிசன டிக்கெட் (Sabarimala Q Ticket) முன்பதிவு நடைபெறுது! (ஆவணங்கள்: 1. Photo, 2. Aadhaar, 3. Mobile Number, 4. Nominee Name, Age, Relation Type) ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            ★ திருப்பதி ₹300 சிறப்பு தரிசனம், பான் கார்டு (PAN Card), பஸ் / ரயில் / விமான டிக்கெட் புக்கிங், MSME தொழில் பதிவு, பட்டா/சிட்டா, இ-சேவை சான்றிதழ்கள் மற்றும் திருமண அழைப்பிதழ்கள் சிறந்த முறையில் செய்து தரப்படும்! ★
+            ★ [TRB ஆசிரியர்] தேவையான ஆவணங்கள்: 1. பணி நியமன ஆணை & பணிச் சான்றிதழ், 2. 10th, 12th, Degree & D.El.Ed / B.Ed சான்றிதழ்கள், 3. ஆதார், சாதி சான்றிதழ், போட்டோ & கையொப்பம் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ [RRB NTPC] தேவையான ஆவணங்கள்: 1. 10th, 12th & Degree சான்றிதழ், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் & வங்கி பாஸ்புக் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ [RRB Group D / ALP] தேவையான ஆவணங்கள்: 1. 10th & ITI / Diploma சான்றிதழ், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் & வங்கி பாஸ்புக் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ [JEE Main] தேவையான ஆவணங்கள்: 1. 10th மார்க்ஷீட் & +2 விவரம், 2. ஆதார், போட்டோ & கையொப்பம், 3. சாதி சான்றிதழ் ★ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ★ [சபரிமலை Q] தேவையான ஆவணங்கள்: 1. Photo, 2. Aadhaar, 3. Mobile Number, 4. Nominee Name, Age, Relation Type ★
           </div>
         </div>
       </div>
@@ -1863,14 +1863,14 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     }
 
     // =======================================================
-    // 1. LIVE NOTIFICATIONS DATA (TRB, RRB 2 Notifications, JEE Main 2027 Added)
+    // 1. LIVE NOTIFICATIONS DATA (ONLY REQUIREMENT DETAILS - NO OLD DATES)
     // =======================================================
     const notificationsData = [
       {
         tagTa: 'TRB ஆசிரியர்',
         tagEn: 'TRB TEACHER',
-        titleTa: '<span class="text-slate-900">TRB பணியில் உள்ள ஆசிரியர்களுக்கான சிறப்புத் தகுதித் தேர்வு (In-Service Working Teachers Recruitment / Special TET)</span><br>🏫 தகுதி: <span class="text-blue-700">அரசு மற்றும் அரசு உதவி பெறும் பள்ளிகளில் பணியாற்றும் ஆசிரியர்கள் (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பணி நியமன ஆணை (Appointment Order) & பணிச் சான்றிதழ் (Bonafide / Service Certificate - HM கையொப்பத்துடன்)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed கல்விச் சான்றிதழ்கள்<br>3. ஆதார் அட்டை, சாதி சான்றிதழ், போட்டோ & கையொப்பம்',
-        titleEn: '<span class="text-slate-900">TRB In-Service Working Teachers Recruitment / Special TET Notification</span><br>🏫 Eligibility: <span class="text-blue-700">Working Teachers in Govt & Govt Aided Schools (Paper I & Paper II)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Appointment Order & Service / Bonafide Certificate (Signed by HM/CEO)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed Certificates<br>3. Aadhaar Card, Community Certificate, Photo & Signature',
+        titleTa: '<span class="text-slate-900">TRB பணியில் உள்ள ஆசிரியர் தேர்வு (In-Service Working Teachers / Special TET)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பணி நியமன ஆணை (Appointment Order) & பணிச் சான்றிதழ் (Service Certificate)<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed கல்விச் சான்றிதழ்கள்<br>3. ஆதார் அட்டை, சாதி சான்றிதழ், போட்டோ & கையொப்பம்',
+        titleEn: '<span class="text-slate-900">TRB In-Service Working Teachers / Special TET</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Appointment Order & Service Certificate<br>2. 10th, 12th, Degree / Diploma & D.El.Ed / B.Ed Certificates<br>3. Aadhaar Card, Community Certificate, Photo & Signature',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'apply',
@@ -1879,8 +1879,8 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       {
         tagTa: 'RRB அறிவிப்பு 1',
         tagEn: 'RRB NOTIF 1',
-        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 1) – NTPC (Graduate & 12th Level) பணியிடங்கள்</span><br>🚆 பதவிகள்: <span class="text-purple-700">Station Master, Goods Train Manager, Junior Clerk, Typist & Commercial Cum Ticket Clerk</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th, 12th மார்க்ஷீட் மற்றும் பட்டப்படிப்பு சான்றிதழ் (Degree Certificate)<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST / EWS) & வங்கி பாஸ்புக் முதல் பக்கம் (கட்டணம் திரும்பப் பெற)',
-        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 1) – NTPC (Graduate & Undergraduate Posts)</span><br>🚆 Posts: <span class="text-purple-700">Station Master, Goods Train Manager, Clerk, Typist & Ticket Clerk</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th, 12th Marksheet & Degree Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST/EWS) & Bank Passbook (for Fee Refund)',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 1 – NTPC Graduate & 12th Level)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th, 12th மார்க்ஷீட் மற்றும் பட்டப்படிப்பு சான்றிதழ் (Degree Certificate)<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST / EWS) & வங்கி பாஸ்புக் முதல் பக்கம்',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 1 – NTPC Graduate & 12th Level)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th, 12th Marksheet & Degree Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST/EWS) & Bank Passbook Front Page',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'apply',
@@ -1889,18 +1889,18 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       {
         tagTa: 'RRB அறிவிப்பு 2',
         tagEn: 'RRB NOTIF 2',
-        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 2) – Group D (Level-1) & ALP / Technician பணியிடங்கள்</span><br>🛠️ கல்வித் தகுதி: <span class="text-red-600">10-ம் வகுப்பு தேர்ச்சி (SSLC) / ITI / Diploma முடித்தவர்கள் விண்ணப்பிக்கலாம்</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th மார்க்ஷீட் மற்றும் ITI / NAC / Diploma சான்றிதழ்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST) & வங்கி பாஸ்புக் முதல் பக்கம் (Refund Account)',
-        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 2) – Group D (Level-1) & ALP / Technician Posts</span><br>🛠️ Qualification: <span class="text-red-600">10th Pass (SSLC) / ITI / Diploma Holders</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & ITI / NAC / Diploma Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST) & Bank Passbook Front Page',
+        titleTa: '<span class="text-slate-900">இரயில்வே தேர்வு வாரியம் (RRB Notification 2 – Group D & ALP / Technician)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10th மார்க்ஷீட் மற்றும் ITI / NAC / Diploma சான்றிதழ்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC / SC / ST) & வங்கி பாஸ்புக் முதல் பக்கம்',
+        titleEn: '<span class="text-slate-900">Railway Recruitment Board (RRB Notification 2 – Group D & ALP / Technician)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & ITI / NAC / Diploma Certificate<br>2. Aadhaar Card, White Background Photo & Signature<br>3. Community Certificate (OBC/SC/ST) & Bank Passbook Front Page',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'apply',
         actionTarget: 'rrb-notif-2'
       },
       {
-        tagTa: 'JEE MAIN 2027',
-        tagEn: 'JEE MAIN 2027',
-        titleTa: '<span class="text-slate-900">JEE Main 2027 (Joint Entrance Examination – Session 1 & 2) பொறியியல் நுழைவுத் தேர்வு அறிவிப்பு</span><br>🎓 தகுதி: <span class="text-blue-700">+2 பயிலும் மற்றும் முடித்த மாணவர்கள் (NIT, IIIT, IIT & மத்திய அரசு பொறியியல் கல்லூரிகளில் சேர)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு விவரம்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி, 80% முகம் தெரியும்படி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)',
-        titleEn: '<span class="text-slate-900">JEE Main 2027 (Session 1 & 2) Engineering Entrance Exam Notification</span><br>🎓 Eligibility: <span class="text-blue-700">12th Studying / Passed Students (For NITs, IIITs, IITs & CFTIs Admission)</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & 12th Roll/School Details<br>2. Aadhaar Card, Passport Photo (White background) & Signature<br>3. Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Certificate (if applicable)',
+        tagTa: 'JEE MAIN',
+        tagEn: 'JEE MAIN',
+        titleTa: '<span class="text-slate-900">JEE Main பொறியியல் நுழைவுத் தேர்வு (Engineering Entrance Exam)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. 10-ம் வகுப்பு மார்க்ஷீட் & 12-ம் வகுப்பு பள்ளி விவரம்<br>2. ஆதார் அட்டை, பாஸ்போர்ட் சைஸ் போட்டோ (வெள்ளை பின்னணி) & கையொப்பம்<br>3. சாதி சான்றிதழ் (OBC-NCL / EWS / SC / ST) & மாற்றுத்திறனாளி சான்று (இருந்தால்)',
+        titleEn: '<span class="text-slate-900">JEE Main Engineering Entrance Exam</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. 10th Marksheet & 12th School Details<br>2. Aadhaar Card, Passport Photo (White background) & Signature<br>3. Category Certificate (OBC-NCL / EWS / SC / ST) & PwD Certificate (if applicable)',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
         actionType: 'apply',
@@ -1909,42 +1909,42 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       {
         tagTa: 'சபரிமலை Q',
         tagEn: 'SABARIMALA Q',
-        titleTa: '<span class="text-slate-900">சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29)</span><br>📅 டிக்கெட் முன்பதிவு தொடக்கம்: <span class="text-red-600">நவம்பர் 29 (November 29)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. போட்டோ (Photo)<br>2. ஆதார் (Aadhaar)<br>3. மொபைல் எண் (Mobile Number)<br>4. நாமினி பெயர், வயது, உறவுமுறை (Nominee Name, Age, Relation Type)',
-        titleEn: '<span class="text-slate-900">Sabarimala Q Ticket Opening: November 29</span><br>📅 Ticket Booking Opens: <span class="text-red-600">November 29</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Photo<br>2. Aadhaar<br>3. Mobile Number<br>4. Nominee Name, Age, Relation Type',
+        titleTa: '<span class="text-slate-900">சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. போட்டோ (Photo)<br>2. ஆதார் (Aadhaar)<br>3. மொபைல் எண் (Mobile Number)<br>4. நாமினி பெயர், வயது, உறவுமுறை (Nominee Name, Age, Relation Type)',
+        titleEn: '<span class="text-slate-900">Sabarimala Virtual Q Ticket Booking</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Photo<br>2. Aadhaar<br>3. Mobile Number<br>4. Nominee Name, Age, Relation Type',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
-        actionType: 'page',
-        actionTarget: 'sabarimala'
+        actionType: 'apply',
+        actionTarget: 'sabarimala-q-ticket'
       },
       {
-        tagTa: 'TNPSC குரூப் 4',
-        tagEn: 'TNPSC GROUP 4',
-        titleTa: '<span class="text-slate-900">TNPSC குரூப் 4 (VAO) தேர்வு – 6,574 காலிப்பணியிடங்கள் (அறிவிப்பு எண் 11/2026)</span><br>📅 விண்ணப்பம் தொடக்கம்: <span class="text-emerald-700">06-10-2026</span> | ⏳ கடைசி நாள்: <span class="text-red-600">05-11-2026</span><br>✏️ விண்ணப்பத் திருத்தம்: <span class="text-blue-700">09-11-2026 முதல் 11-11-2026 வரை</span><br>📝 தேர்வு நாள்: <span class="text-purple-700">10-01-2027 (காலை 9:30 – மதியம் 12:30)</span>',
-        titleEn: '<span class="text-slate-900">TNPSC Group 4 (VAO) Exam – 6,574 Vacancies (Notification No. 11/2026)</span><br>📅 Start: <span class="text-emerald-700">06-10-2026</span> | ⏳ Last Date: <span class="text-red-600">05-11-2026</span><br>✏️ Correction Window: <span class="text-blue-700">09-11-2026 to 11-11-2026</span><br>📝 Exam Date: <span class="text-purple-700">10-01-2027 (9:30 AM – 12:30 PM)</span>',
+        tagTa: 'TNPSC தேர்வுகள்',
+        tagEn: 'TNPSC EXAMS',
+        titleTa: '<span class="text-slate-900">TNPSC OTR மற்றும் குரூப் 4 / குரூப் 2 / குரூப் 1 தேர்வு விண்ணப்பம்</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. OTR ஐடி & பாஸ்வேர்டு<br>2. 10th / 12th / Degree மார்க்ஷீட் & சாதி சான்றிதழ்<br>3. ஆதார் அட்டை, பாஸ்போர்ட் போட்டோ & கையொப்பம்',
+        titleEn: '<span class="text-slate-900">TNPSC OTR & Group 4 / Group 2 / Group 1 Exam Application</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. OTR ID & Password<br>2. 10th / 12th / Degree Marksheet & Community Certificate<br>3. Aadhaar Card, Passport Photo & Signature',
         linkTextTa: '🔗 விண்ணப்பிக்க',
         linkTextEn: '🔗 Apply Now',
-        actionType: 'page',
-        actionTarget: 'tnpsc'
+        actionType: 'apply',
+        actionTarget: 'tnpsc-group4'
+      },
+      {
+        tagTa: 'ஜோதிடம் (ASTRO)',
+        tagEn: 'ASTRO',
+        titleTa: '<span class="text-slate-900">கம்ப்யூட்டர் ஜாதகம் & ஜோதிட சேவை (Computer Horoscope / Jathagam)</span><br>📋 <span class="text-emerald-700">தேவையான விவரங்கள் (Required Details):</span><br>1. பெயர் (Name), தந்தை பெயர் (Father Name), தாயார் பெயர் (Mother Name)<br>2. பிறந்த ஊர் (Birth Place), பிறந்த தேதி (Birth Date), பிறந்த நேரம் (Birth Time)<br>3. ஜாதக நோட்டு (Jathaga Book - Optional)',
+        titleEn: '<span class="text-slate-900">Computer Horoscope & Astrology (Jathagam)</span><br>📋 <span class="text-emerald-700">Required Details:</span><br>1. Name, Father Name, Mother Name<br>2. Birth Place, Birth Date, Birth Time<br>3. Jathaga Book (Optional)',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'astro-jathagam'
       },
       {
         tagTa: 'பான் கார்டு',
         tagEn: 'PAN CARD',
-        titleTa: 'புதிய பான் கார்டு (New PAN Card), பான் திருத்தம் மற்றும் ஆதார்-பான் இணைப்பு சேவைகள்.',
-        titleEn: 'New PAN Card, PAN Correction and Aadhaar-PAN Linking services.',
-        linkTextTa: '🪪 பான் கார்டு பக்கம்',
-        linkTextEn: '🪪 Open PAN Tab',
-        actionType: 'page',
-        actionTarget: 'idcards'
-      },
-      {
-        tagTa: 'பிரிண்டிங்',
-        tagEn: 'CARDS',
-        titleTa: 'புதிய டிசைன்களில் திருமண அழைப்பிதழ்கள் (Wedding Cards) மாடல்கள் படங்களைப் பார்த்து ஆர்டர் செய்யலாம்!',
-        titleEn: 'Latest Wedding Invitation Card Designs available! View pictures & order online.',
-        linkTextTa: '💌 பத்திரிகை படங்கள்',
-        linkTextEn: '💌 View Pictures',
-        actionType: 'page',
-        actionTarget: 'printing'
+        titleTa: '<span class="text-slate-900">புதிய பான் கார்டு & பான் திருத்தம் (New PAN Card & Correction)</span><br>📋 <span class="text-emerald-700">தேவையான ஆவணங்கள் (Required Documents):</span><br>1. பாஸ்போர்ட் சைஸ் போட்டோ (Photo) & ஆதார் அட்டை (Aadhaar)<br>2. பிறந்த தேதி சான்று (Birth Certificate / Marksheet)<br>3. கையொப்பம் (Signature) & தந்தை பெயர் (Father Name)',
+        titleEn: '<span class="text-slate-900">New PAN Card & PAN Correction</span><br>📋 <span class="text-emerald-700">Required Documents:</span><br>1. Passport Size Photo & Aadhaar Card<br>2. Date of Birth Proof (Birth Certificate / Marksheet)<br>3. Signature & Father Name',
+        linkTextTa: '🔗 விண்ணப்பிக்க',
+        linkTextEn: '🔗 Apply Now',
+        actionType: 'apply',
+        actionTarget: 'pan-new'
       }
     ];
 
@@ -2084,7 +2084,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       tnpds: { titleTa: 'TNPDS ஸ்மார்ட் ரேஷன் கார்டு சேவைகள்', titleEn: 'TNPDS Smart Ration Card Services', subtitleTa: 'புதிய கார்டு, முகவரி மாற்றம், குடும்பத் தலைவர் மாற்றம், உறுப்பினர் நீக்கம் & சேர்த்தல்.', subtitleEn: 'New Card, Address Change, Family Head Change, Remove Members & Add Members.' },
       tnpsc: { titleTa: 'TNPSC, TRB, RRB இரயில்வே & JEE Main 2027 தேர்வு விண்ணப்பங்களும் சேவைகளும்', titleEn: 'TNPSC, TRB, RRB Railway & JEE Main 2027 Exam Applications', subtitleTa: 'TRB பணியில் உள்ள ஆசிரியர் தேர்வு, RRB இரயில்வே 2 அறிவிப்புகள், JEE Main 2027, TNPSC OTR மற்றும் குரூப் தேர்வுகளுக்கான ஆன்லைன் விண்ணப்பங்களும் தேவையான ஆவணங்களும்.', subtitleEn: 'TRB Working Teacher Recruitment, RRB Railway 2 Notifications, JEE Main 2027, TNPSC OTR & Group Exam online applications with required documents.' },
       ttd: { titleTa: 'திருப்பதி தேவஸ்தானம் (TTD) சேவைகள்', titleEn: 'Tirumala Tirupati Devasthanams (TTD) Services', subtitleTa: 'திருப்பதி ₹300 சிறப்பு தரிசனம், தங்கும் அறைகள், ஆர்ஜித சேவா மற்றும் ஸ்ரீவாணி தரிசன முன்பதிவு.', subtitleEn: 'Tirupati ₹300 Special Entry Darshan, Accommodation, Arjitha Seva & SRIVANI Darshan bookings.' },
-      sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் (Sabarimala Q Ticket Opening: November 29) ஆன்லைன் முன்பதிவு.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking (Opening: November 29).' },
+      sabarimala: { titleTa: 'சபரிமலை தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q)', titleEn: 'Sabarimala Virtual Q Ticket Booking', subtitleTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் ஆன்லைன் முன்பதிவு மற்றும் தேவையான ஆவணங்கள்.', subtitleEn: 'Sabarimala Ayyappan Temple Virtual Q Ticket Online Booking & Required Documents.' },
       astro: { titleTa: 'ஜோதிடம் & கம்ப்யூட்டர் ஜாதகம் (Astro Services)', titleEn: 'Astrology & Computer Horoscope (Astro Services)', subtitleTa: 'துல்லியமான கம்ப்யூட்டர் ஜாதகம் கணித்தல், பிறந்த குழந்தை ஜாதகம் மற்றும் திருமணப் பொருத்தம் பார்த்தல்.', subtitleEn: 'Computer Horoscope Generation (Jathagam), Birth Chart & Marriage Matching Services.' },
       idcards: { titleTa: 'பான் கார்டு & அடையாள அட்டை சேவைகள் (PAN & ID Cards)', titleEn: 'PAN Card & Identity Card Services', subtitleTa: 'புதிய பான் கார்டு, பான் திருத்தம், ஆதார், ஸ்மார்ட் ரேஷன் கார்டு மற்றும் வாக்காளர் அட்டை.', subtitleEn: 'New PAN Card, PAN Correction, Aadhaar, Smart Ration Card and Voter ID services.' },
       tickets: { titleTa: 'பஸ், ரயில் & விமான டிக்கெட் புக்கிங் (Ticket Booking)', titleEn: 'Bus, Train & Flight Ticket Booking', subtitleTa: 'இந்தியா முழுவதும் பஸ், ரயில் (Tatkal) மற்றும் விமான டிக்கெட் முன்பதிவு.', subtitleEn: 'Bus, IRCTC Train (Tatkal) and Domestic/International Flight Tickets.' },
@@ -2098,7 +2098,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     // =========================================================================
     const servicesData = [
       // Sabarimala Q
-      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் தரிசன டிக்கெட் முன்பதிவு (Sabarimala Q Ticket Opening: November 29).', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking (Opening: November 29).', timeTa: 'நவம்பர் 29 முதல்', timeEn: 'Opens Nov 29', docsTa: ['போட்டோ (Photo)', 'ஆதார் (Aadhaar)', 'மொபைல் எண் (Mobile Number)', 'நாமினி பெயர், வயது, உறவுமுறை (Nominee Name, Age, Relation Type)'], docsEn: ['Photo', 'Aadhaar', 'Mobile Number', 'Nominee Name, Age, Relation Type'], uploadDocs: ['போட்டோ (Photo)', 'ஆதார் (Aadhaar)'], extraInput: 'தரிசனத் தேதி (Preferred Date)', hasNomineeFields: true },
+      { id: 'sabarimala-q-ticket', page: 'sabarimala', icon: '🙏', titleTa: 'சபரிமலை Q தரிசன டிக்கெட் (Sabarimala Q Ticket)', titleEn: 'Sabarimala Virtual Q Ticket Booking', descTa: 'சபரிமலை ஐயப்பன் கோவில் தரிசன டிக்கெட் ஆன்லைன் முன்பதிவு.', descEn: 'Sabarimala Virtual Q Darshan Ticket Online Booking.', timeTa: 'உடனடியாக', timeEn: 'Instant', docsTa: ['போட்டோ (Photo)', 'ஆதார் (Aadhaar)', 'மொபைல் எண் (Mobile Number)', 'நாமினி பெயர், வயது, உறவுமுறை (Nominee Name, Age, Relation Type)'], docsEn: ['Photo', 'Aadhaar', 'Mobile Number', 'Nominee Name, Age, Relation Type'], uploadDocs: ['போட்டோ (Photo)', 'ஆதார் (Aadhaar)'], extraInput: 'தரிசனத் தேதி (Preferred Date)', hasNomineeFields: true },
       // Astro (ஜோதிடம் & கம்ப்யூட்டர் ஜாதகம்)
       { id: 'astro-jathagam', page: 'astro', icon: '🪐', titleTa: 'கம்ப்யூட்டர் ஜாதகம் & ஜோதிட சேவை (Astro / Jathagam)', titleEn: 'Computer Horoscope & Astrology (Astro)', descTa: 'பிறந்த தேதி மற்றும் நேரத்தைக் கொண்டு துல்லியமான கம்ப்யூட்டர் ஜாதகம் (Jathagam PDF / Print) கணித்துத் தரப்படும்.', descEn: 'Accurate Computer Horoscope (Jathagam) generation & printing using birth details.', timeTa: 'உடனடியாக', timeEn: 'Same Day', docsTa: ['பெயர் (Name)', 'தந்தை பெயர் (Father Name)', 'தாயார் பெயர் (Mother Name)', 'பிறந்த ஊர் (Birth Place)', 'பிறந்த தேதி (Birth Date)', 'பிறந்த நேரம் (Birth Time)', 'ஜாதக நோட்டு (Jathaga Book - Optional / விருப்பப்பட்டால்)'], docsEn: ['Name', 'Father Name', 'Mother Name', 'Birth Place', 'Birth Date', 'Birth Time', 'Jathaga Book (Optional)'], uploadDocs: ['ஜாதக நோட்டு (Jathaga Book - Optional / விருப்பப்பட்டால்)'], hasAstroFields: true },
 
@@ -2168,14 +2168,13 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     ];
 
     // =======================================================
-    // 🔄 AUTOMATIC LIVE NOTIFICATIONS FETCHER (FROM WEBSITES, GOOGLE SHEET & LIVE FEEDS)
+    // 🔄 LIVE REQUIREMENT NOTIFICATIONS ENGINE (NO OLD NEWS/DATES)
     // =======================================================
-    let autoFetchedWebNotifs = [];
     let sheetLiveNotifs = [];
 
     function getActiveNotificationsList() {
       const customFs = window.firestoreLiveNotifs || [];
-      return [...customFs, ...sheetLiveNotifs, ...autoFetchedWebNotifs, ...notificationsData];
+      return [...customFs, ...sheetLiveNotifs, ...notificationsData];
     }
 
     function updateTopLiveTicker() {
@@ -2193,7 +2192,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       }
     }
 
-    // Render Live Notifications Box on Home Page
+    // Render Live Notifications Box on Home Page (Only Requirement Details)
     function renderNotifications() {
       const container = document.getElementById('notification-list');
       if (!container) return;
@@ -2218,14 +2217,10 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
           }
         }
 
-        const badgeColor = n.isAutoWeb
-          ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-          : 'bg-red-100 text-red-700';
-
         return `
           <div class="bg-white p-3 rounded-2xl border border-slate-200/90 hover:border-brand-500 shadow-sm flex items-center justify-between gap-3 transition">
             <div class="flex items-start gap-2.5 min-w-0">
-              <span class="${badgeColor} text-[10px] font-extrabold px-2 py-0.5 rounded-md shrink-0 mt-0.5">${tag}</span>
+              <span class="bg-red-100 text-red-700 text-[10px] font-extrabold px-2 py-0.5 rounded-md shrink-0 mt-0.5">${tag}</span>
               <p class="text-xs sm:text-sm font-bold text-slate-800 leading-snug">${title}</p>
             </div>
             <button onclick="${clickHandler}" class="shrink-0 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-[11px] px-3 py-2 rounded-xl shadow-sm transition">
@@ -2239,31 +2234,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     }
     window.mergeAndRenderLiveNotifications = renderNotifications;
 
-    // Map keywords from auto-fetched official web news to relevant service tabs & document checklists
-    function mapWebTitleToServiceTarget(titleStr) {
-      const s = String(titleStr || '').toLowerCase();
-      if (s.includes('trb') || s.includes('tet') || s.includes('teacher')) {
-        return { tagTa: 'TRB LIVE', tagEn: 'TRB LIVE', actionType: 'apply', actionTarget: 'trb-working-teacher', docsNoteTa: 'ஆவணங்கள்: கல்விச் சான்றிதழ், பணிச் சான்று, ஆதார், போட்டோ' };
-      }
-      if (s.includes('rrb') || s.includes('railway') || s.includes('ntpc')) {
-        return { tagTa: 'RRB LIVE', tagEn: 'RRB LIVE', actionType: 'apply', actionTarget: 'rrb-notif-1', docsNoteTa: 'ஆவணங்கள்: 10th / ITI / Degree மார்க்ஷீட், ஆதார், போட்டோ, வங்கி பாஸ்புக்' };
-      }
-      if (s.includes('jee') || s.includes('nta')) {
-        return { tagTa: 'JEE LIVE', tagEn: 'JEE LIVE', actionType: 'apply', actionTarget: 'jee-main-2027', docsNoteTa: 'ஆவணங்கள்: 10th மார்க்ஷீட், ஆதார், போட்டோ, சாதி சான்றிதழ்' };
-      }
-      if (s.includes('sabarimala') || s.includes('சபரிமலை') || s.includes('ayyappa')) {
-        return { tagTa: 'சபரிமலை LIVE', tagEn: 'SABARIMALA LIVE', actionType: 'apply', actionTarget: 'sabarimala-q-ticket', docsNoteTa: 'ஆவணங்கள்: 1. Photo, 2. Aadhaar, 3. Mobile Number, 4. Nominee Details' };
-      }
-      if (s.includes('ttd') || s.includes('tirupati') || s.includes('திருப்பதி') || s.includes('darshan')) {
-        return { tagTa: 'திருப்பதி LIVE', tagEn: 'TTD LIVE', actionType: 'page', actionTarget: 'ttd', docsNoteTa: 'ஆவணங்கள்: ஆதார் அட்டை, போட்டோ & மொபைல் எண்' };
-      }
-      if (s.includes('ration') || s.includes('tnpds') || s.includes('ரேஷன்')) {
-        return { tagTa: 'TNPDS LIVE', tagEn: 'TNPDS LIVE', actionType: 'page', actionTarget: 'tnpds', docsNoteTa: 'ஆவணங்கள்: ஆதார் அட்டை, குடும்ப அட்டை, போட்டோ' };
-      }
-      return { tagTa: 'TNPSC LIVE', tagEn: 'TNPSC LIVE', actionType: 'page', actionTarget: 'tnpsc', docsNoteTa: 'ஆவணங்கள்: OTR ID, 10th/12th/Degree மார்க்ஷீட், ஆதார், போட்டோ' };
-    }
-
-    // Automatic Live Fetcher from External Websites (Official Exam/Temple Feeds + Google Sheet + live-notifications.json)
+    // Fetch live requirement notifications from Google Sheet or live-notifications.json (No external old news)
     async function fetchAutoLiveUpdates(showIndicator) {
       const spinEl = document.getElementById('live-sync-spin');
       const lblEl = document.getElementById('live-sync-label');
@@ -2300,9 +2271,8 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
                 titleEn: item.titleEn || item.title || '',
                 linkTextTa: item.linkTextTa || '🔗 விண்ணப்பிக்க',
                 linkTextEn: item.linkTextEn || '🔗 Apply Now',
-                actionType: item.actionType || 'page',
-                actionTarget: item.actionTarget || 'tnpsc',
-                isAutoWeb: true
+                actionType: item.actionType || 'apply',
+                actionTarget: item.actionTarget || 'tnpsc-group4'
               })).filter(x => x.titleTa);
               renderNotifications();
             }
@@ -2310,53 +2280,15 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         } catch (eSheetNotif) { /* optional endpoint */ }
       }
 
-      // Source C: Automatic Web Feed Extraction (TNPSC, TRB, RRB, JEE Main, TTD, Sabarimala official news feeds via rss2json API)
-      try {
-        const rssQuery = encodeURIComponent('("TNPSC" OR "TRB" OR "RRB" OR "JEE Main" OR "Tirupati TTD" OR "Sabarimala") (notification OR exam OR booking OR darshan) when:14d');
-        const googleNewsRss = `https://news.google.com/rss/search?q=${rssQuery}&hl=ta&gl=IN&ceid=IN:ta`;
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(googleNewsRss)}`;
-
-        const feedRes = await fetch(apiUrl);
-        if (feedRes.ok) {
-          const feedData = await feedRes.json();
-          if (feedData && Array.isArray(feedData.items) && feedData.items.length > 0) {
-            const extracted = feedData.items.slice(0, 4).map(item => {
-              const cleanHeadline = String(item.title || '').split(' - ')[0].trim();
-              const pubDate = item.pubDate ? new Date(item.pubDate.replace(' ', 'T')).toLocaleDateString('en-IN') : '';
-              const mapped = mapWebTitleToServiceTarget(cleanHeadline);
-              return {
-                tagTa: mapped.tagTa,
-                tagEn: mapped.tagEn,
-                titleTa: `<span class="text-slate-900">${cleanHeadline}</span>${pubDate ? ` <span class="text-[11px] text-slate-500">(${pubDate})</span>` : ''}<br><span class="text-emerald-700 text-xs">📋 ${mapped.docsNoteTa}</span>`,
-                titleEn: `<span class="text-slate-900">${cleanHeadline}</span>${pubDate ? ` <span class="text-[11px] text-slate-500">(${pubDate})</span>` : ''}<br><span class="text-emerald-700 text-xs">📋 ${mapped.docsNoteTa}</span>`,
-                linkTextTa: '🔗 விண்ணப்பிக்க',
-                linkTextEn: '🔗 Apply Now',
-                actionType: mapped.actionType,
-                actionTarget: mapped.actionTarget,
-                isAutoWeb: true
-              };
-            });
-            if (extracted.length > 0) {
-              autoFetchedWebNotifs = extracted;
-              renderNotifications();
-            }
-          }
-        }
-      } catch (eWebFeed) {
-        console.warn('Auto web feed sync notice:', eWebFeed);
-      }
-
+      renderNotifications();
       if (lblEl) {
-        const nowStr = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
-        lblEl.textContent = currentLang === 'ta' ? `நேரலை (${nowStr})` : `Live (${nowStr})`;
+        lblEl.textContent = currentLang === 'ta' ? 'நேரலை' : 'Live';
       }
       if (spinEl) spinEl.classList.remove('animate-spin');
     }
     window.fetchAutoLiveUpdates = fetchAutoLiveUpdates;
 
-    // Trigger automatic live fetch on page load and every 3 minutes
-    setTimeout(() => { fetchAutoLiveUpdates(false); }, 800);
-    setInterval(() => { fetchAutoLiveUpdates(false); }, 180000);
+    setTimeout(() => { fetchAutoLiveUpdates(false); }, 500);
 
     // Render Wedding Invitation Picture Gallery
     function renderWeddingGallery() {
