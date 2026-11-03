@@ -294,13 +294,9 @@
       <!-- HOME PAGE MANUAL PHOTO GALLERY BOX (Admin Uploaded Images) -->
       <section class="pt-8 pb-2 max-w-7xl mx-auto px-3 sm:px-6">
         <div class="bg-white rounded-3xl border-2 border-indigo-100 p-5 sm:p-6 shadow-md">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-5 pb-3 border-b border-slate-100">
-            <div>
-              <span class="bg-indigo-100 text-indigo-700 text-[11px] font-extrabold px-3 py-1 rounded-full">🖼️ PHOTO GALLERY & UPDATES</span>
-              <h3 id="home-gallery-title" class="text-lg sm:text-2xl font-extrabold text-slate-900 mt-1.5">எங்கள் சேவைகள் & அறிவிப்பு படங்கள் (Gallery Box)</h3>
-              <p id="home-gallery-subtitle" class="text-xs sm:text-sm text-slate-500 mt-0.5">படத்தைக் கிளிக் செய்து பெரிதாகப் பார்க்கலாம்.</p>
-            </div>
-            <button type="button" id="home-admin-gallery-shortcut" onclick="navigateTo('admin')" class="hidden bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-xl shadow transition items-center gap-1.5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+            <span class="bg-indigo-100 text-indigo-700 text-[11px] font-extrabold px-3 py-1 rounded-full">🖼️ PHOTO GALLERY</span>
+            <button type="button" id="home-admin-gallery-shortcut" onclick="navigateTo('admin')" class="hidden bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs px-4 py-2 rounded-xl shadow transition items-center gap-1.5">
               <span>📤</span> <span>படம் Upload செய்ய (Admin)</span>
             </button>
           </div>
@@ -588,6 +584,29 @@
               <span id="adm-flash-status" class="text-xs font-bold text-emerald-700"></span>
             </div>
             <div id="adm-flash-list" class="space-y-1.5 pt-2"></div>
+          </div>
+
+          <!-- 0. PUBLIC SYNC & LOGO MANAGER (SO NORMAL PAGE / ALL CUSTOMERS SEE UPDATES) -->
+          <div class="bg-indigo-950 text-white p-5 rounded-2xl border-2 border-amber-400 shadow-md space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <span class="bg-amber-400 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase">🌐 PUBLIC WEBSITE SYNC & LOGO</span>
+                <h3 class="text-sm sm:text-base font-extrabold mt-1">அனைத்து வாடிக்கையாளர்களின் Normal Page-லும் தெரிய & Logo மாற்ற</h3>
+                <p id="adm-cloud-sync-msg" class="text-xs text-slate-300 mt-0.5">நீங்கள் சேர்க்கும் Notification, Flash Card மற்றும் Gallery படங்கள் அனைத்தும் மற்றவர்களின் Normal Page-லும் தெரிய கீழே உள்ள வழியைப் பயன்படுத்தலாம்.</p>
+              </div>
+              <div class="flex flex-wrap items-center gap-2">
+                <label class="cursor-pointer bg-white/15 hover:bg-white/25 text-white font-extrabold text-xs px-3.5 py-2.5 rounded-xl border border-white/25 transition flex items-center gap-1.5">
+                  <span>🖼️ கடை Logo மாற்று (Upload Logo)</span>
+                  <input type="file" id="adm-logo-file" accept="image/*" onchange="window.vpsUploadShopLogo && window.vpsUploadShopLogo(this)" class="hidden" />
+                </label>
+                <button type="button" onclick="window.vpsExportSiteDataJson && window.vpsExportSiteDataJson()" class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs px-4 py-2.5 rounded-xl shadow transition flex items-center gap-1.5">
+                  <span>📥</span> <span>Download site-data.json (GitHub Upload)</span>
+                </button>
+              </div>
+            </div>
+            <div id="adm-firestore-rule-warning" class="hidden bg-red-500/20 border border-red-400/50 rounded-xl p-3 text-xs text-amber-200 leading-relaxed">
+              ⚠️ <strong>முக்கியக் குறிப்பு:</strong> உங்கள் Firebase Firestore Rules-ல் Public Read அனுமதி இல்லையென்றால் Normal Page-ல் (மற்ற மொபைல்களில்) தரவுகள் தெரியாது. உடனடியாகத் தெரிய மேலே உள்ள <strong>"📥 Download site-data.json"</strong> பட்டனை அழுத்தி டவுன்லோட் ஆகும் <code>site-data.json</code> கோப்பை உங்கள் GitHub ஃபோல்டரில் (`index.html` இருக்கும் இடத்தில்) Upload செய்யவும்; அல்லது Firebase Console -> Firestore Database -> Rules-ல் <code>allow read: if true;</code> என்று மாற்றவும்.
+            </div>
           </div>
 
           <!-- 3. MANUAL HOME PAGE GALLERY IMAGE UPLOAD MANAGER -->
@@ -1775,11 +1794,13 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     };
 
     // =========================================================================
-    // 🔔 MANUAL LIVE NOTIFICATIONS, FLASH CARDS & HOME GALLERY CMS (FIRESTORE + LOCAL STORAGE)
+    // 🔔 MANUAL LIVE NOTIFICATIONS, FLASH CARDS, GALLERY & LOGO CMS
+    //    (WORKS ON NORMAL PAGE / ALL DEVICES VIA FIRESTORE + APPS SCRIPT + SITE-DATA.JSON + LOCALSTORAGE)
     // =========================================================================
     const LS_NOTIFS_KEY = 'vps_manual_notifs_v1';
     const LS_FLASH_KEY = 'vps_manual_flash_v1';
     const LS_GALLERY_KEY = 'vps_manual_gallery_v1';
+    const LS_LOGO_KEY = 'vps_custom_logo_v1';
 
     function loadLocalArray(key) {
       try {
@@ -1795,66 +1816,183 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
     window.manualLiveNotifs = loadLocalArray(LS_NOTIFS_KEY);
     window.manualFlashCards = loadLocalArray(LS_FLASH_KEY);
     window.manualGalleryImages = loadLocalArray(LS_GALLERY_KEY);
+    window.customSiteLogoData = localStorage.getItem(LS_LOGO_KEY) || '';
 
-    // Real-time listeners from Firestore (so changes sync across all customer phones/computers)
-    if (db) {
-      try {
-        const notifQuery = query(collection(db, 'manual_live_notifications'), orderBy('createdAt', 'desc'), limit(30));
-        onSnapshot(notifQuery, (snap) => {
-          const items = [];
-          snap.forEach((d) => {
-            const data = d.data();
-            items.push({ id: d.id, ...data });
-          });
-          window.manualLiveNotifs = items;
-          saveLocalArray(LS_NOTIFS_KEY, items);
-          if (typeof window.renderNotifications === 'function') window.renderNotifications();
-          renderAdminCustomNotifs();
-        }, (err) => {
-          console.warn('manual_live_notifications snapshot fallback to local:', err);
-          if (typeof window.renderNotifications === 'function') window.renderNotifications();
-          renderAdminCustomNotifs();
-        });
-      } catch (e) {}
-
-      try {
-        const flashQuery = query(collection(db, 'manual_flash_cards'), orderBy('createdAt', 'desc'), limit(15));
-        onSnapshot(flashQuery, (snap) => {
-          const items = [];
-          snap.forEach((d) => {
-            const data = d.data();
-            items.push({ id: d.id, ...data });
-          });
-          window.manualFlashCards = items;
-          saveLocalArray(LS_FLASH_KEY, items);
-          if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
-          renderAdminFlashList();
-        }, (err) => {
-          console.warn('manual_flash_cards snapshot fallback to local:', err);
-          if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
-          renderAdminFlashList();
-        });
-      } catch (e) {}
-
-      try {
-        const galQuery = query(collection(db, 'manual_home_gallery'), orderBy('createdAt', 'desc'), limit(24));
-        onSnapshot(galQuery, (snap) => {
-          const items = [];
-          snap.forEach((d) => {
-            const data = d.data();
-            items.push({ id: d.id, ...data });
-          });
-          window.manualGalleryImages = items;
-          saveLocalArray(LS_GALLERY_KEY, items);
-          if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
-          renderAdminGalleryList();
-        }, (err) => {
-          console.warn('manual_home_gallery snapshot fallback to local:', err);
-          if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
-          renderAdminGalleryList();
-        });
-      } catch (e) {}
+    function refreshAllPublicViews() {
+      if (typeof window.renderNotifications === 'function') window.renderNotifications();
+      if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
+      if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
+      if (typeof applyCustomLogoIfAvailable === 'function') applyCustomLogoIfAvailable();
+      renderAdminCustomNotifs();
+      renderAdminFlashList();
+      renderAdminGalleryList();
     }
+
+    function applyRemoteCmsData(data) {
+      if (!data || typeof data !== 'object') return false;
+      let changed = false;
+      if (Array.isArray(data.notifications)) {
+        window.manualLiveNotifs = data.notifications;
+        saveLocalArray(LS_NOTIFS_KEY, data.notifications);
+        changed = true;
+      }
+      if (Array.isArray(data.flashCards)) {
+        window.manualFlashCards = data.flashCards;
+        saveLocalArray(LS_FLASH_KEY, data.flashCards);
+        changed = true;
+      }
+      if (Array.isArray(data.gallery)) {
+        window.manualGalleryImages = data.gallery;
+        saveLocalArray(LS_GALLERY_KEY, data.gallery);
+        changed = true;
+      }
+      if (typeof data.logo === 'string' && data.logo.startsWith('data:image')) {
+        window.customSiteLogoData = data.logo;
+        try { localStorage.setItem(LS_LOGO_KEY, data.logo); } catch (e) {}
+        changed = true;
+      }
+      if (changed) refreshAllPublicViews();
+      return changed;
+    }
+
+    // Save the entire CMS state to Cloud (Firestore `site_public/live_cms` + `users/{uid}` + Google Apps Script)
+    async function syncCmsStateToCloud() {
+      const payload = {
+        notifications: (window.manualLiveNotifs || []).map(x => ({
+          id: String(x.id || ('n-' + Date.now())),
+          tagTa: String(x.tagTa || ''),
+          tagEn: String(x.tagEn || ''),
+          titleTa: String(x.titleTa || ''),
+          titleEn: String(x.titleEn || ''),
+          linkTextTa: String(x.linkTextTa || '🔗 விண்ணப்பிக்க'),
+          linkTextEn: String(x.linkTextEn || '🔗 Apply Now'),
+          actionType: String(x.actionType || 'page'),
+          actionTarget: String(x.actionTarget || 'tnpsc')
+        })),
+        flashCards: (window.manualFlashCards || []).map(x => ({
+          id: String(x.id || ('f-' + Date.now())),
+          badge: String(x.badge || 'FLASH'),
+          text: String(x.text || '')
+        })),
+        gallery: (window.manualGalleryImages || []).map(x => ({
+          id: String(x.id || ('g-' + Date.now())),
+          caption: String(x.caption || ''),
+          imgData: String(x.imgData || '')
+        })),
+        logo: String(window.customSiteLogoData || ''),
+        updatedAt: Date.now()
+      };
+
+      let cloudSaved = false;
+
+      // 1. Save to Firestore `site_public/live_cms`
+      if (db) {
+        try {
+          await setDoc(doc(db, 'site_public', 'live_cms'), payload, { merge: true });
+          cloudSaved = true;
+          const warnEl = $('adm-firestore-rule-warning');
+          if (warnEl) warnEl.classList.add('hidden');
+        } catch (eFs) {
+          console.warn('Firestore site_public/live_cms save notice:', eFs);
+          const warnEl = $('adm-firestore-rule-warning');
+          if (warnEl) warnEl.classList.remove('hidden');
+        }
+      }
+
+      // 2. Also send to Google Apps Script (if script supports saving/caching CMS JSON)
+      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
+        try {
+          fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: 'saveSiteCms', cmsData: payload })
+          }).catch(() => {});
+        } catch (eGs) {}
+      }
+
+      return cloudSaved;
+    }
+
+    // Export `site-data.json` so Admin can also drop it into GitHub folder for 100% instant loading on all devices
+    window.vpsExportSiteDataJson = function () {
+      const payload = {
+        notifications: window.manualLiveNotifs || [],
+        flashCards: window.manualFlashCards || [],
+        gallery: window.manualGalleryImages || [],
+        logo: window.customSiteLogoData || '',
+        updatedAt: Date.now()
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'site-data.json';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    };
+
+    // Upload Custom Shop Logo (Admin)
+    window.vpsUploadShopLogo = async function (inputEl) {
+      if (!isUserAdminEmail(currentUser)) return;
+      if (!inputEl || !inputEl.files || inputEl.files.length === 0) return;
+      try {
+        const compressedLogo = await compressImageFile(inputEl.files[0], 300, 0.85);
+        window.customSiteLogoData = compressedLogo;
+        try { localStorage.setItem(LS_LOGO_KEY, compressedLogo); } catch (e) {}
+        if (typeof applyCustomLogoIfAvailable === 'function') applyCustomLogoIfAvailable();
+        await syncCmsStateToCloud();
+        alert('✅ உங்கள் கடை Logo வெற்றிகரமாக மாற்றப்பட்டது!');
+      } catch (e) {
+        alert('Logo மாற்ற முடியவில்லை.');
+      }
+    };
+
+    // Load CMS data for Normal Page / Guest Visitors from all available sources
+    async function loadPublicCmsDataForVisitors() {
+      // Source 1: Check `site-data.json` in website folder
+      try {
+        const resJson = await fetch('site-data.json?t=' + Date.now(), { cache: 'no-store' });
+        if (resJson.ok) {
+          const dataJson = await resJson.json();
+          applyRemoteCmsData(dataJson);
+        }
+      } catch (e1) {}
+
+      // Source 2: Check Google Apps Script (`?action=getSiteCms`)
+      if (typeof GOOGLE_SCRIPT_URL === 'string' && GOOGLE_SCRIPT_URL.startsWith('http')) {
+        try {
+          const gsRes = await fetch(GOOGLE_SCRIPT_URL + (GOOGLE_SCRIPT_URL.includes('?') ? '&' : '?') + 'action=getSiteCms&t=' + Date.now());
+          if (gsRes.ok) {
+            const gsJson = await gsRes.json();
+            if (gsJson && (gsJson.notifications || gsJson.flashCards || gsJson.gallery || gsJson.cmsData)) {
+              applyRemoteCmsData(gsJson.cmsData || gsJson);
+            }
+          }
+        } catch (e2) {}
+      }
+
+      // Source 3: Real-time listener on Firestore `site_public/live_cms`
+      if (db) {
+        try {
+          onSnapshot(doc(db, 'site_public', 'live_cms'), (docSnap) => {
+            if (docSnap.exists()) {
+              applyRemoteCmsData(docSnap.data());
+            }
+          }, (err) => {
+            console.warn('site_public/live_cms read notice:', err);
+            if (isUserAdminEmail(currentUser)) {
+              const warnEl = $('adm-firestore-rule-warning');
+              if (warnEl) warnEl.classList.remove('hidden');
+            }
+          });
+        } catch (e3) {}
+      }
+    }
+
+    loadPublicCmsDataForVisitors();
 
     // ---- 1. Admin Manual Notifications Functions ----
     function renderAdminCustomNotifs() {
@@ -1911,13 +2049,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       if (typeof window.renderNotifications === 'function') window.renderNotifications();
       renderAdminCustomNotifs();
 
-      try {
-        if (db) {
-          await addDoc(collection(db, 'manual_live_notifications'), newNotif);
-        }
-      } catch (eAdd) {
-        console.warn('Firestore manual_live_notifications write notice:', eAdd);
-      }
+      await syncCmsStateToCloud();
 
       if (tagEl) tagEl.value = '';
       if (titleEl) titleEl.value = '';
@@ -1933,11 +2065,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_NOTIFS_KEY, window.manualLiveNotifs);
       if (typeof window.renderNotifications === 'function') window.renderNotifications();
       renderAdminCustomNotifs();
-      try {
-        if (db && !String(notifId).startsWith('local-')) {
-          await deleteDoc(doc(db, 'manual_live_notifications', notifId));
-        }
-      } catch (eDel) {}
+      await syncCmsStateToCloud();
     };
 
     window.vpsClearAllLiveNotifications = async function () {
@@ -1948,13 +2076,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_NOTIFS_KEY, []);
       if (typeof window.renderNotifications === 'function') window.renderNotifications();
       renderAdminCustomNotifs();
-      if (db) {
-        for (const item of oldList) {
-          if (item.id && !String(item.id).startsWith('local-')) {
-            try { await deleteDoc(doc(db, 'manual_live_notifications', item.id)); } catch (e) {}
-          }
-        }
-      }
+      await syncCmsStateToCloud();
     };
 
     // ---- 2. Admin Manual Flash Card Functions ----
@@ -2001,11 +2123,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
       renderAdminFlashList();
 
-      try {
-        if (db) {
-          await addDoc(collection(db, 'manual_flash_cards'), newFlash);
-        }
-      } catch (e) {}
+      await syncCmsStateToCloud();
 
       if (badgeEl) badgeEl.value = '';
       if (textEl) textEl.value = '';
@@ -2021,11 +2139,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_FLASH_KEY, window.manualFlashCards);
       if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
       renderAdminFlashList();
-      try {
-        if (db && !String(flashId).startsWith('local-')) {
-          await deleteDoc(doc(db, 'manual_flash_cards', flashId));
-        }
-      } catch (e) {}
+      await syncCmsStateToCloud();
     };
 
     window.vpsClearAllFlashCards = async function () {
@@ -2036,13 +2150,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_FLASH_KEY, []);
       if (typeof window.renderFlashCards === 'function') window.renderFlashCards();
       renderAdminFlashList();
-      if (db) {
-        for (const item of oldList) {
-          if (item.id && !String(item.id).startsWith('local-')) {
-            try { await deleteDoc(doc(db, 'manual_flash_cards', item.id)); } catch (e) {}
-          }
-        }
-      }
+      await syncCmsStateToCloud();
     };
 
     // ---- 3. Admin Manual Home Page Gallery Upload Functions (Auto-compress image so it saves fast in Firestore & LocalStorage) ----
@@ -2126,13 +2234,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
         renderAdminGalleryList();
 
-        try {
-          if (db) {
-            await addDoc(collection(db, 'manual_home_gallery'), newImgObj);
-          }
-        } catch (eDb) {
-          console.warn('Firestore gallery save notice:', eDb);
-        }
+        await syncCmsStateToCloud();
 
         fileEl.value = '';
         if (capEl) capEl.value = '';
@@ -2156,11 +2258,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_GALLERY_KEY, window.manualGalleryImages);
       if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
       renderAdminGalleryList();
-      try {
-        if (db && !String(imgId).startsWith('local-')) {
-          await deleteDoc(doc(db, 'manual_home_gallery', imgId));
-        }
-      } catch (e) {}
+      await syncCmsStateToCloud();
     };
 
     window.vpsClearAllGalleryImages = async function () {
@@ -2171,13 +2269,7 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       saveLocalArray(LS_GALLERY_KEY, []);
       if (typeof window.renderHomeGallery === 'function') window.renderHomeGallery();
       renderAdminGalleryList();
-      if (db) {
-        for (const item of oldList) {
-          if (item.id && !String(item.id).startsWith('local-')) {
-            try { await deleteDoc(doc(db, 'manual_home_gallery', item.id)); } catch (e) {}
-          }
-        }
-      }
+      await syncCmsStateToCloud();
     };
 
     window.refreshAdminManualLists = function () {
@@ -2296,29 +2388,63 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
       }
     ];
 
-    const logoCandidates = ['logo.png', 'Logo.png', 'LOGO.PNG', 'logo.jpg', 'Logo.jpg', 'logo.jpeg'];
+    const logoCandidates = ['logo.png', './logo.png', '/logo.png', 'https://vpscomputers.com/logo.png', 'https://www.vpscomputers.com/logo.png', 'Logo.png', 'LOGO.PNG', 'logo.jpg', 'Logo.jpg', 'logo.jpeg'];
     let headerLogoIdx = 0;
     let footerLogoIdx = 0;
 
+    function applyCustomLogoIfAvailable() {
+      const savedLogo = window.customSiteLogoData || localStorage.getItem('vps_custom_logo_v1');
+      if (savedLogo) {
+        const hImg = document.getElementById('main-logo-img');
+        const fImg = document.getElementById('footer-logo-img');
+        const hFb = document.getElementById('header-fallback-logo');
+        const fFb = document.getElementById('footer-fallback-logo');
+        if (hImg) { hImg.src = savedLogo; hImg.style.display = 'block'; }
+        if (fImg) { fImg.src = savedLogo; fImg.style.display = 'block'; }
+        if (hFb) hFb.style.display = 'none';
+        if (fFb) fFb.style.display = 'none';
+      }
+    }
+
     function handleLogoError(img) {
+      const savedLogo = window.customSiteLogoData || localStorage.getItem('vps_custom_logo_v1');
+      if (savedLogo && img.src !== savedLogo) {
+        img.src = savedLogo;
+        return;
+      }
       headerLogoIdx++;
       if (headerLogoIdx < logoCandidates.length) {
         img.src = logoCandidates[headerLogoIdx];
       } else {
         img.style.display = 'none';
-        document.getElementById('header-fallback-logo').style.display = 'flex';
+        const fb = document.getElementById('header-fallback-logo');
+        if (fb) fb.style.display = 'flex';
       }
     }
 
     function handleFooterLogoError(img) {
+      const savedLogo = window.customSiteLogoData || localStorage.getItem('vps_custom_logo_v1');
+      if (savedLogo && img.src !== savedLogo) {
+        img.src = savedLogo;
+        return;
+      }
       footerLogoIdx++;
       if (footerLogoIdx < logoCandidates.length) {
         img.src = logoCandidates[footerLogoIdx];
       } else {
         img.style.display = 'none';
-        document.getElementById('footer-fallback-logo').style.display = 'flex';
+        const fb = document.getElementById('footer-fallback-logo');
+        if (fb) fb.style.display = 'flex';
       }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      applyCustomLogoIfAvailable();
+      const hImg = document.getElementById('main-logo-img');
+      if (hImg && hImg.complete && hImg.naturalWidth === 0) handleLogoError(hImg);
+      const fImg = document.getElementById('footer-logo-img');
+      if (fImg && fImg.complete && fImg.naturalWidth === 0) handleFooterLogoError(fImg);
+    });
 
     const uiTranslations = {
       ta: {
