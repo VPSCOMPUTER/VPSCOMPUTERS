@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <title>VPS COMPUTERS - Complete Horoscope & Marriage Matching Software</title>
+    <script src="https://cdn.jsdelivr.net/npm/astronomy-engine@2.1.19/astronomy.browser.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700;800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+        body {
+            font-family: 'Noto Sans Tamil', sans-serif;
+            background: #cbd5e1;
+            color: #000;
+            padding: 12px;
+        }
+
+        .app-container {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
+        /* Top Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            padding: 10px 22px;
+            font-size: 15px;
+            font-weight: 800;
+            border: 2px solid #1e3a8a;
+            background: #ffffff;
+            color: #1e3a8a;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .tab-btn.active {
+            background: #1e3a8a;
+            color: #ffffff;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            background: #ffffff;
+            padding: 15px 18px;
+            border-radius: 8px;
+            border: 1px solid #94a3b8;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        .panel-title {
+            font-size: 15.5px;
+            font-weight: 800;
+            color: #1e3a8a;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #1e293b;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #64748b;
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+        }
+
+        /* Save / Load Bar */
+        .save-bar {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        /* Manual Planet Override Panel */
+        .override-box {
+            background: #fffbeb;
+            border: 1.5px solid #d97706;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            display: none;
+        }
+
+        .override-tbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            background: #fff;
+        }
+        .override-tbl th, .override-tbl td {
+            border: 1px solid #cbd5e1;
+            padding: 4px;
+            text-align: center;
+        }
+        .override-tbl th { background: #fef3c7; font-weight: 700; }
+        .override-tbl select { width: 100%; padding: 3px; font-family: inherit; font-size: 11.5px; }
+
+        .btn-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #1d4ed8;
+            color: #fff;
+            border: none;
+            padding: 7px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .btn-green { background: #15803d; }
+        .btn-amber { background: #b45309; }
+        .btn-red { background: #b91c1c; }
+
+        /* ================= KARTHI ASTRO PDF MODEL A4 SHEET ================= */
+        .a4-page {
+            width: 210mm;
+            height: 296mm;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 5mm 7mm;
+            border: 1px solid #000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .outer-frame {
+            border: 2px solid #000;
+            padding: 5px 8px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Divine Top Strip: Left Vinayagar, Center Kuladeivam, Right Murugar */
+        .divine-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1.5px solid #000;
+            padding-bottom: 4px;
+            margin-bottom: 3px;
+        }
+
+        .deity-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .deity-img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            border: 1px solid #000;
+            border-radius: 4px;
+            padding: 1px;
+            background: #fff;
+        }
+
+        .deity-label {
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        /* Model Top Header: Left Shop Address, Right Sloka */
+        .pdf-top-header {
+            display: grid;
+            grid-template-columns: 1.2fr 0.25fr 1.2fr;
+            align-items: center;
+            border-bottom: 1.5px solid #000;
+            padding-bottom: 4px;
+        }
+
+        .shop-top-left {
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+        .shop-top-left .s-title {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: #000;
+        }
+
+        .sri-center {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .sloka-right {
+            text-align: right;
+            font-size: 10px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+
+        /* Birth & Panchangam 2-Column Table */
+        .bio-panchangam-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border-bottom: 1.5px solid #000;
+            padding: 3px 2px;
+            column-gap: 14px;
+            font-size: 11.5px;
+        }
+
+        .bp-row {
+            display: grid;
+            grid-template-columns: 132px 10px 1fr;
+            line-height: 1.34;
+            font-weight: 700;
+        }
+
+        .bp-row .k { font-weight: 700; }
+        .bp-row .v-big { font-size: 13px; font-weight: 800; }
+
+        .yogi-strip {
+            border-bottom: 1.5px solid #000;
+            padding: 2.5px 4px;
+            font-size: 10.5px;
+            font-weight: 700;
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        /* 11-Row Nirayana Planetary Table (With Maandhi) */
+        .nirayana-title {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 800;
+            padding: 2px 0;
+            border-bottom: 1px solid #000;
+            background: #f1f5f9;
+        }
+
+        table.nirayana-tbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10.8px;
+            border-bottom: 1.5px solid #000;
+        }
+
+        table.nirayana-tbl th, table.nirayana-tbl td {
+            border: 1.2px solid #000 !important;
+            padding: 1.5px 5px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        table.nirayana-tbl th {
+            background: #e2e8f0;
+            font-size: 10.8px;
+            font-weight: 800;
+        }
+
+        /* ================= PRINT-SAFE SOUTH INDIAN RASI & NAVAMSA CHARTS ================= */
+        .charts-section {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 4px 0;
+        }
+
+        .chart-half {
+            width: 49%;
+        }
+
+        table.south-chart-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            border: 2.2px solid #000 !important;
+        }
+
+        table.south-chart-table td.s-cell {
+            width: 25%;
+            height: 52px;
+            border: 1.6px solid #000 !important;
+            padding: 2px 3px;
+            vertical-align: middle;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        table.south-chart-table td.s-cell .p-list {
+            font-size: 12px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #000;
+            word-wrap: break-word;
+        }
+
+        table.south-chart-table td.s-center {
+            border: 1.8px solid #000 !important;
+            vertical-align: middle;
+            text-align: center;
+            padding: 4px;
+            background: #ffffff;
+        }
+
+        .s-center .c-emblem {
+            font-size: 14px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+
+        .s-center .c-name {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 800;
+            border: 1.5px solid #000 !important;
+            padding: 1px 14px;
+            margin-bottom: 3px;
+            background: #f8fafc;
+        }
+
+        .s-center .c-sub {
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        /* Bottom Dasa Balance, Current Dasa, Bhavaga Maaruthal */
+        .dasa-summary-strip {
+            border-top: 1.5px solid #000;
+            border-bottom: 1.5px solid #000;
+            padding: 3px 6px;
+            font-size: 11px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .dasa-summary-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Compact Vimshottari End Dates Row */
+        table.dasa-end-tbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9.8px;
+            margin-top: 2px;
+        }
+        table.dasa-end-tbl th, table.dasa-end-tbl td {
+            border: 1.2px solid #000 !important;
+            padding: 1.5px 3px;
+            text-align: center;
+            font-weight: 700;
+        }
+        table.dasa-end-tbl th { background: #f1f5f9; }
+
+        /* 3-Line Custom Notes Box */
+        .notes-box-pdf {
+            border: 1.5px solid #000 !important;
+            padding: 3px 8px;
+            height: 48px;
+            font-size: 11px;
+            line-height: 1.3;
+            overflow: hidden;
+            margin-top: 2px;
+        }
+        .notes-box-pdf b { font-weight: 800; }
+        .notes-box-pdf div { font-weight: 700; white-space: pre-wrap; }
+
+        /* Single Line Bottom Shop Footer */
+        .bottom-single-footer {
+            border-top: 1.5px solid #000;
+            padding-top: 3px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        /* Porutham Table Styling */
+        table.porutham-tbl {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            margin: 6px 0;
+        }
+        table.porutham-tbl th, table.porutham-tbl td {
+            border: 1.4px solid #000 !important;
+            padding: 4px 8px;
+            font-weight: 700;
+        }
+        table.porutham-tbl th { background: #e2e8f0; text-align: center; }
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        @media print {
+            body { background: #fff !important; padding: 0 !important; margin: 0 !important; }
+            .nav-tabs, .control-panel { display: none !important; }
+            .app-container { max-width: 100% !important; margin: 0 !important; }
+            .a4-page {
+                width: 210mm !important;
+                height: 296mm !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 4mm 6mm !important;
+            }
+            table.south-chart-table {
+                border: 2.2px solid #000 !important;
+            }
+            table.south-chart-table td.s-cell,
+            table.south-chart-table td.s-center {
+                border: 1.6px solid #000 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+
+    <!-- Top Mode Switch Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" id="tabBtnHoroscope" onclick="switchTab('HOROSCOPE')">📜 ஜாதகக் குறிப்பு (Karthi Astro Model - 1 Page)</button>
+        <button class="tab-btn" id="tabBtnPorutham" onclick="switchTab('PORUTHAM')">💍 திருமணப் பொருத்தம் (10 பொருத்தம் - 1 Page Print)</button>
+    </div>
+
+    <!-- ==================== TAB 1: HOROSCOPE GENERATOR ==================== -->
+    <div id="sectionHoroscope">
+        <div class="control-panel">
+            <div class="panel-title">
+                <span>ஜாதக விவரங்கள் உள்ளீடு </span>
+                <span style="font-size:12.5px; color:#15803d;"> </span>
+            </div>
+
+            <!-- Save & Load Bar + Custom Deity Image Upload -->
+            <div class="save-bar">
+                <b style="font-size:12.5px;">💾 சேமித்த ஜாதகங்கள்:</b>
+                <select id="savedListSelect" style="width:200px; padding:5px;">
+                    <option value="">-- சேமித்த ஜாதகத்தைத் தேர்வு செய்க --</option>
+                </select>
+                <button class="btn" onclick="saveCurrentProfile()">💾 Save</button>
+                <button class="btn btn-green" onclick="loadSelectedProfile()">📂 Load</button>
+                <button class="btn btn-red" onclick="deleteSelectedProfile()">🗑️ Delete</button>
+                <label class="btn btn-amber" style="cursor:pointer;">
+                    🐘 விநாயகர் படம் மாற்றுக <input type="file" accept="image/*" style="display:none;" onchange="uploadDeityImg(event, 'vinayagar')">
+                </label>
+                <label class="btn btn-amber" style="cursor:pointer;">
+                    🦚 முருகர் படம் மாற்றுக <input type="file" accept="image/*" style="display:none;" onchange="uploadDeityImg(event, 'murugar')">
+                </label>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>பஞ்சாங்க முறை</label>
+                    <select id="inMode" onchange="onModeChange()" style="background:#fef3c7; font-weight:700;">
+                        <option value="THIRUKANITHAM">திருக்கணிதம்</option>
+                        <option value="VAKKIYAM">வாக்கியம்</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>ஜாதகர் பெயர் (Name)</label>
+                    <input type="text" id="inName" value="P Vasudevan" oninput="renderHoroscopeSheet()">
+                </div>
+                <div class="form-group">
+                    <label>தந்தை பெயர் (Father)</label>
+                    <input type="text" id="inFather" value="Palanisamy" oninput="renderHoroscopeSheet()">
+                </div>
+                <div class="form-group">
+                    <label>தாய் பெயர் (Mother)</label>
+                    <input type="text" id="inMother" value="Thilagavathi" oninput="renderHoroscopeSheet()">
+                </div>
+                <div class="form-group">
+                    <label>பிறந்த தேதி (DOB)</label>
+                    <input type="date" id="inDate" value="1987-09-14" onchange="calculateAll()">
+                </div>
+                <div class="form-group">
+                    <label>பிறந்த நேரம் (TOB)</label>
+                    <input type="time" id="inTime" value="04:00" onchange="calculateAll()">
+                </div>
+                <div class="form-group">
+                    <label>பாலினம் (Gender)</label>
+                    <select id="inGender" onchange="renderHoroscopeSheet()">
+                        <option value="ஆண்">ஆண்</option>
+                        <option value="பெண்">பெண்</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>பிறந்த ஊர் (38 மாவட்டங்கள் & தாலுகாக்கள்)</label>
+                    <select id="inPlaceSelect" onchange="onPlaceChange()"></select>
+                </div>
+                <div class="form-group">
+                    <label>இடம் (அச்சில் வர வேண்டிய பெயர்)</label>
+                    <input type="text" id="inPlaceText" value="Velur" oninput="renderHoroscopeSheet()">
+                </div>
+                <div class="form-group" style="grid-column: span 3;">
+                    <label>குறிப்பு (3 வரிகள் கொண்ட குறிப்பு பெட்டி)</label>
+                    <textarea id="inNotes" rows="2" oninput="renderHoroscopeSheet()">குலதெய்வம் துணை. சுப முகூர்த்த ஜாதகக் குறிப்பு.</textarea>
+                </div>
+            </div>
+
+            <!-- Manual Override Panel for Vakkiyam -->
+            <div class="override-box" id="overrideBox">
+                <div style="font-size:13px; font-weight:800; color:#b45309; margin-bottom:6px;">
+                    ✏️ கிரகங்களை மாற்றி அமைக்க (வாக்கிய பஞ்சாங்கம் / Manual Override) - நட்சத்திரம் & பாதம் மாற்றினால் ராசி மற்றும் நவாம்சம் தானாக மாறும்:
+                </div>
+                <table class="override-tbl">
+                    <thead>
+                        <tr>
+                            <th>கிரகம்</th>
+                            <th>ராசி</th>
+                            <th>நட்சத்திரம்</th>
+                            <th>பாதம்</th>
+                            <th>நவாம்சம்</th>
+                            <th>வக்கிரம்</th>
+                        </tr>
+                    </thead>
+                    <tbody id="overrideTbody"></tbody>
+                </table>
+            </div>
+
+            <div class="btn-row">
+                <button class="btn" onclick="calculateAll()">🔄 ஜாதகம் கணிக்க (Calculate)</button>
+                <button class="btn btn-amber" onclick="toggleOverride()">✏️ கிரகங்களை மாற்றி அமைக்க (Manual Edit)</button>
+                <button class="btn btn-green" onclick="window.print()">🖨️ A4 பிரிண்ட் / PDF எடுக்க</button>
+            </div>
+        </div>
+
+        <!-- ==================== KARTHI ASTRO MODEL A4 SHEET ==================== -->
+        <div class="a4-page" id="horoscopePage">
+            <div class="outer-frame">
+
+                <!-- Top Left Vinayagar & Top Right Murugar Strip -->
+                <div class="divine-top-bar">
+                    <div class="deity-box">
+                        <img id="imgVinayagar1" class="deity-img" alt="Vinayagar">
+                        <div class="deity-label">
+                            <div>ஸ்ரீ</div>
+                            <div>கணபதி துணை</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center; font-size:12.5px; font-weight:800;">
+                        ஸ்ரீ<br>குலதெய்வம் துணை
+                    </div>
+                    <div class="deity-box" style="flex-direction: row-reverse; text-align: right;">
+                        <img id="imgMurugar1" class="deity-img" alt="Murugar">
+                        <div class="deity-label">
+                            <div>ஓம் சரவணபவ</div>
+                            <div>ஸ்ரீ முருகன் துணை</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. Top Header (Exact PDF style) -->
+                <div class="pdf-top-header">
+                    <div class="shop-top-left">
+                        <div class="s-title">VPS COMPUTERS</div>
+                        <div>3/131, INDRA NAGAR, VADAKARAIATTUR PO,</div>
+                        <div>P.VELUR TK, NAMAKKAL-637213</div>
+                        <div>9843991974 | VPSCCVAT@GMAIL.COM</div>
+                    </div>
+                    <div class="sri-center">ஸ்ரீ</div>
+                    <div class="sloka-right">
+                        <div>ஜெனனீ ஜென்ம சௌக்கியானாம் வர்த்தனி குலசம்பதாம்</div>
+                        <div>பதவிபூர்வ புண்யாணாம் லிக்யதே ஜென்ம பத்ரிகா</div>
+                    </div>
+                </div>
+
+                <!-- 2. Two-Column Bio & Panchangam Box -->
+                <div class="bio-panchangam-box">
+                    <!-- Left Column -->
+                    <div>
+                        <div class="bp-row"><span class="k">பெயர்</span><span>:</span><span class="v-big" id="pName">-</span></div>
+                        <div class="bp-row"><span class="k">தந்தை</span><span>:</span><span class="v-big" id="pFather">-</span></div>
+                        <div class="bp-row"><span class="k">தாய்</span><span>:</span><span class="v-big" id="pMother">-</span></div>
+                        <div class="bp-row"><span class="k">லக்னம்</span><span>:</span><span class="v-big" id="pLagnam">-</span></div>
+                        <div class="bp-row"><span class="k">ராசி</span><span>:</span><span class="v-big" id="pRasi">-</span></div>
+                        <div class="bp-row"><span class="k">நட்சத்திரம்</span><span>:</span><span class="v-big" id="pStar">-</span></div>
+                        <div class="bp-row"><span class="k">பக்ஷம்-திதி</span><span>:</span><span id="pTithi">-</span></div>
+                        <div class="bp-row"><span class="k">யோகம்-கரணம்</span><span>:</span><span id="pYogaKarana">-</span></div>
+                        <div class="bp-row"><span class="k">தமிழ்படிகிழமை</span><span>:</span><span id="pDay">-</span></div>
+                        <div class="bp-row"><span class="k">தமிழ் தேதி</span><span>:</span><span id="pTamilDate">-</span></div>
+                        <div class="bp-row"><span class="k">திதி சூன்யம்</span><span>:</span><span id="pTithiSoonyam">-</span></div>
+                    </div>
+                    <!-- Right Column -->
+                    <div>
+                        <div class="bp-row"><span class="k">தேதி</span><span>:</span><span class="v-big" id="pDate">-</span></div>
+                        <div class="bp-row"><span class="k">நேரம்</span><span>:</span><span class="v-big" id="pTime">-</span></div>
+                        <div class="bp-row"><span class="k">உதயாதி நாழிகை</span><span>:</span><span id="pUthayathi">-</span></div>
+                        <div class="bp-row"><span class="k">இடம்</span><span>:</span><span class="v-big" id="pPlace">-</span></div>
+                        <div class="bp-row"><span class="k">அட்ச/தீர்க்க ரேகை</span><span>:</span><span id="pLatLon">-</span></div>
+                        <div class="bp-row"><span class="k">பொதுநேரம்-திருத்தம்</span><span>:</span><span>5.5</span></div>
+                        <div class="bp-row"><span class="k">சூரியஉதயம்</span><span>:</span><span id="pSunrise">-</span></div>
+                        <div class="bp-row"><span class="k">சூரியஅஸ்தமனம்</span><span>:</span><span id="pSunset">-</span></div>
+                        <div class="bp-row"><span class="k">பாலினம்</span><span>:</span><span id="pGender">-</span></div>
+                        <div class="bp-row"><span class="k">நக்ஷத்திர எழுத்து</span><span>:</span><span id="pLetters">-</span></div>
+                        <div class="bp-row"><span class="k">அயனாம்சம்</span><span>:</span><span id="pAyanamsa">-</span></div>
+                    </div>
+                </div>
+
+                <!-- 3. Yogi / Avayogi Strip -->
+                <div class="yogi-strip" id="pYogiLine">
+                    யோகம் - யோக நட்சத்திரம் - யோகி - அவயோக நட்சத்திரம் - அவயோகி
+                </div>
+
+                <!-- 4. Nirayana Planetary Positions Table (11 Rows with Maandhi) -->
+                <div>
+                    <div class="nirayana-title" id="pNirayanaHeading">துல்லியமான நிராயன கிரக நிலைகள் ( திருக்கணிதம் )</div>
+                    <table class="nirayana-tbl">
+                        <thead>
+                            <tr>
+                                <th>கிரகம்</th>
+                                <th>பாகை-கலை</th>
+                                <th>நட்சத்திரம்</th>
+                                <th>பாதம்</th>
+                                <th>நட்-அதிபதி</th>
+                                <th>ராசி</th>
+                                <th>பாகை-கலை</th>
+                                <th>நிலை</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pPlanetTbody"></tbody>
+                    </table>
+                </div>
+
+                <!-- 5. Rasi & Navamsa Charts (Print-Safe Solid Borders) -->
+                <div class="charts-section">
+                    <div class="chart-half" id="pRasiGrid"></div>
+                    <div class="chart-half" id="pNavamsaGrid"></div>
+                </div>
+
+                <!-- 6. Dasa Balance, Current Dasa, Bhavaga Maaruthal & End Dates -->
+                <div>
+                    <div class="dasa-summary-strip">
+                        <div class="dasa-summary-row">
+                            <span id="pDasaBalanceText">தசை இருப்பு: -</span>
+                            <span id="pCurrentDasaText">நடப்பு தசை: -</span>
+                        </div>
+                        <div id="pBhavagaText" style="font-size:10.5px; font-weight:700; margin-top:1px;">
+                            பாவக மாறுதல்: -
+                        </div>
+                    </div>
+                    <table class="dasa-end-tbl">
+                        <thead id="pDasaEndHead"></thead>
+                        <tbody id="pDasaEndBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- 7. 3-Line Custom Notes Box -->
+                <div class="notes-box-pdf">
+                    <b>குறிப்பு (Notes):</b>
+                    <div id="pNotesOut">-</div>
+                </div>
+
+                <!-- 8. Single-Line Shop Footer -->
+                <div class="bottom-single-footer">
+                    <span>VPS COMPUTERS AND PRINTERS, 3/131, Indra Nagar, Vadakaraiattur PO, Paramathivelur TK, Namakkal - 637213 | 📞 9843991974</span>
+                    <span id="pPrintedTime">Printed on -</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== TAB 2: 10 PORUTHAM MARRIAGE MATCHING ==================== -->
+    <div id="sectionPorutham" style="display:none;">
+        <div class="control-panel">
+            <div class="panel-title">
+                <span>💍 திருமணப் பொருத்தம் (10 பொருத்தங்கள் & தோஷ சாம்யம்)</span>
+                <button class="btn btn-green" onclick="window.print()">🖨️ A4 பிரிண்ட் / PDF எடுக்க</button>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>பெண் பெயர் (Bride Name)</label>
+                    <input type="text" id="brideName" value="செல்வி. திவ்யா" oninput="calculatePorutham()">
+                </div>
+                <div class="form-group">
+                    <label>பெண் பிறந்த தேதி</label>
+                    <input type="date" id="brideDob" value="2002-08-18" onchange="calculatePorutham()">
+                </div>
+                <div class="form-group">
+                    <label>பெண் நட்சத்திரம்</label>
+                    <select id="brideStar" onchange="onBrideStarChange()"></select>
+                </div>
+                <div class="form-group">
+                    <label>பெண் பாதம் & ராசி</label>
+                    <select id="bridePada" onchange="calculatePorutham()">
+                        <option value="1">பாதம் 1</option>
+                        <option value="2">பாதம் 2</option>
+                        <option value="3">பாதம் 3</option>
+                        <option value="4">பாதம் 4</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>ஆண் பெயர் (Groom Name)</label>
+                    <input type="text" id="groomName" value="செல்வன். கார்த்தி" oninput="calculatePorutham()">
+                </div>
+                <div class="form-group">
+                    <label>ஆண் பிறந்த தேதி</label>
+                    <input type="date" id="groomDob" value="2000-07-10" onchange="calculatePorutham()">
+                </div>
+                <div class="form-group">
+                    <label>ஆண் நட்சத்திரம்</label>
+                    <select id="groomStar" onchange="onGroomStarChange()"></select>
+                </div>
+                <div class="form-group">
+                    <label>ஆண் பாதம் & ராசி</label>
+                    <select id="groomPada" onchange="calculatePorutham()">
+                        <option value="1">பாதம் 1</option>
+                        <option value="2">பாதம் 2</option>
+                        <option value="3">பாதம் 3</option>
+                        <option value="4" selected>பாதம் 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>திருமணப் பொருத்தக் குறிப்பு (3 வரிகள்)</label>
+                <textarea id="poruthamNotes" rows="2" oninput="calculatePorutham()">இருவருக்கும் ரஜ்ஜு உட்பட முக்கியப் பொருத்தங்கள் சிறப்பாக உள்ளன. சுப முகூர்த்தம் வைக்கலாம்.</textarea>
+            </div>
+        </div>
+
+        <!-- A4 Porutham Sheet -->
+        <div class="a4-page" id="poruthamPage">
+            <div class="outer-frame">
+                <!-- Divine Top Strip: Left Vinayagar, Center Sri, Right Murugar -->
+                <div class="divine-top-bar">
+                    <div class="deity-box">
+                        <img id="imgVinayagar2" class="deity-img" alt="Vinayagar">
+                        <div class="deity-label">
+                       </div>
+                    </div>
+                    <div style="text-align:center; font-size:12.5px; font-weight:800;">
+                        ஸ்ரீ முருகன் துணை<br>
+                    </div>
+                    <div class="deity-box" style="flex-direction: row-reverse; text-align: right;">
+                        <img id="imgMurugar2" class="deity-img" alt="Murugar">
+                        <div class="deity-label">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="pdf-top-header">
+                    <div class="shop-top-left">
+                        <div class="s-title">VPS COMPUTERS</div>
+                        <div>3/131, INDRA NAGAR, VADAKARAIATTUR PO,</div>
+                        <div>P.VELUR TK, NAMAKKAL-637213</div>
+                        <div>9843991974 | VPSCCVAT@GMAIL.COM</div>
+                    </div>
+                    <div class="sri-center">ஸ்ரீ</div>
+                    <div class="sloka-right">
+                        <div style="font-size:14px; font-weight:800;">திருமணப் பொருத்த அறிக்கை</div>
+                        <div>தென்னிந்திய தசவித (10) பொருத்த ஆய்வு</div>
+                    </div>
+                </div>
+
+                <div class="bio-panchangam-box" style="font-size:13px;">
+                    <div>
+                        <div class="bp-row"><span class="k">பெண் பெயர்</span><span>:</span><span class="v-big" id="mBrideName">-</span></div>
+                        <div class="bp-row"><span class="k">பிறந்த தேதி</span><span>:</span><span id="mBrideDob">-</span></div>
+                        <div class="bp-row"><span class="k">பெண் ராசி</span><span>:</span><span class="v-big" id="mBrideRasi">-</span></div>
+                        <div class="bp-row"><span class="k">பெண் நட்சத்திரம்</span><span>:</span><span class="v-big" id="mBrideStar">-</span></div>
+                    </div>
+                    <div>
+                        <div class="bp-row"><span class="k">ஆண் பெயர்</span><span>:</span><span class="v-big" id="mGroomName">-</span></div>
+                        <div class="bp-row"><span class="k">பிறந்த தேதி</span><span>:</span><span id="mGroomDob">-</span></div>
+                        <div class="bp-row"><span class="k">ஆண் ராசி</span><span>:</span><span class="v-big" id="mGroomRasi">-</span></div>
+                        <div class="bp-row"><span class="k">ஆண் நட்சத்திரம்</span><span>:</span><span class="v-big" id="mGroomStar">-</span></div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="nirayana-title">தசவித (10) திருமணப் பொருத்த விவரங்கள்</div>
+                    <table class="porutham-tbl">
+                        <thead>
+                            <tr>
+                                <th style="width:8%;">எண்</th>
+                                <th style="width:28%;">பொருத்தத்தின் பெயர்</th>
+                                <th style="width:22%;">நிலை (Status)</th>
+                                <th>விளக்கம் / குறிப்பு</th>
+                            </tr>
+                        </thead>
+                        <tbody id="poruthamTbody"></tbody>
+                    </table>
+                </div>
+
+                <div class="dasa-summary-strip" style="text-align:center; font-size:14px; padding:8px;">
+                    <span id="poruthamTotalVerdict">-</span>
+                </div>
+
+                <div class="notes-box-pdf" style="height:68px;">
+                    <b>குறிப்பு (Notes):</b>
+                    <div id="mPoruthamNotes">-</div>
+                </div>
+
+                <div class="bottom-single-footer">
+                    <span>VPS COMPUTERS AND PRINTERS, 3/131, Indra Nagar, Vadakaraiattur PO, Paramathivelur TK, Namakkal - 637213 | 📞 9843991974</span>
+                    <span id="mPrintedTime">Printed on -</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+// Default Crisp Inline SVG Icons for Vinayagar (Left) & Murugar (Right)
+const DEFAULT_VINAYAGAR_SVG = "data:image/svg+xml;utf8," + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="46" fill="#fff7ed" stroke="#b45309" stroke-width="3"/>
+  <path d="M35 32 L65 32 L58 14 L42 14 Z" fill="#f59e0b" stroke="#000" stroke-width="2"/>
+  <circle cx="50" cy="50" r="18" fill="#fde68a" stroke="#000" stroke-width="2"/>
+  <path d="M32 42 C18 35, 18 62, 32 56" fill="#fde68a" stroke="#000" stroke-width="2"/>
+  <path d="M68 42 C82 35, 82 62, 68 56" fill="#fde68a" stroke="#000" stroke-width="2"/>
+  <path d="M46 52 Q50 78 62 72" fill="none" stroke="#000" stroke-width="4" stroke-linecap="round"/>
+  <line x1="43" y1="39" x2="57" y2="39" stroke="#dc2626" stroke-width="2.5"/>
+  <circle cx="50" cy="39" r="2.5" fill="#dc2626"/>
+  <text x="50" y="91" font-size="13" font-weight="bold" text-anchor="middle" fill="#7c2d12">ஓம்</text>
+</svg>`);
+
+const DEFAULT_MURUGAR_SVG = "data:image/svg+xml;utf8," + encodeURIComponent(`
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="46" fill="#fef2f2" stroke="#b91c1c" stroke-width="3"/>
+  <path d="M50 10 C37 26, 36 42, 50 54 C64 42, 63 26, 50 10 Z" fill="#ef4444" stroke="#000" stroke-width="2.2"/>
+  <line x1="50" y1="54" x2="50" y2="86" stroke="#000" stroke-width="4"/>
+  <line x1="36" y1="86" x2="64" y2="86" stroke="#000" stroke-width="3.5"/>
+  <line x1="41" y1="30" x2="59" y2="30" stroke="#ffffff" stroke-width="2.2"/>
+  <line x1="39" y1="35" x2="61" y2="35" stroke="#ffffff" stroke-width="2.2"/>
+  <line x1="41" y1="40" x2="59" y2="40" stroke="#ffffff" stroke-width="2.2"/>
+  <circle cx="50" cy="35" r="3" fill="#fde047"/>
+</svg>`);
+
+function loadDeityImages() {
+    let vSaved = DEFAULT_VINAYAGAR_SVG, mSaved = DEFAULT_MURUGAR_SVG;
+    try {
+        vSaved = localStorage.getItem('vps_custom_vinayagar') || DEFAULT_VINAYAGAR_SVG;
+        mSaved = localStorage.getItem('vps_custom_murugar') || DEFAULT_MURUGAR_SVG;
+    } catch (e) {}
+    document.getElementById('imgVinayagar1').src = vSaved;
+    document.getElementById('imgVinayagar2').src = vSaved;
+    document.getElementById('imgMurugar1').src = mSaved;
+    document.getElementById('imgMurugar2').src = mSaved;
+}
+
+function uploadDeityImg(ev, type) {
+    const file = ev.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            if (type === 'vinayagar') localStorage.setItem('vps_custom_vinayagar', e.target.result);
+            else localStorage.setItem('vps_custom_murugar', e.target.result);
+        } catch (err) { alert('படம் மிகப் பெரியது - சிறிய படத்தைப் பயன்படுத்தவும்'); }
+        loadDeityImages();
+    };
+    reader.readAsDataURL(file);
+}
+
+// ==================== 1. TAMIL NADU 38 DISTRICTS & TALUKS DATABASE ====================
+const TN_PLACES = [
+    { name: "Velur / Paramathi Velur (பரமத்தி வேலூர்)", lat: 11.0997, lon: 78.0167 },
+    { name: "Vadakaraiattur (வடகரை ஆத்தூர்)", lat: 11.1250, lon: 77.9850 },
+    { name: "Namakkal (நாமக்கல்)", lat: 11.2332, lon: 78.1667 },
+    { name: "Tiruchengode (திருச்செங்கோடு)", lat: 11.3785, lon: 77.8944 },
+    { name: "Rasipuram (ராசிபுரம்)", lat: 11.4602, lon: 78.1836 },
+    { name: "Kumarapalayam (குமாரபாளையம்)", lat: 11.4446, lon: 77.7099 },
+    { name: "Pallipalayam (பள்ளிப்பாளையம்)", lat: 11.3667, lon: 77.7500 },
+    { name: "Sendamangalam (சேந்தமங்கலம்)", lat: 11.2981, lon: 78.2347 },
+    { name: "Kolli Hills (கொல்லிமலை)", lat: 11.2485, lon: 78.3387 },
+    { name: "Mohanur (மோகனூர்)", lat: 10.9833, lon: 78.1167 },
+    { name: "Karur (கரூர்)", lat: 10.9601, lon: 78.0766 },
+    { name: "Kulithalai (குளித்தலை)", lat: 10.9355, lon: 78.4114 },
+    { name: "Aravakurichi (அரவக்குறிச்சி)", lat: 10.7745, lon: 77.9108 },
+    { name: "Salem (சேலம்)", lat: 11.6643, lon: 78.1460 },
+    { name: "Attur - Salem (ஆத்தூர்)", lat: 11.5969, lon: 78.6010 },
+    { name: "Mettur (மேட்டூர்)", lat: 11.7863, lon: 77.8008 },
+    { name: "Omalur (ஓமலூர்)", lat: 11.7410, lon: 78.0439 },
+    { name: "Sankagiri (சங்ககிரி)", lat: 11.4775, lon: 77.8705 },
+    { name: "Erode (ஈரோடு)", lat: 11.3410, lon: 77.7172 },
+    { name: "Gobichettipalayam (கோபிசெட்டிபாளையம்)", lat: 11.4547, lon: 77.4363 },
+    { name: "Bhavani (பவானி)", lat: 11.4454, lon: 77.6844 },
+    { name: "Perundurai (பெருந்துறை)", lat: 11.2757, lon: 77.5830 },
+    { name: "Dharapuram (தாராபுரம்)", lat: 10.7383, lon: 77.5322 },
+    { name: "Kangeyam (காங்கேயம்)", lat: 11.0053, lon: 77.5617 },
+    { name: "Tiruppur (திருப்பூர்)", lat: 11.1085, lon: 77.3411 },
+    { name: "Udumalaipettai (உடுமலைப்பேட்டை)", lat: 10.5833, lon: 77.2500 },
+    { name: "Coimbatore (கோயம்புத்தூர்)", lat: 11.0168, lon: 76.9558 },
+    { name: "Mettupalayam (மேட்டுப்பாளையம்)", lat: 11.2993, lon: 76.9406 },
+    { name: "Pollachi (பொள்ளாச்சி)", lat: 10.6609, lon: 77.0048 },
+    { name: "Valparai (வால்பாறை)", lat: 10.3267, lon: 76.9500 },
+    { name: "Nilgiris - Udhagamandalam (நீலகிரி - ஊட்டி)", lat: 11.4102, lon: 76.6950 },
+    { name: "Tiruchirappalli (திருச்சி)", lat: 10.7905, lon: 78.7047 },
+    { name: "Musiri (முசிறி)", lat: 10.9535, lon: 78.4443 },
+    { name: "Thuraiyur (துறையூர்)", lat: 11.1450, lon: 78.5967 },
+    { name: "Perambalur (பெரம்பலூர்)", lat: 11.2342, lon: 78.8808 },
+    { name: "Ariyalur (அரியலூர்)", lat: 11.1401, lon: 79.0786 },
+    { name: "Thanjavur (தஞ்சாவூர்)", lat: 10.7870, lon: 79.1378 },
+    { name: "Kumbakonam (கும்பகோணம்)", lat: 10.9617, lon: 79.3881 },
+    { name: "Pattukkottai (பட்டுக்கோட்டை)", lat: 10.4235, lon: 79.3195 },
+    { name: "Tiruvarur (திருவாரூர்)", lat: 10.7661, lon: 79.6344 },
+    { name: "Nagapattinam (நாகப்பட்டினம்)", lat: 10.7672, lon: 79.8449 },
+    { name: "Mayiladuthurai (மயிலாடுதுறை)", lat: 11.1018, lon: 79.6520 },
+    { name: "Cuddalore (கடலூர்)", lat: 11.7480, lon: 79.7714 },
+    { name: "Chidambaram (சிதம்பரம்)", lat: 11.3993, lon: 79.6933 },
+    { name: "Viluppuram (விழுப்புரம்)", lat: 11.9401, lon: 79.4861 },
+    { name: "Kallakurichi (கள்ளக்குறிச்சி)", lat: 11.7383, lon: 78.9597 },
+    { name: "Tiruvannamalai (திருவண்ணாமலை)", lat: 12.2253, lon: 79.0747 },
+    { name: "Vellore (வேலூர் - மாவட்டம்)", lat: 12.9165, lon: 79.1325 },
+    { name: "Ranipet (ராணிப்பேட்டை)", lat: 12.9224, lon: 79.3326 },
+    { name: "Arakkonam (அரக்கோணம்)", lat: 13.0840, lon: 79.6700 },
+    { name: "Tirupathur (திருப்பத்தூர்)", lat: 12.4955, lon: 78.5730 },
+    { name: "Vaniyambadi (வாணியம்பாடி)", lat: 12.6830, lon: 78.6200 },
+    { name: "Ambur (ஆம்பூர்)", lat: 12.7916, lon: 78.7163 },
+    { name: "Krishnagiri (கிருஷ்ணகிரி)", lat: 12.5186, lon: 78.2137 },
+    { name: "Hosur (ஓசூர்)", lat: 12.7409, lon: 77.8253 },
+    { name: "Dharmapuri (தர்மபுரி)", lat: 12.1211, lon: 78.1582 },
+    { name: "Kancheepuram (காஞ்சிபுரம்)", lat: 12.8342, lon: 79.7036 },
+    { name: "Chengalpattu (செங்கல்பட்டு)", lat: 12.6819, lon: 79.9888 },
+    { name: "Tambaram (தாம்பரம்)", lat: 12.9249, lon: 80.1000 },
+    { name: "Tiruvallur (திருவள்ளூர்)", lat: 13.1431, lon: 79.9080 },
+    { name: "Chennai (சென்னை)", lat: 13.0827, lon: 80.2707 },
+    { name: "Puducherry (புதுச்சேரி)", lat: 11.9416, lon: 79.8083 },
+    { name: "Madurai (மதுரை)", lat: 9.9252, lon: 78.1198 },
+    { name: "Dindigul (திண்டுக்கல்)", lat: 10.3673, lon: 77.9803 },
+    { name: "Palani (பழனி)", lat: 10.4500, lon: 77.5167 },
+    { name: "Kodaikanal (கொடைக்கானல்)", lat: 10.2381, lon: 77.4892 },
+    { name: "Theni (தேனி)", lat: 10.0104, lon: 77.4768 },
+    { name: "Sivaganga (சிவகங்கை)", lat: 9.8433, lon: 78.4809 },
+    { name: "Karaikudi (காரைக்குடி)", lat: 10.0667, lon: 78.7833 },
+    { name: "Pudukkottai (புதுக்கோட்டை)", lat: 10.3833, lon: 78.8001 },
+    { name: "Ramanathapuram (இராமநாதபுரம்)", lat: 9.3639, lon: 78.8395 },
+    { name: "Rameswaram (இராமேஸ்வரம்)", lat: 9.2876, lon: 79.3129 },
+    { name: "Virudhunagar (விருதுநகர்)", lat: 9.5850, lon: 77.9570 },
+    { name: "Sivakasi (சிவகாசி)", lat: 9.4533, lon: 77.7979 },
+    { name: "Thoothukudi (தூத்துக்குடி)", lat: 8.7642, lon: 78.1348 },
+    { name: "Tiruchendur (திருச்செந்தூர்)", lat: 8.4947, lon: 78.1197 },
+    { name: "Tirunelveli (திருநெல்வேலி)", lat: 8.7139, lon: 77.7567 },
+    { name: "Tenkasi (தென்காசி)", lat: 8.9594, lon: 77.3152 },
+    { name: "Kanyakumari - Nagercoil (கன்னியாகுமரி - நாகர்கோவில்)", lat: 8.1833, lon: 77.4119 }
+];
+
+// ==================== 2. CONSTANTS ====================
+const RASI = ['மேஷம்','ரிஷபம்','மிதுனம்','கடகம்','சிம்மம்','கன்னி','துலாம்','விருச்சிகம்','தனுசு','மகரம்','கும்பம்','மீனம்'];
+const STARS = ['அஸ்வினி','பரணி','கார்த்திகை','ரோகிணி','மிருகசீரிடம்','திருவாதிரை','புனர்பூசம்','பூசம்','ஆயில்யம்','மகம்','பூரம்','உத்திரம்','அஸ்தம்','சித்திரை','சுவாதி','விசாகம்','அனுஷம்','கேட்டை','மூலம்','பூராடம்','உத்திராடம்','திருவோணம்','அவிட்டம்','சதயம்','பூரட்டாதி','உத்திரட்டாதி','ரேவதி'];
+const LETTERS = [
+    ['சு','சே','சோ','லா'],['லீ','லூ','லே','லோ'],['அ','ஈ','உ','ஏ'],['ஓ','வா','வீ','வு'],
+    ['வே','வோ','கா','கி'],['கு','கூ','ஞ','ச'],['கே','கோ','ஹா','ஹீ'],['ஹூ','ஹே','ஹோ','டா'],
+    ['டீ','டூ','டே','டோ'],['மா','மீ','மூ','மே'],['மோ','டா','டீ','டூ'],['டே','டோ','பா','பீ'],
+    ['பூ','ஷ','ந','ட'],['பே','போ','ரா','ரீ'],['ரூ','ரே','ரோ','தா'],['தீ','து','தே','தோ'],
+    ['நா','நீ','நூ','நே'],['நோ','யா','யீ','யூ'],['யே','யோ','பா','பீ'],['பூ','தா','ப','டா'],
+    ['பே','போ','ஜா','ஜீ'],['கி','கூ','கே','கோ'],['கா','கி','கு','கே'],['கோ','சா','சீ','சூ'],
+    ['சே','சோ','தா','தீ'],['து','த','ஜ','ஞ'],['தே','தோ','ச','சி']
+];
+const DASA_LORDS = ['கேது','சுக்கிரன்','சூரியன்','சந்திரன்','செவ்வாய்','ராகு','குரு','சனி','புதன்'];
+const DASA_YRS = [7,20,6,10,7,18,16,19,17];
+const TITHI_NAMES = ['பிரதமை','துவிதியை','திருதியை','சதுர்த்தி','பஞ்சமி','சஷ்டி','சப்தமி','அஷ்டமி','நவமி','தசமி','ஏகாதசி','துவாதசி','திரயோதசி','சதுர்த்தசி'];
+const TITHI_SOON = [['துலாம்','மகரம்'],['தனுசு','மீனம்'],['சிம்மம்','மகரம்'],['ரிஷபம்','கும்பம்'],['மிதுனம்','கன்னி'],['மேஷம்','சிம்மம்'],['கடகம்','தனுசு'],['மிதுனம்','கன்னி'],['சிம்மம்','விருச்சிகம்'],['சிம்மம்','மகரம்'],['தனுசு','மீனம்'],['துலாம்','மகரம்'],['ரிஷபம்','சிம்மம்'],['மிதுனம்','கன்னி','தனுசு','மீனம்']];
+const YOGAS = ['விஷ்கம்பம்','பிரீதி','ஆயுஷ்மான்','சௌபாக்யம்','சோபனம்','அதிகண்டம்','சுகர்மம்','திருதி','சூலம்','கண்டம்','விருத்தி','துருவம்','வியாகாதம்','ஹர்ஷணம்','வஜ்ரம்','சித்தி','வியதீபாதம்','வரீயான்','பரிகம்','சிவம்','சித்தம்','சாத்தியம்','சுபம்','சுப்ரம்','பிராம்மம்','ஐந்திரம்','வைதிருதி'];
+const KARANA_CYCLE = ['பவம்','பாலவம்','கௌலவம்','தைதுலை','கரசை','வணிசை','பத்திரை'];
+const TAMIL_DAYS = ['ஞாயிறு','திங்கள்','செவ்வாய்','புதன்','வியாழன்','வெள்ளி','சனி'];
+const TMONTH = ['சித்திரை','வைகாசி','ஆனி','ஆடி','ஆவணி','புரட்டாசி','ஐப்பசி','கார்த்திகை','மார்கழி','தை','மாசி','பங்குனி'];
+const TYEAR = ['பிரபவ','விபவ','சுக்ல','பிரமோதூத','பிரசோற்பத்தி','ஆங்கீரச','ஸ்ரீமுக','பவ','யுவ','தாது','ஈஸ்வர','வெகுதான்ய','பிரமாதி','விக்ரம','விஷு','சித்திரபானு','சுபானு','தாரண','பார்த்திப','விய','சர்வசித்து','சர்வதாரி','விரோதி','விக்ருதி','கர','நந்தன','விஜய','ஜய','மன்மத','துன்முகி','ஹேவிளம்பி','விளம்பி','விகாரி','சார்வரி','பிலவ','சுபகிருது','சோபகிருது','குரோதி','விசுவாவசு','பராபவ','பிலவங்க','கீலக','சௌமிய','சாதாரண','விரோதிகிருது','பரிதாபி','பிரமாதீச','ஆனந்த','ராட்சச','நள','பிங்கள','காளயுக்தி','சித்தார்த்தி','ரௌத்திரி','துன்மதி','துந்துபி','ருத்ரோத்காரி','ரக்தாட்சி','குரோதன','அட்சய'];
+
+const NAK = 360 / 27;                 // 13°20'
+const AYAN_J2000 = 23.8531;           // Lahiri ayanamsa at J2000 (23°51'11")
+const MS_DAY = 86400000;
+const IST_MS = 5.5 * 3600000;
+const MANDI_POINT = 0;                // 0 = start of Saturn's portion, 0.5 = middle. Tune to match Karthi Astro if needed.
+const DAY_SAT   = [6,5,4,3,2,1,0];    // Saturn's portion (0-based) in daytime, Sun..Sat
+const NIGHT_SAT = [2,1,0,6,5,4,3];    // Saturn's portion (0-based) at night, Sun..Sat
+
+const PLANETS = [
+    {k:'Sun',n:'சூரியன்',s:'சூ'},{k:'Moon',n:'சந்திரன்',s:'சந்'},{k:'Mars',n:'செவ்வாய்',s:'செ'},
+    {k:'Mercury',n:'புதன்',s:'புத'},{k:'Jupiter',n:'குரு',s:'குரு'},{k:'Venus',n:'சுக்கிரன்',s:'சுக்'},
+    {k:'Saturn',n:'சனி',s:'சனி'},{k:'Rahu',n:'ராகு',s:'ராகு'},{k:'Ketu',n:'கேது',s:'கேது'},
+    {k:'Lagna',n:'லக்னம்',s:'லக்'},{k:'Maandhi',n:'மாந்தி',s:'மாந்'}
+];
+const EXALT = {Sun:0,Moon:1,Mars:9,Mercury:5,Jupiter:3,Venus:11,Saturn:6};
+const OWN = {Sun:[4],Moon:[3],Mars:[0,7],Mercury:[2,5],Jupiter:[8,11],Venus:[1,6],Saturn:[9,10]};
+
+let P = [];            // current planet state: {k,n,s,lon,retro}
+let CALC = null;       // current calculation context
+let manualEdited = false;
+let OBS_LAT = 11.0997, OBS_LON = 78.0167;
+
+const $ = id => document.getElementById(id);
+const norm = x => ((x % 360) + 360) % 360;
+const pad2 = n => String(n).padStart(2, '0');
+const rasiOf = lon => Math.floor(norm(lon) / 30);
+const nakOf = lon => Math.floor(norm(lon) / NAK);
+const padaOf = lon => Math.floor((norm(lon) % NAK) / (NAK / 4)) + 1;
+const navOf = lon => Math.floor(norm(lon) / (30 / 9)) % 12;
+function fmtDM(x) { x = norm(x); let d = Math.floor(x), m = Math.floor((x - d) * 60); return d + '° ' + pad2(m) + "'"; }
+function fmtDMS(x) { let d = Math.floor(x), r = (x - d) * 60, m = Math.floor(r), s = Math.floor((r - m) * 60); return d + '° ' + pad2(m) + "' " + pad2(s) + '"'; }
+function fmtDate(ms) { const d = new Date(ms + IST_MS); return pad2(d.getUTCDate()) + '-' + pad2(d.getUTCMonth() + 1) + '-' + d.getUTCFullYear(); }
+function fmtTime(date, secs) { const d = new Date(date.getTime() + IST_MS); return pad2(d.getUTCHours()) + ':' + pad2(d.getUTCMinutes()) + (secs ? ':' + pad2(d.getUTCSeconds()) : ''); }
+function fmt12(hh, mi) { const ap = hh >= 12 ? 'PM' : 'AM'; let h = hh % 12; if (h === 0) h = 12; return pad2(h) + ':' + pad2(mi) + ' ' + ap; }
+function addDays(c, n) { const d = new Date(Date.UTC(c.y, c.m - 1, c.d + n)); return { y: d.getUTCFullYear(), m: d.getUTCMonth() + 1, d: d.getUTCDate() }; }
+
+// ==================== 3. ASTRONOMY HELPERS ====================
+function eclLonJ2000(body, date) {
+    const t = Astronomy.MakeTime(date);
+    const v = body === 'Moon' ? Astronomy.GeoMoon(t) : Astronomy.GeoVector(body, t, true);
+    return norm(Astronomy.Ecliptic(v).elon);
+}
+function sidLon(body, date) { return norm(eclLonJ2000(body, date) - AYAN_J2000); }
+function ayanamsa(date) {
+    const yrs = (date.getTime() - Date.UTC(2000, 0, 1, 12)) / (365.25 * MS_DAY);
+    return AYAN_J2000 + yrs * 0.0139697;
+}
+function rahuLon(date) {
+    const jd = date.getTime() / MS_DAY + 2440587.5;
+    const T = (jd - 2451545) / 36525;
+    const omega = norm(125.04452 - 1934.136261 * T);
+    return norm(omega - ayanamsa(date));
+}
+function lagnaAt(date) {
+    const t = Astronomy.MakeTime(date);
+    const jd = date.getTime() / MS_DAY + 2440587.5;
+    const T = (jd - 2451545) / 36525;
+    const eps = (23.4392911 - 0.0130042 * T) * Math.PI / 180;
+    const theta = norm(Astronomy.SiderealTime(t) * 15 + OBS_LON) * Math.PI / 180;
+    const phi = OBS_LAT * Math.PI / 180;
+    const asc = Math.atan2(Math.cos(theta), -(Math.sin(theta) * Math.cos(eps) + Math.tan(phi) * Math.sin(eps))) * 180 / Math.PI;
+    return norm(norm(asc) - ayanamsa(date));
+}
+function sunEvent(c, dir) {
+    const start = new Date(Date.UTC(c.y, c.m - 1, c.d, 0, 0) - IST_MS);
+    const obs = new Astronomy.Observer(OBS_LAT, OBS_LON, 0);
+    const r = Astronomy.SearchRiseSet(Astronomy.Body.Sun, obs, dir, start, 1);
+    return r ? r.date : null;
+}
+function sunTimes(c) { return { rise: sunEvent(c, +1), set: sunEvent(c, -1) }; }
+function sunRasiAtSet(c) { const t = sunEvent(c, -1); return rasiOf(sidLon('Sun', t)); }
+
+function tamilDateOf(c) {
+    const ri = sunRasiAtSet(c);
+    let cnt = 0, cur = c;
+    for (let i = 0; i < 32; i++) {
+        const pv = addDays(cur, -1);
+        if (sunRasiAtSet(pv) === ri) { cnt++; cur = pv; } else break;
+    }
+    const startYear = (ri >= 8 && c.m <= 4) ? c.y - 1 : c.y;
+    const yi = (((startYear - 1987) % 60) + 60) % 60;
+    return { str: TMONTH[ri] + ' ' + (cnt + 1), year: TYEAR[yi] };
+}
+
+// ==================== 4. MAIN CALCULATION ====================
+function calculateAll() {
+    if (typeof Astronomy === 'undefined') {
+        alert('Astronomy library load ஆகவில்லை - Internet connection சரிபார்க்கவும்.');
+        return;
+    }
+    const idx = parseInt($('inPlaceSelect').value || '0', 10);
+    OBS_LAT = TN_PLACES[idx].lat; OBS_LON = TN_PLACES[idx].lon;
+
+    const [y, m, d] = $('inDate').value.split('-').map(Number);
+    const [hh, mi] = $('inTime').value.split(':').map(Number);
+    const birth = new Date(Date.UTC(y, m - 1, d, hh, mi) - IST_MS);
+    const civ = { y, m, d };
+
+    // Sunrise / sunset and the Vedic (படி) day
+    const sunToday = sunTimes(civ);
+    let vd = civ, rise, set, isNight = false, nightStart = null, nightEnd = null;
+    if (birth < sunToday.rise) {
+        vd = addDays(civ, -1);
+        const s = sunTimes(vd);
+        rise = s.rise; set = s.set; isNight = true; nightStart = set; nightEnd = sunToday.rise;
+    } else if (birth < sunToday.set) {
+        rise = sunToday.rise; set = sunToday.set;
+    } else {
+        rise = sunToday.rise; set = sunToday.set; isNight = true;
+        nightStart = set; nightEnd = sunTimes(addDays(civ, 1)).rise;
+    }
+    const wd = new Date(Date.UTC(vd.y, vd.m - 1, vd.d)).getUTCDay();
+
+    // Maandhi (Gulika) point
+    let startT, lenMs, pIdx;
+    if (!isNight) { startT = rise; lenMs = (set - rise) / 8; pIdx = DAY_SAT[wd]; }
+    else { startT = nightStart; lenMs = (nightEnd - nightStart) / 8; pIdx = NIGHT_SAT[wd]; }
+    const mandiTime = new Date(startT.getTime() + (pIdx + MANDI_POINT) * lenMs);
+
+    // Planet longitudes (sidereal / Lahiri)
+    const t1 = new Date(birth.getTime() - MS_DAY / 2), t2 = new Date(birth.getTime() + MS_DAY / 2);
+    P = PLANETS.map(pl => {
+        let lon = 0, retro = false;
+        if (['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn'].includes(pl.k)) {
+            lon = sidLon(pl.k, birth);
+            if (!['Sun','Moon'].includes(pl.k)) {
+                const diff = norm(sidLon(pl.k, t2) - sidLon(pl.k, t1) + 180) - 180;
+                retro = diff < 0;
+            }
+        } else if (pl.k === 'Rahu') { lon = rahuLon(birth); retro = true; }
+        else if (pl.k === 'Ketu') { lon = norm(rahuLon(birth) + 180); retro = true; }
+        else if (pl.k === 'Lagna') { lon = lagnaAt(birth); }
+        else if (pl.k === 'Maandhi') { lon = lagnaAt(mandiTime); }
+        return { k: pl.k, n: pl.n, s: pl.s, lon, retro };
+    });
+
+    const td = tamilDateOf(vd);
+    const uthMin = (birth - rise) / 60000;
+    CALC = {
+        y, m, d, hh, mi, birth, rise: sunToday.rise, set: sunToday.set,
+        wd, tamilDate: td, uthMin, ayan: ayanamsa(birth), idx
+    };
+    manualEdited = false;
+    buildOverrideTable();
+    renderHoroscopeSheet();
+}
+
+// ==================== 5. RENDERING THE HOROSCOPE SHEET ====================
+function dignity(k, ri) {
+    if (EXALT[k] === undefined) return '';
+    if (EXALT[k] === ri) return 'உச்சம்';
+    if ((EXALT[k] + 6) % 12 === ri) return 'நீசம்';
+    if (OWN[k].includes(ri)) return 'ஆட்சி';
+    return '';
+}
+
+function buildChart(cells, title, sub) {
+    const c = r => '<td class="s-cell"><div class="p-list">' + cells[r].join(' ') + '</div></td>';
+    return '<table class="south-chart-table">' +
+        '<tr>' + c(11) + c(0) + c(1) + c(2) + '</tr>' +
+        '<tr>' + c(10) +
+        '<td class="s-center" colspan="2" rowspan="2"><div class="c-emblem">ஸ்ரீ</div><div class="c-name">' + title + '</div><div class="c-sub">' + sub + '</div></td>' +
+        c(3) + '</tr>' +
+        '<tr>' + c(9) + c(4) + '</tr>' +
+        '<tr>' + c(8) + c(7) + c(6) + c(5) + '</tr>' +
+        '</table>';
+}
+
+function renderHoroscopeSheet() {
+    if (!P.length || !CALC) return;
+    const g = k => P.find(p => p.k === k);
+    const sun = g('Sun'), moon = g('Moon'), lag = g('Lagna');
+
+    // ---- Bio ----
+    $('pName').textContent = $('inName').value || '-';
+    $('pFather').textContent = $('inFather').value || '-';
+    $('pMother').textContent = $('inMother').value || '-';
+    $('pLagnam').textContent = RASI[rasiOf(lag.lon)];
+    $('pRasi').textContent = RASI[rasiOf(moon.lon)];
+    const mn = nakOf(moon.lon), mp = padaOf(moon.lon);
+    $('pStar').textContent = STARS[mn] + ' - ' + mp + ' ஆம் பாதம்';
+
+    // ---- Panchangam ----
+    const elong = norm(moon.lon - sun.lon);
+    const ti = Math.floor(elong / 12);
+    const paksha = ti < 15 ? 'சுக்ல பட்சம்' : 'கிருஷ்ண பட்சம்';
+    let tName = ti % 15 === 14 ? (ti === 14 ? 'பௌர்ணமி' : 'அமாவாசை') : TITHI_NAMES[ti % 15];
+    $('pTithi').textContent = paksha + ' - ' + tName;
+    const yi = Math.floor(norm(sun.lon + moon.lon) / NAK);
+    const kIdx = Math.floor(elong / 6);
+    let kName;
+    if (kIdx === 0) kName = 'கிம்ஸ்துக்னம்';
+    else if (kIdx === 57) kName = 'சகுனி';
+    else if (kIdx === 58) kName = 'சதுஷ்பாதம்';
+    else if (kIdx === 59) kName = 'நாகவம்';
+    else kName = KARANA_CYCLE[(kIdx - 1) % 7];
+    $('pYogaKarana').textContent = YOGAS[yi] + ' - ' + kName;
+    $('pDay').textContent = TAMIL_DAYS[CALC.wd] + ' (படி)';
+    $('pTamilDate').textContent = CALC.tamilDate.str + ' (' + CALC.tamilDate.year + ')';
+    let soon;
+    if (ti % 15 === 14) soon = ti === 14 ? 'இல்லை' : 'சிம்மம், மகரம்';
+    else soon = TITHI_SOON[ti % 15].join(', ');
+    $('pTithiSoonyam').textContent = soon;
+
+    $('pDate').textContent = pad2(CALC.d) + '-' + pad2(CALC.m) + '-' + CALC.y;
+    $('pTime').textContent = fmt12(CALC.hh, CALC.mi);
+    let nz = CALC.uthMin / 24;
+    if (nz < 0) nz = 0;
+    let nn = Math.floor(nz), vv = Math.round((nz - nn) * 60);
+    if (vv === 60) { nn++; vv = 0; }
+    $('pUthayathi').textContent = nn + ' நாழிகை ' + vv + ' விநாழிகை';
+    $('pPlace').textContent = $('inPlaceText').value || '-';
+    $('pLatLon').textContent = OBS_LAT.toFixed(4) + '° N / ' + OBS_LON.toFixed(4) + '° E';
+    $('pSunrise').textContent = fmtTime(CALC.rise, true);
+    $('pSunset').textContent = fmtTime(CALC.set, true);
+    $('pGender').textContent = $('inGender').value;
+    $('pLetters').textContent = LETTERS[mn][mp - 1] + '  (' + LETTERS[mn].join(' ') + ')';
+    $('pAyanamsa').textContent = fmtDMS(CALC.ayan) + ' (லாஹிரி)';
+
+    // ---- Yogi / Avayogi ----
+    const yogiPt = norm(sun.lon + moon.lon + 93 + 20 / 60);
+    const yStar = nakOf(yogiPt), aStar = (yStar + 5) % 27;
+    $('pYogiLine').textContent = 'யோகம்: ' + YOGAS[yi] + ' - யோக நட்சத்திரம்: ' + STARS[yStar] + ' - யோகி: ' + DASA_LORDS[yStar % 9] +
+        ' - அவயோக நட்சத்திரம்: ' + STARS[aStar] + ' - அவயோகி: ' + DASA_LORDS[aStar % 9];
+
+    // ---- Planet table ----
+    $('pNirayanaHeading').textContent = 'துல்லியமான நிராயன கிரக நிலைகள் ( ' + ($('inMode').value === 'VAKKIYAM' ? 'வாக்கியம்' : 'திருக்கணிதம்') + ' )';
+    let rows = '';
+    P.forEach(p => {
+        const ri = rasiOf(p.lon), nk = nakOf(p.lon);
+        const st = [];
+        if (p.retro && ['Mars','Mercury','Jupiter','Venus','Saturn'].includes(p.k)) st.push('வக்ரம்');
+        const dg = dignity(p.k, ri); if (dg) st.push(dg);
+        rows += '<tr><td>' + p.n + '</td><td>' + fmtDM(p.lon) + '</td><td>' + STARS[nk] + '</td><td>' + padaOf(p.lon) +
+            '</td><td>' + DASA_LORDS[nk % 9] + '</td><td>' + RASI[ri] + '</td><td>' + fmtDM(p.lon % 30) + '</td><td>' + (st.join(', ') || '-') + '</td></tr>';
+    });
+    $('pPlanetTbody').innerHTML = rows;
+
+    // ---- Charts ----
+    const rc = Array.from({ length: 12 }, () => []), nc = Array.from({ length: 12 }, () => []);
+    P.forEach(p => {
+        const retroMark = (p.retro && ['Mars','Mercury','Jupiter','Venus','Saturn'].includes(p.k)) ? '(வ)' : '';
+        rc[rasiOf(p.lon)].push(p.s + retroMark);
+        nc[navOf(p.lon)].push(p.s);
+    });
+    $('pRasiGrid').innerHTML = buildChart(rc, 'ராசி', STARS[mn] + '<br>' + RASI[rasiOf(moon.lon)]);
+    $('pNavamsaGrid').innerHTML = buildChart(nc, 'நவாம்சம்', $('inName').value || '');
+
+    // ---- Vimshottari Dasa ----
+    const msY = 365.25 * MS_DAY;
+    const li = mn % 9, frac = (norm(moon.lon) - mn * NAK) / NAK;
+    const balYears = (1 - frac) * DASA_YRS[li];
+    let by = Math.floor(balYears), bmF = (balYears - by) * 12, bm = Math.floor(bmF), bd = Math.floor((bmF - bm) * 30);
+    $('pDasaBalanceText').textContent = 'தசை இருப்பு: ' + DASA_LORDS[li] + ' தசை ' + by + ' வருடம் ' + bm + ' மாதம் ' + bd + ' நாள்';
+    let startMs = CALC.birth.getTime() - frac * DASA_YRS[li] * msY;
+    const dasas = [];
+    for (let k = 0; k < 9; k++) {
+        const L = (li + k) % 9, endMs = startMs + DASA_YRS[L] * msY;
+        dasas.push({ L, start: startMs, end: endMs });
+        startMs = endMs;
+    }
+    const now = Date.now();
+    const cur = dasas.find(x => now >= x.start && now < x.end);
+    let curText = 'நடப்பு தசை: -';
+    if (cur) {
+        let bs = cur.start, bText = '';
+        for (let b = 0; b < 9; b++) {
+            const BL = (cur.L + b) % 9, be = bs + (DASA_YRS[cur.L] * DASA_YRS[BL] / 120) * msY;
+            if (now >= bs && now < be) { bText = ' / ' + DASA_LORDS[BL] + ' புக்தி (' + fmtDate(be) + ' வரை)'; break; }
+            bs = be;
+        }
+        curText = 'நடப்பு தசை: ' + DASA_LORDS[cur.L] + ' தசை' + bText;
+    }
+    $('pCurrentDasaText').textContent = curText;
+    $('pDasaEndHead').innerHTML = '<tr><th>தசை</th>' + dasas.map(x => '<th>' + DASA_LORDS[x.L] + '</th>').join('') + '</tr>';
+    $('pDasaEndBody').innerHTML = '<tr><td>முடிவு</td>' + dasas.map(x => '<td>' + fmtDate(x.end) + '</td>').join('') + '</tr>';
+
+    // ---- Bhavaga Maaruthal (equal-house Bhava Chalit) ----
+    const lagRasi = rasiOf(lag.lon);
+    const ch = [];
+    P.forEach(p => {
+        if (p.k === 'Lagna') return;
+        const rh = ((rasiOf(p.lon) - lagRasi + 12) % 12) + 1;
+        const bh = Math.floor(norm(p.lon - lag.lon + 15) / 30) + 1;
+        if (rh !== bh) ch.push(p.n + ' (' + rh + '-ம் வீடு → ' + bh + '-ம் பாவம்)');
+    });
+    $('pBhavagaText').textContent = 'பாவக மாறுதல்: ' + (ch.length ? ch.join(', ') : 'இல்லை');
+
+    // ---- Notes & footer ----
+    $('pNotesOut').textContent = $('inNotes').value || '-';
+    $('pPrintedTime').textContent = 'Printed on ' + new Date().toLocaleString('en-IN');
+}
+
+// ==================== 6. MANUAL OVERRIDE (VAKKIYAM) ====================
+function buildOverrideTable() {
+    let html = '';
+    P.forEach((p, i) => {
+        const rOpts = RASI.map((r, x) => '<option value="' + x + '">' + r + '</option>').join('');
+        const sOpts = STARS.map((r, x) => '<option value="' + x + '">' + r + '</option>').join('');
+        const pOpts = [1,2,3,4].map(x => '<option value="' + x + '">' + x + '</option>').join('');
+        const retroCell = ['Mars','Mercury','Jupiter','Venus','Saturn'].includes(p.k)
+            ? '<input type="checkbox" id="ovV' + i + '" onchange="ovrChange(' + i + ',\'retro\')">' : '-';
+        html += '<tr><td><b>' + p.n + '</b></td>' +
+            '<td><select id="ovR' + i + '" onchange="ovrChange(' + i + ',\'rasi\')">' + rOpts + '</select></td>' +
+            '<td><select id="ovS' + i + '" onchange="ovrChange(' + i + ',\'star\')">' + sOpts + '</select></td>' +
+            '<td><select id="ovP' + i + '" onchange="ovrChange(' + i + ',\'pada\')">' + pOpts + '</select></td>' +
+            '<td id="ovN' + i + '">-</td><td>' + retroCell + '</td></tr>';
+    });
+    $('overrideTbody').innerHTML = html;
+    P.forEach((p, i) => refreshOvrRow(i));
+}
+
+function refreshOvrRow(i) {
+    const p = P[i];
+    $('ovR' + i).value = rasiOf(p.lon);
+    $('ovS' + i).value = nakOf(p.lon);
+    $('ovP' + i).value = padaOf(p.lon);
+    $('ovN' + i).textContent = RASI[navOf(p.lon)];
+    const v = $('ovV' + i); if (v) v.checked = p.retro;
+}
+
+function ovrChange(i, type) {
+    const p = P[i];
+    if (type === 'rasi') {
+        p.lon = Number($('ovR' + i).value) * 30 + (p.lon % 30);
+    } else if (type === 'star' || type === 'pada') {
+        const s = Number($('ovS' + i).value), pd = Number($('ovP' + i).value);
+        p.lon = s * NAK + (pd - 1) * (NAK / 4) + NAK / 8;
+    } else if (type === 'retro') {
+        p.retro = $('ovV' + i).checked;
+    }
+    if (p.k === 'Rahu') {
+        const ke = P.findIndex(x => x.k === 'Ketu');
+        P[ke].lon = norm(p.lon + 180); refreshOvrRow(ke);
+    } else if (p.k === 'Ketu') {
+        const ra = P.findIndex(x => x.k === 'Rahu');
+        P[ra].lon = norm(p.lon + 180); refreshOvrRow(ra);
+    }
+    manualEdited = true;
+    refreshOvrRow(i);
+    renderHoroscopeSheet();
+}
+
+function toggleOverride() {
+    const b = $('overrideBox');
+    b.style.display = (b.style.display === 'block') ? 'none' : 'block';
+}
+
+function onModeChange() {
+    if ($('inMode').value === 'VAKKIYAM') $('overrideBox').style.display = 'block';
+    else $('overrideBox').style.display = 'none';
+    calculateAll();
+}
+
+function onPlaceChange() {
+    const idx = parseInt($('inPlaceSelect').value, 10);
+    $('inPlaceText').value = TN_PLACES[idx].name.split(' (')[0];
+    calculateAll();
+}
+
+// ==================== 7. SAVE / LOAD PROFILES ====================
+const PROFILE_KEY = 'vps_horoscope_profiles';
+function getProfiles() { try { return JSON.parse(localStorage.getItem(PROFILE_KEY) || '{}'); } catch (e) { return {}; } }
+function setProfiles(o) { try { localStorage.setItem(PROFILE_KEY, JSON.stringify(o)); } catch (e) { alert('Save செய்ய முடியவில்லை'); } }
+function refreshSavedList() {
+    const sel = $('savedListSelect'); const o = getProfiles();
+    sel.innerHTML = '<option value="">-- சேமித்த ஜாதகத்தைத் தேர்வு செய்க --</option>' +
+        Object.keys(o).map(k => '<option value="' + k.replace(/"/g, '&quot;') + '">' + k + '</option>').join('');
+}
+function saveCurrentProfile() {
+    const name = ($('inName').value || 'Unnamed') + ' | ' + $('inDate').value;
+    const o = getProfiles();
+    o[name] = {
+        mode: $('inMode').value, name: $('inName').value, father: $('inFather').value, mother: $('inMother').value,
+        date: $('inDate').value, time: $('inTime').value, gender: $('inGender').value,
+        place: $('inPlaceSelect').value, placeText: $('inPlaceText').value, notes: $('inNotes').value,
+        edited: manualEdited, P: manualEdited ? P.map(p => ({ lon: p.lon, retro: p.retro })) : null
+    };
+    setProfiles(o); refreshSavedList(); $('savedListSelect').value = name;
+    alert('சேமிக்கப்பட்டது: ' + name);
+}
+function loadSelectedProfile() {
+    const key = $('savedListSelect').value; if (!key) return;
+    const d = getProfiles()[key]; if (!d) return;
+    $('inMode').value = d.mode; $('inName').value = d.name; $('inFather').value = d.father; $('inMother').value = d.mother;
+    $('inDate').value = d.date; $('inTime').value = d.time; $('inGender').value = d.gender;
+    $('inPlaceSelect').value = d.place; $('inPlaceText').value = d.placeText; $('inNotes').value = d.notes;
+    $('overrideBox').style.display = (d.mode === 'VAKKIYAM') ? 'block' : 'none';
+    calculateAll();
+    if (d.edited && d.P) {
+        d.P.forEach((x, i) => { P[i].lon = x.lon; P[i].retro = x.retro; });
+        manualEdited = true; buildOverrideTable(); renderHoroscopeSheet();
+    }
+}
+function deleteSelectedProfile() {
+    const key = $('savedListSelect').value; if (!key) return;
+    if (!confirm('நீக்க வேண்டுமா? ' + key)) return;
+    const o = getProfiles(); delete o[key]; setProfiles(o); refreshSavedList();
+}
+
+// ==================== 8. MARRIAGE MATCHING (10 PORUTHAM) ====================
+const GANA = {}; // 0=தேவ 1=மனுஷ 2=ராட்சச
+[0,4,6,7,12,14,16,21,26].forEach(i => GANA[i] = 0);
+[1,3,5,10,11,19,20,24,25].forEach(i => GANA[i] = 1);
+[2,8,9,13,15,17,18,22,23].forEach(i => GANA[i] = 2);
+const GANA_NAME = ['தேவ கணம்','மனுஷ கணம்','ராட்சச கணம்'];
+
+const YONI_NAMES = ['குதிரை','யானை','ஆடு','பாம்பு','நாய்','பூனை','எலி','பசு','எருமை','புலி','மான்','குரங்கு','கீரி','சிங்கம்'];
+//            குதிரை0 யானை1 ஆடு2 பாம்பு3 நாய்4 பூனை5 எலி6 பசு7 எருமை8 புலி9 மான்10 குரங்கு11 கீரி12 சிங்கம்13
+const STAR_YONI = [0,1,2,3,3,4,5,2,5,6,6,7,8,9,8,9,10,10,4,11,12,11,13,0,13,7,1];
+const YONI_ENEMY = [[7,9],[1,13],[0,8],[4,10],[3,12],[11,2],[5,6]];
+
+const RASI_LORD = [2,5,3,1,0,3,5,2,4,6,6,4];
+const LORD_NAMES = ['சூரியன்','சந்திரன்','செவ்வாய்','புதன்','குரு','சுக்கிரன்','சனி'];
+const L_ENEMY = [[5,6],[],[3],[1],[3,5],[0,1],[0,1,2]];
+
+const VASYA = [[4,7],[3,6],[5],[7,8],[6],[1,11],[9],[3],[11],[10],[11],[9]];
+
+const RAJJU_GROUP = {};
+[0,8,9,17,18,26].forEach(i => RAJJU_GROUP[i] = 0);
+[1,7,10,16,19,25].forEach(i => RAJJU_GROUP[i] = 1);
+[2,6,11,15,20,24].forEach(i => RAJJU_GROUP[i] = 2);
+[3,5,12,14,21,23].forEach(i => RAJJU_GROUP[i] = 3);
+[4,13,22].forEach(i => RAJJU_GROUP[i] = 4);
+const RAJJU_NAME = ['பாத ரஜ்ஜு','தொடை ரஜ்ஜு','வயிற்று ரஜ்ஜு','கழுத்து ரஜ்ஜு','சிரசு ரஜ்ஜு'];
+
+const VEDHA_PAIRS = [[0,17],[1,16],[2,15],[3,14],[5,21],[6,20],[7,19],[8,18],[9,26],[10,25],[11,24],[12,23],[4,13],[4,22],[13,22]];
+
+function fillStarSelect(id, def) {
+    $(id).innerHTML = STARS.map((s, i) => '<option value="' + i + '">' + s + '</option>').join('');
+    $(id).value = def;
+}
+function updatePadaLabels(starId, padaId) {
+    const s = Number($(starId).value), sel = $(padaId), cur = sel.value;
+    sel.innerHTML = [1,2,3,4].map(p => '<option value="' + p + '">பாதம் ' + p + ' - ' + RASI[Math.floor((s * 4 + p - 1) / 9)] + '</option>').join('');
+    sel.value = cur || '1';
+}
+function onBrideStarChange() { updatePadaLabels('brideStar', 'bridePada'); calculatePorutham(); }
+function onGroomStarChange() { updatePadaLabels('groomStar', 'groomPada'); calculatePorutham(); }
+
+function calculatePorutham() {
+    const b = Number($('brideStar').value), gm = Number($('groomStar').value);
+    const bp = Number($('bridePada').value), gp = Number($('groomPada').value);
+    const br = Math.floor((b * 4 + bp - 1) / 9), gr = Math.floor((gm * 4 + gp - 1) / 9);
+
+    $('mBrideName').textContent = $('brideName').value || '-';
+    $('mBrideDob').textContent = $('brideDob').value ? $('brideDob').value.split('-').reverse().join('-') : '-';
+    $('mBrideRasi').textContent = RASI[br];
+    $('mBrideStar').textContent = STARS[b] + ' - ' + bp + ' ஆம் பாதம்';
+    $('mGroomName').textContent = $('groomName').value || '-';
+    $('mGroomDob').textContent = $('groomDob').value ? $('groomDob').value.split('-').reverse().join('-') : '-';
+    $('mGroomRasi').textContent = RASI[gr];
+    $('mGroomStar').textContent = STARS[gm] + ' - ' + gp + ' ஆம் பாதம்';
+
+    const res = [];
+    const cnt = ((gm - b + 27) % 27) + 1; // count from bride star to groom star
+
+    // 1. தினம்
+    const dRem = cnt % 9;
+    res.push({ n: 'தினப் பொருத்தம்', ok: [2,4,6,8,0].includes(dRem), note: 'பெண் நட்சத்திரத்திலிருந்து ஆண் நட்சத்திரம் ' + cnt + ' (மீதி ' + dRem + ')' });
+
+    // 2. கணம்
+    const bg = GANA[b], gg = GANA[gm];
+    let gOk = (bg === gg) || (bg === 0 && gg === 1) || (bg === 1 && gg === 0);
+    res.push({ n: 'கணப் பொருத்தம்', ok: gOk, note: 'பெண்: ' + GANA_NAME[bg] + ' | ஆண்: ' + GANA_NAME[gg] });
+
+    // 3. மகேந்திரம்
+    res.push({ n: 'மகேந்திரப் பொருத்தம்', ok: [4,7,10,13,16,19,22,25].includes(cnt), note: 'எண்ணிக்கை ' + cnt });
+
+    // 4. ஸ்திரீ தீர்க்கம்
+    res.push({ n: 'ஸ்திரீ தீர்க்கம்', ok: cnt >= 13, note: 'எண்ணிக்கை ' + cnt + (cnt >= 13 ? ' (13-க்கு மேல்)' : ' (13-க்குள்)') });
+
+    // 5. யோனி
+    const by = STAR_YONI[b], gy = STAR_YONI[gm];
+    const enemy = YONI_ENEMY.some(pr => (pr[0] === by && pr[1] === gy) || (pr[0] === gy && pr[1] === by));
+    res.push({ n: 'யோனிப் பொருத்தம்', ok: !enemy, note: 'பெண்: ' + YONI_NAMES[by] + ' | ஆண்: ' + YONI_NAMES[gy] + (enemy ? ' (பகை)' : '') });
+
+    // 6. ராசி
+    const rc = ((gr - br + 12) % 12) + 1;
+    res.push({ n: 'ராசிப் பொருத்தம்', ok: ![2,6,8,12].includes(rc), note: 'பெண் ராசியிலிருந்து ஆண் ராசி ' + rc + '-ம் இடம்' });
+
+    // 7. ராசி அதிபதி
+    const bl = RASI_LORD[br], gl = RASI_LORD[gr];
+    const lOk = bl === gl || (!L_ENEMY[bl].includes(gl) && !L_ENEMY[gl].includes(bl));
+    res.push({ n: 'ராசி அதிபதிப் பொருத்தம்', ok: lOk, note: 'பெண்: ' + LORD_NAMES[bl] + ' | ஆண்: ' + LORD_NAMES[gl] });
+
+    // 8. வசியம்
+    const vOk = VASYA[br].includes(gr) || VASYA[gr].includes(br);
+    res.push({ n: 'வசியப் பொருத்தம்', ok: vOk, note: RASI[br] + ' - ' + RASI[gr] });
+
+    // 9. ரஜ்ஜு
+    const brj = RAJJU_GROUP[b], grj = RAJJU_GROUP[gm];
+    res.push({ n: 'ரஜ்ஜுப் பொருத்தம்', ok: brj !== grj, note: 'பெண்: ' + RAJJU_NAME[brj] + ' | ஆண்: ' + RAJJU_NAME[grj] });
+
+    // 10. வேதை
+    const vedha = VEDHA_PAIRS.some(pr => (pr[0] === b && pr[1] === gm) || (pr[0] === gm && pr[1] === b));
+    res.push({ n: 'வேதைப் பொருத்தம்', ok: !vedha, note: vedha ? 'வேதை உள்ளது' : 'வேதை இல்லை' });
+
+    $('poruthamTbody').innerHTML = res.map((r, i) =>
+        '<tr><td style="text-align:center;">' + (i + 1) + '</td><td>' + r.n + '</td><td style="text-align:center;">' +
+        (r.ok ? '✔ பொருத்தம் உண்டு' : '✘ பொருத்தம் இல்லை') + '</td><td>' + r.note + '</td></tr>').join('');
+
+    const total = res.filter(r => r.ok).length;
+    const rajjuOk = res[8].ok;
+    let verdict = 'மொத்தம் ' + total + ' / 10 பொருத்தங்கள் - ' + (total >= 7 ? 'உத்தமம்' : total >= 5 ? 'மத்திமம்' : 'அதமம்');
+    if (!rajjuOk) verdict += ' | ரஜ்ஜுப் பொருத்தம் இல்லை (முக்கியம்)';
+    $('poruthamTotalVerdict').textContent = verdict;
+    $('mPoruthamNotes').textContent = $('poruthamNotes').value || '-';
+    $('mPrintedTime').textContent = 'Printed on ' + new Date().toLocaleString('en-IN');
+}
+
+// ==================== 9. TAB SWITCH & INIT ====================
+function switchTab(t) {
+    const h = (t === 'HOROSCOPE');
+    $('sectionHoroscope').style.display = h ? 'block' : 'none';
+    $('sectionPorutham').style.display = h ? 'none' : 'block';
+    $('tabBtnHoroscope').classList.toggle('active', h);
+    $('tabBtnPorutham').classList.toggle('active', !h);
+    if (h) renderHoroscopeSheet(); else calculatePorutham();
+}
+
+function init() {
+    loadDeityImages();
+    $('inPlaceSelect').innerHTML = TN_PLACES.map((p, i) => '<option value="' + i + '">' + p.name + '</option>').join('');
+    $('inPlaceSelect').value = 0;
+    fillStarSelect('brideStar', 7);
+    fillStarSelect('groomStar', 12);
+    updatePadaLabels('brideStar', 'bridePada');
+    updatePadaLabels('groomStar', 'groomPada');
+    $('groomPada').value = '4';
+    refreshSavedList();
+    calculateAll();
+    calculatePorutham();
+}
+init();
+</script>
+</body>
+</html>
