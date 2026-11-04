@@ -3051,10 +3051,19 @@ VPS COMPUTERS & PRINTERS - உங்கள் விண்ணப்ப நில
         galleryEl.classList.add('hidden');
       }
 
+      // 👇 Astro Page-ல் மட்டும் ஜோதிட மென்பொருளைக் காட்ட 👇
+      const astroSwEl = document.getElementById('astro-software-section');
+      if (astroSwEl) {
+        if (pageKey === 'astro') {
+          astroSwEl.classList.remove('hidden');
+        } else {
+          astroSwEl.classList.add('hidden');
+        }
+      }
+
       const list = servicesData.filter(s => s.page === pageKey);
       document.getElementById('cat-services-grid').innerHTML = list.map(s => createServiceCardHTML(s)).join('');
     }
-
     // Modal 1: Required Documents
     let activeModalService = null;
     function openDocModal(serviceId) {
